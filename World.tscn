@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://World/Grass.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Tree.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -471,7 +472,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 position = Vector2( 160, 90 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( -253, -112, 331, 197 )
+region_rect = Rect2( -1.257, -0.205002, 1451.26, 830.205 )
 
 [node name="DirtPath TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -486,10 +487,18 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 131075, 0, 0, 131076, 0, 2, 196610, 0, 0, 196611, 0, 131078, 196612, 0, 65538, 262144, 0, 0, 262145, 0, 1, 262146, 0, 131078, 262147, 0, 65537, 262148, 0, 65538, 327680, 0, 131072, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 131073, 327684, 0, 131074 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 152, 40 )
+current = true
+smoothing_enabled = true
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 152, 40 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -541,6 +550,19 @@ position = Vector2( 208, 40 )
 position = Vector2( 232, 64 )
 
 [node name="Bat3" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 120, 48 )
+position = Vector2( 240, 104 )
 
-[node name="HealthUI" parent="." instance=ExtResource( 8 )]
+[node name="Trees" type="YSort" parent="YSort"]
+
+[node name="Tree" parent="YSort/Trees" instance=ExtResource( 9 )]
+position = Vector2( 62, 85 )
+
+[node name="Tree2" parent="YSort/Trees" instance=ExtResource( 9 )]
+position = Vector2( 289, 16 )
+
+[node name="Tree3" parent="YSort/Trees" instance=ExtResource( 9 )]
+position = Vector2( 289, 49 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]

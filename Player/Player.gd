@@ -1,5 +1,10 @@
 extends KinematicBody2D
 
+# VERY USEFUL TIP
+# If you run the game, then go into debugger and monitors,
+# you can see the specs while running to see if there is a drop
+# Profiling (Profiler tab) lets you see which functions and actions cost time
+
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
 export var ROLL_SPEED = 100
@@ -14,7 +19,7 @@ enum {
 var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
-var stats = PlayerStats
+
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -23,7 +28,7 @@ onready var swordHitbox = $HitBoxPivot/SwordHitBox
 onready var hurtBox = $HurtBox
 
 func _ready():
-	stats.connect("no_health",self, "queue_free")
+	PlayerStats.connect("no_health",self, "queue_free")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 
@@ -84,6 +89,6 @@ func attack_animation_finished():
 	state = MOVE
 
 func _on_HurtBox_area_entered(area):
-	stats.health -= 1
+	PlayerStats.health -= 1
 	hurtBox.start_invincibility(1)
 	hurtBox.create_hit_effect()
