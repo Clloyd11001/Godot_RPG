@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player/bar_background.png" type="Texture" id=1]
+[ext_resource path="res://Player/bar_fill.png" type="Texture" id=2]
+[ext_resource path="res://TextureProgress.gd" type="Script" id=3]
+[ext_resource path="res://Player/text_experience.png" type="Texture" id=4]
+
+[node name="ExperienceBar" type="TextureProgress"]
+anchor_right = 0.4
+anchor_bottom = 0.311
+margin_right = 733.0
+margin_bottom = 13.02
+max_value = 34.0
+value = 15.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Experience" type="TextureRect" parent="."]
+margin_top = -53.0
+margin_right = 343.0
+margin_bottom = -15.0
+texture = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
