@@ -145,3 +145,5 @@ func _on_HurtBox_area_entered(_area):
 	hurtBox.create_hit_effect()
 	var playerHurtSound = PlayerHurtSound.instance()
 	get_tree().current_scene.add_child(playerHurtSound)
+
+

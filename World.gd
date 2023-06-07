@@ -11,17 +11,19 @@ onready var enemy = get_node("YSort/Bat")
 # var b = "text"
 # Called when the node enters the scene tree for the first time.
 
+# update_text used to have _character.level as a param
 func _ready():
-	_label.update_text(_character.level, _character.experience, _character.experience_required)
+	_label.update_text( _character.experience, _character.experience_required)
 	
 # Getting enemy death to trigger character exp gain
 	enemy.connect("enemy_defeated", self, "_on_EnemyDefeated")
 	# should create the experience bar?
 	_bar.initialize(_character.experience, _character.experience_required)
-	
+
+# update_text used to have _character.level as a param
 func _on_EnemyDefeated():
 	_character.gain_experience(34)
-	_label.update_text(_character.level, _character.experience, _character.experience_required)
+	_label.update_text( _character.experience, _character.experience_required)
 	
 
 	

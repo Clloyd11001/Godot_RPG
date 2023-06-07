@@ -17,6 +17,7 @@ texture_progress = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Experience" type="TextureRect" parent="."]
+visible = false
 margin_top = -53.0
 margin_right = 343.0
 margin_bottom = -15.0

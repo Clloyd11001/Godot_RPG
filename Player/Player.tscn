@@ -11,7 +11,6 @@
 [ext_resource path="res://WhiteColorShader.gdshader" type="Shader" id=9]
 [ext_resource path="res://Player/Label.gd" type="Script" id=10]
 [ext_resource path="res://Player/ExperienceBar.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Montserrat-Bold.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="ShaderMaterial" id=50]
 shader = ExtResource( 9 )
@@ -834,9 +833,12 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="DynamicFontData" id=55]
+font_path = "res://Fonts/Filgaia.ttf"
+
 [sub_resource type="DynamicFont" id=54]
 size = 26
-font_data = ExtResource( 12 )
+font_data = SubResource( 55 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 127, 80 )
@@ -921,9 +923,9 @@ position = Vector2( 56, -1 )
 scale = Vector2( 0.1, 0.1 )
 
 [node name="Label" type="Label" parent="ExperienceInterface"]
-margin_left = -350.0
-margin_top = -410.0
-margin_right = 100.0
+margin_left = -700.0
+margin_top = -380.0
+margin_right = -250.0
 margin_bottom = -320.0
 size_flags_vertical = 1
 size_flags_stretch_ratio = 14.59
@@ -934,10 +936,10 @@ script = ExtResource( 10 )
 [node name="ExperienceBar" parent="ExperienceInterface" instance=ExtResource( 11 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -710.0
-margin_top = -310.0
-margin_right = 151.0
-margin_bottom = -241.0
+margin_left = -700.0
+margin_top = -300.0
+margin_right = 161.0
+margin_bottom = -231.0
 
 [connection signal="experience_gained" from="." to="ExperienceInterface/ExperienceBar" method="_on_Player_experience_gained"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
