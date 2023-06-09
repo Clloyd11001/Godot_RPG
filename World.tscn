@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Tree.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Camera2D.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Chest.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World.gd" type="Script" id=12]
 
 [sub_resource type="TileSet" id=1]
@@ -563,6 +564,11 @@ position = Vector2( 289, 16 )
 
 [node name="Tree3" parent="YSort/Trees" instance=ExtResource( 9 )]
 position = Vector2( 289, 49 )
+
+[node name="Chests" type="Node2D" parent="YSort"]
+
+[node name="Chest" parent="YSort/Chests" instance=ExtResource( 11 )]
+position = Vector2( 120, 56 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
