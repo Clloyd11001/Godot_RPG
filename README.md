@@ -1,6 +1,6 @@
 This is the beginning of something special hopefully. This project was made to serve as a progress tracker and to also build my dream game. 
 
-"My Action RPG" is the culmination of what I would want in an Action RPG.
+"My Action RPG" is the culmination of what I would want in an Action RPG. I was inspired by Castlevania, Berserk, Afro Samurai, Warring periods Japan, Dark Souls (art-wise), Ghost of Tsushima, and fighting games.
 
 Main components I have implemented so far:
   Implementing Character Sprites, Generating Asssets etc. (trying to implement some easy diffusion character sprite sheets to replace one's from tutorial
