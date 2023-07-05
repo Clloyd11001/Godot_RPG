@@ -2,7 +2,7 @@
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://World/GrassBackground.png" type="Texture" id=3]
+[ext_resource path="res://World/GRASS+.png" type="Texture" id=3]
 [ext_resource path="res://World/DirtTileset.png" type="Texture" id=4]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=5]
 [ext_resource path="res://World/Grass.tscn" type="PackedScene" id=6]
@@ -472,17 +472,215 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="World" type="Node2D"]
 script = ExtResource( 12 )
 
-[node name="Background" type="Sprite" parent="."]
-position = Vector2( 160, 90 )
+[node name="YSort2" type="YSort" parent="."]
+
+[node name="Background" type="Sprite" parent="YSort2"]
 texture = ExtResource( 3 )
+centered = false
 region_enabled = true
-region_rect = Rect2( -1.257, -0.205002, 1451.26, 830.205 )
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background2" type="Sprite" parent="YSort2"]
+position = Vector2( 0, 48 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background3" type="Sprite" parent="YSort2"]
+position = Vector2( 192, 136 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background9" type="Sprite" parent="YSort2"]
+position = Vector2( 240, 136 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background23" type="Sprite" parent="YSort2"]
+position = Vector2( 0, 184 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background24" type="Sprite" parent="YSort2"]
+position = Vector2( 48, 184 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background25" type="Sprite" parent="YSort2"]
+position = Vector2( 96, 184 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background26" type="Sprite" parent="YSort2"]
+position = Vector2( 144, 184 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background27" type="Sprite" parent="YSort2"]
+position = Vector2( 192, 184 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background28" type="Sprite" parent="YSort2"]
+position = Vector2( 240, 184 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background29" type="Sprite" parent="YSort2"]
+position = Vector2( 288, 184 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background30" type="Sprite" parent="YSort2"]
+position = Vector2( 288, 136 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background31" type="Sprite" parent="YSort2"]
+position = Vector2( 288, 88 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background32" type="Sprite" parent="YSort2"]
+position = Vector2( 288, 40 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background33" type="Sprite" parent="YSort2"]
+position = Vector2( 288, 0 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background10" type="Sprite" parent="YSort2"]
+position = Vector2( 48, 88 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background12" type="Sprite" parent="YSort2"]
+position = Vector2( 144, 88 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background13" type="Sprite" parent="YSort2"]
+position = Vector2( 192, 88 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background14" type="Sprite" parent="YSort2"]
+position = Vector2( 240, 88 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background15" type="Sprite" parent="YSort2"]
+position = Vector2( 240, 40 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background16" type="Sprite" parent="YSort2"]
+position = Vector2( 200, 40 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background17" type="Sprite" parent="YSort2"]
+position = Vector2( 152, 40 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background18" type="Sprite" parent="YSort2"]
+position = Vector2( 104, 40 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background19" type="Sprite" parent="YSort2"]
+position = Vector2( 48, 0 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background20" type="Sprite" parent="YSort2"]
+position = Vector2( 144, 0 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background21" type="Sprite" parent="YSort2"]
+position = Vector2( 192, 0 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background22" type="Sprite" parent="YSort2"]
+position = Vector2( 240, 0 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background4" type="Sprite" parent="YSort2"]
+position = Vector2( 144, 136 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background8" type="Sprite" parent="YSort2"]
+position = Vector2( 0, 96 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
 
 [node name="DirtPath TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 6, 0, 0, 7, 0, 1, 8, 0, 2, 65542, 0, 65536, 65543, 0, 65537, 65544, 0, 65538, 131078, 0, 65536, 131079, 0, 65537, 131080, 0, 131077, 131081, 0, 1, 131082, 0, 1, 131083, 0, 1, 131084, 0, 1, 131085, 0, 1, 131086, 0, 1, 131087, 0, 1, 131088, 0, 2, 196614, 0, 131072, 196615, 0, 131073, 196616, 0, 131073, 196617, 0, 131073, 196618, 0, 131073, 196619, 0, 131073, 196620, 0, 131073, 196621, 0, 131073, 196622, 0, 131073, 196623, 0, 131073, 196624, 0, 131074 )
+tile_data = PoolIntArray( 6, 0, 0, 7, 0, 1, 8, 0, 2, 65542, 0, 65536, 65543, 0, 65537, 65544, 0, 65538, 131078, 0, 65536, 131079, 0, 65537, 131080, 0, 131077, 131081, 0, 1, 131082, 0, 1, 131083, 0, 1, 131084, 0, 1, 131085, 0, 1, 131086, 0, 1, 131087, 0, 1, 131088, 0, 2, 196614, 0, 65536, 196615, 0, 65537, 196616, 0, 65537, 196617, 0, 65541, 196618, 0, 131073, 196619, 0, 131073, 196620, 0, 131073, 196621, 0, 131073, 196622, 0, 131073, 196623, 0, 131073, 196624, 0, 131074, 262150, 0, 65536, 262151, 0, 65537, 262152, 0, 65537, 262153, 0, 65538, 327686, 0, 65536, 327687, 0, 65537, 327688, 0, 65537, 327689, 0, 65538, 393220, 0, 0, 393221, 0, 1, 393222, 0, 131078, 393223, 0, 65537, 393224, 0, 65537, 393225, 0, 65538, 458756, 0, 65536, 458757, 0, 65537, 458758, 0, 65537, 458759, 0, 65537, 458760, 0, 65537, 458761, 0, 65538, 524288, 0, 0, 524289, 0, 1, 524290, 0, 1, 524291, 0, 1, 524292, 0, 131078, 524293, 0, 65537, 524294, 0, 65537, 524295, 0, 65537, 524296, 0, 65537, 524297, 0, 65538, 589824, 0, 65536, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65537, 589828, 0, 65537, 589829, 0, 65537, 589830, 0, 65537, 589831, 0, 65537, 589832, 0, 65537, 589833, 0, 65538, 655360, 0, 131072, 655361, 0, 131073, 655362, 0, 131073, 655363, 0, 131073, 655364, 0, 131073, 655365, 0, 131073, 655366, 0, 131073, 655367, 0, 131073, 655368, 0, 131073, 655369, 0, 131074 )
 
 [node name="DirtCliff Tile Map" type="TileMap" parent="."]
 tile_set = SubResource( 47 )
@@ -492,7 +690,8 @@ format = 1
 tile_data = PoolIntArray( 131075, 0, 0, 131076, 0, 2, 196610, 0, 0, 196611, 0, 131078, 196612, 0, 65538, 262144, 0, 0, 262145, 0, 1, 262146, 0, 131078, 262147, 0, 65537, 262148, 0, 65538, 327680, 0, 131072, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 131073, 327684, 0, 131074 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 10 )]
-position = Vector2( 152, 40 )
+position = Vector2( 0, 0 )
+anchor_mode = 0
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -500,6 +699,7 @@ position = Vector2( 152, 40 )
 position = Vector2( 152, 40 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+position = Vector2( -152, -40 )
 remote_path = NodePath("../../../Camera2D")
 
 [node name="Bushes" type="YSort" parent="YSort"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Items/Icon1.png" type="Texture" id=1]
+
+[node name="InventoryContainer" type="ColorRect"]
+margin_right = 336.0
+margin_bottom = 232.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 336.0
+margin_bottom = 232.0
+
+[node name="Icon1" type="Sprite" parent="CenterContainer"]
+position = Vector2( 40, 152 )
+texture = ExtResource( 1 )
