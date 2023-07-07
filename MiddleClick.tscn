@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="MiddleClick" type="TextureRect"]
+margin_left = -19.0
+margin_top = -20.0
+margin_right = 21.0
+margin_bottom = 20.0

@@ -931,15 +931,14 @@ size_flags_vertical = 1
 size_flags_stretch_ratio = 14.59
 custom_fonts/font = SubResource( 54 )
 text = "hello"
+align = 1
 script = ExtResource( 10 )
 
 [node name="ExperienceBar" parent="ExperienceInterface" instance=ExtResource( 11 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -700.0
-margin_top = -300.0
-margin_right = 161.0
-margin_bottom = -231.0
+margin_left = -600.0
+margin_top = -301.0
+margin_right = 261.0
+margin_bottom = -230.0
 
 [connection signal="experience_gained" from="." to="ExperienceInterface/ExperienceBar" method="_on_Player_experience_gained"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
