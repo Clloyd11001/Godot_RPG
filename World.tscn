@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://World.gd" type="Script" id=12]
 [ext_resource path="res://Items/Bone.png" type="Texture" id=13]
 [ext_resource path="res://InventoryContainer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://World/Cropped_House_Images/bottom_left_royals_finished.png" type="Texture" id=15]
+[ext_resource path="res://World/Cropped_House_Images/bottom_left_royals_finished_variation.png" type="Texture" id=16]
+[ext_resource path="res://World/Weird_trees.tscn" type="PackedScene" id=17]
+[ext_resource path="res://World/Orange_Tree.tscn" type="PackedScene" id=18]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -560,7 +564,350 @@ region_enabled = true
 region_rect = Rect2( 256, 112, 48, 48 )
 
 [node name="Background31" type="Sprite" parent="YSort2"]
-position = Vector2( 288, 88 )
+position = Vector2( 289, 88 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background34" type="Sprite" parent="YSort2"]
+position = Vector2( 624, 232 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background52" type="Sprite" parent="YSort2"]
+position = Vector2( 576, 230 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background53" type="Sprite" parent="YSort2"]
+position = Vector2( 528, 232 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background54" type="Sprite" parent="YSort2"]
+position = Vector2( 480, 232 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background55" type="Sprite" parent="YSort2"]
+position = Vector2( 433, 230 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background56" type="Sprite" parent="YSort2"]
+position = Vector2( 385, 232 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background57" type="Sprite" parent="YSort2"]
+position = Vector2( 337, 232 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background58" type="Sprite" parent="YSort2"]
+position = Vector2( 288, 230 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background59" type="Sprite" parent="YSort2"]
+position = Vector2( 243, 232 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background60" type="Sprite" parent="YSort2"]
+position = Vector2( 195, 232 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background61" type="Sprite" parent="YSort2"]
+position = Vector2( 144, 232 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background62" type="Sprite" parent="YSort2"]
+position = Vector2( 96, 230 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background63" type="Sprite" parent="YSort2"]
+position = Vector2( 48, 232 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background64" type="Sprite" parent="YSort2"]
+position = Vector2( 0, 232 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background65" type="Sprite" parent="YSort2"]
+position = Vector2( 624, 188 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background66" type="Sprite" parent="YSort2"]
+position = Vector2( 624, 141 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background67" type="Sprite" parent="YSort2"]
+position = Vector2( 624, 93 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background68" type="Sprite" parent="YSort2"]
+position = Vector2( 624, 49 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background69" type="Sprite" parent="YSort2"]
+position = Vector2( 624, 1 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background70" type="Sprite" parent="YSort2"]
+position = Vector2( 576, 193 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background71" type="Sprite" parent="YSort2"]
+position = Vector2( 576, 143 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background72" type="Sprite" parent="YSort2"]
+position = Vector2( 576, 97 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background73" type="Sprite" parent="YSort2"]
+position = Vector2( 576, 49 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background74" type="Sprite" parent="YSort2"]
+position = Vector2( 576, 0 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background75" type="Sprite" parent="YSort2"]
+position = Vector2( 528, 193 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background76" type="Sprite" parent="YSort2"]
+position = Vector2( 528, 145 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background77" type="Sprite" parent="YSort2"]
+position = Vector2( 528, 97 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background78" type="Sprite" parent="YSort2"]
+position = Vector2( 528, 48 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background79" type="Sprite" parent="YSort2"]
+position = Vector2( 528, 1 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background80" type="Sprite" parent="YSort2"]
+position = Vector2( 480, 192 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background81" type="Sprite" parent="YSort2"]
+position = Vector2( 480, 143 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background82" type="Sprite" parent="YSort2"]
+position = Vector2( 480, 95 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background35" type="Sprite" parent="YSort2"]
+position = Vector2( 480, 48 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background36" type="Sprite" parent="YSort2"]
+position = Vector2( 480, 1 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background37" type="Sprite" parent="YSort2"]
+position = Vector2( 432, 192 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background38" type="Sprite" parent="YSort2"]
+position = Vector2( 432, 143 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background39" type="Sprite" parent="YSort2"]
+position = Vector2( 432, 97 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background40" type="Sprite" parent="YSort2"]
+position = Vector2( 432, 49 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background41" type="Sprite" parent="YSort2"]
+position = Vector2( 432, 1 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background42" type="Sprite" parent="YSort2"]
+position = Vector2( 384, 192 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background43" type="Sprite" parent="YSort2"]
+position = Vector2( 384, 145 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background44" type="Sprite" parent="YSort2"]
+position = Vector2( 384, 95 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background45" type="Sprite" parent="YSort2"]
+position = Vector2( 384, 48 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background46" type="Sprite" parent="YSort2"]
+position = Vector2( 384, 1 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background47" type="Sprite" parent="YSort2"]
+position = Vector2( 336, 192 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background48" type="Sprite" parent="YSort2"]
+position = Vector2( 336, 144 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background49" type="Sprite" parent="YSort2"]
+position = Vector2( 336, 95 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background50" type="Sprite" parent="YSort2"]
+position = Vector2( 336, 45 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 112, 48, 48 )
+
+[node name="Background51" type="Sprite" parent="YSort2"]
+position = Vector2( 336, 0 )
 texture = ExtResource( 3 )
 centered = false
 region_enabled = true
@@ -682,17 +1029,20 @@ region_rect = Rect2( 256, 112, 48, 48 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 6, 0, 0, 7, 0, 1, 8, 0, 2, 65542, 0, 65536, 65543, 0, 65537, 65544, 0, 65538, 131078, 0, 65536, 131079, 0, 65537, 131080, 0, 131077, 131081, 0, 1, 131082, 0, 1, 131083, 0, 1, 131084, 0, 1, 131085, 0, 1, 131086, 0, 1, 131087, 0, 1, 131088, 0, 2, 196614, 0, 65536, 196615, 0, 65537, 196616, 0, 65537, 196617, 0, 65541, 196618, 0, 131073, 196619, 0, 131073, 196620, 0, 131073, 196621, 0, 131073, 196622, 0, 131073, 196623, 0, 131073, 196624, 0, 131074, 262150, 0, 65536, 262151, 0, 65537, 262152, 0, 65537, 262153, 0, 65538, 327686, 0, 65536, 327687, 0, 65537, 327688, 0, 65537, 327689, 0, 65538, 393220, 0, 0, 393221, 0, 1, 393222, 0, 131078, 393223, 0, 65537, 393224, 0, 65537, 393225, 0, 65538, 458756, 0, 65536, 458757, 0, 65537, 458758, 0, 65537, 458759, 0, 65537, 458760, 0, 65537, 458761, 0, 65538, 524288, 0, 0, 524289, 0, 1, 524290, 0, 1, 524291, 0, 1, 524292, 0, 131078, 524293, 0, 65537, 524294, 0, 65537, 524295, 0, 65537, 524296, 0, 65537, 524297, 0, 65538, 589824, 0, 65536, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65537, 589828, 0, 65537, 589829, 0, 65537, 589830, 0, 65537, 589831, 0, 65537, 589832, 0, 65537, 589833, 0, 65538, 655360, 0, 131072, 655361, 0, 131073, 655362, 0, 131073, 655363, 0, 131073, 655364, 0, 131073, 655365, 0, 131073, 655366, 0, 131073, 655367, 0, 131073, 655368, 0, 131073, 655369, 0, 131074 )
+tile_data = PoolIntArray( 6, 0, 0, 7, 0, 1, 8, 0, 2, 65542, 0, 65536, 65543, 0, 65537, 65544, 0, 65538, 131078, 0, 65536, 131079, 0, 65537, 131080, 0, 131077, 131081, 0, 1, 131082, 0, 1, 131083, 0, 1, 131084, 0, 1, 131085, 0, 1, 131086, 0, 1, 131087, 0, 1, 131088, 0, 2, 196614, 0, 65536, 196615, 0, 65537, 196616, 0, 65537, 196617, 0, 65541, 196618, 0, 131073, 196619, 0, 131073, 196620, 0, 131073, 196621, 0, 65542, 196622, 0, 65541, 196623, 0, 131073, 196624, 0, 131074, 262150, 0, 65536, 262151, 0, 65537, 262152, 0, 65537, 262153, 0, 65538, 262157, 0, 65536, 262158, 0, 65538, 327686, 0, 65536, 327687, 0, 65537, 327688, 0, 65537, 327689, 0, 65538, 327693, 0, 65536, 327694, 0, 65538, 393220, 0, 0, 393221, 0, 1, 393222, 0, 131078, 393223, 0, 65537, 393224, 0, 65537, 393225, 0, 131077, 393226, 0, 1, 393227, 0, 1, 393228, 0, 1, 393229, 0, 131078, 393230, 0, 65538, 458756, 0, 65536, 458757, 0, 65537, 458758, 0, 65537, 458759, 0, 65537, 458760, 0, 65537, 458761, 0, 65537, 458762, 0, 65537, 458763, 0, 65537, 458764, 0, 65537, 458765, 0, 65537, 458766, 0, 131077, 458767, 0, 2, 524288, 0, 0, 524289, 0, 1, 524290, 0, 1, 524291, 0, 1, 524292, 0, 131078, 524293, 0, 65537, 524294, 0, 65537, 524295, 0, 65537, 524296, 0, 65537, 524297, 0, 65537, 524298, 0, 65537, 524299, 0, 65537, 524300, 0, 65537, 524301, 0, 65537, 524302, 0, 65537, 524303, 0, 65538, 589824, 0, 65536, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65537, 589828, 0, 65537, 589829, 0, 65537, 589830, 0, 65537, 589831, 0, 65537, 589832, 0, 65537, 589833, 0, 65537, 589834, 0, 65537, 589835, 0, 65537, 589836, 0, 65537, 589837, 0, 65537, 589838, 0, 65537, 589839, 0, 65538, 655360, 0, 131072, 655361, 0, 131073, 655362, 0, 131073, 655363, 0, 131073, 655364, 0, 131073, 655365, 0, 131073, 655366, 0, 131073, 655367, 0, 131073, 655368, 0, 131073, 655369, 0, 131073, 655370, 0, 65542, 655371, 0, 65537, 655372, 0, 65537, 655373, 0, 65537, 655374, 0, 65537, 655375, 0, 65538, 720906, 0, 65536, 720907, 0, 65537, 720908, 0, 65537, 720909, 0, 65537, 720910, 0, 65537, 720911, 0, 65538, 720931, 0, 0, 720932, 0, 1, 720933, 0, 2, 786442, 0, 131072, 786443, 0, 131073, 786444, 0, 65542, 786445, 0, 65537, 786446, 0, 65537, 786447, 0, 131077, 786448, 0, 2, 786455, 0, 0, 786456, 0, 1, 786457, 0, 1, 786458, 0, 1, 786459, 0, 1, 786460, 0, 2, 786467, 0, 65536, 786468, 0, 65537, 786469, 0, 65538, 851980, 0, 65536, 851981, 0, 65537, 851982, 0, 65537, 851983, 0, 65537, 851984, 0, 131077, 851985, 0, 1, 851986, 0, 2, 851991, 0, 65536, 851992, 0, 65537, 851993, 0, 65537, 851994, 0, 65537, 851995, 0, 65537, 851996, 0, 65538, 852003, 0, 65536, 852004, 0, 65537, 852005, 0, 65538, 917516, 0, 65536, 917517, 0, 65537, 917518, 0, 65537, 917519, 0, 65537, 917520, 0, 65537, 917521, 0, 65537, 917522, 0, 65538, 917527, 0, 65536, 917528, 0, 65537, 917529, 0, 65537, 917530, 0, 65537, 917531, 0, 65537, 917532, 0, 65538, 917539, 0, 65536, 917540, 0, 65537, 917541, 0, 131077, 917542, 0, 2, 983052, 0, 65536, 983053, 0, 65537, 983054, 0, 65537, 983055, 0, 65537, 983056, 0, 65537, 983057, 0, 65537, 983058, 0, 131077, 983059, 0, 1, 983060, 0, 1, 983061, 0, 1, 983062, 0, 1, 983063, 0, 131078, 983064, 0, 65537, 983065, 0, 65537, 983066, 0, 65537, 983067, 0, 65537, 983068, 0, 131077, 983069, 0, 1, 983070, 0, 1, 983071, 0, 1, 983072, 0, 1, 983073, 0, 1, 983074, 0, 1, 983075, 0, 65545, 983076, 0, 131073, 983077, 0, 131073, 983078, 0, 131074, 1048588, 0, 131072, 1048589, 0, 65542, 1048590, 0, 65537, 1048591, 0, 65537, 1048592, 0, 65537, 1048593, 0, 65541, 1048594, 0, 131073, 1048595, 0, 131073, 1048596, 0, 131073, 1048597, 0, 131073, 1048598, 0, 131073, 1048599, 0, 131073, 1048600, 0, 131073, 1048601, 0, 131073, 1048602, 0, 131073, 1048603, 0, 131073, 1048604, 0, 131073, 1048605, 0, 131073, 1048606, 0, 131073, 1048607, 0, 131073, 1048608, 0, 131073, 1048609, 0, 131073, 1048610, 0, 131073, 1048611, 0, 131074, 1114125, 0, 131072, 1114126, 0, 131073, 1114127, 0, 131073, 1114128, 0, 131073, 1114129, 0, 131074 )
 
 [node name="DirtCliff Tile Map" type="TileMap" parent="."]
 tile_set = SubResource( 47 )
 cell_size = Vector2( 32, 32 )
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 131075, 0, 0, 131076, 0, 2, 196610, 0, 0, 196611, 0, 131078, 196612, 0, 65538, 262144, 0, 0, 262145, 0, 1, 262146, 0, 131078, 262147, 0, 65537, 262148, 0, 65538, 327680, 0, 131072, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 131073, 327684, 0, 131074 )
+tile_data = PoolIntArray( 131075, 0, 0, 131076, 0, 2, 196610, 0, 0, 196611, 0, 131078, 196612, 0, 131077, 196613, 0, 1, 196614, 0, 2, 262144, 0, 0, 262145, 0, 1, 262146, 0, 131078, 262147, 0, 65537, 262148, 0, 65537, 262149, 0, 65537, 262150, 0, 65538, 327680, 0, 131072, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 131073, 327684, 0, 131073, 327685, 0, 65542, 327686, 0, 65538, 393221, 0, 131072, 393222, 0, 65543, 458758, 0, 131076, 458759, 0, 1, 458760, 0, 2, 524294, 0, 131072, 524295, 0, 131073, 524296, 0, 196613, 524297, 0, 196609, 524298, 0, 196609, 524299, 0, 196609, 524300, 0, 196609, 524301, 0, 196609, 524302, 0, 196610 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 10 )]
 anchor_mode = 0
+
+[node name="BottomRight" parent="Camera2D/Limits" index="1"]
+position = Vector2( 672, 278 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -763,8 +1113,11 @@ position = Vector2( 62, 85 )
 [node name="Tree2" parent="YSort/Trees" instance=ExtResource( 9 )]
 position = Vector2( 289, 16 )
 
-[node name="Tree3" parent="YSort/Trees" instance=ExtResource( 9 )]
-position = Vector2( 289, 49 )
+[node name="Tree3" parent="YSort/Trees" instance=ExtResource( 17 )]
+position = Vector2( 296, 56 )
+
+[node name="Tree4" parent="YSort/Trees" instance=ExtResource( 18 )]
+position = Vector2( 264, 88 )
 
 [node name="Chests" type="Node2D" parent="YSort"]
 
@@ -782,6 +1135,14 @@ visible = false
 visible = false
 position = Vector2( 96, 152 )
 texture = ExtResource( 13 )
+
+[node name="BottomLeftRoyalsFinished" type="Sprite" parent="."]
+position = Vector2( 752, 464 )
+texture = ExtResource( 15 )
+
+[node name="BottomLeftRoyalsFinishedVariation" type="Sprite" parent="BottomLeftRoyalsFinished"]
+position = Vector2( -264, -328 )
+texture = ExtResource( 16 )
 
 [editable path="Camera2D"]
 [editable path="InventoryContainer"]
