@@ -8,71 +8,70 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/vseparation = 0
 custom_constants/hseparation = 0
-columns = 3
+columns = 5
 script = ExtResource( 2 )
 
 [node name="InventorySlotDisplay" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 107.0
-margin_bottom = 60.0
+margin_right = 135.0
+margin_bottom = 140.0
 
 [node name="InventorySlotDisplay2" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 107.0
-margin_right = 214.0
-margin_bottom = 60.0
+margin_left = 135.0
+margin_right = 270.0
+margin_bottom = 140.0
 
 [node name="InventorySlotDisplay3" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 214.0
-margin_right = 320.0
-margin_bottom = 60.0
+margin_left = 270.0
+margin_right = 405.0
+margin_bottom = 140.0
 
 [node name="InventorySlotDisplay4" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 60.0
-margin_right = 107.0
-margin_bottom = 120.0
+margin_left = 405.0
+margin_right = 540.0
+margin_bottom = 140.0
 
 [node name="InventorySlotDisplay5" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 107.0
-margin_top = 60.0
-margin_right = 214.0
-margin_bottom = 120.0
+margin_left = 540.0
+margin_right = 675.0
+margin_bottom = 140.0
 
 [node name="InventorySlotDisplay6" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 214.0
-margin_top = 60.0
-margin_right = 320.0
-margin_bottom = 120.0
+margin_top = 140.0
+margin_right = 135.0
+margin_bottom = 280.0
 
 [node name="InventorySlotDisplay7" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 120.0
-margin_right = 107.0
-margin_bottom = 180.0
+margin_left = 135.0
+margin_top = 140.0
+margin_right = 270.0
+margin_bottom = 280.0
 
 [node name="InventorySlotDisplay8" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 107.0
-margin_top = 120.0
-margin_right = 214.0
-margin_bottom = 180.0
+margin_left = 270.0
+margin_top = 140.0
+margin_right = 405.0
+margin_bottom = 280.0
 
 [node name="InventorySlotDisplay9" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 214.0
-margin_top = 120.0
-margin_right = 320.0
-margin_bottom = 180.0
+margin_left = 405.0
+margin_top = 140.0
+margin_right = 540.0
+margin_bottom = 280.0
