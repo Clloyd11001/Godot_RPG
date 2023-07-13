@@ -1131,10 +1131,6 @@ position = Vector2( 120, 56 )
 [node name="InventoryContainer" parent="." instance=ExtResource( 14 )]
 visible = false
 
-[node name="InventoryDisplay" parent="InventoryContainer/CenterContainer" index="0"]
-margin_right = 176.0
-margin_bottom = 108.0
-
 [node name="Icon2" type="Sprite" parent="."]
 visible = false
 position = Vector2( 96, 152 )

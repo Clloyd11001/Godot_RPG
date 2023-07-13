@@ -11,17 +11,19 @@ margin_bottom = 216.0
 rect_rotation = -0.11787
 texture = ExtResource( 2 )
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-margin_left = -3.03702
-margin_top = 17.9938
-margin_right = 241.963
-margin_bottom = 125.994
-mouse_filter = 2
-
-[node name="InventoryDisplay" parent="CenterContainer" instance=ExtResource( 1 )]
+[node name="InventoryDisplay" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 68.0
-margin_right = 176.0
-margin_bottom = 108.0
-columns = 3
+margin_left = 180.0
+margin_top = 41.0
+margin_right = 423.0
+margin_bottom = 237.0
+custom_constants/vseparation = 4
+custom_constants/hseparation = -22
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = 2.96296
+margin_top = 18.0061
+margin_right = 407.0
+margin_bottom = 301.012
+mouse_filter = 2

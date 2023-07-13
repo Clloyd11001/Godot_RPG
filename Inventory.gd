@@ -11,9 +11,16 @@ export(Array, Resource) var items = [
 
 func set_item(item_index, item):
 	var previousItem = items[item_index]
-	items[item_index] = item
+	
+	if previousItem is Item and previousItem.name == item.name:
+		previousItem.amount += item.amount
+	else:
+		items[item_index] = item
+	
 	emit_signal("items_changed", [item_index])
+	
 	return previousItem
+
 
 func swap_items(item_index, target_item_index):
 	var targetItem = items[target_item_index]

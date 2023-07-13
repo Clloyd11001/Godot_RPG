@@ -22,7 +22,10 @@ func get_drag_data(_position):
 		data.item_index = item_index
 		var dragPreview = TextureRect.new()
 		dragPreview.texture = item.texture
-		set_drag_preview(dragPreview)
+		var c = Control.new()
+		c.add_child(dragPreview)
+		dragPreview.rect_position = -0.5 * dragPreview.texture.get_size()
+		set_drag_preview(c)
 		inventory.drag_data = data
 		return data
 
