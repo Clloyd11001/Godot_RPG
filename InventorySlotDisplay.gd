@@ -2,6 +2,9 @@ extends CenterContainer
 
 var inventory = preload("res://Inventory.tres")
 
+# Could add bool value to make some items non-stackable
+# Would be smart to make a max size as well
+
 onready var itemTextureRect = $ItemTextureRect
 onready var itemAmountLabel = $ItemTextureRect/ItemAmountLabel
 
@@ -32,6 +35,7 @@ func get_drag_data(_position):
 func can_drop_data(_position, data):
 	return data is Dictionary and data.has("item")
 
+
 func drop_data(_position, data):
 	var my_item_index = get_index()
 	var my_item = inventory.items[my_item_index]
@@ -39,6 +43,8 @@ func drop_data(_position, data):
 		my_item.amount += data.item.amount
 		inventory.emit_signal("items_changed", [my_item_index])
 	else:
+		print(my_item)
+		print(data.item.name)
 		inventory.swap_items(my_item_index, data.item_index)
 		inventory.set_item(my_item_index, data.item)
 	inventory.drag_data = null

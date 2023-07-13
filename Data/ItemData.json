@@ -1,0 +1,26 @@
+{
+  "AnimalSkull": {
+    "ItemCategory": "Resource",
+    "StackSize": 99,
+    "Description": "The haunting relic of a fallen creature, its ancient bone etched with mysterious symbols and imbued with echoes of forgotten magic"
+  },
+  "Beak": {
+    "ItemCategory": "Resource",
+    "StackSize": 99,
+    "Description": "A shimmering beak, its razor-sharp edge capable of piercing even the toughest of defenses."
+  },
+  "Iron Sword": {
+    "ItemCategory": "Sword",
+    "ItemAttack": 3,
+    "ItemSpeed": 0.75,
+    "StackSize": 1,
+    "Description": "Quite a rusty sword, but should be able to get the job done."
+  },
+  "BloodVial": {
+    "ItemCategory": "Consumable",
+    "AddHealth": 5,
+    "AddEnergy": 32,
+    "StackSize": 99,
+    "Description": "Elven glass vial with swirling crimson essence, unlocking ancestral powers."
+  }
+}

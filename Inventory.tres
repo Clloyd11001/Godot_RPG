@@ -1,8 +1,7 @@
-[gd_resource type="Resource" load_steps=17 format=2]
+[gd_resource type="Resource" load_steps=16 format=2]
 
 [ext_resource path="res://Inventory.gd" type="Script" id=1]
 [ext_resource path="res://Items/Key.tres" type="Resource" id=2]
-[ext_resource path="res://Items/Ribs.tres" type="Resource" id=3]
 [ext_resource path="res://Items/Monster Skull.tres" type="Resource" id=4]
 [ext_resource path="res://Items/Brain.tres" type="Resource" id=5]
 [ext_resource path="res://Items/Doll.tres" type="Resource" id=6]
@@ -19,4 +18,4 @@
 
 [resource]
 script = ExtResource( 1 )
-items = [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 14 ) ]
+items = [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 14 ) ]
