@@ -836,7 +836,7 @@ tracks/0/keys = {
 [sub_resource type="DynamicFontData" id=55]
 font_path = "res://Fonts/Montserrat-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=54]
+[sub_resource type="DynamicFont" id=56]
 size = 26
 font_data = SubResource( 55 )
 
@@ -918,29 +918,35 @@ anims/RESET = SubResource( 53 )
 anims/Start = SubResource( 51 )
 anims/Stop = SubResource( 52 )
 
-[node name="ExperienceInterface" type="Node2D" parent="."]
-position = Vector2( 56, -1 )
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = -126.0
+margin_top = -79.0
+margin_right = -15.0
+margin_bottom = -42.0
+
+[node name="ExperienceInterface" type="Node2D" parent="MarginContainer"]
+position = Vector2( 61, 39 )
 scale = Vector2( 0.1, 0.1 )
 
-[node name="Label" type="Label" parent="ExperienceInterface"]
+[node name="Label" type="Label" parent="MarginContainer/ExperienceInterface"]
 margin_left = -700.0
 margin_top = -380.0
 margin_right = -250.0
 margin_bottom = -320.0
 size_flags_vertical = 1
 size_flags_stretch_ratio = 14.59
-custom_fonts/font = SubResource( 54 )
+custom_fonts/font = SubResource( 56 )
 text = "hello"
 align = 1
 script = ExtResource( 10 )
 
-[node name="ExperienceBar" parent="ExperienceInterface" instance=ExtResource( 11 )]
+[node name="ExperienceBar" parent="MarginContainer/ExperienceInterface" instance=ExtResource( 11 )]
 margin_left = -600.0
 margin_top = -301.0
 margin_right = 261.0
 margin_bottom = -230.0
+rounded = true
 
-[connection signal="experience_gained" from="." to="ExperienceInterface/ExperienceBar" method="_on_Player_experience_gained"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincibility_ended" from="HurtBox" to="." method="_on_HurtBox_invincibility_ended"]
 [connection signal="invincibility_started" from="HurtBox" to="." method="_on_HurtBox_invincibility_started"]
