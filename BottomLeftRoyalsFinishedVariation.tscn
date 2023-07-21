@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://World/Cropped_House_Images/bottom_left_royals_finished_variation.png" type="Texture" id=1]
+[ext_resource path="res://BottomLeftRoyalsFinishedVariation.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 48, 20 )
+
+[node name="BottomLeftRoyalsFinishedVariation" type="Sprite"]
+position = Vector2( 488, 136 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( -496, -120 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 496, 120 )
+polygon = PoolVector2Array( 0, 0, -24, 0, -24, 64, -120, 64, -120, 16, -136, 16, -144, 8, -144, -96, -80, -128, 88, -128, 152, -96, 152, 24, 120, 24, 120, 48, 24, 48, 24, 0 )
+
+[node name="DoorWay" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorWay"]
+position = Vector2( -72, 44 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="DoorWay" to="." method="_on_DoorWay_body_entered"]
+[connection signal="body_exited" from="DoorWay" to="." method="_on_DoorWay_body_exited"]

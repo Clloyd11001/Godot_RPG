@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -15,7 +15,7 @@
 [ext_resource path="res://Items/Bone.png" type="Texture" id=13]
 [ext_resource path="res://InventoryContainer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Background_Red.tscn" type="PackedScene" id=15]
-[ext_resource path="res://World/Cropped_House_Images/bottom_left_royals_finished_variation.png" type="Texture" id=16]
+[ext_resource path="res://BottomLeftRoyalsFinishedVariation.tscn" type="PackedScene" id=16]
 [ext_resource path="res://World/Weird_trees.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Orange_Tree.tscn" type="PackedScene" id=18]
 
@@ -475,6 +475,8 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=48]
+
 [node name="Level1" type="Node2D"]
 script = ExtResource( 12 )
 
@@ -482,7 +484,7 @@ script = ExtResource( 12 )
 
 [node name="Background_Red" parent="YSort2" instance=ExtResource( 15 )]
 margin_right = 960.0
-margin_bottom = 448.0
+margin_bottom = 477.0
 
 [node name="DirtPath TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -498,6 +500,7 @@ format = 1
 tile_data = PoolIntArray( 131075, 0, 0, 131076, 0, 2, 196610, 0, 0, 196611, 0, 131078, 196612, 0, 131077, 196613, 0, 1, 196614, 0, 2, 262144, 0, 0, 262145, 0, 1, 262146, 0, 131078, 262147, 0, 65537, 262148, 0, 65537, 262149, 0, 65537, 262150, 0, 65538, 327680, 0, 131072, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 131073, 327684, 0, 131073, 327685, 0, 65542, 327686, 0, 65538, 393221, 0, 131072, 393222, 0, 65543, 458758, 0, 131076, 458759, 0, 1, 458760, 0, 2, 524294, 0, 131072, 524295, 0, 131073, 524296, 0, 196613, 524297, 0, 196609, 524298, 0, 196609, 524299, 0, 196609, 524300, 0, 196609, 524301, 0, 196609, 524302, 0, 196610 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 10 )]
+position = Vector2( 328, 184 )
 anchor_mode = 0
 
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
@@ -506,11 +509,17 @@ position = Vector2( 672, 278 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 152, 40 )
+position = Vector2( 480, 224 )
+
+[node name="AnimationTree" parent="YSort/Player" index="5"]
+parameters/playback = SubResource( 48 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 position = Vector2( -152, -40 )
 remote_path = NodePath("../../../Camera2D")
+
+[node name="BottomLeftRoyalsFinishedVariation" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 496, 120 )
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -595,13 +604,13 @@ visible = false
 position = Vector2( 96, 152 )
 texture = ExtResource( 13 )
 
-[node name="BottomLeftRoyalsFinishedVariation" type="Sprite" parent="."]
-position = Vector2( 488, 136 )
-texture = ExtResource( 16 )
-
 [node name="Next_Level_Indicator" parent="." instance=ExtResource( 3 )]
 position = Vector2( 880, 416 )
 scale = Vector2( 0.5, 0.5 )
 
 [editable path="Camera2D"]
+[editable path="YSort/Player"]
+[editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
+[editable path="YSort/Player/HurtBox"]
+[editable path="YSort/BottomLeftRoyalsFinishedVariation"]
 [editable path="InventoryContainer"]

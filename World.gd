@@ -2,8 +2,8 @@ extends Node2D
 
 onready var _character = get_node("YSort/Player")
 onready var label = get_tree()
-onready var _label = get_node("YSort/Player/MarginContainer/ExperienceInterface/Label")
-onready var _bar = get_node("YSort/Player/MarginContainer/ExperienceInterface/ExperienceBar")
+onready var _label = get_node("YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface/Label")
+onready var _bar = get_node("YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface/ExperienceBar")
 onready var enemy = get_node("YSort/Bat")
 
 # Declare member variables here. Examples:

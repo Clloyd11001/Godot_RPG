@@ -27,6 +27,7 @@ var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
+var house = null setget set_house
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -42,11 +43,18 @@ var experience_total = 0
 var experience_required = get_required_experience(level + 1)
 
 func _ready():
+#	set_house(null)
 	randomize()
 # warning-ignore:return_value_discarded
 	PlayerStats.connect("no_health",self, "queue_free")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
+
+
+func _unhandled_input(event):
+	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
+		#Global.player_outside_pos = global_position
+		house.enter()
 
 func _physics_process(delta):
 	match state:
@@ -146,4 +154,5 @@ func _on_HurtBox_area_entered(_area):
 	var playerHurtSound = PlayerHurtSound.instance()
 	get_tree().current_scene.add_child(playerHurtSound)
 
-
+func set_house(new_house):
+	house = new_house
