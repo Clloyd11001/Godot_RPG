@@ -6,7 +6,7 @@ onready var textbox_container = $TextboxContainer
 onready var start_symbol = $TextboxContainer/MarginContainer/HBoxContainer/Start
 onready var end_symbol = $TextboxContainer/MarginContainer/HBoxContainer/End
 onready var label = $TextboxContainer/MarginContainer/HBoxContainer/Label2
-onready var doorway = $Level1/YSort/BottomLeftRoyalsFinishedVariation/DoorWay
+#onready var doorway = $Level1/YSort/BottomLeftRoyalsFinishedVariation/DoorWay
 
 enum State {
 	READY,
@@ -20,11 +20,6 @@ var text_queue = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_textbox()
-	queue_text("First text queued up!")
-	queue_text("Second text queued up!")
-	queue_text("Third text queued up!")
-	queue_text("Fourth text queued up!")
-	queue_text("Fifth queued up!")
 	
 func _process(delta):
 	match current_state:
@@ -80,7 +75,3 @@ func change_state(next_state):
 			print("Changing to: STATE.FINISHED")
 
 
-func _on_DoorWay_body_entered(body):
-	print(body)
-	print("WE ARE NEAR THE DOOR")
-	queue_text("Press I to enter the house" )
