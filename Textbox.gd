@@ -37,6 +37,7 @@ func _process(delta):
 			if Input.is_action_just_pressed("ui_accept"):
 				change_state(State.READY)
 				hide_textbox()
+				
 func queue_text(next_text):
 	text_queue.push_back(next_text)
 

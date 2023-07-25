@@ -503,7 +503,7 @@ tile_data = PoolIntArray( 131075, 0, 0, 131076, 0, 2, 196610, 0, 0, 196611, 0, 1
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 472, 224 )
+position = Vector2( 536, 264 )
 
 [node name="AnimationTree" parent="YSort/Player" index="5"]
 parameters/playback = SubResource( 48 )
@@ -611,9 +611,9 @@ position = Vector2( 880, 416 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Textbox" parent="." instance=ExtResource( 19 )]
-visible = false
 
 [connection signal="body_entered" from="YSort/BottomLeftRoyalsFinishedVariation/DoorWay" to="." method="_on_DoorWay_body_entered"]
+[connection signal="body_exited" from="YSort/BottomLeftRoyalsFinishedVariation/DoorWay" to="." method="_on_DoorWay_body_exited"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]

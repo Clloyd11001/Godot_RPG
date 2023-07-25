@@ -4,10 +4,10 @@
 [ext_resource path="res://BottomLeftRoyalsFinishedVariation.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 48, 20 )
+extents = Vector2( 48, 19 )
 
 [node name="BottomLeftRoyalsFinishedVariation" type="Sprite"]
-position = Vector2( 488, 136 )
+position = Vector2( 184, 176 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
@@ -16,13 +16,14 @@ position = Vector2( -496, -120 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 496, 120 )
-polygon = PoolVector2Array( 0, 0, -24, 0, -24, 64, -120, 64, -120, 16, -136, 16, -144, 8, -144, -96, -80, -128, 88, -128, 152, -96, 152, 24, 120, 24, 120, 48, 24, 48, 24, 0 )
+polygon = PoolVector2Array( -120, -96, -80, -120, 88, -120, 136, -96, 136, 16, 120, 16, 120, 48, 24, 48, 24, -8, -16, -8, -16, 8, -120, 8 )
 
 [node name="DoorWay" type="Area2D" parent="."]
+position = Vector2( -192, 72 )
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorWay"]
-position = Vector2( -72, 44 )
+position = Vector2( 120, -21 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="DoorWay" to="." method="_on_DoorWay_body_entered"]

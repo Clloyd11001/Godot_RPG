@@ -12,10 +12,10 @@ size_flags_vertical = 3
 script = ExtResource( 2 )
 
 [node name="ItemTextureRect" type="TextureRect" parent="."]
-margin_left = 319.0
-margin_top = 122.0
-margin_right = 355.0
-margin_bottom = 158.0
+margin_left = 82.0
+margin_top = 17.0
+margin_right = 118.0
+margin_bottom = 53.0
 rect_min_size = Vector2( 18, 18 )
 texture = ExtResource( 1 )
 stretch_mode = 4

@@ -27,6 +27,7 @@ func _unhandled_input(event):
 	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
 		#Global.player_outside_pos = global_position
 		house.enter()
+		textBox.hide_textbox()
 		
 # update_text used to have _character.level as a param
 func _on_EnemyDefeated():
@@ -36,15 +37,22 @@ func _on_EnemyDefeated():
 
 func set_house(new_house):
 	if new_house != null:
-		textBox.queue_text("Press I to open door!")
+		#textBox.queue_text("Press I to open door!")
 		#$KeyPrompt.show()
+		pass
 	else:
 		textBox.hide_textbox()
 
 	house = new_house
 	
-	
-
 func _on_DoorWay_body_entered(body):
-	textBox.queue_text("Press I to open door!")
-	print("WE CAN SEE THE HOUSE")
+	# How to call textbox from different scene?
+	print("")
+	#textBox.hide()
+	textBox.queue_text("Press I")
+	#textBox.display_text()
+	print("we here")
+
+func _on_DoorWay_body_exited(body):
+	textBox.hide_textbox()
+	
