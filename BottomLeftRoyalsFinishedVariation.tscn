@@ -20,6 +20,7 @@ polygon = PoolVector2Array( -120, -96, -80, -120, 88, -120, 136, -96, 136, 16, 1
 
 [node name="DoorWay" type="Area2D" parent="."]
 position = Vector2( -192, 72 )
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorWay"]

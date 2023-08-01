@@ -36,15 +36,18 @@ onready var swordHitbox = $HitBoxPivot/SwordHitBox
 onready var hurtBox = $HurtBox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
+
 var experience = 0
 var experience_total = 0
 
 # experience to reach next level, does a lot of math.. basically exponential gain
 var experience_required = get_required_experience(level + 1)
 
+var house = null setget set_house
 
 func _ready():
-	#set_house(null)
+	#global_position = Global.player_pos
+	set_house(null)
 	randomize()
 # warning-ignore:return_value_discarded
 	PlayerStats.connect("no_health",self, "queue_free")
@@ -149,5 +152,23 @@ func _on_HurtBox_area_entered(_area):
 	hurtBox.create_hit_effect()
 	var playerHurtSound = PlayerHurtSound.instance()
 	get_tree().current_scene.add_child(playerHurtSound)
+
+func set_house(new_house):
+	if new_house != null:
+		
+	#	textBox.queue_text("Press I to interact")
+		pass
+	else:
+		pass
+	house = new_house
+
+func _unhandled_input(event):
+	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
+		Global.player_pos = global_position
+		house.enter()
+	else:
+		pass
+
+
 
 
