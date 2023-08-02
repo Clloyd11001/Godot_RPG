@@ -46,7 +46,7 @@ var experience_required = get_required_experience(level + 1)
 var house = null setget set_house
 
 func _ready():
-	#global_position = Global.player_pos
+
 	set_house(null)
 	randomize()
 # warning-ignore:return_value_discarded

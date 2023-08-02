@@ -1,5 +1,7 @@
 extends Node2D
 
+
+
 onready var _character = get_node("YSort/Player")
 onready var label = get_tree()
 onready var _label = get_node("YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface/Label")
@@ -8,9 +10,17 @@ onready var enemy = get_node("YSort/Bat")
 onready var textBox = get_node("Textbox")
 
 
+enum {
+	OUTSIDE,
+	INSIDE,
+	UNDERGROUND
+}
+
+var location = OUTSIDE
+
 # update_text used to have _character.level as a param
 func _ready():
-	$YSort/Player.global_position = Global.player_pos
+	$YSort/Player.global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2)
 	_label.update_text( _character.experience, _character.experience_required)
 	
 # Getting enemy death to trigger character exp gain
@@ -32,13 +42,10 @@ func _on_EnemyDefeated():
 
 	
 func _on_DoorWay_body_entered(body):
-	# How to call textbox from different scene?
-	print("")
-	#textBox.hide()
+		
 	#Only shows once, should happen every time
-	textBox.queue_text("Press I")
-	#textBox.display_text()
-	#print("we here")
+	textBox.queue_text("Press I to enter the house")
+	location = INSIDE
 
 func _on_DoorWay_body_exited(body):
 	textBox.hide_textbox()
