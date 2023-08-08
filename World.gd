@@ -49,4 +49,7 @@ func _on_DoorWay_body_entered(body):
 
 func _on_DoorWay_body_exited(body):
 	textBox.hide_textbox()
-	
+#
+#func zoom():
+#	if location == INSIDE:
+#		Camera2D

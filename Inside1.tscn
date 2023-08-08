@@ -29,19 +29,19 @@ tile_data = PoolIntArray( -327682, 6, 0, -327681, 6, 0, -393216, 6, 0, -393215, 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 96, 88 )
 
-[node name="Inside_Camera" type="Camera2D" parent="Player"]
-position = Vector2( 2, -70 )
-current = true
-script = ExtResource( 4 )
-
 [node name="Label" parent="Player/CanvasLayer/MarginContainer/ExperienceInterface" index="0"]
 visible = false
 
 [node name="ExperienceBar" parent="Player/CanvasLayer/MarginContainer/ExperienceInterface" index="1"]
 visible = false
 
-[node name="AnimationTree" parent="Player" index="6"]
+[node name="AnimationTree" parent="Player" index="5"]
 parameters/playback = SubResource( 2 )
+
+[node name="Inside_Camera" type="Camera2D" parent="Player"]
+position = Vector2( 2, -70 )
+current = true
+script = ExtResource( 4 )
 
 [node name="Exit" type="Area2D" parent="."]
 position = Vector2( 96, 112 )
