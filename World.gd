@@ -20,7 +20,8 @@ var location = OUTSIDE
 
 # update_text used to have _character.level as a param
 func _ready():
-	$YSort/Player.global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2)
+	# Putting this line of code makes character spawn in specific location
+	#$YSort/Player.global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2)
 	_label.update_text( _character.experience, _character.experience_required)
 	
 # Getting enemy death to trigger character exp gain
