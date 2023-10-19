@@ -5,8 +5,6 @@ var inventory = preload("res://Inventory.tres")
 func _ready():
 	inventory.connect("items_changed", self, "_on_items_changed")
 	inventory.make_items_unique()
-	
-	# So I think the problem with adding two items together is the line above which makes them unique
 	print(inventory.items)
 	update_inventory_display()
 

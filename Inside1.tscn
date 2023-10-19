@@ -39,8 +39,13 @@ visible = false
 parameters/playback = SubResource( 2 )
 
 [node name="Inside_Camera" type="Camera2D" parent="Player"]
-position = Vector2( 2, -70 )
 current = true
+limit_left = -64
+limit_top = -192
+limit_right = 255
+limit_bottom = 96
+limit_smoothed = true
+editor_draw_limits = true
 script = ExtResource( 4 )
 
 [node name="Exit" type="Area2D" parent="."]

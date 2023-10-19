@@ -19,7 +19,7 @@ func _input(event: InputEvent) -> void:
 
 func _drop_object() -> void:
 	var object: Node2D = object_scene.instance()
-	get_node("/root/World/YSort/Chests/Chest").add_child(object)
+	#get_node("/root/Level1/YSort/Chests/Chest").add_child(object)
 
 	
 #	Tween.interpolate_property(object, "position", position, position + Vector2(0, -5), 0.3, Tween.TRANS_QUAD, Tween.EASE_OUT)

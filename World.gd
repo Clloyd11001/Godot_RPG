@@ -46,11 +46,19 @@ func _on_DoorWay_body_entered(body):
 		
 	#Only shows once, should happen every time
 	textBox.queue_text("Press I to enter the house")
-	location = INSIDE
+	if Input.is_action_just_pressed("interact"):
+		location = INSIDE
+		set_camera_limits()
+		
 
 func _on_DoorWay_body_exited(body):
 	textBox.hide_textbox()
 #
-#func zoom():
-#	if location == INSIDE:
-#		Camera2D
+func set_camera_limits():
+	if location == INSIDE:
+		var map_limits = $TileMap.get_used_rect()
+		var map_cellsize = $TileMap.cell_size
+		$Player/Camera2D.limit_left = map_limits.position.x * map_cellsize.x
+		$Player/Camera2D.limit_right = map_limits.end.x * map_cellsize.x
+		$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
+		$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y

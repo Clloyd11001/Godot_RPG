@@ -63,6 +63,8 @@ func _physics_process(delta):
 			roll_state()
 		ATTACK:
 			attack_state(delta)
+			
+			
 func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -154,8 +156,7 @@ func _on_HurtBox_area_entered(_area):
 	get_tree().current_scene.add_child(playerHurtSound)
 
 func set_house(new_house):
-	if new_house != null:
-		
+	if new_house != null:	
 	#	textBox.queue_text("Press I to interact")
 		pass
 	else:
@@ -166,9 +167,8 @@ func _unhandled_input(event):
 	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
 		Global.player_pos = global_position
 		house.enter()
+	if event is InputEventKey and event.is_action_pressed("Menu"):
+		get_tree().change_scene("res://InventoryContainer.tscn")
 	else:
 		pass
-
-
-
 

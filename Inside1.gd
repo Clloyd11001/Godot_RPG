@@ -6,7 +6,6 @@ var entered = false
 var outside = "res://Level1.tscn" 
 
 
-
 func _on_Exit_body_entered(body):
 	if entered:
 		get_tree().change_scene(outside)
