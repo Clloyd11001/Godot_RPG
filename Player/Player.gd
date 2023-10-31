@@ -3,6 +3,7 @@ extends KinematicBody2D
 signal experience_gained(growth_data)
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
+onready var inventory_layer = $inventory
 
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
@@ -168,7 +169,7 @@ func _unhandled_input(event):
 		Global.player_pos = global_position
 		house.enter()
 	if event is InputEventKey and event.is_action_pressed("Menu"):
-		get_tree().change_scene("res://InventoryContainer.tscn")
+		inventory_layer.visible = not inventory_layer.visible
 	else:
 		pass
 
