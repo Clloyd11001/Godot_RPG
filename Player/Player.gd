@@ -50,7 +50,7 @@ func _ready():
 
 	set_house(null)
 	randomize()
-# warning-ignore:return_value_discarded
+
 	PlayerStats.connect("no_health",self, "queue_free")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
