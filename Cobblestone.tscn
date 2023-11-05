@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://World/Cropped_House_Images/common_shack.PNG" type="Texture" id=1]
+[ext_resource path="res://BottomLeftRoyalsFinishedVariation.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.8125, 5.875 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 43, 19 )
+
+[node name="CommonHouse" type="Sprite"]
+position = Vector2( 184, 176 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( -496, -120 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 414.868, 48.2103 )
+scale = Vector2( 2.16331, 0.984203 )
+polygon = PoolVector2Array( -68.8152, -121.124, 61.0786, -117.059, 62.4653, 18.0752, 19.9378, 15.0271, 19.9378, 64.8136, 15.3153, 64.8136, 13.9285, 35.3481, -5.48621, 14.011, -23.5142, 35.3481, -23.9764, 70.9099, -26.2877, 70.9098, -26.2877, -5.29392, -16.1181, -18.5026, -43.8534, -15.4544, -69.7397, -15.4544 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 378.812, 95.75 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 415, 94 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 415, 94 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 397, 94 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 436, 97.875 )
+shape = SubResource( 2 )
+
+[node name="DoorWay" type="Area2D" parent="."]
+position = Vector2( -4, 88 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorWay"]
+position = Vector2( 12, -121 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="DoorWay" to="." method="_on_DoorWay_body_entered"]
+[connection signal="body_exited" from="DoorWay" to="." method="_on_DoorWay_body_exited"]

@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/gentle waterfall A v03.png-85acc4b777fd60b61db3dc3060be6c00.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://World/Textures/19.07a Gentle Forest 3.0 ($0 palettes)/gentle animations/gentle waterfall A v03.png"
+dest_files=[ "res://.import/gentle waterfall A v03.png-85acc4b777fd60b61db3dc3060be6c00.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
