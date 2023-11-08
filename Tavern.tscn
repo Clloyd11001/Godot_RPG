@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13, 13.75 )
 
-[node name="CommonHouse" type="Sprite"]
-position = Vector2( 184, 176 )
+[node name="Tavern" type="Sprite"]
+position = Vector2( 211.5, 162 )
+scale = Vector2( 1.05729, 1.03646 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 

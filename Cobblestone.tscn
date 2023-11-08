@@ -9,7 +9,7 @@ extents = Vector2( 5.8125, 5.875 )
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 43, 19 )
 
-[node name="CommonHouse" type="Sprite"]
+[node name="Cobblestone" type="Sprite"]
 position = Vector2( 184, 176 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
