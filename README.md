@@ -6,5 +6,7 @@ To contribute to my repo and play the game, just download this zip or clone, wha
 
 Once you have Godot open it up, then import ptoject and there is a "project.godot" file you just double click on the executable!
 
+As of 11/8 only at 11 MB! I'll try to add pictures of my progress to this later on, but if you want to see just pull it down.
+
 
 
