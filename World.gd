@@ -29,12 +29,6 @@ func _ready():
 	# should create the experience bar?
 	_bar.initialize(_character.experience, _character.experience_required)
 
-#func _unhandled_input(event):
-#	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
-#		#Global.player_outside_pos = global_position
-#		house.enter()
-#		textBox.hide_textbox()
-		
 # update_text used to have _character.level as a param
 func _on_EnemyDefeated():
 	_character.gain_experience(34)

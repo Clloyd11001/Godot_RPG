@@ -7,7 +7,7 @@
 radius = 3.0
 height = 0.0
 
-[node name="Pink_FLower" type="StaticBody2D"]
+[node name="Red_Mushroom" type="StaticBody2D"]
 
 [node name="ShadowSprite" type="Sprite" parent="."]
 position = Vector2( 0, 1 )
