@@ -2,20 +2,11 @@ This is the beginning of something special hopefully. This project was made to s
 
 "My Action RPG" is the culmination of what I would want in an Action RPG. I was inspired by Castlevania, Berserk, Afro Samurai, Warring periods Japan, Dark Souls (art-wise), Ghost of Tsushima, and fighting games.
 
-Main components I have implemented so far:
-  Main Character with Experience Interface
-  Created Chests in game (not working)
-  Made a camera that follows player
-  Implemented a boundary for the game as well as created the landscape
-  Houses, inside of houses, inventory, enemies
-  
- Components I think would be cool:
-  Different animations for combos
-  New weapons in game, need to also update spritesheets to reflect characters being given new weapons
-  Add in NPCs with dialogue options
-  
-  Things I want to ask Colby for help with
-  Create audio for game, background music as well as enemy music
-    Music starts when enemy comes
-    Notification sound of opening chest
-    
+To contribute to my repo and play the game, just download this zip or clone, whatever floats your boat. Then download Godot 3.5, (project breaks on 4.0) -> https://godotengine.org/download/3.x/windows/
+
+Once you have Godot open it up, then import ptoject and there is a "project.godot" file you just double click on the executable!
+
+As of 11/8 only at 11 MB! I'll try to add pictures of my progress to this later on, but if you want to see just pull it down.
+
+
+
