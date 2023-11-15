@@ -1402,6 +1402,7 @@ current = false
 [node name="npc" parent="YSort" instance=ExtResource( 55 )]
 position = Vector2( 823, 311 )
 scale = Vector2( 0.5, 0.5 )
+collision_layer = 64
 
 [node name="Welcome_Sign" parent="YSort" instance=ExtResource( 42 )]
 position = Vector2( 479, 218 )
@@ -2478,6 +2479,7 @@ position = Vector2( 208, 400 )
 [node name="ItemDrop" parent="YSort/Chests/Chest" instance=ExtResource( 56 )]
 visible = false
 scale = Vector2( 0.5, 0.5 )
+collision_layer = 128
 
 [node name="Chest2" parent="YSort/Chests" instance=ExtResource( 11 )]
 position = Vector2( 1284, 281 )
@@ -2526,3 +2528,4 @@ tile_data = PoolIntArray( 2359333, 0, 0, 2359334, 0, 0, 2359335, 0, 0, 2359336, 
 [editable path="YSort/Houses/First_House"]
 [editable path="YSort/Houses/House_Chimeny"]
 [editable path="YSort/Houses/CommonHouse"]
+[editable path="YSort/Chests/Chest/ItemDrop"]
