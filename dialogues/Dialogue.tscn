@@ -6,6 +6,7 @@
 
 [node name="Dialogue" type="CanvasLayer"]
 script = ExtResource( 3 )
+dialogue_file = "res://dialogues/json/first-npc_chats.json"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_left = 12.0
@@ -18,17 +19,23 @@ patch_margin_right = 8
 patch_margin_bottom = 10
 
 [node name="Name" type="RichTextLabel" parent="NinePatchRect"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 110.0
+margin_bottom = 16.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/mono_font = ExtResource( 1 )
 text = "Name"
 
 [node name="Chat" type="RichTextLabel" parent="NinePatchRect"]
 margin_left = 24.0
-margin_top = 26.0
-margin_right = 116.0
-margin_bottom = 43.0
+margin_top = 17.0
+margin_right = 193.0
+margin_bottom = 48.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/mono_font = ExtResource( 1 )
 text = "Chatting..."
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
