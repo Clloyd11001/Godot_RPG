@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sandy_Path.PNG-eae9c8a56fc181618e149f4fe3c7db1f.stex"
+path="res://.import/ominous_grass.png-66b242f9670b4cd327fdca77e1ff4ec6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Textures/Sandy_Path.PNG"
-dest_files=[ "res://.import/Sandy_Path.PNG-eae9c8a56fc181618e149f4fe3c7db1f.stex" ]
+source_file="res://World/ominous_grass.png"
+dest_files=[ "res://.import/ominous_grass.png-66b242f9670b4cd327fdca77e1ff4ec6.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
