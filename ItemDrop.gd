@@ -5,6 +5,7 @@ const MAX_SPEED = 225
 var velocity = Vector2.ZERO
 var item_name
 
+
 var player = null
 var being_picked_up = false
 
@@ -19,7 +20,8 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 		
 		var distance = global_position.distance_to(player.global_position)
-		if distance < 4:
+		if distance > 4:
+			PlayerInventory.add_item(item_name, 1)
 			queue_free()
 	velocity = move_and_slide(velocity, Vector2.UP)
 

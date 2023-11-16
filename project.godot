@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/github-integration/scripts/GistItem.gd"
 }, {
-"base": "Resource",
-"class": "Inventory",
-"language": "GDScript",
-"path": "res://Inventory.gd"
-}, {
 "base": "HBoxContainer",
 "class": "InvitationItem",
 "language": "GDScript",
@@ -42,7 +37,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "ContributorClass": "",
 "GistItem": "",
-"Inventory": "",
 "InvitationItem": "",
 "Item": "",
 "RepositoryItem": ""
@@ -62,6 +56,9 @@ UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 PlayerStats="*res://Player/PlayerStats.tscn"
 Global="*res://Global.gd"
+JsonData="*res://Data/JSONData.gd"
+PlayerInventory="*res://PlayerInventory.gd"
+Inventory="*res://Inventory.tres"
 
 [display]
 

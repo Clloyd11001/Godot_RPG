@@ -1385,6 +1385,9 @@ parameters/playback = SubResource( 48 )
 [node name="CollisionShape2D" parent="YSort/Player/HurtBox" index="0"]
 position = Vector2( 0, 0 )
 
+[node name="PickupZone" parent="YSort/Player" index="10"]
+collision_mask = 128
+
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
 

@@ -170,6 +170,7 @@ func _unhandled_input(event):
 		house.enter()
 	if event is InputEventKey and event.is_action_pressed("Menu"):
 		inventory_layer.visible = not inventory_layer.visible
+		#inventory_layer.initialize_inventory()
 	else:
 		pass
 
@@ -179,8 +180,7 @@ func _input(event):
 			var pickup_item = $PickupZone.items_in_range[0]
 			if pickup_item is KinematicBody2D and pickup_item.has_method("pick_up_item"):
 				pickup_item.pick_up_item(self)
+				print($PickupZone.items_in_range)
 				$PickupZone.items_in_range.erase(pickup_item)
-			else:
-				print("Debug: Pickup item does not have 'pick_up_item' method.")
 		else:
 			print("Debug: No items in range.")

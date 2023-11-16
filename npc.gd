@@ -19,7 +19,7 @@ func _ready():
 
 
 func _process(delta):
-	print(position)
+	#print(position)
 	#IDLE State
 	if current_state == 0:
 		$AnimatedSprite.play("idle")
