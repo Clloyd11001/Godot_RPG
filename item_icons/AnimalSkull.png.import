@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BlueNecklace.png-fab693422fd9042b55c2892868d66230.stex"
+path="res://.import/AnimalSkull.png-874d6b042af1610933b8127d679b9f83.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/BlueNecklace.png"
-dest_files=[ "res://.import/BlueNecklace.png-fab693422fd9042b55c2892868d66230.stex" ]
+source_file="res://item_icons/AnimalSkull.png"
+dest_files=[ "res://.import/AnimalSkull.png-874d6b042af1610933b8127d679b9f83.stex" ]
 
 [params]
 

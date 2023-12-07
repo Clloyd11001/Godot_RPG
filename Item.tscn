@@ -1,17 +1,28 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Item.gd" type="Script" id=1]
 [ext_resource path="res://Items/Knife.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Filgaia.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
 
 [node name="Item" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 62.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 18, 18 )
+mouse_filter = 2
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 31.0
-margin_top = 26.0
-margin_right = 75.0
-margin_bottom = 46.0
+margin_left = 40.0
+margin_top = 34.0
+margin_right = 56.0
+margin_bottom = 48.0
+rect_scale = Vector2( 1.3, 1.3 )
+custom_fonts/font = SubResource( 1 )
 text = "99"

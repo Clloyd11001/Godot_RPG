@@ -12,7 +12,7 @@
 [ext_resource path="res://World/Cropped_trees/blue_tree.PNG" type="Texture" id=10]
 [ext_resource path="res://World/Chest.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World.gd" type="Script" id=12]
-[ext_resource path="res://Items/Bone.png" type="Texture" id=13]
+[ext_resource path="res://item_icons/Bone.png" type="Texture" id=13]
 [ext_resource path="res://InventoryContainer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/bird_grass_green.png" type="Texture" id=15]
 [ext_resource path="res://BottomLeftRoyalsFinishedVariation.tscn" type="PackedScene" id=16]
@@ -1366,10 +1366,6 @@ format = 1
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 199, 388 )
 current = true
-limit_left = 0
-limit_top = 0
-limit_right = 1700
-limit_bottom = 1150
 offset_h = 1.0
 offset_v = 1.0
 editor_draw_limits = true
@@ -1397,10 +1393,6 @@ scale = Vector2( 0.5, 0.5 )
 transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
 
 [node name="InventoryContainer" parent="YSort/Player/inventory" instance=ExtResource( 14 )]
-rect_scale = Vector2( 0.5, 0.5 )
-
-[node name="Camera2D" parent="YSort/Player/inventory/InventoryContainer" index="2"]
-current = false
 
 [node name="npc" parent="YSort" instance=ExtResource( 55 )]
 position = Vector2( 823, 311 )
@@ -2527,6 +2519,7 @@ tile_data = PoolIntArray( 2359333, 0, 0, 2359334, 0, 0, 2359335, 0, 0, 2359336, 
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
 [editable path="YSort/Player/inventory/InventoryContainer"]
+[editable path="YSort/Player/inventory/InventoryContainer/GreyishBlock/GridThatHoldsBlocks"]
 [editable path="YSort/Next_Level_Indicator"]
 [editable path="YSort/Houses/First_House"]
 [editable path="YSort/Houses/House_Chimeny"]

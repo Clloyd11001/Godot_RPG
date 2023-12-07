@@ -1,4 +1,4 @@
-extends CenterContainer
+extends Panel
 
 var inventory = preload("res://Inventory.tres")
 

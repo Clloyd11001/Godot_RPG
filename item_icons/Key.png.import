@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/VoodooDoll.png-4a4ece72381024ccc6a66b43b02855c5.stex"
+path="res://.import/Key.png-9b3ea5a1c791a30fe46b6e6f0f7a87bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/VoodooDoll.png"
-dest_files=[ "res://.import/VoodooDoll.png-4a4ece72381024ccc6a66b43b02855c5.stex" ]
+source_file="res://item_icons/Key.png"
+dest_files=[ "res://.import/Key.png-9b3ea5a1c791a30fe46b6e6f0f7a87bf.stex" ]
 
 [params]
 

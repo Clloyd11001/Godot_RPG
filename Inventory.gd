@@ -1,55 +1,45 @@
-extends Resource
-
-
-var drag_data = null
+extends Node2D
 
 const SlotClass = preload("res://Slot.gd")
-onready var inventory_slots = preload("res://InventoryContainer.gd")
+onready var inventory_slots = $GridContainer
+var holding_item = null
 
-signal items_changed(indexes)
-
-export(Array, Resource) var items = [
-	null, null, null, null, null, null, null, null, null,
-]
 func _ready():
-	initialize_inventory()
+	for inv_slot in inventory_slots.get_children():
+		inv_slot.connect("gui_input", self, "slot_gui_input", [inv_slot])
+		
+func slot_gui_input(event: InputEvent, slot: SlotClass):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT && event.pressed:
+			# Currently holding on item
+			if holding_item != null:
+				#empty slot
+				if !slot.item: # Place holding item to slot
+					slot.putIntoSlot(holding_item)
+					holding_item = null
+				# Some item, so try to merge
+				else:
+					var item_name = slot.item.item_name
+					if JsonData.item_data.has(item_name) and JsonData.item_data[item_name].has("StackSize"):
+						var stack_size = int(JsonData.item_data[item_name]['StackSize'])
+						var able_to_add = stack_size - slot.item.item_quantity
 
-func set_item(item_index, item):
-	var previousItem = items[item_index]
-	
-	if previousItem is Item and previousItem.name == item.name:
-		previousItem.amount += item.amount
-	else:
-		items[item_index] = item
-	
-	emit_signal("items_changed", [item_index])
-	
-	return previousItem
+						if able_to_add >= holding_item.item_quantity:
+							slot.item.add_item_quantity(holding_item.item_quantity)
+							holding_item.queue_free()
+							holding_item = null
+						else:
+							slot.item.add_item_quantity(able_to_add)
+							holding_item.decrease_item_quantity(able_to_add)
+					else:
+						print("Error: StackSize not found for item:", item_name)
 
-func initialize_inventory():
-	var slots = inventory_slots.get_children()
-	for i in range(slots.size()):
-		if PlayerInventory.inventory.has(i):
-			slots[i].initialize_item(PlayerInventory.inventory[i][0], PlayerInventory.inventory[i][1])
+			#Not holding an item
+			elif slot.item:
+				holding_item = slot.item
+				slot.pickFromSlot()
+				holding_item.global_position = get_global_mouse_position()
 
-func swap_items(item_index, target_item_index):
-	var targetItem = items[target_item_index]
-	var item = items[item_index]
-	items[target_item_index] = item
-	items[item_index] = targetItem
-	emit_signal("items_changed", [item_index, target_item_index])
-
-func remove_item(item_index):
-	var previousItem = items[item_index]
-	items[item_index] = null
-	emit_signal("items_changed", [item_index])
-	return previousItem
-
-func make_items_unique():
-	var unique_items = []
-	for item in items:
-		if item is Item:
-			unique_items.append(item.duplicate())
-		else:
-			unique_items.append(null)
-	items = unique_items
+func _input(event):
+	if holding_item:
+		holding_item.global_position = get_global_mouse_position()
