@@ -1,5 +1,10 @@
 {
-  "AnimalSkull": {
+  "Skull": {
+    "ItemCategory": "Resource",
+    "StackSize": 99,
+    "Description": "The haunting relic of a fallen creature, its ancient bone etched with mysterious symbols and imbued with echoes of forgotten magic"
+  },
+    "AnimalSkull": {
     "ItemCategory": "Resource",
     "StackSize": 99,
     "Description": "The haunting relic of a fallen creature, its ancient bone etched with mysterious symbols and imbued with echoes of forgotten magic"

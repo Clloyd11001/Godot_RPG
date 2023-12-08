@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=2]
+[gd_scene load_steps=121 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://World/Chest.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World.gd" type="Script" id=12]
 [ext_resource path="res://item_icons/Bone.png" type="Texture" id=13]
-[ext_resource path="res://InventoryContainer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Inventory.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/bird_grass_green.png" type="Texture" id=15]
 [ext_resource path="res://BottomLeftRoyalsFinishedVariation.tscn" type="PackedScene" id=16]
 [ext_resource path="res://World/Weird_trees.tscn" type="PackedScene" id=17]
@@ -56,6 +56,7 @@
 [ext_resource path="res://World/blades_of_grass.png" type="Texture" id=54]
 [ext_resource path="res://npc.tscn" type="PackedScene" id=55]
 [ext_resource path="res://Items/Transperent/Skull.tscn" type="PackedScene" id=56]
+[ext_resource path="res://UserInterface.gd" type="Script" id=57]
 
 [sub_resource type="TileSet" id=54]
 0/name = "GRASS+.png 0"
@@ -1387,12 +1388,14 @@ collision_mask = 128
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
 
-[node name="inventory" type="CanvasLayer" parent="YSort/Player"]
+[node name="UserInterface" type="CanvasLayer" parent="YSort/Player"]
 visible = false
 scale = Vector2( 0.5, 0.5 )
 transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
+script = ExtResource( 57 )
 
-[node name="InventoryContainer" parent="YSort/Player/inventory" instance=ExtResource( 14 )]
+[node name="Inventory" parent="YSort/Player/UserInterface" instance=ExtResource( 14 )]
+position = Vector2( 182, 8 )
 
 [node name="npc" parent="YSort" instance=ExtResource( 55 )]
 position = Vector2( 823, 311 )
@@ -2518,8 +2521,6 @@ tile_data = PoolIntArray( 2359333, 0, 0, 2359334, 0, 0, 2359335, 0, 0, 2359336, 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
-[editable path="YSort/Player/inventory/InventoryContainer"]
-[editable path="YSort/Player/inventory/InventoryContainer/GreyishBlock/GridThatHoldsBlocks"]
 [editable path="YSort/Next_Level_Indicator"]
 [editable path="YSort/Houses/First_House"]
 [editable path="YSort/Houses/House_Chimeny"]

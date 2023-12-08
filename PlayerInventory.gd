@@ -4,11 +4,15 @@ const SlotClass = preload("res://Slot.gd")
 const ItemClass = preload("res://Item.gd")
 const NUM_INVENTORY_SLOTS = 20
 
-var Inventory = {}
+
 
 func _ready():
 	# Initialize Inventory as an empty dictionary
-	Inventory = {}
+	pass
+var Inventory = {
+#	0: ["Skull", 1],
+#	1: ["Skull", 1]
+}
 
 func add_item(item_name, item_quantity):
 	for item in Inventory:
@@ -18,10 +22,7 @@ func add_item(item_name, item_quantity):
 			if able_to_add >= item_quantity:
 				Inventory[item][1] += item_quantity
 				return
-			else:
-				Inventory[item][1] += able_to_add
-				item_quantity = item_quantity - able_to_add
-	
+				
 	# item doesn't exist in inventory yet, so add it to an empty slot
 	for i in range(NUM_INVENTORY_SLOTS):
 		if Inventory.has(i) == false:

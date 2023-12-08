@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal experience_gained(growth_data)
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
-onready var inventory_layer = $inventory
+onready var inventory_layer = $UserInterface
 
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
@@ -64,8 +64,8 @@ func _physics_process(delta):
 			roll_state()
 		ATTACK:
 			attack_state(delta)
-			
-			
+
+
 func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -177,7 +177,7 @@ func _unhandled_input(event):
 func _input(event):
 	if event.is_action_pressed("pickup"):
 		if $PickupZone.items_in_range.size() > 0:
-			var pickup_item = $PickupZone.items_in_range[0]
+			var pickup_item = $PickupZone.items_in_range.values()[0]
 			if pickup_item is KinematicBody2D and pickup_item.has_method("pick_up_item"):
 				pickup_item.pick_up_item(self)
 				print($PickupZone.items_in_range)

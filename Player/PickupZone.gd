@@ -1,6 +1,6 @@
 extends Area2D
 
-var items_in_range = []
+var items_in_range = {}
 
 func _on_PickupZone_body_entered(body):
 	# Append the body to the array
@@ -9,7 +9,7 @@ func _on_PickupZone_body_entered(body):
 		print("Detecting player body")
 		return
 	#append items in array	
-	items_in_range.append(body)
+	items_in_range[body] = body
 
 func _on_PickupZone_body_exited(body):
 	# Remove the body from the array if it exists
