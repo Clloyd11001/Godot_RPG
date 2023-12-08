@@ -10,8 +10,13 @@ var being_picked_up = false
 
 
 func _ready():
-	item_name = "Skull"
-	
+	var rand_val = randi() % 2
+	if rand_val == 0:
+		item_name = "Ruby"
+	elif rand_val == 1:
+		item_name = "Skull"
+
+
 func _physics_process(delta):
 	if being_picked_up == true:
 		var direction = global_position.direction_to(player.global_position)

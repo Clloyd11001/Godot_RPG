@@ -4,14 +4,8 @@ var item_name
 var item_quantity
 
 func _ready():
-	var rand_val = randi() % 3
-	if rand_val == 0:
-		item_name = "AnimalSkull"
-	elif rand_val == 1:
-		item_name = "Jaw"
-	else:
-		item_name = "Ruby"
 
+	item_name = "Skull"
 	$TextureRect.texture = load("res://item_icons/" + item_name + ".png")
 	
 	var stack_size = int(JsonData.item_data[item_name]["StackSize"])

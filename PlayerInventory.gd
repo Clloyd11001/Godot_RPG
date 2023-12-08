@@ -33,7 +33,7 @@ func remove_item(slot: SlotClass):
 	Inventory.erase(slot.slot_index)
 
 func add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
-	Inventory[slot.slot_index] = [item.item_name, item.item_quantity]
+	Inventory[slot.slot_index] = [Item.item_name, Item.item_quantity]
 
 func add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	Inventory[slot.slot_index][1] += quantity_to_add
