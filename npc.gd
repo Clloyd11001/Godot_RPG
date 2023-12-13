@@ -29,7 +29,7 @@ func _process(delta):
 	if current_state == 1:
 		$AnimatedSprite.play("idle")
 	if current_state == 2:
-		$AnimatedSprite.play("walk")
+		$AnimatedSprite.play("idle")
 	
 	match current_state:
 		IDLE:
@@ -63,12 +63,6 @@ func choose(array):
 
 func _on_Timer_timeout():
 	$Timer.wait_time = choose([0.5,1,1.5])
-	current_state = choose([IDLE, NEW_DIR, MOVE])
+	current_state = choose([IDLE])
 
-func _on_dialogue_started():
-	# Stop NPC movement or handle other logic when dialogue starts
-	current_state = IDLE
 
-func _on_dialogue_finished():
-	# Resume NPC movement or handle other logic when dialogue finishes
-	current_state = choose([IDLE, MOVE, NEW_DIR])

@@ -10,13 +10,15 @@ export var MAX_SPEED = 80
 export var ROLL_SPEED = 100
 export var FRICTION  = 350
 
+
 # CHARACTER STATS
 export (int) var MAX_HP = 12
 export (int) var STRENGTH = 8
-export (int) var MAGIC = 8
+#export (int) var MAGIC = 8
 # LEVELING SYSTEM
 export (int) var level = 1
 
+export(PackedScene) var MAGIC: PackedScene = preload("res://Hitboxes and Hurtboxes/Fireball.tscn")
 
 enum {
 	MOVE,
@@ -93,6 +95,10 @@ func move_state(delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 	
+	if Input.is_action_just_pressed("projectile"):
+		var magic_direction = self.global_position.direction_to(get_global_mouse_position())
+		throw_magic(magic_direction)
+	
 		
 func roll_state():
 	velocity = roll_vector  * ROLL_SPEED
@@ -148,6 +154,17 @@ func level_up():
 	var random_stat = stats[randi() % stats.size()]
 	# Increased by 1,2 or 3
 	set(random_stat, get(random_stat) + randi() % 4)
+
+func throw_magic(magic_direction: Vector2):
+	if MAGIC:
+		var magic = MAGIC.instance()
+		get_tree().current_scene.add_child(magic)
+		magic.global_position = self.global_position
+		
+		var magic_rotation = magic_direction.angle()
+		magic.rotation = magic_rotation		
+
+
 
 func _on_HurtBox_area_entered(_area):
 	PlayerStats.health -= 1

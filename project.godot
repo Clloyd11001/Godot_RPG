@@ -167,6 +167,11 @@ pickup={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":90,"unicode":0,"echo":false,"script":null)
  ]
 }
+projectile={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":80,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -178,6 +183,7 @@ pickup={
 2d_physics/layer_6="SoftCollisions"
 2d_physics/layer_7="npc"
 2d_physics/layer_8="ItemDrop"
+2d_physics/layer_9="Projectile"
 
 [physics]
 
