@@ -10,7 +10,7 @@ var dialogue_active = false
 
 func _ready():
 	$NinePatchRect.visible = false
-	start()
+	#start()
 
 func start():
 	if dialogue_active:
@@ -41,12 +41,18 @@ func next_script():
 		$Timer.start()
 		dialogue_active = false
 		$NinePatchRect.visible = false
+		#$Timer.wait_time = 2.0
+		#$Timer.start()
 		return
-	
-	
+		
 	$NinePatchRect/Name.text = dialogue[current_dialogue_id]['name']
 	$NinePatchRect/Chat.text = dialogue[current_dialogue_id]['text']
 
 
 func _on_Timer_timeout():
-		dialogue_active = false
+	dialogue_active = false
+
+#func _on_Area2D_body_entered(body):
+#	print("etnered body")
+#
+#	start()

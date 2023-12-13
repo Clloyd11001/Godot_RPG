@@ -5,6 +5,7 @@ var current_state = IDLE
 var dir = Vector2.RIGHT
 
 var start_pos
+onready var dialogue = get_node("Dialogue")
 
 enum {
 	IDLE,
@@ -44,7 +45,6 @@ func move(delta):
 	elif dir.x == -1:
 		$AnimatedSprite.flip_h = true
 	
-	
 	if position.x >= start_pos.x + 20:
 		position.x = start_pos.x + 19.9
 	elif position.x <= start_pos.x - 20:
@@ -62,3 +62,6 @@ func choose(array):
 func _on_Timer_timeout():
 	$Timer.wait_time = choose([0.5,1,1.5])
 	current_state = choose([IDLE, NEW_DIR, MOVE])
+
+
+			

@@ -1365,7 +1365,7 @@ centered_textures = true
 format = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 199, 388 )
+position = Vector2( 764, 311 )
 current = true
 offset_h = 1.0
 offset_v = 1.0
@@ -1374,7 +1374,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 199, 388 )
+position = Vector2( 764, 311 )
 
 [node name="AnimationTree" parent="YSort/Player" index="5"]
 parameters/playback = SubResource( 48 )
@@ -1400,7 +1400,6 @@ position = Vector2( 182, 8 )
 [node name="npc" parent="YSort" instance=ExtResource( 55 )]
 position = Vector2( 823, 311 )
 scale = Vector2( 0.5, 0.5 )
-collision_layer = 64
 
 [node name="Welcome_Sign" parent="YSort" instance=ExtResource( 42 )]
 position = Vector2( 479, 218 )
@@ -2513,6 +2512,7 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 2359333, 0, 0, 2359334, 0, 0, 2359335, 0, 0, 2359336, 0, 0, 2424869, 0, 0, 2424870, 0, 0, 2424871, 0, 0, 2424872, 0, 0, 3538998, 0, 0, 3538999, 0, 0, 3539000, 0, 0, 3539001, 0, 0, 3539002, 0, 0, 3539003, 0, 0, 3539004, 0, 0, 3539005, 0, 0, 3539006, 0, 0, 3539007, 0, 0, 3539008, 0, 0, 3539009, 0, 0, 3539010, 0, 0, 3539011, 0, 0, 3604534, 0, 0, 3604547, 0, 0, 3670070, 0, 0, 3670083, 0, 0 )
 
+[connection signal="body_entered" from="YSort/npc/Area2D" to="YSort/npc/Dialogue" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="YSort/Houses/First_House/DoorWay" to="." method="_on_DoorWay_body_entered"]
 [connection signal="body_exited" from="YSort/Houses/First_House/DoorWay" to="." method="_on_DoorWay_body_exited"]
 [connection signal="body_entered" from="YSort/Houses/House_Chimeny/DoorWay" to="." method="_on_DoorWay_body_entered"]
@@ -2521,6 +2521,8 @@ tile_data = PoolIntArray( 2359333, 0, 0, 2359334, 0, 0, 2359335, 0, 0, 2359336, 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
+[editable path="YSort/npc"]
+[editable path="YSort/npc/Dialogue"]
 [editable path="YSort/Next_Level_Indicator"]
 [editable path="YSort/Houses/First_House"]
 [editable path="YSort/Houses/House_Chimeny"]
