@@ -1,15 +1,70 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/Textures/19.07a Gentle Forest 3.0 ($0 palettes)/tree wall/right_side_canopy.png" type="Texture" id=1]
 [ext_resource path="res://BottomLeftRoyalsFinishedVariation.gd" type="Script" id=2]
+[ext_resource path="res://World/Textures/Dirt_Spot.png" type="Texture" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://DirtCliff Tile Map.tscn" type="PackedScene" id=5]
+[ext_resource path="res://TreeWall.gd" type="Script" id=6]
+[ext_resource path="res://npc.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/elder.png" type="Texture" id=8]
 
-[node name="TreeEnclosing" type="Sprite"]
-position = Vector2( 184, 176 )
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="TreeWall" type="Node"]
+script = ExtResource( 6 )
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( 2, -2 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 224, 158 )
+z_index = 1
+
+[node name="TreeEnclosing" type="Sprite" parent="YSort"]
+position = Vector2( -1.49995, 198.625 )
+scale = Vector2( 1.29818, 0.782715 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( -496, -120 )
+[node name="DirtCliff Tile Map" parent="YSort/TreeEnclosing" instance=ExtResource( 5 )]
+visible = false
+tile_data = PoolIntArray( -458749, 0, 0, -458748, 0, 1, -458747, 0, 1, -458746, 0, 1, -458745, 0, 2, -393213, 0, 65540, -393212, 0, 131073, -393211, 0, 131073, -393210, 0, 131073, -393209, 0, 9, -393208, 0, 2, -327679, 0, 0, -327678, 0, 0, -327677, 0, 196615, -327673, 0, 131072, -327672, 0, 9, -327671, 0, 2, -262143, 0, 65536, -262142, 0, 65538, -262136, 0, 65536, -262135, 0, 65538, -196607, 0, 65536, -196606, 0, 65538, -196600, 0, 65536, -196599, 0, 65538, -131071, 0, 65536, -131070, 0, 65538, -131064, 0, 65536, -131063, 0, 65538, -65535, 0, 65536, -65534, 0, 65538, -65528, 0, 65536, -65527, 0, 65538, 1, 0, 131072, 2, 0, 9, 3, 0, 2, 8, 0, 65540, 9, 0, 131074, 65538, 0, 131072, 65539, 0, 196613, 65540, 0, 196609, 65541, 0, 196609, 65542, 0, 196609, 65543, 0, 196609, 65544, 0, 196615 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 722, 142, 733, 136, 760, 136, 765, 143, 765, 148, 770, 151, 780, 150, 783, 137, 782, 129, 773, 126, 766, 117, 758, 110, 753, 107, 752, 97, 752, 87, 756, 77, 768, 72, 771, 62, 767, 51, 769, 34, 776, 27, 783, 23, 783, 2, 775, -1, 770, -5, 766, -11, 759, -16, 755, -19, 753, -23, 752, -26, 752, -29, 748, -29, 743, -29, 740, -29, 730, -33, 723, -36, 715, -46, 707, -51, 704, -54, 700, -49, 689, -45, 678, -44, 669, -47, 656, -54, 652, -49, 645, -42, 639, -36, 632, -33, 628, -30, 623, -31, 621, -29, 616, -29, 612, -29, 608, -31, 608, -27, 608, -21, 610, -10, 609, -4, 600, 1, 595, 6, 590, 11, 584, 12, 580, 13, 579, 17, 577, 22, 583, 26, 588, 28, 591, 35, 592, 59, 585, 64, 580, 68, 579, 71, 581, 71, 585, 72, 587, 76, 590, 81, 591, 86, 596, 87, 602, 88, 604, 90, 606, 95, 606, 100, 609, 121, 604, 123, 603, 127, 597, 132, 595, 137, 586, 139, 580, 145, 577, 152, 589, 153, 592, 143, 602, 137, 612, 136, 627, 135, 635, 138, 638, 145, 640, 149, 646, 152, 652, 154, 653, 160, 656, 163, 661, 156, 671, 153, 690, 152, 701, 154, 702, 159, 705, 161, 710, 157, 719, 152 )
+[node name="Grass" type="Sprite" parent="YSort"]
+position = Vector2( 247.459, 150.988 )
+scale = Vector2( 1.48739, 0.921516 )
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="YSort"]
+position = Vector2( 250, 151 )
+current = true
+zoom = Vector2( 1.8, 1.8 )
+
+[node name="elder" parent="." instance=ExtResource( 7 )]
+position = Vector2( 229, 103 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="AnimatedSprite" parent="elder" index="0"]
+position = Vector2( 0, 10 )
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="elder" index="1"]
+position = Vector2( -2, 12 )
+
+[node name="Area2D" parent="elder" index="3"]
+position = Vector2( -2, 6 )
+
+[node name="CollisionShape2D" parent="elder/Area2D" index="0"]
+position = Vector2( 0, 2 )
+
+[node name="Elder" type="Sprite" parent="elder"]
+texture = ExtResource( 8 )
+
+[editable path="elder"]

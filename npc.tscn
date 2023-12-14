@@ -47,18 +47,20 @@ collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 21, 171 )
 frames = SubResource( 5 )
 animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 6 )
+position = Vector2( 21, 177 )
 shape = SubResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 21, 171 )
 collision_mask = 2
 script = ExtResource( 3 )
 
