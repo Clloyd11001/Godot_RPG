@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bush.png-f8be6bea9ab12c53a489ed0f0c7b8b14.stex"
+path="res://.import/Interiors_free_32x32.png-f750e560384a4b433cbdf5f8d2fa37f4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/bush.png"
-dest_files=[ "res://.import/bush.png-f8be6bea9ab12c53a489ed0f0c7b8b14.stex" ]
+source_file="res://Objects/32x32/Interiors_free_32x32.png"
+dest_files=[ "res://.import/Interiors_free_32x32.png-f750e560384a4b433cbdf5f8d2fa37f4.stex" ]
 
 [params]
 

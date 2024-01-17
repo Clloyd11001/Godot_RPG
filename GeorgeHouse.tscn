@@ -1,14 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Inside1.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Inside1.gd" type="Script" id=3]
 [ext_resource path="res://Inside_Camera.gd" type="Script" id=4]
+[ext_resource path="res://Objects/32x32/bookshelves.png" type="Texture" id=5]
+[ext_resource path="res://Objects/32x32/Brown Table and Chairs.png" type="Texture" id=6]
+[ext_resource path="res://Objects/32x32/White couch and lamps.png" type="Texture" id=7]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1.75, 10 )
 
 [node name="Inside1" type="Node2D"]
 script = ExtResource( 3 )
@@ -28,6 +34,7 @@ tile_data = PoolIntArray( -327682, 6, 0, -327681, 6, 0, -393216, 6, 0, -393215, 
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 96, 88 )
+z_index = 1
 
 [node name="Label" parent="Player/CanvasLayer/MarginContainer/ExperienceInterface" index="0"]
 visible = false
@@ -49,7 +56,7 @@ editor_draw_limits = true
 script = ExtResource( 4 )
 
 [node name="Exit" type="Area2D" parent="."]
-position = Vector2( 96, 112 )
+position = Vector2( 97, 78 )
 collision_layer = 0
 collision_mask = 2
 
@@ -61,6 +68,39 @@ position = Vector2( -65, -158 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( -1, 1, 320, -1, 321, 256, 193, 256, 192, 289, 129, 289, 127, 256, 0, 257, 0, 13, -2, 259, 124, 257, 127, 292, 193, 291, 193, 256, 323, 256, 321, -3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -17.25, -84 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 3 )
+
+[node name="BrownTableAndChairs" type="Sprite" parent="Area2D"]
+position = Vector2( 190, -171 )
+scale = Vector2( 0.667, 0.794 )
+texture = ExtResource( 6 )
+
+[node name="BrownTableAndChairs" type="Sprite" parent="Area2D/BrownTableAndChairs"]
+position = Vector2( -322.339, 202.771 )
+texture = ExtResource( 6 )
+
+[node name="WhiteCouchAndLamps" type="Sprite" parent="Area2D/BrownTableAndChairs/BrownTableAndChairs"]
+position = Vector2( 77.9613, -71.7889 )
+rotation = -6.28285
+scale = Vector2( 0.910795, 0.858313 )
+texture = ExtResource( 7 )
+
+[node name="Bookshelves" type="Sprite" parent="Area2D/BrownTableAndChairs/BrownTableAndChairs/WhiteCouchAndLamps"]
+position = Vector2( -51.0672, -157.957 )
+scale = Vector2( 1, 0.890471 )
+texture = ExtResource( 5 )
+
+[node name="Bookshelves" type="Sprite" parent="Area2D/BrownTableAndChairs/BrownTableAndChairs/WhiteCouchAndLamps/Bookshelves"]
+position = Vector2( 337.444, -1.58777 )
+scale = Vector2( 0.955579, 1 )
+texture = ExtResource( 5 )
 
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
 [connection signal="body_exited" from="Exit" to="." method="_on_Exit_body_exited"]
