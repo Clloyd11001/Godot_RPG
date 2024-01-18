@@ -1,17 +1,13 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 onready var playerExperience = $YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface
 onready var elderDialogue = $elder/Dialogue
+var level1_scene_path = "res://Level1.tscn"  # Adjust the path accordingly
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	playerExperience.visible = false
-	#pass # Replace with function body.
+	elderDialogue.connect("dialogue_finished", self, "_on_dialogue_finished")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_dialogue_finished():
+	get_tree().change_scene(level1_scene_path)

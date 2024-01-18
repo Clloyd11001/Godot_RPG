@@ -25,11 +25,11 @@ func _process(delta):
 
 		
 	if current_state == 0:
-		$AnimatedSprite.play("idle")
+		$AnimatedSprite.play("default")
 	if current_state == 1:
-		$AnimatedSprite.play("idle")
+		$AnimatedSprite.play("default")
 	if current_state == 2:
-		$AnimatedSprite.play("idle")
+		$AnimatedSprite.play("default")
 	
 	match current_state:
 		IDLE:
