@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Inside1.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Objects/32x32/bookshelves.png" type="Texture" id=5]
 [ext_resource path="res://Objects/32x32/Brown Table and Chairs.png" type="Texture" id=6]
 [ext_resource path="res://Objects/32x32/White couch and lamps.png" type="Texture" id=7]
+[ext_resource path="res://npc.tscn" type="PackedScene" id=8]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -101,9 +102,12 @@ position = Vector2( 337.444, -1.58777 )
 scale = Vector2( 0.955579, 1 )
 texture = ExtResource( 5 )
 
+[node name="George" parent="." instance=ExtResource( 8 )]
+
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
 [connection signal="body_exited" from="Exit" to="." method="_on_Exit_body_exited"]
 
 [editable path="Player"]
 [editable path="Player/HitBoxPivot/SwordHitBox"]
 [editable path="Player/HurtBox"]
+[editable path="George"]

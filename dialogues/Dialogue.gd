@@ -58,8 +58,6 @@ func next_script():
 		$Timer.start()
 		dialogue_active = false
 		$NinePatchRect.visible = false
-		#$Timer.wait_time = 2.0
-		#$Timer.start()
 		return
 		
 	$NinePatchRect/Name.text = dialogue[current_dialogue_id]['name']
@@ -67,6 +65,7 @@ func next_script():
 
 
 func _on_Timer_timeout():
-	#print("IS IT EVER STOPPING")
+
 	dialogue_active = false
 	emit_signal("dialogue_finished")
+	print("quest finished")
