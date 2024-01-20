@@ -4,7 +4,6 @@ export (PackedScene) var inside_scene
 
 func _on_DoorWay_body_entered(body):
 	body.house = self
-	#print("NEAR ME")
 
 
 func _on_DoorWay_body_exited(body):

@@ -10,8 +10,7 @@ func _ready():
 	# Initialize Inventory as an empty dictionary
 	pass
 var Inventory = {
-#	0: ["Skull", 1],
-#	1: ["Skull", 1]
+
 }
 
 func add_item(item_name, item_quantity):

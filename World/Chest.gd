@@ -9,7 +9,6 @@ onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 onready var tween:Tween = get_node("Tween")
 
 func _ready() -> void:
-	#assert(object_scene != null)
 	animation_player.play("Idle")
 	
 
@@ -31,9 +30,6 @@ func _drop_object() -> void:
 	__ = tween.interpolate_property(object, "position", position + Vector2(0, -5), position, 0.3, Tween.TRANS_SINE,
 							   Tween.EASE_IN)
 	__ = tween.start()
-	
-	
-
 
 func _on_Area2D_player_entered(_player):
 	is_player_inside = true

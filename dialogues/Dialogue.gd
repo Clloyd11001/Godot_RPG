@@ -30,7 +30,7 @@ func start():
 	
 	print(npc_name)
 	
-	var dialogue_file = "res://dialogues/json/" + npc_name + ".json"
+	dialogue_file = "res://dialogues/json/" + npc_name + ".json"
 	
 	dialogue = load_dialogue(dialogue_file)
 	current_dialogue_id = -1
@@ -68,4 +68,5 @@ func _on_Timer_timeout():
 
 	dialogue_active = false
 	emit_signal("dialogue_finished")
-	print("quest finished")
+	QuestSystem.addQuest("MQ001")
+	QuestSystem.advanceQuest("MQ001")

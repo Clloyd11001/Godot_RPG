@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -57,6 +57,7 @@
 [ext_resource path="res://npc.tscn" type="PackedScene" id=55]
 [ext_resource path="res://Items/Transperent/Skull.tscn" type="PackedScene" id=56]
 [ext_resource path="res://UserInterface.gd" type="Script" id=57]
+[ext_resource path="res://LocationTrigger.tscn" type="PackedScene" id=58]
 
 [sub_resource type="TileSet" id=54]
 0/name = "GRASS+.png 0"
@@ -2074,6 +2075,9 @@ tile_set = SubResource( 63 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 2359333, 0, 0, 2359334, 0, 0, 2359335, 0, 0, 2359336, 0, 0, 2424869, 0, 0, 2424870, 0, 0, 2424871, 0, 0, 2424872, 0, 0, 3538998, 0, 0, 3538999, 0, 0, 3539000, 0, 0, 3539001, 0, 0, 3539002, 0, 0, 3539003, 0, 0, 3539004, 0, 0, 3539005, 0, 0, 3539006, 0, 0, 3539007, 0, 0, 3539008, 0, 0, 3539009, 0, 0, 3539010, 0, 0, 3539011, 0, 0, 3604534, 0, 0, 3604547, 0, 0, 3670070, 0, 0, 3670083, 0, 0 )
+
+[node name="LocationTrigger" parent="." instance=ExtResource( 58 )]
+position = Vector2( 781, 273 )
 
 [connection signal="body_entered" from="YSort/npc/Area2D" to="YSort/npc/Dialogue" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="YSort/Houses/First_House/DoorWay" to="." method="_on_DoorWay_body_entered"]

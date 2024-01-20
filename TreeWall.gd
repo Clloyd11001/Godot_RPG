@@ -11,3 +11,8 @@ func _ready():
 
 func _on_dialogue_finished():
 	get_tree().change_scene(level1_scene_path)
+	QuestSystem.addQuest("MQ001")
+	QuestSystem.advanceQuest("MQ001")
+	var trigger = load("res://LocationTrigger.tscn")
+	var ti = trigger.instance()
+	ti.QuestID = "MQ001"	

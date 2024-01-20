@@ -20,16 +20,6 @@ func _ready():
 
 
 func _process(delta):
-	#print(position)
-	#IDLE State
-
-		
-	if current_state == 0:
-		$AnimatedSprite.play("default")
-	if current_state == 1:
-		$AnimatedSprite.play("default")
-	if current_state == 2:
-		$AnimatedSprite.play("default")
 	
 	match current_state:
 		IDLE:

@@ -3,7 +3,8 @@ extends KinematicBody2D
 signal experience_gained(growth_data)
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
-onready var inventory_layer = $UserInterface
+onready var inventory_layer = get_node("UserInterface/Inventory")
+
 
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
@@ -49,6 +50,7 @@ var experience_required = get_required_experience(level + 1)
 var house = null setget set_house
 
 func _ready():
+	
 
 	set_house(null)
 	randomize()
@@ -148,7 +150,7 @@ func level_up():
 	level += 1
 	experience_required = get_required_experience(level + 1)
 	# Picks from random stat when player levels up
-# warning-ignore:shadowed_variable
+
 	# Can tinker with this to give attributes
 	var stats = ['MAX_HP', 'STRENGTH', 'MAGIC']
 	var random_stat = stats[randi() % stats.size()]

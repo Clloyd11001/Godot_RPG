@@ -6,7 +6,7 @@ onready var textbox_container = $TextboxContainer
 onready var start_symbol = $TextboxContainer/MarginContainer/HBoxContainer/Start
 onready var end_symbol = $TextboxContainer/MarginContainer/HBoxContainer/End
 onready var label = $TextboxContainer/MarginContainer/HBoxContainer/Label2
-#onready var doorway = $Level1/YSort/BottomLeftRoyalsFinishedVariation/DoorWay
+
 
 enum State {
 	READY,

@@ -58,7 +58,7 @@ PlayerStats="*res://Player/PlayerStats.tscn"
 Global="*res://Global.gd"
 JsonData="*res://Data/JSONData.gd"
 PlayerInventory="*res://PlayerInventory.gd"
-Inventory="*res://Inventory.tres"
+QuestSystem="*res://QuestSystem.gd"
 
 [display]
 
