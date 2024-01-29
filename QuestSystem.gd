@@ -26,8 +26,8 @@ var CompletedQuests: Array = []
 
 func addQuest(questID: String):
 	if questID in Quests.keys():
-		ActiveQuests[questID] = Quests[questID].duplicate()
-
+		ActiveQuests[questID] = Quests[questID]
+		print("ID is in quests")
 	else:
 		print("Error: Quest not found for questID", questID)
 
@@ -39,19 +39,19 @@ func advanceQuest(questID: String):
 			ActiveQuests[questID]["CurrentStage"] += 10
 			var currentStage: String = str(ActiveQuests[questID]["CurrentStage"])
 
-			if currentStage in ActiveQuests[questID]["QuestDescription"]:
-				#print("Quest description:", ActiveQuests[questID]["QuestDescription"][currentStage])
-				if !(questID in CompletedQuests):
-					completeQuest(questID)
-			else:
-				print("Quest not found in QuestDescription for stage", currentStage)
+			if currentStage in ActiveQuests[questID]["QuestDescription"].keys():
+				print("Quest description:", ActiveQuests[questID]["QuestDescription"][currentStage])
 
-		else:
-			print("Warning: Attempted to advance non-existent questID", questID)
+			else:
+				print("Warning: Attempted to advance non-existent questID", questID)
 
 func completeQuest(questID: String):
-	CompletedQuests.append(ActiveQuests[questID]["QuestName"])
-	ActiveQuests.erase(questID)
-	print("Quest Completed", CompletedQuests)
-	#var trigger = load("res://LocationTrigger.tscn")
-			
+	print("First ActiveQuests:", ActiveQuests)
+	if questID in ActiveQuests:
+		CompletedQuests.append(ActiveQuests[questID]["QuestName"])
+		ActiveQuests.erase(questID)
+		print("Quest Completed", CompletedQuests)
+		# Print the final state of ActiveQuests after the function call
+		print("Final ActiveQuests:", ActiveQuests)
+	else:
+		print("Error: questID not found in ActiveQuests")

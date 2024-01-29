@@ -70,3 +70,4 @@ func _on_Timer_timeout():
 	emit_signal("dialogue_finished")
 	QuestSystem.addQuest("MQ001")
 	QuestSystem.advanceQuest("MQ001")
+
