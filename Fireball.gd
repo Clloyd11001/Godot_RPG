@@ -10,10 +10,12 @@ func destroy():
 	queue_free()
 
 func _on_Fireball_area_entered(area):
-	destroy()
+	#destroy()
+	pass
 
 func _on_Fireball_body_entered(body):
-	destroy()
+	#destroy()
+	pass
 
 
 func _on_VisibilityNotifier2D_screen_exited():

@@ -59,6 +59,7 @@ Global="*res://Global.gd"
 JsonData="*res://Data/JSONData.gd"
 PlayerInventory="*res://PlayerInventory.gd"
 QuestSystem="*res://QuestSystem.gd"
+Combos="*res://Combos.tscn"
 
 [display]
 

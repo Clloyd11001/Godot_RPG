@@ -31,6 +31,7 @@ var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
+var direction = Vector2()
 #var house = null setget set_house
 
 onready var animationPlayer = $AnimationPlayer
@@ -39,6 +40,8 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxPivot/SwordHitBox
 onready var hurtBox = $HurtBox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
+onready var projectile = $Fireball/Sprite
+onready var projectileTimer = $ProjectileTimer
 
 
 var experience = 0
@@ -58,6 +61,8 @@ func _ready():
 	PlayerStats.connect("no_health",self, "queue_free")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
+	
+
 
 
 func _physics_process(delta):
@@ -97,9 +102,10 @@ func move_state(delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 	
-	if Input.is_action_just_pressed("projectile"):
-		var magic_direction = self.global_position.direction_to(get_global_mouse_position())
-		throw_magic(magic_direction)
+	if Input.is_action_just_pressed("projectile") and projectileTimer.is_stopped():
+		throw_magic(input_vector)
+
+
 	
 		
 func roll_state():
@@ -112,6 +118,8 @@ func attack_state(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	velocity = move_and_slide(velocity)
 	animationState.travel("Attack")
+
+
 
 func move():
 	velocity = move_and_slide(velocity)
@@ -165,6 +173,10 @@ func throw_magic(magic_direction: Vector2):
 		
 		var magic_rotation = magic_direction.angle()
 		magic.rotation = magic_rotation		
+		
+	#projectile.connect("animation_finished", self, "_on_animation_finished")
+	#projectile.play("default")	
+		projectileTimer.start()
 
 
 
