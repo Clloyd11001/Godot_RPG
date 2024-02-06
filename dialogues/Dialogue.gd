@@ -63,11 +63,11 @@ func next_script():
 	$NinePatchRect/Name.text = dialogue[current_dialogue_id]['name']
 	$NinePatchRect/Chat.text = dialogue[current_dialogue_id]['text']
 
-
 func _on_Timer_timeout():
-
 	dialogue_active = false
 	emit_signal("dialogue_finished")
+	
 	QuestSystem.addQuest("MQ001")
+	yield(get_tree().create_timer(0.1), "timeout")  # Introduce a small delay
 	QuestSystem.advanceQuest("MQ001")
 

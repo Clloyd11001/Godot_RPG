@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Player/Label.gd" type="Script" id=10]
 [ext_resource path="res://Player/ExperienceBar.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Player/PickupZone.gd" type="Script" id=12]
-[ext_resource path="res://Player/testing.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFontData" id=55]
 font_path = "res://Fonts/Montserrat-Bold.ttf"
@@ -848,34 +847,6 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=57]
 extents = Vector2( 23, 21.5 )
 
-[sub_resource type="AtlasTexture" id=59]
-atlas = ExtResource( 13 )
-region = Rect2( 2134, 1480, 76, 40 )
-
-[sub_resource type="AtlasTexture" id=60]
-atlas = ExtResource( 13 )
-region = Rect2( 2210, 1480, 76, 40 )
-
-[sub_resource type="AtlasTexture" id=61]
-atlas = ExtResource( 13 )
-region = Rect2( 2286, 1480, 76, 40 )
-
-[sub_resource type="AtlasTexture" id=62]
-atlas = ExtResource( 13 )
-region = Rect2( 2362, 1480, 76, 40 )
-
-[sub_resource type="AtlasTexture" id=63]
-atlas = ExtResource( 13 )
-region = Rect2( 2438, 1480, 76, 40 )
-
-[sub_resource type="SpriteFrames" id=64]
-animations = [ {
-"frames": [ ExtResource( 13 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 50, 56 )
 collision_layer = 2
@@ -993,9 +964,6 @@ script = ExtResource( 12 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupZone"]
 position = Vector2( 5, -2.5 )
 shape = SubResource( 57 )
-
-[node name="Combo2" type="AnimatedSprite" parent="."]
-frames = SubResource( 64 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincibility_ended" from="HurtBox" to="." method="_on_HurtBox_invincibility_ended"]

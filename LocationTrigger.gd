@@ -9,5 +9,5 @@ func _ready() -> void:
 
 func areaReached(body):
 	if body.name == "Player":
-		QuestSystem.completeQuest(QuestID)
+		QuestSystem.completeQuest("MQ001")
 		#self.queue_free()

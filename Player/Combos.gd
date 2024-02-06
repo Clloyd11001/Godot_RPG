@@ -18,17 +18,18 @@ func _process(delta):
 		current_combo_timer -= delta
 	else:
 		combo_sequence = []
-		print("Combo reset")
+		#print("Combo reset")
 
 	if combo_sequence.size() > max_combo_length:
 		combo_sequence.pop_front()
 
 	if check_combo(["attack", "attack", "attack"]):
 		# Perform action for successful combo
-		print("Combo performed!")
+		#print("Combo performed!")
+		pass
 	else:
-		print("Current combo:", combo_sequence)
-
+		#print("Current combo:", combo_sequence)
+		pass
 
 func check_combo(target_combo):
 	if combo_sequence.size() < target_combo.size():

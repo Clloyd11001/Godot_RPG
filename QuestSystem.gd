@@ -23,31 +23,36 @@ var Quests: Dictionary = {
 var ActiveQuests : Dictionary = {}
 var CompletedQuests: Array = []
 
-
 func addQuest(questID: String):
-	if questID in Quests.keys():
+	if questID in ActiveQuests.keys():
+		print("Quest with ID", questID, "is already in ActiveQuests.")
+	elif questID in Quests.keys():
 		ActiveQuests[questID] = Quests[questID]
-		print("ID is in quests")
+		print("Added questID to ActiveQuests:", questID)
+		print("ActiveQuests after adding:", ActiveQuests)
 	else:
 		print("Error: Quest not found for questID", questID)
 
 func advanceQuest(questID: String):
 	if questID in ActiveQuests:
-		
 		if "CurrentStage" in ActiveQuests[questID]:
-			
 			ActiveQuests[questID]["CurrentStage"] += 10
 			var currentStage: String = str(ActiveQuests[questID]["CurrentStage"])
 
 			if currentStage in ActiveQuests[questID]["QuestDescription"].keys():
 				print("Quest description:", ActiveQuests[questID]["QuestDescription"][currentStage])
-
 			else:
 				print("Warning: Attempted to advance non-existent questID", questID)
+		else:
+			print("Error: 'CurrentStage' not found for questID", questID)
+	else:
+		print("Error: questID not found in ActiveQuests")
+
 
 func completeQuest(questID: String):
 	print("First ActiveQuests:", ActiveQuests)
 	if questID in ActiveQuests:
+		print("Attempting to complete questID:", questID)
 		CompletedQuests.append(ActiveQuests[questID]["QuestName"])
 		ActiveQuests.erase(questID)
 		print("Quest Completed", CompletedQuests)
@@ -55,3 +60,8 @@ func completeQuest(questID: String):
 		print("Final ActiveQuests:", ActiveQuests)
 	else:
 		print("Error: questID not found in ActiveQuests")
+
+## Testing the functions
+#addQuest("MQ001")
+#advanceQuest("MQ001")
+#completeQuest("MQ001")

@@ -102,7 +102,7 @@ func move_state(delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 	
-	if Input.is_action_just_pressed("projectile") and projectileTimer.is_stopped():
+	if Input.is_action_just_pressed("projectile"):
 		throw_magic(input_vector)
 
 
@@ -176,7 +176,7 @@ func throw_magic(magic_direction: Vector2):
 		
 	#projectile.connect("animation_finished", self, "_on_animation_finished")
 	#projectile.play("default")	
-		projectileTimer.start()
+		#projectileTimer.start()
 
 
 
