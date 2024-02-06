@@ -221,9 +221,17 @@ func _input(event):
 
 # Function to show the quest notification banner with quest name
 func showQuestNotification(questName: String):
-
+	questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
 	var activeQuests = questManager.ActiveQuests
+	var completedQuests = questManager.CompletedQuests
+	
 	if activeQuests.size() > 0:
 		questNotificationLabel.text = "Quest Active: " + questName
 		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
+	elif completedQuests.size() > 0:
+		questNotificationLabel.text = "Quest Completed: " + questName
+#		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
+#		pass
+#	else:
+#		pass
 	#$Timer.start()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -58,7 +58,6 @@
 [ext_resource path="res://Items/Transperent/Skull.tscn" type="PackedScene" id=56]
 [ext_resource path="res://UserInterface.gd" type="Script" id=57]
 [ext_resource path="res://LocationTrigger.tscn" type="PackedScene" id=58]
-[ext_resource path="res://Hitboxes and Hurtboxes/Fireball.tscn" type="PackedScene" id=59]
 
 [sub_resource type="TileSet" id=54]
 0/name = "GRASS+.png 0"
@@ -941,14 +940,6 @@ editor_draw_limits = true
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 779, 339 )
-ACCELERATION = 500
-MAX_SPEED = 80
-ROLL_SPEED = 100
-FRICTION = 350
-MAX_HP = 12
-STRENGTH = 8
-level = 1
-MAGIC = ExtResource( 59 )
 
 [node name="AnimationTree" parent="YSort/Player" index="5"]
 parameters/playback = SubResource( 48 )
@@ -2097,7 +2088,7 @@ position = Vector2( 781, 273 )
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
-[editable path="YSort/Player/Panel"]
+[editable path="YSort/Player/QuestNotificationPanel"]
 [editable path="YSort/npc"]
 [editable path="YSort/npc/Dialogue"]
 [editable path="YSort/Next_Level_Indicator"]

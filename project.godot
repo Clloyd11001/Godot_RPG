@@ -60,7 +60,6 @@ JsonData="*res://Data/JSONData.gd"
 PlayerInventory="*res://PlayerInventory.gd"
 QuestSystem="*res://QuestSystem.tscn"
 Combos="*res://Combos.tscn"
-QuestMenu="*res://QuestNotification.tscn"
 
 [display]
 

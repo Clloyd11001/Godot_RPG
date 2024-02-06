@@ -968,6 +968,10 @@ position = Vector2( 5, -2.5 )
 shape = SubResource( 57 )
 
 [node name="QuestNotificationPanel" parent="." instance=ExtResource( 13 )]
+margin_left = 56.0
+margin_top = -56.0
+margin_right = 96.0
+margin_bottom = -16.0
 
 [node name="QuestManager" parent="." instance=ExtResource( 14 )]
 
