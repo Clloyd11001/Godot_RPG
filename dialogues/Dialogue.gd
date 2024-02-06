@@ -70,4 +70,4 @@ func _on_Timer_timeout():
 	QuestSystem.addQuest("MQ001")
 	yield(get_tree().create_timer(0.1), "timeout")  # Introduce a small delay
 	QuestSystem.advanceQuest("MQ001")
-
+	

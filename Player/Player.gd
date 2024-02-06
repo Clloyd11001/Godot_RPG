@@ -42,7 +42,9 @@ onready var hurtBox = $HurtBox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var projectile = $Fireball/Sprite
 onready var projectileTimer = $ProjectileTimer
-
+onready var questNotificationPanel = get_node("QuestNotificationPanel")
+onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
+onready var questManager = get_node("QuestManager")
 
 var experience = 0
 var experience_total = 0
@@ -73,6 +75,8 @@ func _physics_process(delta):
 			roll_state()
 		ATTACK:
 			attack_state(delta)
+	
+	showQuestNotification("MQ001")
 
 
 func move_state(delta):
@@ -213,3 +217,13 @@ func _input(event):
 			$PickupZone.items_in_range.erase(pickup_item)
 		else:
 			print("Debug: No items in range.")
+
+
+# Function to show the quest notification banner with quest name
+func showQuestNotification(questName: String):
+
+	var activeQuests = questManager.ActiveQuests
+	if activeQuests.size() > 0:
+		questNotificationLabel.text = "Quest Active: " + questName
+		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
+	#$Timer.start()

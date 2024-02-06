@@ -20,16 +20,14 @@ var Quests: Dictionary = {
 	}
 }
 
-var ActiveQuests : Dictionary = {}
-var CompletedQuests: Array = []
+export var ActiveQuests : Dictionary = {}
+export var CompletedQuests: Array = []
 
 func addQuest(questID: String):
 	if questID in ActiveQuests.keys():
 		print("Quest with ID", questID, "is already in ActiveQuests.")
 	elif questID in Quests.keys():
 		ActiveQuests[questID] = Quests[questID]
-		print("Added questID to ActiveQuests:", questID)
-		print("ActiveQuests after adding:", ActiveQuests)
 	else:
 		print("Error: Quest not found for questID", questID)
 
@@ -50,18 +48,10 @@ func advanceQuest(questID: String):
 
 
 func completeQuest(questID: String):
-	print("First ActiveQuests:", ActiveQuests)
 	if questID in ActiveQuests:
-		print("Attempting to complete questID:", questID)
+		#print("Attempting to complete questID:", questID)
 		CompletedQuests.append(ActiveQuests[questID]["QuestName"])
 		ActiveQuests.erase(questID)
-		print("Quest Completed", CompletedQuests)
-		# Print the final state of ActiveQuests after the function call
-		print("Final ActiveQuests:", ActiveQuests)
 	else:
 		print("Error: questID not found in ActiveQuests")
 
-## Testing the functions
-#addQuest("MQ001")
-#advanceQuest("MQ001")
-#completeQuest("MQ001")

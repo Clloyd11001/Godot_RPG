@@ -9,7 +9,6 @@ onready var _bar = get_node("YSort/Player/CanvasLayer/MarginContainer/Experience
 onready var enemy = get_node("YSort/Bat")
 onready var textBox = get_node("Textbox")
 
-
 enum {
 	OUTSIDE,
 	INSIDE,
@@ -56,3 +55,4 @@ func set_camera_limits():
 		$Player/Camera2D.limit_right = map_limits.end.x * map_cellsize.x
 		$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 		$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
+

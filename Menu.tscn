@@ -18,8 +18,8 @@
 [ext_resource path="res://Objects/Free Pixel Art Forest/PNG/Background layers/Layer_0007_Lights.png" type="Texture" id=16]
 
 [node name="Menu" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 92.0
+margin_bottom = 89.0
 rect_scale = Vector2( 2.714, 1.679 )
 script = ExtResource( 1 )
 
