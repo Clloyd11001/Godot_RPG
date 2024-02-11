@@ -19,7 +19,7 @@
 [ext_resource path="res://World/Weird_trees.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Orange_Tree.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Textbox.tscn" type="PackedScene" id=19]
-[ext_resource path="res://GeorgeHouse.tscn" type="PackedScene" id=20]
+[ext_resource path="res://First_House.tscn" type="PackedScene" id=20]
 [ext_resource path="res://World/Cropped_House_Images/chimney_house.PNG" type="Texture" id=21]
 [ext_resource path="res://Inside2.tscn" type="PackedScene" id=22]
 [ext_resource path="res://World/Backgrounds/Green_Background.png" type="Texture" id=23]
@@ -930,7 +930,7 @@ centered_textures = true
 format = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 779, 339 )
+position = Vector2( 236, 407 )
 current = true
 offset_h = 1.0
 offset_v = 1.0
@@ -939,7 +939,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 779, 339 )
+position = Vector2( 236, 407 )
 
 [node name="AnimationTree" parent="YSort/Player" index="5"]
 parameters/playback = SubResource( 48 )

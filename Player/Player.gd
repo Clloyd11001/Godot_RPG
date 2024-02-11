@@ -215,6 +215,7 @@ func _input(event):
 			var pickup_item = $PickupZone.items_in_range.values()[0]
 			pickup_item.pick_up_item(self)
 			$PickupZone.items_in_range.erase(pickup_item)
+			#pickup_item.queue_free()
 		else:
 			print("Debug: No items in range.")
 

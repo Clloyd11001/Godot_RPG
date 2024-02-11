@@ -110,4 +110,5 @@ texture = ExtResource( 5 )
 [editable path="Player"]
 [editable path="Player/HitBoxPivot/SwordHitBox"]
 [editable path="Player/HurtBox"]
+[editable path="Player/QuestNotificationPanel"]
 [editable path="George"]
