@@ -209,17 +209,6 @@ func _unhandled_input(event):
 	else:
 		pass
 
-func _input(event):
-	if event.is_action_pressed("pickup"):
-		if $PickupZone.items_in_range.size() > 0:
-			var pickup_item = $PickupZone.items_in_range.values()[0]
-			pickup_item.pick_up_item(self)
-			$PickupZone.items_in_range.erase(pickup_item)
-			#pickup_item.queue_free()
-		else:
-			print("Debug: No items in range.")
-
-
 # Function to show the quest notification banner with quest name
 func showQuestNotification(questName: String):
 	questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
@@ -231,8 +220,13 @@ func showQuestNotification(questName: String):
 		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
 	elif completedQuests.size() > 0:
 		questNotificationLabel.text = "Quest Completed: " + questName
-#		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
-#		pass
-#	else:
-#		pass
-	#$Timer.start()
+
+func _input(event):
+	if event.is_action_pressed("pickup"):
+		if $PickupZone.items_in_range.size() > 0:
+			var pickup_item = $PickupZone.items_in_range.values()[0]
+			pickup_item.pick_up_item(self)
+			$PickupZone.items_in_range.erase(pickup_item)
+		else:
+			print("Debug: No items in range.")
+
