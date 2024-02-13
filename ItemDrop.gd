@@ -8,13 +8,19 @@ var item_name
 var player = null
 var being_picked_up = false
 
+var testInventory = []
+
+
 
 func _ready():
-	var rand_val = randi() % 2
-	if rand_val == 0:
-		item_name = "Ruby"
-	elif rand_val == 1:
-		item_name = "Skull"
+#	testInventory.append("Ruby")
+#	testInventory.append("Skull")
+#	testInventory.append("Brain")
+#
+#	for i in testInventory:
+#		item_name = i
+#		print(item_name)
+	item_name = "AnimalSkull"
 
 
 func _physics_process(delta):

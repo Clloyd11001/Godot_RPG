@@ -954,7 +954,6 @@ collision_mask = 128
 remote_path = NodePath("../../../Camera2D")
 
 [node name="UserInterface" type="CanvasLayer" parent="YSort/Player"]
-visible = false
 scale = Vector2( 0.5, 0.5 )
 transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
 script = ExtResource( 57 )

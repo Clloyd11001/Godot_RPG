@@ -11,6 +11,7 @@ export var MAX_SPEED = 80
 export var ROLL_SPEED = 100
 export var FRICTION  = 350
 
+var quests_scene_path = "res://QuestNotification.tscn"  
 
 # CHARACTER STATS
 export (int) var MAX_HP = 12
@@ -20,6 +21,7 @@ export (int) var STRENGTH = 8
 export (int) var level = 1
 
 export(PackedScene) var MAGIC: PackedScene = preload("res://Hitboxes and Hurtboxes/Fireball.tscn")
+
 
 enum {
 	MOVE,
@@ -32,6 +34,7 @@ var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
 var direction = Vector2()
+var questMenu = false
 #var house = null setget set_house
 
 onready var animationPlayer = $AnimationPlayer
@@ -53,6 +56,12 @@ var experience_total = 0
 var experience_required = get_required_experience(level + 1)
 
 var house = null setget set_house
+
+
+
+#var currentScene = Global.current_scene.filename
+
+
 
 func _ready():
 	
@@ -206,6 +215,13 @@ func _unhandled_input(event):
 	if event is InputEventKey and event.is_action_pressed("Menu"):
 		inventory_layer.visible = true
 		#inventory_layer.initialize_inventory()
+	if event.is_action_pressed("Quests"):
+		get_tree().change_scene(quests_scene_path)
+		questMenu = true
+	
+		# Im trying to have something where when i press the button "Q" 
+		# i ccan open the quest scene and when i press it again i go back to the previous scene
+
 	else:
 		pass
 
