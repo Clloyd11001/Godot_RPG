@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://World/UI_Flat_Frame_02_Standard.png" type="Texture" id=1]
 [ext_resource path="res://QuestNotification.gd" type="Script" id=2]
 [ext_resource path="res://QuestSystem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://DarkRPG.tres" type="DynamicFont" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -15,7 +16,12 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="QuestNotification" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_top = 0.189
+anchor_bottom = 0.189
+margin_top = -0.160999
+margin_right = 249.0
+margin_bottom = 117.839
+custom_fonts/font = ExtResource( 4 )
+autowrap = true
 
 [node name="QuestManager" parent="." instance=ExtResource( 3 )]

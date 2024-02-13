@@ -22,7 +22,7 @@ func showQuestNotification(questName: String):
 	var completedQuests = questManager.CompletedQuests
 	
 	if activeQuests.size() > 0:
-		questNotificationLabel.text = "Quest Active: " + questName
+		questNotificationLabel.text = "Quest Active: " + "                           " + questName
 		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
 	elif completedQuests.size() > 0:
 		questNotificationLabel.text = "Quest Completed: " + questName
