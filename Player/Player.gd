@@ -45,6 +45,7 @@ onready var hurtBox = $HurtBox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var projectile = $Fireball/Sprite
 onready var projectileTimer = $ProjectileTimer
+
 onready var questNotificationPanel = get_node("QuestNotificationPanel")
 onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
 onready var questManager = get_node("QuestManager")
@@ -226,6 +227,7 @@ func _unhandled_input(event):
 		pass
 
 # Function to show the quest notification banner with quest name
+# NEED TO GET THIS TO SHOW ON THE QUESTNOTIFICATION.TSCN
 func showQuestNotification(questName: String):
 	questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
 	var activeQuests = questManager.ActiveQuests

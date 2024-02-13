@@ -959,6 +959,7 @@ transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
 script = ExtResource( 57 )
 
 [node name="Inventory" parent="YSort/Player/UserInterface" instance=ExtResource( 14 )]
+visible = false
 position = Vector2( 182, 8 )
 
 [node name="npc" parent="YSort" instance=ExtResource( 55 )]
