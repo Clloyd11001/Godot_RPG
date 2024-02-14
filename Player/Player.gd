@@ -49,6 +49,7 @@ onready var projectileTimer = $ProjectileTimer
 onready var questNotificationPanel = get_node("QuestNotificationPanel")
 onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
 onready var questManager = get_node("QuestManager")
+onready var lvl1scene = "res://Level1.tscn" 
 
 var experience = 0
 var experience_total = 0
@@ -220,14 +221,10 @@ func _unhandled_input(event):
 		get_tree().change_scene(quests_scene_path)
 		questMenu = true
 	
-		# Im trying to have something where when i press the button "Q" 
-		# i ccan open the quest scene and when i press it again i go back to the previous scene
-
 	else:
 		pass
 
 # Function to show the quest notification banner with quest name
-# NEED TO GET THIS TO SHOW ON THE QUESTNOTIFICATION.TSCN
 func showQuestNotification(questName: String):
 	questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
 	var activeQuests = questManager.ActiveQuests

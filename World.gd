@@ -25,7 +25,7 @@ func _ready():
 	
 # Getting enemy death to trigger character exp gain
 	enemy.connect("enemy_defeated", self, "_on_EnemyDefeated")
-	# should create the experience bar?
+	# should initialize the experience bar
 	_bar.initialize(_character.experience, _character.experience_required)
 
 # update_text used to have _character.level as a param
