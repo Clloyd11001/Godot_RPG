@@ -13,6 +13,9 @@ var testInventory = []
 
 
 func _ready():
+	# I wanted to test this append so that I could just append stuff into the array above..
+	# If i get this to work, i can assign whatever sprites i want to chests and then just go back and 
+	# append what the name of the sprite is (then it finds the corresponding .png file 
 #	testInventory.append("Ruby")
 #	testInventory.append("Skull")
 #	testInventory.append("Brain")

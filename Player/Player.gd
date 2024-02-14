@@ -67,7 +67,7 @@ var house = null setget set_house
 
 func _ready():
 	
-
+	#questNotificationPanel.visible = false
 	set_house(null)
 	randomize()
 
@@ -87,7 +87,7 @@ func _physics_process(delta):
 		ATTACK:
 			attack_state(delta)
 	
-	showQuestNotification("MQ001")
+#	showQuestNotification("MQ001")
 
 
 func move_state(delta):
@@ -225,16 +225,16 @@ func _unhandled_input(event):
 		pass
 
 # Function to show the quest notification banner with quest name
-func showQuestNotification(questName: String):
-	questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
-	var activeQuests = questManager.ActiveQuests
-	var completedQuests = questManager.CompletedQuests
-	
-	if activeQuests.size() > 0:
-		questNotificationLabel.text = "Quest Active: " + questName
-		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
-	elif completedQuests.size() > 0:
-		questNotificationLabel.text = "Quest Completed: " + questName
+#func showQuestNotification(questName: String):
+#	#questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
+#	var activeQuests = questManager.ActiveQuests
+#	var completedQuests = questManager.CompletedQuests
+#
+#	if activeQuests.size() > 0:
+#		questNotificationLabel.text = "Quest Active: " + questName
+#		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
+#	elif completedQuests.size() > 0:
+#		questNotificationLabel.text = "Quest Completed: " + questName
 
 func _input(event):
 	if event.is_action_pressed("pickup"):

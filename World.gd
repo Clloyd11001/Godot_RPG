@@ -8,6 +8,7 @@ onready var _label = get_node("YSort/Player/CanvasLayer/MarginContainer/Experien
 onready var _bar = get_node("YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface/ExperienceBar")
 onready var enemy = get_node("YSort/Bat")
 onready var textBox = get_node("Textbox")
+onready var questMenu = get_node("YSort/Player/QuestNotificationPanel")
 
 enum {
 	OUTSIDE,
@@ -16,6 +17,8 @@ enum {
 }
 
 var location = OUTSIDE
+
+# Somewhere in my ready, its showing the questManager, look right here
 
 # update_text used to have _character.level as a param
 func _ready():
@@ -27,6 +30,10 @@ func _ready():
 	enemy.connect("enemy_defeated", self, "_on_EnemyDefeated")
 	# should initialize the experience bar
 	_bar.initialize(_character.experience, _character.experience_required)
+	if questMenu != null:
+		print("CAN I TEST PLEASE")
+		print(questMenu)
+		questMenu.visible = false
 
 # update_text used to have _character.level as a param
 func _on_EnemyDefeated():

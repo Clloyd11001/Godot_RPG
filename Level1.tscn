@@ -2088,7 +2088,6 @@ position = Vector2( 781, 273 )
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
-[editable path="YSort/Player/QuestNotificationPanel"]
 [editable path="YSort/npc"]
 [editable path="YSort/npc/Dialogue"]
 [editable path="YSort/Next_Level_Indicator"]
