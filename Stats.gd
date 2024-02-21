@@ -1,6 +1,10 @@
 extends Node
 
+
 export var max_health = 1 setget set_max_health
+
+
+
 # Allows you to change in editor without overriding variable
 # Setget calls back every time health is set
 var health = max_health setget set_health

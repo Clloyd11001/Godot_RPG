@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Inside1.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Inside1.gd" type="Script" id=3]
-[ext_resource path="res://Inside_Camera.gd" type="Script" id=4]
 [ext_resource path="res://Objects/32x32/bookshelves.png" type="Texture" id=5]
 [ext_resource path="res://Objects/32x32/Brown Table and Chairs.png" type="Texture" id=6]
 [ext_resource path="res://Objects/32x32/White couch and lamps.png" type="Texture" id=7]
@@ -54,7 +53,6 @@ limit_right = 255
 limit_bottom = 96
 limit_smoothed = true
 editor_draw_limits = true
-script = ExtResource( 4 )
 
 [node name="Exit" type="Area2D" parent="."]
 position = Vector2( 97, 78 )
@@ -110,5 +108,4 @@ texture = ExtResource( 5 )
 [editable path="Player"]
 [editable path="Player/HitBoxPivot/SwordHitBox"]
 [editable path="Player/HurtBox"]
-[editable path="Player/QuestNotificationPanel"]
 [editable path="George"]

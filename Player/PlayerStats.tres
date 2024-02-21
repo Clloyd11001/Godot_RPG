@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+
+class_name StartingStats
+
+# I guess class? Look at later
+export var job_name: String = \"Main Character\"
+
+#Called this in stats
+#export var max_health : int
+export var max_magic : int
+export var strength : int
+export var defense : int
+export var speed : int
+"
+
+[resource]
+script = SubResource( 1 )
+job_name = "Main Character"
+max_magic = 2
+strength = 2
+defense = 2
+speed = 10

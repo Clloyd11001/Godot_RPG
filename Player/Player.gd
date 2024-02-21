@@ -10,6 +10,9 @@ export var ACCELERATION = 500
 export var MAX_SPEED = 80
 export var ROLL_SPEED = 100
 export var FRICTION  = 350
+export var MAX_MAGIC : int
+
+export var DEFENSE : int
 
 var quests_scene_path = "res://QuestNotification.tscn"  
 
@@ -50,6 +53,7 @@ onready var questNotificationPanel = get_node("QuestNotificationPanel")
 onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
 onready var questManager = get_node("QuestManager")
 onready var lvl1scene = "res://Level1.tscn" 
+onready var levelPopUp = get_node("QuestManager/PopupPanel")
 
 var experience = 0
 var experience_total = 0
@@ -74,6 +78,7 @@ func _ready():
 	PlayerStats.connect("no_health",self, "queue_free")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
+	#levelPopUp.popup_centered()
 	
 
 
@@ -170,6 +175,8 @@ func gain_experience(amount):
 	emit_signal("experience_gained", growth_data)
 
 func level_up():
+	print(MAX_SPEED)
+
 	level += 1
 	experience_required = get_required_experience(level + 1)
 	# Picks from random stat when player levels up
@@ -179,6 +186,7 @@ func level_up():
 	var random_stat = stats[randi() % stats.size()]
 	# Increased by 1,2 or 3
 	set(random_stat, get(random_stat) + randi() % 4)
+	
 
 func throw_magic(magic_direction: Vector2):
 	if MAGIC:
@@ -223,18 +231,10 @@ func _unhandled_input(event):
 	
 	else:
 		pass
-
+		
+# Put previous logic in my quest menu scene
 # Function to show the quest notification banner with quest name
 #func showQuestNotification(questName: String):
-#	#questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
-#	var activeQuests = questManager.ActiveQuests
-#	var completedQuests = questManager.CompletedQuests
-#
-#	if activeQuests.size() > 0:
-#		questNotificationLabel.text = "Quest Active: " + questName
-#		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
-#	elif completedQuests.size() > 0:
-#		questNotificationLabel.text = "Quest Completed: " + questName
 
 func _input(event):
 	if event.is_action_pressed("pickup"):

@@ -74,10 +74,8 @@ position = Vector2( 0, 2 )
 texture = ExtResource( 8 )
 
 [node name="PopupPanel" parent="." instance=ExtResource( 9 )]
-visible = false
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
-[editable path="YSort/Player/QuestNotificationPanel"]
 [editable path="elder"]

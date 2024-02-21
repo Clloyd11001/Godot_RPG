@@ -7,7 +7,6 @@ texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 832, 480 )
 
 [node name="PopupPanel" type="PopupPanel"]
-visible = true
 margin_left = -3056.0
 margin_top = -37.0
 margin_right = -2754.0
