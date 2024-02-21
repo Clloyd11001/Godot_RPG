@@ -9,11 +9,11 @@ func _physics_process(delta):
 func destroy():
 	queue_free()
 
-func _on_Fireball_area_entered(area):
+func _on_Fireball_area_entered(_area):
 	#destroy()
 	pass
 
-func _on_Fireball_body_entered(body):
+func _on_Fireball_body_entered(_body):
 	#destroy()
 	pass
 

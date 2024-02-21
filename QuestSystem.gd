@@ -51,7 +51,7 @@ func completeQuest(questID: String):
 	if questID in ActiveQuests:
 		#print("Attempting to complete questID:", questID)
 		CompletedQuests.append(ActiveQuests[questID]["QuestName"])
-		ActiveQuests.erase(questID)
+		var _erasedQuest = ActiveQuests.erase(questID)
 	else:
 		print("Error: questID not found in ActiveQuests")
 

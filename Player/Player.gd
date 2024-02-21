@@ -3,7 +3,8 @@ extends KinematicBody2D
 signal experience_gained(growth_data)
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
-onready var inventory_layer = get_node("UserInterface/Inventory")
+#const healthUI = preload("res://UI/HealthUI.gd")
+#onready var inventory_layer = get_node("UserInterface/Inventory")
 
 
 export var ACCELERATION = 500
@@ -46,14 +47,15 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxPivot/SwordHitBox
 onready var hurtBox = $HurtBox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
-onready var projectile = $Fireball/Sprite
-onready var projectileTimer = $ProjectileTimer
+#onready var projectile = $Fireball/Sprite
+#onready var projectileTimer = $ProjectileTimer
 
-onready var questNotificationPanel = get_node("QuestNotificationPanel")
-onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
+#onready var questNotificationPanel = get_node("QuestNotificationPanel")
+#onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
 onready var questManager = get_node("QuestManager")
 onready var lvl1scene = "res://Level1.tscn" 
 onready var levelPopUp = get_node("QuestManager/PopupPanel")
+
 
 var experience = 0
 var experience_total = 0
@@ -73,12 +75,15 @@ func _ready():
 	
 	#questNotificationPanel.visible = false
 	set_house(null)
+	
+	#var instance_health = healthUI.new()
+	#instance_health.set_hearts()
 	randomize()
 
-	PlayerStats.connect("no_health",self, "queue_free")
+	var _noHealthSignal = PlayerStats.connect("no_health",self, "queue_free")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
-	#levelPopUp.popup_centered()
+
 	
 
 
@@ -176,16 +181,16 @@ func gain_experience(amount):
 
 func level_up():
 	print(MAX_SPEED)
-
+	#levelPopUp.popup_centered()
 	level += 1
 	experience_required = get_required_experience(level + 1)
 	# Picks from random stat when player levels up
 
 	# Can tinker with this to give attributes
-	var stats = ['MAX_HP', 'STRENGTH', 'MAGIC']
-	var random_stat = stats[randi() % stats.size()]
-	# Increased by 1,2 or 3
-	set(random_stat, get(random_stat) + randi() % 4)
+	#var stats = ['MAX_HP', 'STRENGTH', 'MAGIC']
+#	var random_stat = stats[randi() % stats.size()]
+#	# Increased by 1,2 or 3
+#	set(random_stat, get(random_stat) + randi() % 4)
 	
 
 func throw_magic(magic_direction: Vector2):
@@ -222,11 +227,11 @@ func _unhandled_input(event):
 	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
 		Global.player_pos = global_position
 		house.enter()
-	if event is InputEventKey and event.is_action_pressed("Menu"):
-		inventory_layer.visible = true
+#	if event is InputEventKey and event.is_action_pressed("Menu"):
+#		inventory_layer.visible = true
 		#inventory_layer.initialize_inventory()
 	if event.is_action_pressed("Quests"):
-		get_tree().change_scene(quests_scene_path)
+		var _questsChangeSystem = get_tree().change_scene(quests_scene_path)
 		questMenu = true
 	
 	else:

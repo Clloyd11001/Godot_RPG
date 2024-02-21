@@ -21,7 +21,7 @@ var text_queue = []
 func _ready():
 	hide_textbox()
 	
-func _process(delta):
+func _process(_delta):
 	match current_state:
 		State.READY:
 			if !text_queue.empty():
@@ -61,7 +61,7 @@ func display_text():
 	$Tween.interpolate_property(label,"percent_visible",0.0,1.0, len(next_text)* CHAR_READ_RATE, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(_object, _key):
 	end_symbol.text = "V"
 	change_state(State.FINISHED)
 

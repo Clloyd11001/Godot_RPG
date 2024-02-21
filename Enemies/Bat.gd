@@ -88,7 +88,7 @@ func _on_Stats_no_health():
 	enemyDeathEffect.global_position = global_position
 	# testing to see if gaining experience should go here
 	emit_signal("enemy_defeated")
-	print("Player killed me, now I give him experience")
+	#print("Player killed me, now I give him experience")
 	
 func _on_HurtBox_invincibility_started():
 	animationPlayer.play("Start")

@@ -20,7 +20,7 @@ func _on_Exit_body_entered(body):
 		else:
 			print("Body is null")
 		
-		get_tree().change_scene(outside)
+		var _outsideSceneChange = get_tree().change_scene(outside)
 		if body:
 			var buildingName = get_name()
 			var exitPos = LocationManager.getBuildingLocation(buildingName)
@@ -32,5 +32,5 @@ func _on_Exit_body_entered(body):
 			print("Cannot set position because body is null")
 
 		
-func _on_Exit_body_exited(body):
+func _on_Exit_body_exited(_body):
 	entered = true

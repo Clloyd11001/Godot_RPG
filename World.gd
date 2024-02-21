@@ -8,7 +8,7 @@ onready var _label = get_node("YSort/Player/CanvasLayer/MarginContainer/Experien
 onready var _bar = get_node("YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface/ExperienceBar")
 onready var enemy = get_node("YSort/Bat")
 onready var textBox = get_node("Textbox")
-onready var questMenu = get_node("YSort/Player/QuestNotificationPanel")
+#onready var questMenu = get_node("YSort/Player/QuestNotificationPanel")
 
 enum {
 	OUTSIDE,
@@ -30,19 +30,20 @@ func _ready():
 	enemy.connect("enemy_defeated", self, "_on_EnemyDefeated")
 	# should initialize the experience bar
 	_bar.initialize(_character.experience, _character.experience_required)
-	if questMenu != null:
-		print("CAN I TEST PLEASE")
-		print(questMenu)
-		questMenu.visible = false
+#	if questMenu != null:
+#		print("CAN I TEST PLEASE")
+#		print(questMenu)
+#		questMenu.visible = false
 
 # update_text used to have _character.level as a param
 func _on_EnemyDefeated():
-	_character.gain_experience(34)
+	print("killed enemy")
+	_character.gain_experience(50)
 	_label.update_text( _character.experience, _character.experience_required)
 
 
 	
-func _on_DoorWay_body_entered(body):
+func _on_DoorWay_body_entered(_body):
 		
 	#Only shows once, should happen every time
 	textBox.queue_text("Press I to enter the house")
@@ -51,7 +52,7 @@ func _on_DoorWay_body_entered(body):
 		set_camera_limits()
 		
 
-func _on_DoorWay_body_exited(body):
+func _on_DoorWay_body_exited(_body):
 	textBox.hide_textbox()
 #
 func set_camera_limits():

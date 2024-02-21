@@ -3,8 +3,8 @@ extends Control
 var hearts = 4 setget set_hearts
 var max_hearts = 4 setget set_max_hearts
 
-onready var heartUIFull = $HeartUIFull
-onready var heartUIEmpty = $HeartUIEmpty
+onready var heartUIFull = get_node("HeartUIFull")
+onready var heartUIEmpty = get_node("HeartUIEmpty")
 
 func set_hearts(value):
 	# clamp makes it so its not less than value or greater than max

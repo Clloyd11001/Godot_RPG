@@ -4,7 +4,7 @@ const JsonParser = preload("res://dialogues/Dialogue.gd")
 
 onready var playerExperience = $YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface
 onready var elderDialogue = $elder/Dialogue
-onready var questNotification = $YSort/Player/QuestNotificationPanel
+#onready var questNotification = $YSort/Player/QuestNotificationPanel
 onready var popUp = $PopupPanel
 
 var file = File.new()
@@ -40,7 +40,7 @@ func _on_dialogue_finished():
 	# Put a stick in this for now, trying to figure out popups
 	#popUp.show()
 	
-	get_tree().change_scene(level1_scene_path)
+	var _lvl1SceneChange = get_tree().change_scene(level1_scene_path)
 	QuestSystem.addQuest("MQ001")
 	QuestSystem.advanceQuest("MQ001")
 	var trigger = load("res://LocationTrigger.tscn")

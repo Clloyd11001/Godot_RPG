@@ -19,7 +19,7 @@
 font_path = "res://Fonts/Montserrat-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=56]
-size = 26
+size = 42
 font_data = SubResource( 55 )
 
 [sub_resource type="ShaderMaterial" id=50]
@@ -881,9 +881,9 @@ script = ExtResource( 10 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 236.0
-margin_top = 309.9
+margin_top = 349.9
 margin_right = 1097.0
-margin_bottom = 380.9
+margin_bottom = 420.9
 rounded = true
 
 [node name="ShadowSprite" type="Sprite" parent="."]

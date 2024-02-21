@@ -36,7 +36,7 @@ func start():
 	current_dialogue_id = -1
 	next_script()
 	
-func load_dialogue(dialogue_file: String):
+func load_dialogue(_dialogue_file):
 	var file = File.new()
 	if file.file_exists(dialogue_file):
 		file.open(dialogue_file, file.READ)
@@ -68,6 +68,6 @@ func _on_Timer_timeout():
 	emit_signal("dialogue_finished")
 	
 	QuestSystem.addQuest("MQ001")
-	yield(get_tree().create_timer(0.1), "timeout")  # Introduce a small delay
+	#yield(get_tree().create_timer(0.1), "timeout")  # Introduce a small delay
 	QuestSystem.advanceQuest("MQ001")
 	
