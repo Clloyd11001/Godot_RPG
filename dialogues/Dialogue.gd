@@ -5,7 +5,7 @@ export(String, FILE, "*.json") var dialogue_file
 
 # Hold the name and text
 var dialogue = []
-var current_dialogue_id = 0
+export(int) var current_dialogue_id = 0
 var dialogue_active = false
 signal dialogue_started
 signal dialogue_finished
@@ -34,9 +34,12 @@ func start():
 	
 	dialogue = load_dialogue(dialogue_file)
 	current_dialogue_id = -1
-	next_script()
 	
-func load_dialogue(_dialogue_file):
+	
+	next_script()
+
+# DO NOT PUT AN UNDERSCORE BEFORE DIALOGUE_FILE
+func load_dialogue(dialogue_file):
 	var file = File.new()
 	if file.file_exists(dialogue_file):
 		file.open(dialogue_file, file.READ)
