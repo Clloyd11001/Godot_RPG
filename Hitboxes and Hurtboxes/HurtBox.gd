@@ -32,9 +32,11 @@ func create_hit_effect():
 func _on_Timer_timeout():
 	self.invincible = false
 
-# Invincibility turns off monitorableinvincibility_ended
 func _on_HurtBox_invincibility_started():
-	collisionShape.set_deferred("disabled", false)
-
+	collisionShape.set_deferred("disabled", true)
+	
 func _on_HurtBox_invincibility_ended():
 	collisionShape.disabled = false
+
+
+

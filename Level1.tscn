@@ -2083,6 +2083,7 @@ tile_data = PoolIntArray( 2359333, 0, 0, 2359334, 0, 0, 2359335, 0, 0, 2359336, 
 [node name="LocationTrigger" parent="." instance=ExtResource( 58 )]
 position = Vector2( 781, 273 )
 
+[connection signal="area_exited" from="YSort/Player/HurtBox" to="YSort/Player" method="_on_HurtBox_area_exited"]
 [connection signal="body_entered" from="YSort/npc/Area2D" to="YSort/npc/Dialogue" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="YSort/Houses/First_House/DoorWay" to="." method="_on_DoorWay_body_entered"]
 [connection signal="body_exited" from="YSort/Houses/First_House/DoorWay" to="." method="_on_DoorWay_body_exited"]

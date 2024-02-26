@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal experience_gained(growth_data)
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
-onready var inventory_layer = get_node("UserInterface/Inventory")
+onready var inventory_layer = get_node("/root/PlayerInventory")
 
 
 export var ACCELERATION = 500
@@ -35,6 +35,7 @@ var roll_vector = Vector2.DOWN
 var stats = PlayerStats
 var direction = Vector2()
 var questMenu = false
+var canLose
 #var house = null setget set_house
 
 onready var animationPlayer = $AnimationPlayer
@@ -43,13 +44,15 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxPivot/SwordHitBox
 onready var hurtBox = $HurtBox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
-onready var projectile = $Fireball/Sprite
-onready var projectileTimer = $ProjectileTimer
-
-onready var questNotificationPanel = get_node("QuestNotificationPanel")
-onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
+#onready var projectile = $Fireball/Sprite
+#onready var projectileTimer = $ProjectileTimer
+#
+#onready var questNotificationPanel = get_node("QuestNotificationPanel")
+#onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
 onready var questManager = get_node("QuestManager")
 onready var lvl1scene = "res://Level1.tscn" 
+onready var collisionShape = get_node("HurtBox/CollisionShape2D")
+
 
 var experience = 0
 var experience_total = 0
@@ -145,12 +148,14 @@ func roll_animation_finished():
 func attack_animation_finished():
 	state = MOVE
 
-	
-func _on_Hurtbox_invincibility_started():
-	blinkAnimationPlayer.play("Start")
 
-func _on_Hurtbox_invincibility_ended():
-	blinkAnimationPlayer.play("Stop")
+	
+#func _on_invincibility_started():
+#	collisionShape.set_deferred("disabled", false)
+#
+#func _on_invincibility_ended():
+#	collisionShape.disabled = false
+
 
 # warning-ignore:shadowed_variable
 func get_required_experience(level):
@@ -174,7 +179,7 @@ func level_up():
 	# Picks from random stat when player levels up
 
 	# Can tinker with this to give attributes
-	var stats = ['MAX_HP', 'STRENGTH', 'MAGIC']
+#	var stats = ['MAX_HP', 'STRENGTH', 'MAGIC']
 	var random_stat = stats[randi() % stats.size()]
 	# Increased by 1,2 or 3
 	set(random_stat, get(random_stat) + randi() % 4)
@@ -195,11 +200,19 @@ func throw_magic(magic_direction: Vector2):
 
 
 func _on_HurtBox_area_entered(_area):
-	PlayerStats.health -= 1
-	hurtBox.start_invincibility(0.6)
-	hurtBox.create_hit_effect()
-	var playerHurtSound = PlayerHurtSound.instance()
-	get_tree().current_scene.add_child(playerHurtSound)
+	canLose = false
+	if PlayerStats.health > 0:
+		if canLose == false:
+			PlayerStats.health -= 0.5
+			print(PlayerStats.health)
+			hurtBox.start_invincibility(1.5)
+			hurtBox.create_hit_effect()
+			var playerHurtSound = PlayerHurtSound.instance()
+			get_tree().current_scene.add_child(playerHurtSound)
+
+
+func _on_HurtBox_area_exited(area):
+	canLose = true
 
 func set_house(new_house):
 	if new_house != null:	
@@ -217,7 +230,7 @@ func _unhandled_input(event):
 		inventory_layer.visible = true
 		#inventory_layer.initialize_inventory()
 	if event.is_action_pressed("Quests"):
-		get_tree().change_scene(quests_scene_path)
+		var _questSceneChange = get_tree().change_scene(quests_scene_path)
 		questMenu = true
 	
 	else:
@@ -243,4 +256,13 @@ func _input(event):
 			$PickupZone.items_in_range.erase(pickup_item)
 		else:
 			print("Debug: No items in range.")
+
+
+
+func _on_HurtBox_invincibility_started():
+	blinkAnimationPlayer.play("Start")
+
+func _on_HurtBox_invincibility_ended():
+	blinkAnimationPlayer.play("Stop")
+	
 

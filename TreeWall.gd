@@ -54,7 +54,7 @@ func _on_dialogue_finished():
 	# Put a stick in this for now, trying to figure out popups
 	#popUp.show()
 	
-	#get_tree().change_scene(level1_scene_path)
+	var _lvl1SceneChange = get_tree().change_scene(level1_scene_path)
 	loading.load_scene(self, level1_scene_path)
 	QuestSystem.addQuest("MQ001")
 	QuestSystem.advanceQuest("MQ001")

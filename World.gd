@@ -8,7 +8,9 @@ onready var _label = get_node("YSort/Player/CanvasLayer/MarginContainer/Experien
 onready var _bar = get_node("YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface/ExperienceBar")
 onready var enemy = get_node("YSort/Bat")
 onready var textBox = get_node("Textbox")
+onready var hearts = get_node("CanvasLayer/HealthUI")
 #onready var questMenu = get_node("YSort/Player/QuestNotificationPanel")
+const gameOverScene = preload("res://GameOver.tscn")
 
 enum {
 	OUTSIDE,
@@ -34,6 +36,8 @@ func _ready():
 #		print("CAN I TEST PLEASE")
 #		print(questMenu)
 #		questMenu.visible = false
+	if get_tree().current_scene == gameOverScene:
+		hearts.visible = false
 
 # update_text used to have _character.level as a param
 func _on_EnemyDefeated():
@@ -54,7 +58,8 @@ func _on_DoorWay_body_entered(_body):
 
 func _on_DoorWay_body_exited(_body):
 	textBox.hide_textbox()
-#
+	
+# need to set limits for camera when game over happens
 func set_camera_limits():
 	if location == INSIDE:
 		var map_limits = $TileMap.get_used_rect()

@@ -13,6 +13,8 @@ signal no_health
 signal health_changed(value)
 signal max_health_changed(value)
 
+onready var loading = get_node("/root/Loading")
+
 
 func set_max_health(value):
 	max_health = value
@@ -24,7 +26,9 @@ func set_health(value):
 	emit_signal("health_changed", health)
 	if health <= 0:
 		emit_signal("no_health")
-		get_tree().change_scene("res://GameOver.tscn")
+		var _gameOverScene = get_tree().change_scene("res://GameOver.tscn")
+		
+		#loading.load_scene(self, "res://GameOver.tscn")
 
 
 func _ready():

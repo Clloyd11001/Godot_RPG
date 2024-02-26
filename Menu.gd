@@ -1,6 +1,6 @@
 extends Control
 
-signal screen_changed
+#signal screen_changed
 onready var loading = get_node("/root/Loading")
 
 func _on_Play_pressed():

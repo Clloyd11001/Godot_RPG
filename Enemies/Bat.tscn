@@ -120,7 +120,7 @@ script = ExtResource( 3 )
 material = SubResource( 12 )
 frames = SubResource( 6 )
 animation = "fly"
-frame = 3
+frame = 2
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -128,11 +128,9 @@ offset = Vector2( 0, -12 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 7 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 4 )]
-visible = false
 collision_layer = 8
 collision_mask = 0
 
@@ -150,7 +148,6 @@ visible = false
 shape = SubResource( 9 )
 
 [node name="HitBox" parent="." instance=ExtResource( 7 )]
-visible = false
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
