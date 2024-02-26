@@ -46,7 +46,6 @@ func _on_EnemyDefeated():
 	_label.update_text( _character.experience, _character.experience_required)
 
 
-	
 func _on_DoorWay_body_entered(_body):
 		
 	#Only shows once, should happen every time
@@ -68,4 +67,5 @@ func set_camera_limits():
 		$Player/Camera2D.limit_right = map_limits.end.x * map_cellsize.x
 		$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 		$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
-
+	
+		
