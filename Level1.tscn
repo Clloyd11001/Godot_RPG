@@ -1773,7 +1773,7 @@ position = Vector2( 370, 387 )
 position = Vector2( 394, 411 )
 
 [node name="Bat3" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 343, 403 )
+position = Vector2( 133, 54 )
 
 [node name="Trees" type="YSort" parent="YSort"]
 

@@ -24,6 +24,7 @@ func set_health(value):
 	emit_signal("health_changed", health)
 	if health <= 0:
 		emit_signal("no_health")
+		get_tree().change_scene("res://GameOver.tscn")
 
 
 func _ready():

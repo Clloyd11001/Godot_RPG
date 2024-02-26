@@ -1,39 +1,44 @@
-tool
-extends ColorRect
+extends Node
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-onready var Progress = $VBoxContainer/ProgressBar
-onready var Number = $VBoxContainer/Number
-onready var message : Label = $VBoxContainer/Message
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	Progress.hide()
-	Number.hide()
-	RestHandler.loading = self
+onready var loading_scene = preload("res://addons/github-integration/scenes/loading.tscn")
 
-func _on_loading_visibility_changed():
-	if visible:
-		$VBoxContainer/loading2.show()
-		$VBoxContainer/loading2.material.set_shader_param("speed",5)
-	else:
-		Progress.hide()
-		Progress.set_value(0)
-		Number.hide()
-		Number.set_text("...")
-		$VBoxContainer/loading2.material.set_shader_param("speed",0)
+func load_scene(current_scene, next_scene):
+	# add loading scene to the root
+	var loading_scene_instance = loading_scene.instance()
+	get_tree().get_root().call_deferred("add_child",loading_scene_instance)
+	
+	# find the targeted scene
+	var loader = ResourceLoader.load_interactive(next_scene)
+	
+	#check for errors
+	if loader == null:
+		# handle your error
+		print("error occured while getting the scene")
+		return
 
-func show_progress(value : float , max_value : float):
-	Progress.show()
-	Progress.set_value(range_lerp(value,0,max_value,0,100))
+	current_scene.queue_free()
+	# creating a little delay, that lets the loading screen to appear.
+	yield(get_tree().create_timer(0.5),"timeout")
 
-func hide_progress():
-	Progress.hide()
-
-func show_number(value : float , ref_value : float, type : String):
-	Number.show()
-	Number.set_text(str(value)+" "+type+" downloaded (of ~"+str(ref_value)+" "+type+")")
-
-func hide_number():
-	Number.hide()
+	# loading the next_scene using poll() function
+	# since poll() function loads data in chunks thus we need to put that in loop
+	while true:
+		var error = loader.poll()
+		# when we get a chunk of data
+		if error == OK:
+			# update the progress bar according to amount of data loaded
+			var progress_bar = loading_scene_instance.get_node("ProgressBar")
+			progress_bar.value = float(loader.get_stage())/loader.get_stage_count() * 100
+		# when all the data have been loaded
+		elif error == ERR_FILE_EOF:
+			# creating scene instance from loaded data
+			var scene = loader.get_resource().instance()
+			# adding scene to the root
+			get_tree().get_root().call_deferred("add_child",scene)
+			# removing loading scene
+			loading_scene_instance.queue_free()
+			return
+		else:
+			# handle your error
+			print('error occurred while loading chunks of data')
+			return

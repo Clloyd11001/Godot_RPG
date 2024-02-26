@@ -3,17 +3,13 @@ extends KinematicBody2D
 signal experience_gained(growth_data)
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
-#const healthUI = preload("res://UI/HealthUI.gd")
-#onready var inventory_layer = get_node("UserInterface/Inventory")
+onready var inventory_layer = get_node("UserInterface/Inventory")
 
 
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
 export var ROLL_SPEED = 100
 export var FRICTION  = 350
-export var MAX_MAGIC : int
-
-export var DEFENSE : int
 
 var quests_scene_path = "res://QuestNotification.tscn"  
 
@@ -47,15 +43,13 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxPivot/SwordHitBox
 onready var hurtBox = $HurtBox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
-#onready var projectile = $Fireball/Sprite
-#onready var projectileTimer = $ProjectileTimer
+onready var projectile = $Fireball/Sprite
+onready var projectileTimer = $ProjectileTimer
 
-#onready var questNotificationPanel = get_node("QuestNotificationPanel")
-#onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
+onready var questNotificationPanel = get_node("QuestNotificationPanel")
+onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
 onready var questManager = get_node("QuestManager")
 onready var lvl1scene = "res://Level1.tscn" 
-onready var levelPopUp = get_node("QuestManager/PopupPanel")
-
 
 var experience = 0
 var experience_total = 0
@@ -75,18 +69,13 @@ func _ready():
 	
 	#questNotificationPanel.visible = false
 	set_house(null)
-	
-	#var instance_health = healthUI.new()
-	#instance_health.set_hearts()
 	randomize()
 
-	var _noHealthSignal = PlayerStats.connect("no_health",self, "queue_free")
+	PlayerStats.connect("no_health",self, "queue_free")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
-
 	
-
-
+	
 
 func _physics_process(delta):
 	match state:
@@ -180,18 +169,15 @@ func gain_experience(amount):
 	emit_signal("experience_gained", growth_data)
 
 func level_up():
-	print(MAX_SPEED)
-	#levelPopUp.popup_centered()
 	level += 1
 	experience_required = get_required_experience(level + 1)
 	# Picks from random stat when player levels up
 
 	# Can tinker with this to give attributes
-	#var stats = ['MAX_HP', 'STRENGTH', 'MAGIC']
-#	var random_stat = stats[randi() % stats.size()]
-#	# Increased by 1,2 or 3
-#	set(random_stat, get(random_stat) + randi() % 4)
-	
+	var stats = ['MAX_HP', 'STRENGTH', 'MAGIC']
+	var random_stat = stats[randi() % stats.size()]
+	# Increased by 1,2 or 3
+	set(random_stat, get(random_stat) + randi() % 4)
 
 func throw_magic(magic_direction: Vector2):
 	if MAGIC:
@@ -227,19 +213,27 @@ func _unhandled_input(event):
 	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
 		Global.player_pos = global_position
 		house.enter()
-#	if event is InputEventKey and event.is_action_pressed("Menu"):
-#		inventory_layer.visible = true
+	if event is InputEventKey and event.is_action_pressed("Menu"):
+		inventory_layer.visible = true
 		#inventory_layer.initialize_inventory()
 	if event.is_action_pressed("Quests"):
-		var _questsChangeSystem = get_tree().change_scene(quests_scene_path)
+		get_tree().change_scene(quests_scene_path)
 		questMenu = true
 	
 	else:
 		pass
-		
-# Put previous logic in my quest menu scene
+
 # Function to show the quest notification banner with quest name
 #func showQuestNotification(questName: String):
+#	#questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
+#	var activeQuests = questManager.ActiveQuests
+#	var completedQuests = questManager.CompletedQuests
+#
+#	if activeQuests.size() > 0:
+#		questNotificationLabel.text = "Quest Active: " + questName
+#		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
+#	elif completedQuests.size() > 0:
+#		questNotificationLabel.text = "Quest Completed: " + questName
 
 func _input(event):
 	if event.is_action_pressed("pickup"):
