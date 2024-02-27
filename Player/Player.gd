@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal experience_gained(growth_data)
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
-onready var inventory_layer = get_node("/root/PlayerInventory")
+const inventory_layer = preload("res://Inventory.tscn")
 
 
 export var ACCELERATION = 500
@@ -230,8 +230,20 @@ func _unhandled_input(event):
 		inventory_layer.visible = true
 		#inventory_layer.initialize_inventory()
 	if event.is_action_pressed("Quests"):
-		var _questSceneChange = get_tree().change_scene(quests_scene_path)
+		Global.switch_to_scene(quests_scene_path)
 		questMenu = true
+		Global.player_pos = global_position
+		print(Global.player_pos)
+		#Global.firstScene = (get_tree().current_scene.filename)
+		#print(Global.firstScene)
+		if event.is_action_pressed("Quests") and "Quest" in get_tree().current_scene.to_string():
+			print("hummana hummana")
+			# Got it to the point of being able to call the switch to previous location, still have the same problems of keeping player location consistent
+			# The hard part is that the difference between this and the inventory is that the quest manager is a new scene
+			# 
+			Global.switch_to_previous_scene()
+			#Global.switch_to_scene(lvl1scene)
+
 	
 	else:
 		pass

@@ -11,6 +11,7 @@ onready var textBox = get_node("Textbox")
 onready var hearts = get_node("CanvasLayer/HealthUI")
 #onready var questMenu = get_node("YSort/Player/QuestNotificationPanel")
 const gameOverScene = preload("res://GameOver.tscn")
+#onready var questNotification = get_node("YSort/Player/QuestNotificationPanel")
 
 enum {
 	OUTSIDE,
@@ -38,6 +39,8 @@ func _ready():
 #		questMenu.visible = false
 	if get_tree().current_scene == gameOverScene:
 		hearts.visible = false
+
+	
 
 # update_text used to have _character.level as a param
 func _on_EnemyDefeated():

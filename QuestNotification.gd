@@ -13,8 +13,11 @@ func _ready():
 	showQuestNotification("MQ001")
 
 func _unhandled_input(event):
+	# Should handle going back from this one
 	if event.is_action_pressed("Quests"):
-		Global.switch_to_scene(level1_scene_path)
+		#get_tree().change_scene(level1_scene_path)
+		questNotificationLabel.visible = false
+		questNotificationPanel.visible = false
 
 func showQuestNotification(questName: String):
 	questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
