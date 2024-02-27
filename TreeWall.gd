@@ -9,9 +9,12 @@ onready var elderDialogue = $elder/Dialogue
 #onready var questNotification = $YSort/Player/QuestNotificationPanel
 onready var popUp = $PopupPanel
 onready var loading = get_node("/root/Loading")
+onready var popUpPanel = get_node("PopupPanel")
+onready var timer = get_node("Timer")
 
-var file = File.new()
 onready var dialogue_file = "res://dialogues/json/elder.json" 
+var file = File.new()
+
 
 
 var level1_scene_path = "res://Level1.tscn"  # Adjust the path accordingly
@@ -49,18 +52,13 @@ func _ready():
 					print("The dialogue file does not have at least 3 lines.")
 		
 
-		
+	
 func _on_dialogue_finished():
 	# Put a stick in this for now, trying to figure out popups
 	#popUp.show()
+	start_timer()
+
 	
-	var _lvl1SceneChange = get_tree().change_scene(level1_scene_path)
-	loading.load_scene(self, level1_scene_path)
-	QuestSystem.addQuest("MQ001")
-	QuestSystem.advanceQuest("MQ001")
-	var trigger = load("res://LocationTrigger.tscn")
-	var ti = trigger.instance()
-	ti.QuestID = "MQ001"	
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
@@ -70,4 +68,23 @@ func _input(event):
 
 func _on_player_completed_attack_tutorial():
 	currentLine += 1
+
+
+
+func start_timer():
+	timer.wait_time = 1  # Set the wait time of the timer to 5 seconds
+	timer.one_shot = true  # Set the timer to trigger only once
+	timer.start()  # Start the timer
+
+
+
+func _on_Timer_timeout():
+	print("OKAY DEN!!!")
+	var _lvl1SceneChange = get_tree().change_scene(level1_scene_path)
+	loading.load_scene(self, level1_scene_path)
+	QuestSystem.addQuest("MQ001")
+	QuestSystem.advanceQuest("MQ001")
 	
+	var trigger = load("res://LocationTrigger.tscn")
+	var ti = trigger.instance()
+	ti.QuestID = "MQ001"	

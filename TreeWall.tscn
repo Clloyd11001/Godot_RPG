@@ -98,6 +98,12 @@ position = Vector2( 272, 136 )
 rotation = -1.5708
 shape = SubResource( 3 )
 
+[node name="PopupPanel2" parent="." instance=ExtResource( 9 )]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
