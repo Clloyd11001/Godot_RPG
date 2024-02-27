@@ -9,7 +9,7 @@ onready var elderDialogue = $elder/Dialogue
 #onready var questNotification = $YSort/Player/QuestNotificationPanel
 onready var popUp = $PopupPanel
 onready var loading = get_node("/root/Loading")
-onready var popUpPanel = get_node("PopupPanel")
+onready var popUpPanel = get_node("PopupPanel2")
 onready var timer = get_node("Timer")
 
 onready var dialogue_file = "res://dialogues/json/elder.json" 
@@ -74,8 +74,22 @@ func _on_player_completed_attack_tutorial():
 func start_timer():
 	timer.wait_time = 1  # Set the wait time of the timer to 5 seconds
 	timer.one_shot = true  # Set the timer to trigger only once
-	timer.start()  # Start the timer
+	# Get the size of the viewport
+#	var viewport_size = get_viewport().size
+#
+#	# Calculate the position of the popup panel
+#	var popup_position = viewport_size / 2 - popUpPanel.rect_size / 2
+	popUpPanel.set_position($YSort/Player.position) 
+	print(popUpPanel.rect_position )
+	print($YSort/Player.position)
+	
+	popUpPanel.popup_centered()  # Show the popup immediately
+	
+	if popUpPanel.visible == true:
+		print("we are really cooking?")
 
+	timer.start()  # Start the timer
+	
 
 
 func _on_Timer_timeout():

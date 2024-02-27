@@ -46,6 +46,9 @@ z_index = 1
 [node name="AnimationTree" parent="YSort/Player" index="5"]
 parameters/playback = SubResource( 2 )
 
+[node name="PopupPanel" parent="YSort/Player/QuestManager" index="4"]
+visible = false
+
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 position = Vector2( 52, -14 )
 scale = Vector2( 2, 2 )
@@ -79,8 +82,6 @@ position = Vector2( 0, 2 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 8 )
 
-[node name="PopupPanel" parent="." instance=ExtResource( 9 )]
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_mask = 2
 
@@ -99,6 +100,10 @@ rotation = -1.5708
 shape = SubResource( 3 )
 
 [node name="PopupPanel2" parent="." instance=ExtResource( 9 )]
+margin_left = 102.0
+margin_top = 60.0
+margin_right = 528.0
+margin_bottom = 426.0
 
 [node name="Timer" type="Timer" parent="."]
 
