@@ -72,15 +72,17 @@ func _on_player_completed_attack_tutorial():
 
 
 func start_timer():
-	timer.wait_time = 1  # Set the wait time of the timer to 5 seconds
+	timer.wait_time = 4  # Set the wait time of the timer to 5 seconds
 	timer.one_shot = true  # Set the timer to trigger only once
 	# Get the size of the viewport
 #	var viewport_size = get_viewport().size
 #
 #	# Calculate the position of the popup panel
 #	var popup_position = viewport_size / 2 - popUpPanel.rect_size / 2
-	popUpPanel.set_position($YSort/Player.position) 
+#	popUpPanel.set_position($YSort/Player.position) 
+#	popUpPanel.set_global_position($YSort/Player.position)
 	print(popUpPanel.rect_position )
+	print(popUpPanel.set_global_position($YSort/Player.position) )
 	print($YSort/Player.position)
 	
 	popUpPanel.popup_centered()  # Show the popup immediately

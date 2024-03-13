@@ -16,15 +16,15 @@ func _ready():
 	# I wanted to test this append so that I could just append stuff into the array above..
 	# If i get this to work, i can assign whatever sprites i want to chests and then just go back and 
 	# append what the name of the sprite is (then it finds the corresponding .png file 
-#	testInventory.append("Ruby")
-#	testInventory.append("Skull")
-#	testInventory.append("Brain")
+	testInventory.append("Ruby")
+	testInventory.append("Skull")
+	testInventory.append("Brain")
 #
-#	for i in testInventory:
-#		item_name = i
+	for i in testInventory:
+		item_name = i
 #		print(item_name)
-	item_name = "AnimalSkull"
-
+#	item_name = "AnimalSkull"
+	print(testInventory)
 
 func _physics_process(delta):
 	if being_picked_up == true:
@@ -33,8 +33,8 @@ func _physics_process(delta):
 		
 		var distance = global_position.distance_to(player.global_position)
 		if distance > 4:
-			PlayerInventory.add_item(item_name, 1)
-
+			for item_name in testInventory:
+				PlayerInventory.add_item(item_name, 1)
 			queue_free()
 	velocity = move_and_slide(velocity, Vector2.UP)
 

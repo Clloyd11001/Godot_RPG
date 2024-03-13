@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and is_player_inside and not is_opened:
+	if event.is_action_pressed("interact") and is_player_inside and is_opened == false:
 		animation_player.play("Open")
 
 func _drop_object() -> void:

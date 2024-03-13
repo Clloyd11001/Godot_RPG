@@ -4,7 +4,7 @@ signal experience_gained(growth_data)
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
 const inventory_layer = preload("res://Inventory.tscn")
-
+const itemDrop = preload("res://ItemDrop.gd")
 
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
@@ -226,9 +226,11 @@ func _unhandled_input(event):
 	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
 		Global.player_pos = global_position
 		house.enter()
-	if event is InputEventKey and event.is_action_pressed("Menu"):
-		inventory_layer.visible = true
-		#inventory_layer.initialize_inventory()
+#	if event is InputEventKey and event.is_action_pressed("Menu"):
+#		#inventory_layer.visible = true
+#		#inventory_layer.initialize_inventory()
+#		#inventory_layer.
+#		print("Debug is from Player.gd, but needs to be called from Level1")
 	if event.is_action_pressed("Quests"):
 		Global.switch_to_scene(quests_scene_path)
 		questMenu = true
@@ -259,11 +261,13 @@ func _unhandled_input(event):
 #		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
 #	elif completedQuests.size() > 0:
 #		questNotificationLabel.text = "Quest Completed: " + questName
-
-func _input(event):
 	if event.is_action_pressed("pickup"):
 		if $PickupZone.items_in_range.size() > 0:
 			var pickup_item = $PickupZone.items_in_range.values()[0]
+			if pickup_item is KinematicBody2D and pickup_item.has_method("pick_up_item"):
+				pickup_item.pick_up_item(self)
+				print($PickupZone.items_in_range)
+				$PickupZone.items_in_range.erase(pickup_item)
 			pickup_item.pick_up_item(self)
 			$PickupZone.items_in_range.erase(pickup_item)
 		else:

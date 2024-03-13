@@ -9,6 +9,7 @@ onready var _bar = get_node("YSort/Player/CanvasLayer/MarginContainer/Experience
 onready var enemy = get_node("YSort/Bat")
 onready var textBox = get_node("Textbox")
 onready var hearts = get_node("CanvasLayer/HealthUI")
+onready var inventory_layer = get_node("YSort/Player/UserInterface/Inventory")
 #onready var questMenu = get_node("YSort/Player/QuestNotificationPanel")
 const gameOverScene = preload("res://GameOver.tscn")
 #onready var questNotification = get_node("YSort/Player/QuestNotificationPanel")
@@ -39,6 +40,7 @@ func _ready():
 #		questMenu.visible = false
 	if get_tree().current_scene == gameOverScene:
 		hearts.visible = false
+	
 
 	
 
@@ -70,5 +72,3 @@ func set_camera_limits():
 		$Player/Camera2D.limit_right = map_limits.end.x * map_cellsize.x
 		$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 		$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
-	
-		

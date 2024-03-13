@@ -9,6 +9,7 @@ const NUM_INVENTORY_SLOTS = 20
 func _ready():
 	# Initialize Inventory as an empty dictionary
 	Inventory = {}
+	print(Inventory)
 	
 var Inventory = {
 	0: ["Skull", 1],
