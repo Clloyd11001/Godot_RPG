@@ -72,3 +72,16 @@ func set_camera_limits():
 		$Player/Camera2D.limit_right = map_limits.end.x * map_cellsize.x
 		$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 		$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
+
+
+func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+	if response_code == 200:
+		print("HTTP request successful!")
+		var parsedBody = parse_json(body.get_string_from_utf8())
+		#var jsonString = JSON.stringify(body)
+		print("Parsed JSON:", parsedBody)
+		if (parsedBody.has("data")):
+			print("SUCCESSFULLY PULLED ITEM NAME OUT OF JSON:", parsedBody.data.itemName)
+		
+	else:
+		print("HTTP request failed:", response_code)

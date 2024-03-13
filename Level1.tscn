@@ -966,6 +966,8 @@ script = ExtResource( 57 )
 visible = false
 position = Vector2( 182, 8 )
 
+[node name="HTTPRequest" type="HTTPRequest" parent="YSort/Player/UserInterface"]
+
 [node name="npc" parent="YSort" instance=ExtResource( 55 )]
 position = Vector2( 823, 311 )
 scale = Vector2( 0.5, 0.5 )
@@ -2084,6 +2086,7 @@ tile_data = PoolIntArray( 2359333, 0, 0, 2359334, 0, 0, 2359335, 0, 0, 2359336, 
 position = Vector2( 781, 273 )
 
 [connection signal="area_exited" from="YSort/Player/HurtBox" to="YSort/Player" method="_on_HurtBox_area_exited"]
+[connection signal="request_completed" from="YSort/Player/UserInterface/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
 [connection signal="body_entered" from="YSort/npc/Area2D" to="YSort/npc/Dialogue" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="YSort/Houses/First_House/DoorWay" to="." method="_on_DoorWay_body_entered"]
 [connection signal="body_exited" from="YSort/Houses/First_House/DoorWay" to="." method="_on_DoorWay_body_exited"]
