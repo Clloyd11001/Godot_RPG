@@ -88,3 +88,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 			print("Parsed JSON is null or does not contain item_data!")
 	else:
 		print("HTTP request failed:", response_code)
+		
+		
+		
+		##### FOR WHEN YOU COME BACK, WE SOMEHOW NEED TO SEND THE GODOT DATA TO THE API, BUT WE HAVE THE BACKEND STUFF SET UP ####
