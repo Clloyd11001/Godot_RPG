@@ -57,11 +57,11 @@ RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 PlayerStats="*res://Player/PlayerStats.tscn"
 Global="*res://Global.gd"
 JsonData="*res://Data/JSONData.gd"
-PlayerInventory="*res://PlayerInventory.gd"
 QuestSystem="*res://QuestSystem.tscn"
 Combos="*res://Combos.tscn"
 LocationManager="*res://LocationManager.gd"
 Loading="*res://addons/github-integration/scripts/loading.gd"
+PlayerInventory="*res://PlayerInventory.gd"
 
 [display]
 

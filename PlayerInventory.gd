@@ -11,11 +11,11 @@ func _ready():
 	Inventory = {}
 	print(Inventory)
 	
-var Inventory = {
-	0: ["Skull", 1],
-	1: ["Ruby", 1],
-	2: ["Brain",1]
-}
+var Inventory = []
+#	0: ["Skull", 1],
+#	1: ["Ruby", 1],
+#	2: ["Brain",1]
+
 
 func add_item(item_name, item_quantity):
 	for item in Inventory:

@@ -14,7 +14,7 @@ func _input(event):
 	if event.is_action_pressed("sendhttp"):
 		print("Sending data via HTTP...")
 		var data =  {
-					0: ["Skull", 1],
+					0: ["Animal Skull", 1],
 					1: ["Ruby", 1],
 					2: ["Brain",1]
 				}

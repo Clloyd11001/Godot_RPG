@@ -21,12 +21,22 @@ func set_item(nm, qt):
 	item_quantity = qt
 	$TextureRect.texture = load("res://item_icons/" + item_name + '.png')
 	
-	var stack_size = int(JsonData.item_data[item_name]['StackSize'])
-	if stack_size == 1:
-		$Label.visible = false
+	if item_name in JsonData.item_data:
+		var stack_size = int(JsonData.item_data[item_name]['StackSize'])
+		if stack_size == 1:
+			$Label.visible = false
+		else:
+			$Label.visible = true
+			$Label.text = str(item_quantity)
 	else:
-		$Label.visible = true
-		$Label.text = String(item_quantity)
+		print("Item", item_name, "not found in item_data")
+#
+#	var stack_size = int(JsonData.item_data[item_name]['StackSize'])
+#	if stack_size == 1:
+#		$Label.visible = false
+#	else:
+#		$Label.visible = true
+#		$Label.text = String(item_quantity)
 
 func add_item_quantity(amount_to_add):
 	item_quantity += amount_to_add

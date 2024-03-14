@@ -78,10 +78,13 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 		print("HTTP request successful!")
 		var parsedBody = parse_json(body.get_string_from_utf8())
-		#var jsonString = JSON.stringify(body)
-		print("Parsed JSON:", parsedBody)
-		if (parsedBody.has("data")):
-			print("SUCCESSFULLY PULLED ITEM NAME OUT OF JSON:", parsedBody.data.itemName)
-		
+		if parsedBody != null and parsedBody.has("item_data"):
+			print("Parsed JSON:", parsedBody)
+			var item_data = parsedBody["item_data"]
+			for item_name in item_data.keys():
+				PlayerInventory.add_item(item_name, 1)
+			print(PlayerInventory.Inventory)
+		else:
+			print("Parsed JSON is null or does not contain item_data!")
 	else:
 		print("HTTP request failed:", response_code)
