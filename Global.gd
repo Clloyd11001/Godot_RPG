@@ -19,10 +19,10 @@ func switch_to_scene(scene_path):
 # Switch to the previous scene
 func switch_to_previous_scene():
 	if scene_stack.size() > 1:
-		print(firstScene)
-		print(scene_stack.pop_back()) # Remove the current scene
+		#print(firstScene)
+		#print(scene_stack.pop_back()) # Remove the current scene
 		var previous_scene = firstScene # Get the previous scene
-		print(previous_scene)
+		#print(previous_scene)
 		get_tree().change_scene(previous_scene)
 	else:
 		print("No previous scene to switch to.")

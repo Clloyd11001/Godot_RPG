@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 signal experience_gained(growth_data)
+signal inventory_data_ready(data)
+
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
 const inventory_layer = preload("res://Inventory.tscn")
@@ -222,27 +224,69 @@ func set_house(new_house):
 		pass
 	house = new_house
 
+func print_node_tree(node, indent=""):
+	print(indent + node.name)
+	for child in node.get_children():
+		print_node_tree(child, indent + "  ")
+
+func find_node_by_name(node, name_to_find):
+	if node.name == name_to_find:
+		return node
+	for child in node.get_children():
+		var found_node = find_node_by_name(child, name_to_find)
+		if found_node:
+			return found_node
+	return null
+	
+# Function to recursively extract node data
+# Need to work on this some more
+func extract_node_data(node):
+	var node_data = {
+		"item_data": {}
+	}
+
+	if node is Sprite:  # Check if the node is of type Sprite
+		var item_name = node.name  # Get the name of the node
+		print("item name of sprite", item_name)
+		var item_description = "test"  # Placeholder for description
+		print("item description", item_description)
+		# You can add more conditions or functions to extract more data
+
+		# Check if the item_name already exists in item_data
+		if not node_data["item_data"].has(item_name):
+			node_data["item_data"][item_name] = {
+				"StackSize": 1,
+				"Description": item_description
+			}
+
+	# Recursively extract data from child nodes
+	for child in node.get_children():
+		var child_data = extract_node_data(child)
+		node_data["item_data"].merge(child_data["item_data"])
+
+	print("final data:", node_data)
+	return node_data
+func convert_to_json(node_data):
+	print("before ocnverted to json", node_data)
+	return JSON.print(node_data)
+	
 func _unhandled_input(event):
 	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
 		Global.player_pos = global_position
 		house.enter()
-#	if event is InputEventKey and event.is_action_pressed("Menu"):
-#		#inventory_layer.visible = true
-#		#inventory_layer.initialize_inventory()
-#		#inventory_layer.
-#		print("Debug is from Player.gd, but needs to be called from Level1")
+	# Used to be a comment block, the code for menu initialization went in UserInterface (makes sense lol)
 	if event.is_action_pressed("Quests"):
 		Global.switch_to_scene(quests_scene_path)
 		questMenu = true
 		Global.player_pos = global_position
 		print(Global.player_pos)
+		# This may be useful for keeping track between saves
 		#Global.firstScene = (get_tree().current_scene.filename)
-		#print(Global.firstScene)
+		
 		if event.is_action_pressed("Quests") and "Quest" in get_tree().current_scene.to_string():
 			print("hummana hummana")
 			# Got it to the point of being able to call the switch to previous location, still have the same problems of keeping player location consistent
 			# The hard part is that the difference between this and the inventory is that the quest manager is a new scene
-			# 
 			Global.switch_to_previous_scene()
 			#Global.switch_to_scene(lvl1scene)
 
@@ -250,29 +294,35 @@ func _unhandled_input(event):
 	else:
 		pass
 
-# Function to show the quest notification banner with quest name
-#func showQuestNotification(questName: String):
-#	#questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
-#	var activeQuests = questManager.ActiveQuests
-#	var completedQuests = questManager.CompletedQuests
-#
-#	if activeQuests.size() > 0:
-#		questNotificationLabel.text = "Quest Active: " + questName
-#		questNotificationPanel.show()  # Assuming questNotificationPanel is the Panel node
-#	elif completedQuests.size() > 0:
-#		questNotificationLabel.text = "Quest Completed: " + questName
 	if event.is_action_pressed("pickup"):
+		# if player presses pickup, get things in range based on pickupzone object we create, put into array, call extract_node_data 
+		# once you have node data, put into JSON
+		# once its in json, print it out, then send a signal saying the inventory data is ready
+		# after sending the signal, check if json_data is null, then pick it up then erase it 
 		if $PickupZone.items_in_range.size() > 0:
 			var pickup_item = $PickupZone.items_in_range.values()[0]
-			if pickup_item is KinematicBody2D and pickup_item.has_method("pick_up_item"):
+			# Extract node data
+			var pickup_item_data = extract_node_data(pickup_item)
+			print("extracted data", pickup_item_data)
+			# Convert node data to JSON format
+			var json_data = convert_to_json(pickup_item_data)
+
+			print("JSON data:", json_data)
+			emit_signal("inventory_data_ready", json_data)
+#			print("Nodes attached to pickup_item:")
+#			print_node_tree(pickup_item)
+			if json_data != null:
 				pickup_item.pick_up_item(self)
-				print($PickupZone.items_in_range)
-				$PickupZone.items_in_range.erase(pickup_item)
-			pickup_item.pick_up_item(self)
-			$PickupZone.items_in_range.erase(pickup_item)
+				$PickupZone.items_in_range.erase(json_data)
+#			if pickup_item is KinematicBody2D and pickup_item.has_node("Sprite"):
+#				var sprite_name = pickup_item.get_node("Sprite").texture.get_data().nameh
+#				pickup_item.pick_up_item(self)
+#				print("Picked up item:", sprite_name)
+#				$PickupZone.items_in_range.erase(pickup_item)
+			else:
+				print("Debug: Item cannot be picked up or doesn't have a sprite.")
 		else:
 			print("Debug: No items in range.")
-
 
 
 func _on_HurtBox_invincibility_started():
@@ -281,4 +331,3 @@ func _on_HurtBox_invincibility_started():
 func _on_HurtBox_invincibility_ended():
 	blinkAnimationPlayer.play("Stop")
 	
-

@@ -78,7 +78,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 		print("HTTP request successful!")
 		var parsedBody = parse_json(body.get_string_from_utf8())
-		if parsedBody != null and parsedBody.has("item_data"):
+		print("here is the parsed body right before i check it:", parsedBody)
+		if parsedBody != null and parsedBody.has("name"):
 			print("Parsed JSON:", parsedBody)
 			var item_data = parsedBody["item_data"]
 			for item_name in item_data.keys():
