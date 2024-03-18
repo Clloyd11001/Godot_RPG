@@ -39,3 +39,4 @@ func _input(event):
 		print("Sending HTTP request...")
 		$HTTPRequest.request("http://localhost:3000/api/items")
 
+## PROCESS IS CURRENTLY, PICK UP ITEM, PRESS H THEN PRESS MENU AND IT WORKS

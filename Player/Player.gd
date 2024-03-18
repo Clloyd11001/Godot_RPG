@@ -309,8 +309,8 @@ func _unhandled_input(event):
 
 			print("JSON data:", json_data)
 			emit_signal("inventory_data_ready", json_data)
-#			print("Nodes attached to pickup_item:")
-#			print_node_tree(pickup_item)
+			print("Nodes attached to pickup_item:")
+			print_node_tree(pickup_item)
 			if json_data != null:
 				pickup_item.pick_up_item(self)
 				$PickupZone.items_in_range.erase(json_data)
