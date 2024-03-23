@@ -28,7 +28,8 @@ export(PackedScene) var MAGIC: PackedScene = preload("res://Hitboxes and Hurtbox
 enum {
 	MOVE,
 	ROLL,
-	ATTACK
+	ATTACK,
+	COMBO
 }
 
 var state = MOVE
@@ -54,6 +55,8 @@ onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var questManager = get_node("QuestManager")
 onready var lvl1scene = "res://Level1.tscn" 
 onready var collisionShape = get_node("HurtBox/CollisionShape2D")
+onready var playerSprite = get_node("Sprite")
+onready var comboSprite = get_node("AnimatedSprite")
 
 
 var experience = 0
@@ -90,6 +93,8 @@ func _physics_process(delta):
 			roll_state()
 		ATTACK:
 			attack_state(delta)
+		COMBO:
+			combo_state(delta)
 	
 #	showQuestNotification("MQ001")
 
@@ -137,8 +142,17 @@ func attack_state(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	velocity = move_and_slide(velocity)
 	animationState.travel("Attack")
+	
+
+	
+		
+func combo_state(delta):
 
 
+	animationState.travel("Attack2Right")
+	
+	# check if over	
+	
 
 func move():
 	velocity = move_and_slide(velocity)
@@ -148,15 +162,41 @@ func roll_animation_finished():
 	state = MOVE
 
 func attack_animation_finished():
+	if Combos.compare_buffer_with_combo_list():
+
+		state = COMBO
+		# move from attack to combo
+		playerSprite.visible = false
+		comboSprite.visible = true
+		animationPlayer.play("Attack2Right")
+		animationTree.set("parameters/Attack/active", false)
+		animationTree.set("parameters/Combo/active", true)
+		yield(animationPlayer, "animation_finished")
+		playerSprite.visible = true
+		comboSprite.visible = false
+		# play combo animation, then go from combo to move again
+		animationState.travel("Attack2Right")
+		# Trigger transition in AnimationTree
+		animationTree.set("parameters/Combo/active", false)
+		animationTree.set("parameters/Move/active", true)
+	# set state
 	state = MOVE
 
-
 	
-#func _on_invincibility_started():
-#	collisionShape.set_deferred("disabled", false)
 #
-#func _on_invincibility_ended():
-#	collisionShape.disabled = false
+
+
+#	if not animationPlayer.is_playing():
+#		# Play the combo animation
+#		animationPlayer.play("Attack2Right")
+#		animationPlayer.queue("IdleRight")
+#		animationPlayer.queue("IdleDown")
+#		# Change the state to COMBO
+#		state = COMBO
+#		print("Combo animation playing")
+#		animationTree.set("parameters/Combo/active", true)
+#		animationTree.set("parameters/Move/active", false)
+#		  # Set the state back to MOVE after the combo animation finish
 
 
 # warning-ignore:shadowed_variable
@@ -213,7 +253,7 @@ func _on_HurtBox_area_entered(_area):
 			get_tree().current_scene.add_child(playerHurtSound)
 
 
-func _on_HurtBox_area_exited(area):
+func _on_HurtBox_area_exited(_area):
 	canLose = true
 
 func set_house(new_house):
@@ -247,9 +287,9 @@ func extract_node_data(node):
 
 	if node is Sprite:  # Check if the node is of type Sprite
 		var item_name = node.name  # Get the name of the node
-		print("item name of sprite", item_name)
+		#print("item name of sprite", item_name)
 		var item_description = "test"  # Placeholder for description
-		print("item description", item_description)
+		#print("item description", item_description)
 		# You can add more conditions or functions to extract more data
 
 		# Check if the item_name already exists in item_data
@@ -264,10 +304,10 @@ func extract_node_data(node):
 		var child_data = extract_node_data(child)
 		node_data["item_data"].merge(child_data["item_data"])
 
-	print("final data:", node_data)
+	#print("final data:", node_data)
 	return node_data
 func convert_to_json(node_data):
-	print("before ocnverted to json", node_data)
+	#print("before ocnverted to json", node_data)
 	return JSON.print(node_data)
 	
 func _unhandled_input(event):
@@ -303,14 +343,14 @@ func _unhandled_input(event):
 			var pickup_item = $PickupZone.items_in_range.values()[0]
 			# Extract node data
 			var pickup_item_data = extract_node_data(pickup_item)
-			print("extracted data", pickup_item_data)
+			#print("extracted data", pickup_item_data)
 			# Convert node data to JSON format
 			var json_data = convert_to_json(pickup_item_data)
 
-			print("JSON data:", json_data)
+			#print("JSON data:", json_data)
 			emit_signal("inventory_data_ready", json_data)
-			print("Nodes attached to pickup_item:")
-			print_node_tree(pickup_item)
+			#print("Nodes attached to pickup_item:")
+			#print_node_tree(pickup_item)
 			if json_data != null:
 				pickup_item.pick_up_item(self)
 				$PickupZone.items_in_range.erase(json_data)

@@ -1,28 +1,31 @@
 extends Node
 
-signal player_completed_attack_tutorial
+
 
 const JsonParser = preload("res://dialogues/Dialogue.gd")
 
 onready var playerExperience = $YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface
 onready var elderDialogue = $elder/Dialogue
-#onready var questNotification = $YSort/Player/QuestNotificationPanel
-onready var popUp = $PopupPanel
+onready var popUp = get_node("Control/TextureRect")
+onready var popUpText = get_node("Control/Label")
 onready var loading = get_node("/root/Loading")
-onready var popUpPanel = get_node("PopupPanel2")
 onready var timer = get_node("Timer")
-
 onready var dialogue_file = "res://dialogues/json/elder.json" 
+onready var player = get_node("YSort/Player")
+
 var file = File.new()
 
 
 
-var level1_scene_path = "res://Level1.tscn"  # Adjust the path accordingly
+var level1_scene_path = "res://Level1.tscn"  
 var json_string = JSON.print(dialogue_file)
-var currentLine = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
+
+
 	playerExperience.visible = false
 	#questNotification.visible = false
 	elderDialogue.connect("dialogue_finished", self, "_on_dialogue_finished")
@@ -30,72 +33,43 @@ func _ready():
 
 	#tryinh to get specific line in json
 	var load_dialogue_instance = JsonParser.new()
-	
-	#print(JsonParser.current_dialogue_id)
+
 	
 	var loaded_dialogue = load_dialogue_instance.load_dialogue(dialogue_file)
 
 	for currentLine in loaded_dialogue.size():
 		if loaded_dialogue:
-				# Check if there are at least 3 lines in the dialogue
+				# Check if there are at least 4 lines in the dialogue
 				if loaded_dialogue.size() >= 3:
-					
+					pass
 					# Print the third line (index 2 since indexing starts from 0)
-					print("Lines:", loaded_dialogue[currentLine])
-					# Work on this logic morer	
-					if currentLine == 3:
-						yield(self, "player_completed_attack_tutorial")
-						
-					# Now right here, i need to wait if its at specific current line for the input	
-							
+					#print("Lines:", loaded_dialogue[currentLine])
+
 				else:
 					print("The dialogue file does not have at least 3 lines.")
 		
 
 	
 func _on_dialogue_finished():
-	# Put a stick in this for now, trying to figure out popups
-	#popUp.show()
+	# Did not figure out popups lol, just did it with a textureRect
 	start_timer()
 
-	
-
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		currentLine += 1
-	if event.is_action_pressed("attack") and currentLine ==  3:
-		emit_signal("player_completed_attack_tutorial")
-
-func _on_player_completed_attack_tutorial():
-	currentLine += 1
 
 
 
 func start_timer():
-	timer.wait_time = 4  # Set the wait time of the timer to 5 seconds
-	timer.one_shot = true  # Set the timer to trigger only once
-	# Get the size of the viewport
-#	var viewport_size = get_viewport().size
-#
-#	# Calculate the position of the popup panel
-#	var popup_position = viewport_size / 2 - popUpPanel.rect_size / 2
-#	popUpPanel.set_position($YSort/Player.position) 
-#	popUpPanel.set_global_position($YSort/Player.position)
-	print(popUpPanel.rect_position )
-	print(popUpPanel.set_global_position($YSort/Player.position) )
-	print($YSort/Player.position)
-	
-	popUpPanel.popup_centered()  # Show the popup immediately
-	
-	if popUpPanel.visible == true:
-		print("we are really cooking?")
+	timer.wait_time = 4 
+	# sends only once
+	timer.one_shot = true  
 
-	timer.start()  # Start the timer
+	popUp.visible = true
+	popUpText.visible = true
+	timer.start()  
 	
 
 
 func _on_Timer_timeout():
-	print("OKAY DEN!!!")
+
 	var _lvl1SceneChange = get_tree().change_scene(level1_scene_path)
 	loading.load_scene(self, level1_scene_path)
 	QuestSystem.addQuest("MQ001")

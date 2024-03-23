@@ -17,7 +17,7 @@ func _on_inventory_data_ready(data):
 	# So we know we're getting the singal
 	#Received inventory data:{"name":"ItemDrop","type":"KinematicBody2D","children":[{"name":"Skull","type":"Sprite","children":[]},{"name":"Ruby","type":"Sprite","children":[]},{"name":"CollisionShape2D","type":"CollisionShape2D","children":[]},{"name":"AnimationPlayer","type":"AnimationPlayer","children":[]},{"name":"Brain","type":"Sprite","children":[]}]}
 
-	print("Received inventory data:", data)
+	#print("Received inventory data:", data)
 	json_data_to_be_sent = data
 	# Convert data to JSON
 	var query = JSON.print(data)
@@ -27,7 +27,7 @@ func _on_inventory_data_ready(data):
 
 	# Send HTTP request
 	print("Sending data via HTTP...")
-	print("data",data)
+	#print("data",data)
 	# just passed in data without query and it worked, weird
 	$HTTPRequest.request("http://localhost:3000/api/items", headers, true, HTTPClient.METHOD_PUT, data)
 

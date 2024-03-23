@@ -32,7 +32,7 @@ margin_right = 193.0
 margin_bottom = 48.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/mono_font = ExtResource( 1 )
-text = "Chatting..."
+text = "..."
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4

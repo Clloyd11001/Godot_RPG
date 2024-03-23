@@ -75,17 +75,20 @@ func set_camera_limits():
 
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-	if response_code == 200:
+ if response_code == 200:
 		print("HTTP request successful!")
 		var parsedBody = parse_json(body.get_string_from_utf8())
-		#print("Parsed JSON:", parsedBody)
+		print("Parsed JSON:", parsedBody)
 		
 		if parsedBody != null:
 			if parsedBody.has("item_data"):
 				var item_data = parsedBody["item_data"]
 				for item_name in item_data.keys():
-					PlayerInventory.add_item(item_name, 1)
-				#print("Received inventory data:", parsedBody)
+					var stack_size = 1  # Default stack size
+					if item_data[item_name].has("StackSize"):
+						stack_size = item_data[item_name]["StackSize"]
+					PlayerInventory.add_item(item_name, stack_size)
+				print("Received inventory data:", parsedBody)
 			elif parsedBody.has("items"):
 				var items = parsedBody["items"]
 				for item in items:
@@ -93,12 +96,10 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 					var stack_size = item["StackSize"]
 					var description = item["Description"]
 					PlayerInventory.add_item(item_name, stack_size)
-				#print("Received inventory data:", parsedBody)
+				print("Received inventory data:", parsedBody)
 			else:
 				print("Parsed JSON does not contain item_data or items!")
 		else:
 			print("Parsed JSON is null!")
 	else:
 		print("HTTP request failed:", response_code)
-		
-		##### FOR WHEN YOU COME BACK, WE SOMEHOW NEED TO RECIEVE DATA FROM BACKEND AND PUT INTOO GODOT ####

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://World/Textures/19.07a Gentle Forest 3.0 ($0 palettes)/tree wall/right_side_canopy.png" type="Texture" id=1]
 [ext_resource path="res://BottomLeftRoyalsFinishedVariation.gd" type="Script" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://TreeWall.gd" type="Script" id=6]
 [ext_resource path="res://npc.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/elder.png" type="Texture" id=8]
-[ext_resource path="res://QuestPopup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/QuestPopup.png" type="Texture" id=9]
+[ext_resource path="res://DarkRPG.tres" type="DynamicFont" id=10]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -28,16 +29,6 @@ script = ExtResource( 6 )
 [node name="YSort" type="YSort" parent="."]
 position = Vector2( 2, -2 )
 
-[node name="TreeEnclosing" type="Sprite" parent="YSort"]
-position = Vector2( -1.49995, 198.625 )
-scale = Vector2( 1.29818, 0.782715 )
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
-
-[node name="DirtCliff Tile Map" parent="YSort/TreeEnclosing" instance=ExtResource( 5 )]
-visible = false
-tile_data = PoolIntArray( -458749, 0, 0, -458748, 0, 1, -458747, 0, 1, -458746, 0, 1, -458745, 0, 2, -393213, 0, 65540, -393212, 0, 131073, -393211, 0, 131073, -393210, 0, 131073, -393209, 0, 9, -393208, 0, 2, -327679, 0, 0, -327678, 0, 0, -327677, 0, 196615, -327673, 0, 131072, -327672, 0, 9, -327671, 0, 2, -262143, 0, 65536, -262142, 0, 65538, -262136, 0, 65536, -262135, 0, 65538, -196607, 0, 65536, -196606, 0, 65538, -196600, 0, 65536, -196599, 0, 65538, -131071, 0, 65536, -131070, 0, 65538, -131064, 0, 65536, -131063, 0, 65538, -65535, 0, 65536, -65534, 0, 65538, -65528, 0, 65536, -65527, 0, 65538, 1, 0, 131072, 2, 0, 9, 3, 0, 2, 8, 0, 65540, 9, 0, 131074, 65538, 0, 131072, 65539, 0, 196613, 65540, 0, 196609, 65541, 0, 196609, 65542, 0, 196609, 65543, 0, 196609, 65544, 0, 196615 )
-
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 220, 146 )
 scale = Vector2( 0.5, 0.5 )
@@ -47,7 +38,9 @@ z_index = 1
 parameters/playback = SubResource( 2 )
 
 [node name="PopupPanel" parent="YSort/Player/QuestManager" index="4"]
-visible = false
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 position = Vector2( 52, -14 )
@@ -60,6 +53,16 @@ zoom = Vector2( 0.5, 0.5 )
 position = Vector2( 247.459, 150.988 )
 scale = Vector2( 1.48739, 0.921516 )
 texture = ExtResource( 3 )
+
+[node name="TreeEnclosing" type="Sprite" parent="YSort"]
+position = Vector2( -1.49995, 198.625 )
+scale = Vector2( 1.29818, 0.782715 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="DirtCliff Tile Map" parent="YSort/TreeEnclosing" instance=ExtResource( 5 )]
+visible = false
+tile_data = PoolIntArray( -458749, 0, 0, -458748, 0, 1, -458747, 0, 1, -458746, 0, 1, -458745, 0, 2, -393213, 0, 65540, -393212, 0, 131073, -393211, 0, 131073, -393210, 0, 131073, -393209, 0, 9, -393208, 0, 2, -327679, 0, 0, -327678, 0, 0, -327677, 0, 196615, -327673, 0, 131072, -327672, 0, 9, -327671, 0, 2, -262143, 0, 65536, -262142, 0, 65538, -262136, 0, 65536, -262135, 0, 65538, -196607, 0, 65536, -196606, 0, 65538, -196600, 0, 65536, -196599, 0, 65538, -131071, 0, 65536, -131070, 0, 65538, -131064, 0, 65536, -131063, 0, 65538, -65535, 0, 65536, -65534, 0, 65538, -65528, 0, 65536, -65527, 0, 65538, 1, 0, 131072, 2, 0, 9, 3, 0, 2, 8, 0, 65540, 9, 0, 131074, 65538, 0, 131072, 65539, 0, 196613, 65540, 0, 196609, 65541, 0, 196609, 65542, 0, 196609, 65543, 0, 196609, 65544, 0, 196615 )
 
 [node name="elder" parent="." instance=ExtResource( 7 )]
 position = Vector2( 229, 103 )
@@ -99,17 +102,35 @@ position = Vector2( 272, 136 )
 rotation = -1.5708
 shape = SubResource( 3 )
 
-[node name="PopupPanel2" parent="." instance=ExtResource( 9 )]
-anchor_left = 0.706
-anchor_top = 0.7
-anchor_right = 1.136
-anchor_bottom = 1.14
-margin_left = 107.5
-margin_top = 77.05
-margin_right = 495.5
-margin_bottom = 429.55
-
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Control" type="Control" parent="."]
+margin_left = 318.0
+margin_top = 96.0
+margin_right = 364.0
+margin_bottom = 141.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
+margin_left = -1040.0
+margin_top = -50.0
+margin_right = 421.0
+margin_bottom = 405.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="Label" type="Label" parent="Control"]
+visible = false
+anchor_left = -1.118
+anchor_top = -0.763
+anchor_right = 0.706
+margin_left = 0.0299988
+margin_top = -0.00600052
+margin_right = -0.0100021
+margin_bottom = 2.0
+custom_fonts/font = ExtResource( 10 )
+text = "Player accepted the quest,\"Show me the world\""
+autowrap = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

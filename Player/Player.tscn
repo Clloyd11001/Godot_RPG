@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://Player/Label.gd" type="Script" id=10]
 [ext_resource path="res://Player/ExperienceBar.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Player/PickupZone.gd" type="Script" id=12]
-[ext_resource path="res://QuestPopup.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Test.tscn" type="PackedScene" id=13]
 [ext_resource path="res://QuestSystem.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Player/swing_animation.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFontData" id=55]
 font_path = "res://Fonts/Montserrat-Bold.ttf"
@@ -32,6 +33,23 @@ height = 4.0
 
 [sub_resource type="Animation" id=58]
 resource_name = "Attack2Left"
+
+[sub_resource type="Animation" id=59]
+resource_name = "Attack2Right"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2, 3, 4, 5, 6, 7 ]
+}
 
 [sub_resource type="Animation" id=25]
 resource_name = "AttackDown"
@@ -689,6 +707,9 @@ min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=69]
+animation = "Attack2Right"
+
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "IdleLeft"
 
@@ -776,18 +797,24 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=47]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+
 [sub_resource type="AnimationNodeStateMachine" id=23]
 states/Attack/node = SubResource( 33 )
 states/Attack/position = Vector2( 91, 214 )
+states/Attack2Right/node = SubResource( 69 )
+states/Attack2Right/position = Vector2( -195.538, 91 )
 states/Idle/node = SubResource( 15 )
 states/Idle/position = Vector2( 91, 86 )
 states/Roll/node = SubResource( 45 )
 states/Roll/position = Vector2( 97, -32 )
 states/Run/node = SubResource( 20 )
 states/Run/position = Vector2( 305, 91 )
-transitions = [ "Idle", "Run", SubResource( 21 ), "Run", "Idle", SubResource( 22 ), "Idle", "Attack", SubResource( 34 ), "Attack", "Idle", SubResource( 35 ), "Idle", "Roll", SubResource( 46 ), "Roll", "Idle", SubResource( 47 ) ]
+transitions = [ "Idle", "Run", SubResource( 21 ), "Run", "Idle", SubResource( 22 ), "Idle", "Attack", SubResource( 34 ), "Attack", "Idle", SubResource( 35 ), "Idle", "Roll", SubResource( 46 ), "Roll", "Idle", SubResource( 47 ), "Attack", "Attack2Right", SubResource( 70 ), "Attack2Right", "Idle", SubResource( 71 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -13.5377, -55.255 )
+graph_offset = Vector2( -393.821, -55.255 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
@@ -849,6 +876,46 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=57]
 extents = Vector2( 23, 21.5 )
 
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 15 )
+region = Rect2( 351, 305, 34, 33 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 15 )
+region = Rect2( 385, 305, 34, 33 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 15 )
+region = Rect2( 419, 305, 34, 33 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 15 )
+region = Rect2( 453, 305, 34, 33 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 15 )
+region = Rect2( 487, 305, 34, 33 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 15 )
+region = Rect2( 521, 305, 34, 33 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 15 )
+region = Rect2( 555, 305, 34, 33 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 15 )
+region = Rect2( 589, 305, 34, 33 )
+
+[sub_resource type="SpriteFrames" id=68]
+animations = [ {
+"frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
+"loop": false,
+"name": "combo",
+"speed": 5.0
+} ]
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 50, 56 )
 collision_layer = 2
@@ -903,6 +970,7 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack2Left = SubResource( 58 )
+anims/Attack2Right = SubResource( 59 )
 anims/AttackDown = SubResource( 25 )
 anims/AttackLeft = SubResource( 26 )
 anims/AttackRight = SubResource( 27 )
@@ -970,6 +1038,13 @@ shape = SubResource( 57 )
 [node name="QuestManager" parent="." instance=ExtResource( 14 )]
 
 [node name="PopupPanel" parent="QuestManager" instance=ExtResource( 13 )]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 68 )
+animation = "combo"
+frame = 7
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_entered"]

@@ -1,9 +1,13 @@
 [
 	{"name": "Elder", "text": "Are you sure you are ready for this?"},
 	{"name": "Elder", "text": "If so, show me what you've learned"},
-	{"name": "Elder", "text": "Press spacebar to attack"},
-	{"name": "Elder", "text": "Hooray, you figure out how to swing a sword"}
-
-
-	
+	{"name": "Elder", "text": "Now, press the arrow keys to move around"},
+	{"name": "Elder", "text": "Hooray, you figured out how to move around!!"},
+	{"name": "Elder", "text": "Now, press spacebar to attack"},
+	{"name": "Elder", "text": "Hooray, you figured out how to swing a sword!!"},
+	{"name": "Elder", "text": "Now, press K to dodge attacks"},
+	{"name": "Elder", "text": "Hooray, you figured out how to dodge!!"},
+	{"name": "Elder", "text": "Honestly, that's all I've really got"},
+	{"name": "Elder", "text": "Now please, set forth on your adventure"},
+	{"name": "Elder", "text": "And save those foolish humans"}		
 ]

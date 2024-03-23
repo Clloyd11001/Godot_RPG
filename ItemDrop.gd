@@ -3,7 +3,7 @@ extends KinematicBody2D
 const ACCELERATION = 460
 const MAX_SPEED = 225
 var velocity = Vector2.ZERO
-var item_name
+
 
 var player = null
 var being_picked_up = false
