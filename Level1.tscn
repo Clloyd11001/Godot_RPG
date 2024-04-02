@@ -930,7 +930,7 @@ centered_textures = true
 format = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 229, 413 )
+position = Vector2( 62, 70 )
 current = true
 limit_left = 0
 limit_top = 0
@@ -943,7 +943,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 229, 413 )
+position = Vector2( 62, 70 )
 
 [node name="AnimationTree" parent="YSort/Player" index="5"]
 parameters/playback = SubResource( 48 )

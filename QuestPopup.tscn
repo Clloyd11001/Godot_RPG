@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UI/UI_Flat_Cross_Large.png" type="Texture" id=1]
+[ext_resource path="res://UI/QuestPopup.png" type="Texture" id=2]
+[ext_resource path="res://QuestPopup.gd" type="Script" id=3]
+[ext_resource path="res://UI/UI_Flat_Checkmark_Large.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "GrowQuestPopUp"
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[node name="QuestPopup" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 127.0
+margin_top = 57.0
+margin_right = -77.0
+margin_bottom = -43.0
+rect_scale = Vector2( 0.35, 0.25 )
+script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = -1.06
+anchor_top = -0.453
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -2867.24
+margin_top = -79.35
+margin_right = -1478.0
+margin_bottom = 478.0
+rect_scale = Vector2( 5, 2.5 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="RichTextLabel" parent="."]
+anchor_left = -1.043
+anchor_top = -0.32
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -56.022
+margin_top = -42.0
+margin_right = 94.0
+margin_bottom = 44.0
+bbcode_enabled = true
+bbcode_text = "[center][PLAYER HAS MET ALL OF THE REQUIREMENTS TO COMPLETE THE QUEST:
+
+[center]SHOW ME [b]ZA WARUDO]"
+text = "[PLAYER HAS MET ALL OF THE REQUIREMENTS TO COMPLETE THE QUEST:
+
+SHOW ME ZA WARUDO]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/GrowQuestPopUp = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = -1.696
+anchor_top = 0.9
+anchor_right = 1.13
+anchor_bottom = 1.78
+margin_left = 0.0160065
+margin_right = 34.02
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 164.0
+margin_bottom = 44.0
+
+[node name="Accept" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+icon = ExtResource( 4 )
+icon_align = 1
+
+[node name="Close" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_left = 84.0
+margin_right = 164.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+icon = ExtResource( 1 )
+icon_align = 1

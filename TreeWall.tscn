@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://World/Textures/19.07a Gentle Forest 3.0 ($0 palettes)/tree wall/right_side_canopy.png" type="Texture" id=1]
 [ext_resource path="res://BottomLeftRoyalsFinishedVariation.gd" type="Script" id=2]
@@ -8,8 +8,7 @@
 [ext_resource path="res://TreeWall.gd" type="Script" id=6]
 [ext_resource path="res://npc.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/elder.png" type="Texture" id=8]
-[ext_resource path="res://UI/QuestPopup.png" type="Texture" id=9]
-[ext_resource path="res://DarkRPG.tres" type="DynamicFont" id=10]
+[ext_resource path="res://QuestPopup.tscn" type="PackedScene" id=9]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -30,7 +29,7 @@ script = ExtResource( 6 )
 position = Vector2( 2, -2 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 220, 146 )
+position = Vector2( 226, 132 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 1
 
@@ -47,7 +46,7 @@ position = Vector2( 52, -14 )
 scale = Vector2( 2, 2 )
 offset = Vector2( -15, 0 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.35, 0.35 )
 
 [node name="Grass" type="Sprite" parent="YSort"]
 position = Vector2( 247.459, 150.988 )
@@ -104,37 +103,63 @@ shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Control" type="Control" parent="."]
-margin_left = 318.0
-margin_top = 96.0
-margin_right = 364.0
-margin_bottom = 141.0
+[node name="QuestPopup" parent="." instance=ExtResource( 9 )]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.449
+anchor_right = 1.403
+anchor_bottom = 1.412
+margin_left = 66.0
+margin_top = 17.65
+margin_right = 69.25
+margin_bottom = 21.2
+rect_scale = Vector2( 0.4, 0.35 )
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
-visible = false
-margin_left = -1040.0
-margin_top = -50.0
-margin_right = 421.0
-margin_bottom = 405.0
-texture = ExtResource( 9 )
-expand = true
+[node name="TextureRect" parent="QuestPopup" index="0"]
+margin_left = -2562.97
+margin_top = 23.044
+margin_right = -1173.73
+margin_bottom = 580.394
 
-[node name="Label" type="Label" parent="Control"]
-visible = false
-anchor_left = -1.118
-anchor_top = -0.763
-anchor_right = 0.706
-margin_left = 0.0299988
-margin_top = -0.00600052
-margin_right = -0.0100021
-margin_bottom = 2.0
-custom_fonts/font = ExtResource( 10 )
-text = "Player accepted the quest,\"Show me the world\""
-autowrap = true
+[node name="Label" parent="QuestPopup" index="1"]
+margin_left = 248.724
+margin_top = 60.618
+margin_right = 109.391
+margin_bottom = -6.05598
+
+[node name="MarginContainer" parent="QuestPopup" index="3"]
+anchor_left = 0.074
+anchor_top = 0.622
+anchor_right = 0.93
+anchor_bottom = 1.0
+margin_left = 0.0539989
+margin_top = -0.0560074
+margin_right = 0.0299835
+margin_bottom = 7.0
+
+[node name="HBoxContainer" parent="QuestPopup/MarginContainer" index="0"]
+margin_right = 196.0
+margin_bottom = 63.0
+
+[node name="Accept" parent="QuestPopup/MarginContainer/HBoxContainer" index="0"]
+margin_right = 96.0
+margin_bottom = 63.0
+
+[node name="Close" parent="QuestPopup/MarginContainer/HBoxContainer" index="1"]
+margin_left = 100.0
+margin_right = 196.0
+margin_bottom = 63.0
+
+[node name="PopUpCamera2D" type="Camera2D" parent="QuestPopup"]
+position = Vector2( 112.5, 74.2857 )
+zoom = Vector2( 0.35, 0.35 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="QuestPopup/MarginContainer/HBoxContainer/Accept" to="." method="_on_Accept_pressed"]
+[connection signal="pressed" from="QuestPopup/MarginContainer/HBoxContainer/Close" to="." method="_on_Close_pressed"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
 [editable path="elder"]
+[editable path="QuestPopup"]

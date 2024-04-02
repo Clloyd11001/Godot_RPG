@@ -26,23 +26,15 @@ var location = OUTSIDE
 
 # update_text used to have _character.level as a param
 func _ready():
-	# Putting this line of code makes character spawn in specific location
-	#$YSort/Player.global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2)
 	_label.update_text( _character.experience, _character.experience_required)
 	
 # Getting enemy death to trigger character exp gain
 	enemy.connect("enemy_defeated", self, "_on_EnemyDefeated")
 	# should initialize the experience bar
 	_bar.initialize(_character.experience, _character.experience_required)
-#	if questMenu != null:
-#		print("CAN I TEST PLEASE")
-#		print(questMenu)
-#		questMenu.visible = false
+
 	if get_tree().current_scene == gameOverScene:
 		hearts.visible = false
-	
-
-	
 
 # update_text used to have _character.level as a param
 func _on_EnemyDefeated():

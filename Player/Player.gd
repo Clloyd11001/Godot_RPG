@@ -9,9 +9,10 @@ const inventory_layer = preload("res://Inventory.tscn")
 const itemDrop = preload("res://ItemDrop.gd")
 
 export var ACCELERATION = 500
-export var MAX_SPEED = 80
+export var MAX_SPEED = 40
 export var ROLL_SPEED = 100
 export var FRICTION  = 350
+#export var COMBOS = false
 
 var quests_scene_path = "res://QuestNotification.tscn"  
 
@@ -83,6 +84,10 @@ func _ready():
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 	
+	print("THIS IS MY PARENT", get_tree().current_scene.name)
+	if get_tree().current_scene.name == 'Level1':
+		Global.COMBOS = true
+		
 	
 
 func _physics_process(delta):
@@ -145,11 +150,11 @@ func attack_state(delta):
 	
 
 	
-		
+# did nothing, get rid
 func combo_state(delta):
+	pass
 
-
-	animationState.travel("Attack2Right")
+#	animationState.travel("Attack2Right")
 	
 	# check if over	
 	
@@ -162,23 +167,24 @@ func roll_animation_finished():
 	state = MOVE
 
 func attack_animation_finished():
-	if Combos.compare_buffer_with_combo_list():
+	if Global.COMBOS:
+		if Combos.compare_buffer_with_combo_list():
 
-		state = COMBO
-		# move from attack to combo
-		playerSprite.visible = false
-		comboSprite.visible = true
-		animationPlayer.play("Attack2Right")
-		animationTree.set("parameters/Attack/active", false)
-		animationTree.set("parameters/Combo/active", true)
-		yield(animationPlayer, "animation_finished")
-		playerSprite.visible = true
-		comboSprite.visible = false
-		# play combo animation, then go from combo to move again
-		animationState.travel("Attack2Right")
-		# Trigger transition in AnimationTree
-		animationTree.set("parameters/Combo/active", false)
-		animationTree.set("parameters/Move/active", true)
+			state = COMBO
+			# move from attack to combo
+			playerSprite.visible = false
+			comboSprite.visible = true
+			animationPlayer.play("Attack2Right")
+			animationTree.set("parameters/Attack/active", false)
+			animationTree.set("parameters/Combo/active", true)
+			yield(animationPlayer, "animation_finished")
+			playerSprite.visible = true
+			comboSprite.visible = false
+			# play combo animation, then go from combo to move again
+			animationState.travel("Attack2Right")
+			# Trigger transition in AnimationTree
+			animationTree.set("parameters/Combo/active", false)
+			animationTree.set("parameters/Move/active", true)
 	# set state
 	state = MOVE
 
@@ -234,11 +240,6 @@ func throw_magic(magic_direction: Vector2):
 		
 		var magic_rotation = magic_direction.angle()
 		magic.rotation = magic_rotation		
-		
-	#projectile.connect("animation_finished", self, "_on_animation_finished")
-	#projectile.play("default")	
-		#projectileTimer.start()
-
 
 
 func _on_HurtBox_area_entered(_area):
@@ -246,11 +247,14 @@ func _on_HurtBox_area_entered(_area):
 	if PlayerStats.health > 0:
 		if canLose == false:
 			PlayerStats.health -= 0.5
-			print(PlayerStats.health)
+#			print(PlayerStats.player_health)
 			hurtBox.start_invincibility(1.5)
 			hurtBox.create_hit_effect()
 			var playerHurtSound = PlayerHurtSound.instance()
 			get_tree().current_scene.add_child(playerHurtSound)
+	if PlayerStats.health <= 0:
+		print(PlayerStats.health)	
+		var _gameOverScene = get_tree().change_scene("res://GameOver.tscn")
 
 
 func _on_HurtBox_area_exited(_area):

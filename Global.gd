@@ -2,7 +2,7 @@ extends Node
 
 var player_pos : Vector2
 
-
+var COMBOS = false
 # Stack to keep track of scene history
 var scene_stack = []
 

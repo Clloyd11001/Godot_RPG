@@ -78,17 +78,7 @@ func update_wander():
 func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()
-
 	
-
-func _on_Stats_no_health():
-	queue_free()
-	var enemyDeathEffect = EnemyDeathEffect.instance()
-	get_parent().add_child(enemyDeathEffect)
-	enemyDeathEffect.global_position = global_position
-	# testing to see if gaining experience should go here
-	emit_signal("enemy_defeated")
-	#print("Player killed me, now I give him experience")
 	
 func _on_HurtBox_invincibility_started():
 	animationPlayer.play("Start")
@@ -97,7 +87,17 @@ func _on_HurtBox_invincibility_ended():
 
 func _on_HurtBox_area_entered(area):
 	#print("you're hitting me")
-	stats.health -= area.damage
+	stats.health -= 1
+	print("enemy health?", stats.health)
 	knockback = area.knockback_vector * 150
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.4)
+	if stats.health == 0:
+
+		queue_free()
+		var enemyDeathEffect = EnemyDeathEffect.instance()
+		get_parent().add_child(enemyDeathEffect)
+		enemyDeathEffect.global_position = global_position
+		# testing to see if gaining experience should go here
+		emit_signal("enemy_defeated")
+		#print("Player killed me, now I give him experience"

@@ -3,15 +3,18 @@ extends Node
 
 
 const JsonParser = preload("res://dialogues/Dialogue.gd")
+var noInput = false
 
 onready var playerExperience = $YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface
 onready var elderDialogue = $elder/Dialogue
-onready var popUp = get_node("Control/TextureRect")
-onready var popUpText = get_node("Control/Label")
+onready var popUp = get_node("QuestPopup")
+#onready var popUpText = get_node("Control/Label")
 onready var loading = get_node("/root/Loading")
 onready var timer = get_node("Timer")
 onready var dialogue_file = "res://dialogues/json/elder.json" 
 onready var player = get_node("YSort/Player")
+onready var playerCamera = get_node("YSort/Player/Camera2D")
+onready var popUpCamera = get_node("QuestPopup/PopUpCamera2D")
 
 var file = File.new()
 
@@ -61,12 +64,24 @@ func start_timer():
 	timer.wait_time = 4 
 	# sends only once
 	timer.one_shot = true  
+#	popUp.visible = true
+	# do the popop, then dont move the camera and 
+	popUp.popup()
+	print(popUp.is_visible())	
+	if popUp.visible == true:
 
-	popUp.visible = true
-	popUpText.visible = true
-	timer.start()  
-	
+		player.visible = false
+		noInput = true
 
+		#wait for button press
+		if noInput:
+			popUpCamera.make_current()
+			print("popup camera:", popUpCamera.current)
+#			popUpCamera.current = true
+			set_process_input(false)
+		else:
+			popUpCamera.clear_current()
+			print("ohhhh no input is false?")
 
 func _on_Timer_timeout():
 
@@ -77,4 +92,28 @@ func _on_Timer_timeout():
 	
 	var trigger = load("res://LocationTrigger.tscn")
 	var ti = trigger.instance()
+	ti.QuestID = "MQ001"
+		
+
+# player accepts quest
+func _on_Accept_pressed():
+	popUp.visible == false
+	var _lvl1SceneChange = get_tree().change_scene(level1_scene_path)
+	loading.load_scene(self, level1_scene_path)
+	QuestSystem.addQuest("MQ001")
+	QuestSystem.advanceQuest("MQ001")
+	
+	var trigger = load("res://LocationTrigger.tscn")
+	var ti = trigger.instance()
 	ti.QuestID = "MQ001"	
+
+# player doesnt want to accept quest
+func _on_Close_pressed():
+	print("we're pressing it right?")
+	noInput = false
+	popUpCamera.clear_current()
+	playerCamera.make_current()
+	popUp.visible = false
+	player.visible = true
+	
+

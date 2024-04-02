@@ -1040,9 +1040,10 @@ shape = SubResource( 57 )
 [node name="PopupPanel" parent="QuestManager" instance=ExtResource( 13 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 8, -7 )
 frames = SubResource( 68 )
 animation = "combo"
-frame = 7
 
 [node name="Timer" type="Timer" parent="."]
 

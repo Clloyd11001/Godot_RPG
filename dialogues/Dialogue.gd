@@ -10,7 +10,7 @@ var dialogue_active = false
 signal dialogue_started
 signal dialogue_finished
 
-onready var tutorial_started = false
+onready var tutorial_started = true
 
 func _ready():
 	$NinePatchRect.visible = false
@@ -53,49 +53,43 @@ func load_dialogue(my_file):
 func _input(event):
 	if not dialogue_active:
 		return
-	if event.is_action_pressed("ui_accept"):
-		tutorial_started = true
-		yield(get_tree().create_timer(0.1), "timeout")  # Introduce a small delay
-		tutorial_started = false
-		next_script()
 
+	
 	if current_dialogue_id == 2 and dialogue_file == "res://dialogues/json/elder.json":
-
-		tutorial_started = true
-		if Input.is_action_just_released("ui_right") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_up"):
-			tutorial_started = false
-
-
-
-			next_script()
-			
-	if current_dialogue_id == 4 and dialogue_file == "res://dialogues/json/elder.json":
-		tutorial_started = true
-
-		if Input.is_action_just_released("attack") or Input.is_action_just_released("attack") or Input.is_action_just_released("attack") or Input.is_action_just_released("attack"):
-
-			tutorial_started = false
-			next_script()
-		
-	if current_dialogue_id == 6 and dialogue_file == "res://dialogues/json/elder.json":
+		# Check for specific input
+		if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up"):
 			tutorial_started = true
+			next_script()
+		return
 
-			if Input.is_action_pressed("roll") or Input.is_action_just_released("roll") or Input.is_action_just_pressed("roll"):
+	if current_dialogue_id == 4 and dialogue_file == "res://dialogues/json/elder.json":
+		# Check for specific input
+		if Input.is_action_just_pressed("attack"):
+			tutorial_started = true
+			next_script()
+		return
 
-				tutorial_started = false
-				next_script()
+	if current_dialogue_id == 6 and dialogue_file == "res://dialogues/json/elder.json":
+		# Check for specific input
+		if Input.is_action_just_pressed("roll"):
+			tutorial_started = true
+			next_script()
+		return
+
+	# Default behavior for other dialogue lines
+	if event.is_action_pressed("ui_accept"):
+		tutorial_started = false
+		yield(get_tree().create_timer(0.1), "timeout")  # Introduce a small delay
+		tutorial_started = true
+		next_script()
 				
 func next_script():
-
-	
-	if tutorial_started == false:
-
+	if tutorial_started == true:
 		current_dialogue_id += 1
 		print(current_dialogue_id)
-	
-	
-			
-	
+	else:
+		return
+
 	if current_dialogue_id >= len(dialogue):
 		$Timer.start()
 		dialogue_active = false
@@ -110,6 +104,5 @@ func _on_Timer_timeout():
 	emit_signal("dialogue_finished")
 	
 	QuestSystem.addQuest("MQ001")
-	#
 	QuestSystem.advanceQuest("MQ001")
 	
