@@ -99,6 +99,7 @@ func _on_Timer_timeout():
 func _on_Accept_pressed():
 	popUp.visible == false
 	var _lvl1SceneChange = get_tree().change_scene(level1_scene_path)
+	Global.update_scene(level1_scene_path)
 	loading.load_scene(self, level1_scene_path)
 	QuestSystem.addQuest("MQ001")
 	QuestSystem.advanceQuest("MQ001")

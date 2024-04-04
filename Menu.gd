@@ -15,27 +15,18 @@ onready var background9 = get_node("TextureRect9")
 onready var background10 = get_node("TextureRect10")
 onready var background11 = get_node("TextureRect11")
 onready var background12 = get_node("TextureRect12")
+onready var animation = get_node("AnimationPlayer")
 #questBackground.set_size(get_viewport_rect().size, true) 
 #questLabel.set_size(get_viewport_rect().size, true) 
 func _ready():
-#	background.set_size(get_viewport_rect().size, true)
-#	background2.set_size(get_viewport_rect().size, true)
-#	background3.set_size(get_viewport_rect().size, true)
-#	background4.set_size(get_viewport_rect().size, true)
-#	background5.set_size(get_viewport_rect().size, true)
-#	background6.set_size(get_viewport_rect().size, true)
-#	background7.set_size(get_viewport_rect().size, true)
-#	background8.set_size(get_viewport_rect().size, true)
-#	background9.set_size(get_viewport_rect().size, true)
-#	background10.set_size(get_viewport_rect().size, true)
-#	background11.set_size(get_viewport_rect().size, true)
-#	background12.set_size(get_viewport_rect().size, true)
-	pass
+	animation.play("Idle_Screen")
+	
 
 func _on_Play_pressed():
 	#print("pressed play")
 	#var _play = get_tree().change_scene("res://TreeWall.tscn")
 	loading.load_scene(self, "res://TreeWall.tscn")
+	Global.update_scene('TreeWall')
 	
 func _on_Options_pressed():
 	#print("pressed option")

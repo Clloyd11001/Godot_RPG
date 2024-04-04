@@ -84,11 +84,11 @@ func _ready():
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 	
-	print("THIS IS MY PARENT", get_tree().current_scene.name)
-	if get_tree().current_scene.name == 'Level1':
-		Global.COMBOS = true
-		
-	
+
+#	if get_tree().current_scene.name == 'Level1':
+#		Global.COMBOS = true
+#
+#
 
 func _physics_process(delta):
 	match state:

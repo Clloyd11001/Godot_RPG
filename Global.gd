@@ -5,9 +5,13 @@ var player_pos : Vector2
 var COMBOS = false
 # Stack to keep track of scene history
 var scene_stack = []
+var currentScene
 
 const firstScene = "res://Level1.tscn"
 
+func update_scene(scene_to_be_changed_to):
+	currentScene = scene_to_be_changed_to
+	print(currentScene)
 # Load a scene and push it onto the stack
 func switch_to_scene(scene_path):
 	var scene = ResourceLoader.load(scene_path)
