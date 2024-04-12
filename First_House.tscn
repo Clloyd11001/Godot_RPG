@@ -101,6 +101,7 @@ scale = Vector2( 0.955579, 1 )
 texture = ExtResource( 5 )
 
 [node name="George" parent="." instance=ExtResource( 8 )]
+scale = Vector2( 0.5, 0.5 )
 
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
 [connection signal="body_exited" from="Exit" to="." method="_on_Exit_body_exited"]

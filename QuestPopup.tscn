@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/UI_Flat_Cross_Large.png" type="Texture" id=1]
 [ext_resource path="res://UI/QuestPopup.png" type="Texture" id=2]
 [ext_resource path="res://QuestPopup.gd" type="Script" id=3]
 [ext_resource path="res://UI/UI_Flat_Checkmark_Large.png" type="Texture" id=4]
+[ext_resource path="res://DarkRPG.tres" type="DynamicFont" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "GrowQuestPopUp"
@@ -43,10 +44,11 @@ margin_left = -56.022
 margin_top = -42.0
 margin_right = 94.0
 margin_bottom = 44.0
+custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
 bbcode_text = "[center][PLAYER HAS MET ALL OF THE REQUIREMENTS TO COMPLETE THE QUEST:
 
-[center]SHOW ME [b]ZA WARUDO]"
+[center]SHOW ME ZA WARUDO]"
 text = "[PLAYER HAS MET ALL OF THE REQUIREMENTS TO COMPLETE THE QUEST:
 
 SHOW ME ZA WARUDO]"

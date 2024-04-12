@@ -931,7 +931,6 @@ format = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 62, 70 )
-current = true
 limit_left = 0
 limit_top = 0
 limit_right = 1695
@@ -969,7 +968,7 @@ position = Vector2( 182, 8 )
 [node name="HTTPRequest" type="HTTPRequest" parent="YSort/Player/UserInterface"]
 
 [node name="npc" parent="YSort" instance=ExtResource( 55 )]
-position = Vector2( 823, 311 )
+position = Vector2( 280, -27 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Welcome_Sign" parent="YSort" instance=ExtResource( 42 )]
@@ -1775,7 +1774,7 @@ position = Vector2( 370, 387 )
 position = Vector2( 394, 411 )
 
 [node name="Bat3" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 133, 54 )
+position = Vector2( 327, 400 )
 
 [node name="Trees" type="YSort" parent="YSort"]
 
@@ -2096,6 +2095,7 @@ position = Vector2( 781, 273 )
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
+[editable path="YSort/Player/Popup"]
 [editable path="YSort/npc"]
 [editable path="YSort/npc/Dialogue"]
 [editable path="YSort/Next_Level_Indicator"]

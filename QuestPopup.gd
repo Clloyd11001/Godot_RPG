@@ -6,19 +6,16 @@ var viewportWidth = get_viewport()
 
 onready var questBackground = $TextureRect
 onready var questLabel = $Label
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var questNotificationLabel = get_node("Label")
+onready var font = questNotificationLabel.get_font("font") as DynamicFont
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	if questLabel and questBackground:
+		# changes the treewall font, but not the quest journal 
+#		questNotificationLabel.get_font('font').size = 5
 		pass
-#		questBackground.visible = true
-#		print(get_viewport_rect().size)
-#		questBackground.set_size(get_viewport_rect().size, true) 
-#		questLabel.set_size(get_viewport_rect().size, true) 
 	
 
 

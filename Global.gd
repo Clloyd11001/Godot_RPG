@@ -2,12 +2,24 @@ extends Node
 
 var player_pos : Vector2
 
-var COMBOS = false
+var COMBOS = true
+var QUESTS = true
 # Stack to keep track of scene history
 var scene_stack = []
 var currentScene
 
 const firstScene = "res://Level1.tscn"
+
+func _ready():
+
+		
+	if Global.currentScene == 'TreeWall':
+		Global.COMBOS = false
+		Global.QUESTS = false
+		
+	if Global.currentScene == "Level1":
+		Global.COMBOS = true
+		Global.QUESTS = true
 
 func update_scene(scene_to_be_changed_to):
 	currentScene = scene_to_be_changed_to

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Test.tscn" type="PackedScene" id=13]
 [ext_resource path="res://QuestSystem.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Player/swing_animation.png" type="Texture" id=15]
+[ext_resource path="res://QuestNotification.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFontData" id=55]
 font_path = "res://Fonts/Montserrat-Bold.ttf"
@@ -1047,9 +1048,40 @@ animation = "combo"
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="Popup" parent="." instance=ExtResource( 16 )]
+margin_left = -47.0
+margin_top = -57.0
+margin_right = 198.0
+margin_bottom = 91.0
+
+[node name="QuestNotificationPanel" parent="Popup" index="0"]
+anchor_left = 0.114
+anchor_right = 1.0
+anchor_bottom = 0.796
+margin_left = -51.93
+margin_top = -115.6
+margin_right = 116.0
+margin_bottom = 53.192
+
+[node name="QuestNotification" parent="Popup/QuestNotificationPanel" index="0"]
+anchor_left = 0.033
+anchor_top = 0.084
+anchor_right = 0.125
+anchor_bottom = 0.146
+margin_left = -3.505
+margin_top = -3.04255
+margin_right = 3.075
+margin_bottom = 3.02345
+text = ""
+
+[node name="Camera2D" type="Camera2D" parent="Popup"]
+position = Vector2( 129, 66 )
+zoom = Vector2( 0.85, 0.85 )
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_entered"]
 [connection signal="body_exited" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_exited"]
 
 [editable path="HitBoxPivot/SwordHitBox"]
 [editable path="HurtBox"]
+[editable path="Popup"]

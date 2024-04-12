@@ -752,7 +752,7 @@ stretch_mode = 1
 [node name="TextureRect15" type="TextureRect" parent="."]
 margin_left = -61.0
 margin_top = -1.191
-margin_right = 924.039
+margin_right = 924.052
 margin_bottom = 813.809
 rect_scale = Vector2( 0.098, 0.11 )
 texture = ExtResource( 15 )
@@ -761,7 +761,7 @@ stretch_mode = 1
 [node name="TextureRect16" type="TextureRect" parent="."]
 margin_left = -61.0
 margin_top = -1.191
-margin_right = 924.02
+margin_right = 924.033
 margin_bottom = 813.809
 rect_scale = Vector2( 0.098, 0.11 )
 texture = ExtResource( 8 )
@@ -770,7 +770,7 @@ stretch_mode = 1
 [node name="TextureRect17" type="TextureRect" parent="."]
 margin_left = -61.0
 margin_top = -1.191
-margin_right = 924.02
+margin_right = 924.033
 margin_bottom = 813.809
 rect_scale = Vector2( 0.098, 0.11 )
 texture = ExtResource( 16 )
@@ -779,7 +779,7 @@ stretch_mode = 1
 [node name="TextureRect18" type="TextureRect" parent="."]
 margin_left = -61.0
 margin_top = -1.191
-margin_right = 924.014
+margin_right = 924.027
 margin_bottom = 813.809
 rect_scale = Vector2( 0.098, 0.11 )
 texture = ExtResource( 13 )
@@ -788,7 +788,7 @@ stretch_mode = 1
 [node name="TextureRect19" type="TextureRect" parent="."]
 margin_left = -61.0
 margin_top = -1.191
-margin_right = 924.016
+margin_right = 924.029
 margin_bottom = 813.809
 rect_scale = Vector2( 0.098, 0.11 )
 texture = ExtResource( 12 )
@@ -797,7 +797,7 @@ stretch_mode = 1
 [node name="TextureRect20" type="TextureRect" parent="."]
 margin_left = -61.0
 margin_top = -1.191
-margin_right = 924.04
+margin_right = 924.051
 margin_bottom = 813.809
 rect_scale = Vector2( 0.098, 0.11 )
 texture = ExtResource( 10 )
@@ -806,7 +806,7 @@ stretch_mode = 1
 [node name="TextureRect21" type="TextureRect" parent="."]
 margin_left = -61.0
 margin_top = -1.191
-margin_right = 924.036
+margin_right = 924.047
 margin_bottom = 813.809
 rect_scale = Vector2( 0.098, 0.11 )
 texture = ExtResource( 14 )
@@ -815,7 +815,7 @@ stretch_mode = 1
 [node name="TextureRect22" type="TextureRect" parent="."]
 margin_left = -61.0
 margin_top = -1.191
-margin_right = 924.009
+margin_right = 924.023
 margin_bottom = 813.809
 rect_scale = Vector2( 0.098, 0.11 )
 texture = ExtResource( 11 )
@@ -824,7 +824,7 @@ stretch_mode = 1
 [node name="TextureRect23" type="TextureRect" parent="."]
 margin_left = -61.0
 margin_top = -1.191
-margin_right = 923.993
+margin_right = 924.007
 margin_bottom = 813.809
 rect_scale = Vector2( 0.098, 0.11 )
 texture = ExtResource( 7 )
@@ -833,7 +833,7 @@ stretch_mode = 1
 [node name="TextureRect24" type="TextureRect" parent="."]
 margin_left = -61.0
 margin_top = -1.191
-margin_right = 923.925
+margin_right = 923.937
 margin_bottom = 813.809
 rect_scale = Vector2( 0.098, 0.11 )
 texture = ExtResource( 9 )

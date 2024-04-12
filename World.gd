@@ -10,7 +10,7 @@ onready var enemy = get_node("YSort/Bat")
 onready var textBox = get_node("Textbox")
 onready var hearts = get_node("CanvasLayer/HealthUI")
 onready var inventory_layer = get_node("YSort/Player/UserInterface/Inventory")
-#onready var questMenu = get_node("YSort/Player/QuestNotificationPanel")
+
 const gameOverScene = preload("res://GameOver.tscn")
 #onready var questNotification = get_node("YSort/Player/QuestNotificationPanel")
 
@@ -26,6 +26,9 @@ var location = OUTSIDE
 
 # update_text used to have _character.level as a param
 func _ready():
+	Global.COMBOS = true
+	Global.QUESTS = true
+	
 	_label.update_text( _character.experience, _character.experience_required)
 	
 # Getting enemy death to trigger character exp gain

@@ -48,21 +48,19 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxPivot/SwordHitBox
 onready var hurtBox = $HurtBox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
-#onready var projectile = $Fireball/Sprite
-#onready var projectileTimer = $ProjectileTimer
-#
-#onready var questNotificationPanel = get_node("QuestNotificationPanel")
-#onready var questNotificationLabel = get_node("QuestNotificationPanel/QuestNotification")
 onready var questManager = get_node("QuestManager")
 onready var lvl1scene = "res://Level1.tscn" 
 onready var collisionShape = get_node("HurtBox/CollisionShape2D")
 onready var playerSprite = get_node("Sprite")
 onready var comboSprite = get_node("AnimatedSprite")
+onready var questJournal = get_node("Popup")
+onready var player = get_node(".")
+onready var popUpCamera = get_node("Popup/Camera2D")
 
 
 var experience = 0
 var experience_total = 0
-
+var noInput = false
 # experience to reach next level, does a lot of math.. basically exponential gain
 var experience_required = get_required_experience(level + 1)
 
@@ -319,22 +317,33 @@ func _unhandled_input(event):
 		Global.player_pos = global_position
 		house.enter()
 	# Used to be a comment block, the code for menu initialization went in UserInterface (makes sense lol)
-	if event.is_action_pressed("Quests"):
-		Global.switch_to_scene(quests_scene_path)
-		questMenu = true
+	if Global.QUESTS:
+		if event.is_action_pressed("Quests") and questJournal.visible == false:
+			questJournal.popup()
+			questMenu = true
+			player.visible = false
+			noInput = true
+			#wait for button press
+			if noInput:
+				popUpCamera.make_current()
+				set_process_input(false)
+				
+			else:
+				popUpCamera.clear_current()
+			
+		elif event.is_action_pressed("Quests") and questJournal.visible == true:
+			questJournal.hide()
+			noInput = false
+			player.visible = true
+
+
+#	if event.is_action_pressed("Quests") and questJournal.visible == true:
+#		questJournal.hide()
+	
 		Global.player_pos = global_position
 		print(Global.player_pos)
 		# This may be useful for keeping track between saves
 		#Global.firstScene = (get_tree().current_scene.filename)
-		
-		if event.is_action_pressed("Quests") and "Quest" in get_tree().current_scene.to_string():
-			print("hummana hummana")
-			# Got it to the point of being able to call the switch to previous location, still have the same problems of keeping player location consistent
-			# The hard part is that the difference between this and the inventory is that the quest manager is a new scene
-			Global.switch_to_previous_scene()
-			#Global.switch_to_scene(lvl1scene)
-
-	
 	else:
 		pass
 

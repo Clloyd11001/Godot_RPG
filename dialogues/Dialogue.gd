@@ -15,7 +15,6 @@ onready var tutorial_started = true
 func _ready():
 	$NinePatchRect.visible = false
 
-
 func start():
 	if dialogue_active:
 		return
@@ -53,7 +52,6 @@ func load_dialogue(my_file):
 func _input(event):
 	if not dialogue_active:
 		return
-
 	
 	if current_dialogue_id == 2 and dialogue_file == "res://dialogues/json/elder.json":
 		# Check for specific input

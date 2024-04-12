@@ -20,9 +20,10 @@ patch_margin_bottom = 10
 
 [node name="Name" type="RichTextLabel" parent="NinePatchRect"]
 margin_right = 110.0
-margin_bottom = 16.0
+margin_bottom = 22.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 1 )
 text = "Name"
 
 [node name="Chat" type="RichTextLabel" parent="NinePatchRect"]
@@ -32,6 +33,7 @@ margin_right = 193.0
 margin_bottom = 48.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 1 )
 text = "..."
 
 [node name="Timer" type="Timer" parent="."]

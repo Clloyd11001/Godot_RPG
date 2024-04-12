@@ -15,6 +15,7 @@ onready var dialogue_file = "res://dialogues/json/elder.json"
 onready var player = get_node("YSort/Player")
 onready var playerCamera = get_node("YSort/Player/Camera2D")
 onready var popUpCamera = get_node("QuestPopup/PopUpCamera2D")
+onready var currentScene = get_tree().current_scene
 
 var file = File.new()
 
@@ -26,9 +27,11 @@ var json_string = JSON.print(dialogue_file)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
-
-
+	Global.COMBOS = false
+	Global.QUESTS = false
+	print("combos", Global.COMBOS)
+	print("quests", Global.QUESTS)
+	
 	playerExperience.visible = false
 	#questNotification.visible = false
 	elderDialogue.connect("dialogue_finished", self, "_on_dialogue_finished")
@@ -57,22 +60,17 @@ func _on_dialogue_finished():
 	# Did not figure out popups lol, just did it with a textureRect
 	start_timer()
 
-
-
-
 func start_timer():
 	timer.wait_time = 4 
 	# sends only once
 	timer.one_shot = true  
-#	popUp.visible = true
 	# do the popop, then dont move the camera and 
+	popUp.visible = true
 	popUp.popup()
 	print(popUp.is_visible())	
 	if popUp.visible == true:
-
 		player.visible = false
 		noInput = true
-
 		#wait for button press
 		if noInput:
 			popUpCamera.make_current()
@@ -93,7 +91,6 @@ func _on_Timer_timeout():
 	var trigger = load("res://LocationTrigger.tscn")
 	var ti = trigger.instance()
 	ti.QuestID = "MQ001"
-		
 
 # player accepts quest
 func _on_Accept_pressed():
