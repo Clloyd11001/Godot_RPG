@@ -930,7 +930,8 @@ centered_textures = true
 format = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 62, 70 )
+position = Vector2( 238, 60 )
+current = true
 limit_left = 0
 limit_top = 0
 limit_right = 1695
@@ -942,7 +943,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 62, 70 )
+position = Vector2( 238, 60 )
 
 [node name="AnimationTree" parent="YSort/Player" index="5"]
 parameters/playback = SubResource( 48 )
@@ -968,7 +969,7 @@ position = Vector2( 182, 8 )
 [node name="HTTPRequest" type="HTTPRequest" parent="YSort/Player/UserInterface"]
 
 [node name="npc" parent="YSort" instance=ExtResource( 55 )]
-position = Vector2( 280, -27 )
+position = Vector2( 293, 59 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Welcome_Sign" parent="YSort" instance=ExtResource( 42 )]

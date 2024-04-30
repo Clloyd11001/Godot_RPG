@@ -41,26 +41,26 @@ height = 6.0
 extents = Vector2( 40.25, 38.5 )
 
 [node name="npc" type="KinematicBody2D"]
-position = Vector2( 55, -72 )
+position = Vector2( 102, 62 )
 collision_layer = 64
 collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 21, 171 )
+position = Vector2( 1, 1 )
 frames = SubResource( 5 )
 animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 21, 177 )
+position = Vector2( 1, 7 )
 shape = SubResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 21, 171 )
+position = Vector2( 1, 1 )
 collision_mask = 2
 script = ExtResource( 3 )
 
@@ -71,3 +71,5 @@ shape = SubResource( 7 )
 [node name="Dialogue" parent="." instance=ExtResource( 4 )]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

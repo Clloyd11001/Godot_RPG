@@ -170,5 +170,6 @@ zoom = Vector2( 0.35, 0.35 )
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
 [editable path="YSort/Player/Popup"]
+[editable path="YSort/Player/QuestPointer"]
 [editable path="elder"]
 [editable path="QuestPopup"]

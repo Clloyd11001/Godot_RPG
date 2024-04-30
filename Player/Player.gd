@@ -335,13 +335,8 @@ func _unhandled_input(event):
 			questJournal.hide()
 			noInput = false
 			player.visible = true
-
-
-#	if event.is_action_pressed("Quests") and questJournal.visible == true:
-#		questJournal.hide()
-	
+			
 		Global.player_pos = global_position
-		print(Global.player_pos)
 		# This may be useful for keeping track between saves
 		#Global.firstScene = (get_tree().current_scene.filename)
 	else:

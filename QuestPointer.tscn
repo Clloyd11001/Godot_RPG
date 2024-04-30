@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/arrow.jpg" type="Texture" id=1]
+[ext_resource path="res://QuestPointer.gd" type="Script" id=2]
+
+[node name="QuestPointer" type="Node2D"]
+position = Vector2( 123, 76 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, -0.999985 )
+scale = Vector2( 0.341319, 0.332609 )
+texture = ExtResource( 1 )

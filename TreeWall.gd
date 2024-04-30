@@ -6,6 +6,7 @@ const JsonParser = preload("res://dialogues/Dialogue.gd")
 var noInput = false
 
 onready var playerExperience = $YSort/Player/CanvasLayer/MarginContainer/ExperienceInterface
+onready var elder = $elder
 onready var elderDialogue = $elder/Dialogue
 onready var popUp = get_node("QuestPopup")
 #onready var popUpText = get_node("Control/Label")
@@ -16,6 +17,7 @@ onready var player = get_node("YSort/Player")
 onready var playerCamera = get_node("YSort/Player/Camera2D")
 onready var popUpCamera = get_node("QuestPopup/PopUpCamera2D")
 onready var currentScene = get_tree().current_scene
+onready var questPointer = get_node("YSort/Player/QuestPointer")
 
 var file = File.new()
 
@@ -53,7 +55,9 @@ func _ready():
 
 				else:
 					print("The dialogue file does not have at least 3 lines.")
-		
+
+func _process(delta):
+	questPointer.lookTowardsObject(elder.global_position)
 
 	
 func _on_dialogue_finished():

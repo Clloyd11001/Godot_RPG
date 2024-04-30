@@ -109,4 +109,5 @@ scale = Vector2( 0.5, 0.5 )
 [editable path="Player"]
 [editable path="Player/HitBoxPivot/SwordHitBox"]
 [editable path="Player/HurtBox"]
+[editable path="Player/Popup"]
 [editable path="George"]

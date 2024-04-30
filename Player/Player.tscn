@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://QuestSystem.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Player/swing_animation.png" type="Texture" id=15]
 [ext_resource path="res://QuestNotification.tscn" type="PackedScene" id=16]
+[ext_resource path="res://QuestPointer.tscn" type="PackedScene" id=17]
 
 [sub_resource type="DynamicFontData" id=55]
 font_path = "res://Fonts/Montserrat-Bold.ttf"
@@ -1078,6 +1079,13 @@ text = ""
 position = Vector2( 129, 66 )
 zoom = Vector2( 0.85, 0.85 )
 
+[node name="QuestPointer" parent="." instance=ExtResource( 17 )]
+position = Vector2( 0, -1 )
+
+[node name="Sprite" parent="QuestPointer" index="0"]
+position = Vector2( 28, 0 )
+scale = Vector2( 0.0235242, 0.0244566 )
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_entered"]
 [connection signal="body_exited" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_exited"]
@@ -1085,3 +1093,4 @@ zoom = Vector2( 0.85, 0.85 )
 [editable path="HitBoxPivot/SwordHitBox"]
 [editable path="HurtBox"]
 [editable path="Popup"]
+[editable path="QuestPointer"]

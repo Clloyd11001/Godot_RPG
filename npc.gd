@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-const speed =  30
+const speed = 30
 var current_state = IDLE
 var dir = Vector2.RIGHT
 
 var start_pos
-onready var dialogue = get_node("Dialogue")
+var player
+var player_in_range = false
 
 enum {
 	IDLE,
@@ -13,21 +14,33 @@ enum {
 	MOVE
 }
 
-
 func _ready():
 	randomize()
 	start_pos = position
 
+	# Set the initial rotation of the NPC
+	rotation = 0  # Assuming the NPC initially faces right
+
+	# Get reference to the player node
+	player = get_player_node()
+	if player == null:
+		print("Player node not found!")
 
 func _process(delta):
-	
 	match current_state:
 		IDLE:
 			pass
 		NEW_DIR:
-			dir = choose([Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN])
+			if player_in_range:
+				dir = choose([Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN])
+				# Instantly jump to the new direction
 		MOVE:
 			move(delta)
+			
+	if player_in_range and player != null:
+		var angle_to_player = (global_position - player.global_position ).angle()
+		global_rotation = angle_to_player + deg2rad(90)
+
 
 func move(delta):
 	position += dir * speed * delta
@@ -36,23 +49,46 @@ func move(delta):
 		$AnimatedSprite.flip_h = false
 	elif dir.x == -1:
 		$AnimatedSprite.flip_h = true
-	
-	if position.x >= start_pos.x + 20:
-		position.x = start_pos.x + 19.9
-	elif position.x <= start_pos.x - 20:
-		position.x = start_pos.x - 19.9
-	elif position.y <= start_pos.y + 20:
-		position.y = start_pos.y + 19.9
-	elif position.y <= start_pos.y - 20:
-		position.y = start_pos.y - 19.9
 
 func choose(array):
 	array.shuffle()
 	return array.front()
 
-
 func _on_Timer_timeout():
 	$Timer.wait_time = choose([0.5,1,1.5])
 	current_state = choose([IDLE])
+	global_rotation = 0
 
+func get_player_node():
+	var ysort_node = get_parent()
+	if ysort_node == null:
+		print("NPC is not a child of YSort!")
+		return null
+	
+	var player_node = ysort_node.get_node("Player")
+	if player_node == null:
+		return null
+	
+	return player_node
+
+func set_rotation_based_on_direction(direction: Vector2):
+	if direction == Vector2.RIGHT:
+		rotation = 0
+	elif direction == Vector2.UP:
+		rotation = deg2rad(-90)
+	elif direction == Vector2.LEFT:
+		rotation = deg2rad(180)
+	elif direction == Vector2.DOWN:
+		rotation = deg2rad(90)
+
+
+
+func _on_Area2D_body_exited(body):
+	player_in_range = false
+	$Timer.start(0.5)  # Start the timer to delay resetting the rotation
+
+
+func _on_Area2D_body_entered(body):
+	if body:
+		player_in_range = true
 
