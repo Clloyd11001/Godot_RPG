@@ -15,7 +15,4 @@ func lookTowardsObject(target_position: Vector2):
 		global_rotation += PI
 	else:
 		global_rotation -= PI
-	print("Angle to player:", angle_to_player)
-	print("Global rotation:", global_rotation)
-	print("Global position:", global_position)
-	print("Target position:", target_position)
+	
