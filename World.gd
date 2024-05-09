@@ -72,7 +72,7 @@ func set_camera_limits():
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
  if response_code == 200:
 		print("HTTP request successful!")
-		var parsedBody = parse_json(body.get_string_from_utf8())
+		var parsedBody = (body.get_string_from_utf8())
 		print("Parsed JSON:", parsedBody)
 		
 		if parsedBody != null:

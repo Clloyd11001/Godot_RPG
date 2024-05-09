@@ -3,18 +3,32 @@ extends Node2D
 const SlotClass = preload("res://Slot.gd")
 onready var inventory_slots = $GridContainer
 var holding_item = null
+var inventory_data_array = []
+onready var Player = get_parent().get_parent()
+
 
 func _ready():
+#	print("parent?", Player)
 	var slots = inventory_slots.get_children()
 	for i in range(slots.size()):
 		slots[i].connect("gui_input", self, "slot_gui_input", [slots[i]])
+	Player.connect("inventory_data_ready", self, "_on_inventory_data_ready")
 	initialize_inventory()
 
 func initialize_inventory():
 	var slots = inventory_slots.get_children()
+	var inventory = PlayerInventory.Inventory
 	for i in range(slots.size()):
-		if PlayerInventory.Inventory.has(i):
-			slots[i].initialize_item(PlayerInventory.Inventory[i][0], PlayerInventory.Inventory[i][1])
+		if i < inventory.size():
+			var item_info = inventory[i]
+			var item_name = item_info["name"]
+			var item_quantity = item_info["quantity"]
+			slots[i].initialize_item(item_name, item_quantity)
+		else:
+			# If there are no more items in the inventory, initialize the slot with empty values
+#			slots[i].initialize_item("", 0)
+			pass
+
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):
 	if event is InputEventMouseButton:
@@ -24,7 +38,6 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 				# Empty slot
 				if !slot.item:
 					left_click_empty_slot(slot)
-					
 				# Slot already contains an item	
 				else:
 					# Different item, so swap
@@ -74,3 +87,7 @@ func left_click_not_holding(slot: SlotClass):
 	slot.pickFromSlot()
 	holding_item.global_position = get_global_mouse_position()
 	
+
+func _on_inventory_data_ready(data):
+	inventory_data_array.append(data)
+

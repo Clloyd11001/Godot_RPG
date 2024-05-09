@@ -20,6 +20,7 @@ func showQuestNotification(questName: String):
 	
 	if activeQuests.size() > 0:
 		questNotificationLabel.text = "Quest Active: " + "" + questName
+		print('heres the quest', questName)
 		questNotificationPanel.show() 
 
 	elif completedQuests.size() > 0:

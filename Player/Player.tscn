@@ -1073,13 +1073,14 @@ margin_left = -3.505
 margin_top = -3.04255
 margin_right = 3.075
 margin_bottom = 3.02345
-text = ""
 
 [node name="Camera2D" type="Camera2D" parent="Popup"]
 position = Vector2( 129, 66 )
+current = true
 zoom = Vector2( 0.85, 0.85 )
 
 [node name="QuestPointer" parent="." instance=ExtResource( 17 )]
+visible = false
 position = Vector2( 0, -1 )
 
 [node name="Sprite" parent="QuestPointer" index="0"]

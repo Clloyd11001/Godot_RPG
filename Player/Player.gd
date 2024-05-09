@@ -56,7 +56,7 @@ onready var comboSprite = get_node("AnimatedSprite")
 onready var questJournal = get_node("Popup")
 onready var player = get_node(".")
 onready var popUpCamera = get_node("Popup/Camera2D")
-
+onready var PlayerInventory = $"/root/PlayerInventory"
 
 var experience = 0
 var experience_total = 0
@@ -73,7 +73,7 @@ var house = null setget set_house
 
 
 func _ready():
-	
+	PlayerInventory.set_player(self)
 	#questNotificationPanel.visible = false
 	set_house(null)
 	randomize()
@@ -350,18 +350,18 @@ func _unhandled_input(event):
 		if $PickupZone.items_in_range.size() > 0:
 			var pickup_item = $PickupZone.items_in_range.values()[0]
 			# Extract node data
+
 			var pickup_item_data = extract_node_data(pickup_item)
 			#print("extracted data", pickup_item_data)
 			# Convert node data to JSON format
-			var json_data = convert_to_json(pickup_item_data)
-
+			
 			#print("JSON data:", json_data)
-			emit_signal("inventory_data_ready", json_data)
+			emit_signal("inventory_data_ready", pickup_item_data)
 			#print("Nodes attached to pickup_item:")
 			#print_node_tree(pickup_item)
-			if json_data != null:
+			if pickup_item_data != null:
 				pickup_item.pick_up_item(self)
-				$PickupZone.items_in_range.erase(json_data)
+				$PickupZone.items_in_range.erase(pickup_item_data)
 #			if pickup_item is KinematicBody2D and pickup_item.has_node("Sprite"):
 #				var sprite_name = pickup_item.get_node("Sprite").texture.get_data().nameh
 #				pickup_item.pick_up_item(self)
