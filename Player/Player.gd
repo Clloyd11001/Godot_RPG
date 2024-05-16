@@ -53,9 +53,8 @@ onready var lvl1scene = "res://Level1.tscn"
 onready var collisionShape = get_node("HurtBox/CollisionShape2D")
 onready var playerSprite = get_node("Sprite")
 onready var comboSprite = get_node("AnimatedSprite")
-onready var questJournal = get_node("Popup")
+onready var questJournal = get_node("CanvasLayer2/Popup")
 onready var player = get_node(".")
-onready var popUpCamera = get_node("Popup/Camera2D")
 onready var PlayerInventory = $"/root/PlayerInventory"
 
 var experience = 0
@@ -63,9 +62,8 @@ var experience_total = 0
 var noInput = false
 # experience to reach next level, does a lot of math.. basically exponential gain
 var experience_required = get_required_experience(level + 1)
-
 var house = null setget set_house
-
+var playerObject = null
 
 
 #var currentScene = Global.current_scene.filename
@@ -78,15 +76,9 @@ func _ready():
 	set_house(null)
 	randomize()
 
-	PlayerStats.connect("no_health",self, "queue_free")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
-	
 
-#	if get_tree().current_scene.name == 'Level1':
-#		Global.COMBOS = true
-#
-#
 
 func _physics_process(delta):
 	match state:
@@ -149,7 +141,7 @@ func attack_state(delta):
 
 	
 # did nothing, get rid
-func combo_state(delta):
+func combo_state(_delta):
 	pass
 
 #	animationState.travel("Attack2Right")
@@ -245,13 +237,12 @@ func _on_HurtBox_area_entered(_area):
 	if PlayerStats.health > 0:
 		if canLose == false:
 			PlayerStats.health -= 0.5
-#			print(PlayerStats.player_health)
 			hurtBox.start_invincibility(1.5)
 			hurtBox.create_hit_effect()
 			var playerHurtSound = PlayerHurtSound.instance()
 			get_tree().current_scene.add_child(playerHurtSound)
 	if PlayerStats.health <= 0:
-		print(PlayerStats.health)	
+		print("we're dead")	
 		var _gameOverScene = get_tree().change_scene("res://GameOver.tscn")
 
 
@@ -312,6 +303,9 @@ func convert_to_json(node_data):
 	#print("before ocnverted to json", node_data)
 	return JSON.print(node_data)
 	
+func pick_up_item(body):
+	playerObject = body
+
 func _unhandled_input(event):
 	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
 		Global.player_pos = global_position
@@ -319,18 +313,19 @@ func _unhandled_input(event):
 	# Used to be a comment block, the code for menu initialization went in UserInterface (makes sense lol)
 	if Global.QUESTS:
 		if event.is_action_pressed("Quests") and questJournal.visible == false:
+			# def need the popup to be in the middle of the viewport
 			questJournal.popup()
 			questMenu = true
 			player.visible = false
 			noInput = true
 			#wait for button press
-			if noInput:
-				popUpCamera.make_current()
-				set_process_input(false)
-				
-			else:
-				popUpCamera.clear_current()
-			
+#			if noInput:
+#				#popUpCamera.make_current()
+#				set_process_input(false)
+#
+#			else:
+#				popUpCamera.clear_current()
+#
 		elif event.is_action_pressed("Quests") and questJournal.visible == true:
 			questJournal.hide()
 			noInput = false
@@ -362,16 +357,10 @@ func _unhandled_input(event):
 			if pickup_item_data != null:
 				pickup_item.pick_up_item(self)
 				$PickupZone.items_in_range.erase(pickup_item_data)
-#			if pickup_item is KinematicBody2D and pickup_item.has_node("Sprite"):
-#				var sprite_name = pickup_item.get_node("Sprite").texture.get_data().nameh
-#				pickup_item.pick_up_item(self)
-#				print("Picked up item:", sprite_name)
-#				$PickupZone.items_in_range.erase(pickup_item)
 			else:
 				print("Debug: Item cannot be picked up or doesn't have a sprite.")
 		else:
 			print("Debug: No items in range.")
-
 
 func _on_HurtBox_invincibility_started():
 	blinkAnimationPlayer.play("Start")
@@ -379,3 +368,4 @@ func _on_HurtBox_invincibility_started():
 func _on_HurtBox_invincibility_ended():
 	blinkAnimationPlayer.play("Stop")
 	
+

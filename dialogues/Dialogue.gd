@@ -11,6 +11,7 @@ signal dialogue_started
 signal dialogue_finished
 
 onready var tutorial_started = true
+var talkedToNPCSecondTime
 
 func _ready():
 	$NinePatchRect.visible = false
@@ -29,15 +30,26 @@ func start():
 	# Extract the NPC name from the parent's name
 	var npc_name = npc_sprite.get_name()
 	
-	print(npc_name)
-	
+	# Define the default dialogue file path
 	dialogue_file = "res://dialogues/json/" + npc_name + ".json"
 	
+	# Check if we need to load an alternate dialogue file
+	print(Global.waitingForPlayerToCompleteQuest)
+	print(talkedToNPCSecondTime)
+	if Global.waitingForPlayerToCompleteQuest and !talkedToNPCSecondTime:
+		dialogue_file = "res://dialogues/json/" + npc_name + '1' + ".json"
+		print("is this true", Global.questFINISHED)
+		talkedToNPCSecondTime = true
+	elif talkedToNPCSecondTime:
+		print("SO WE ARE GETTING HERE!!!!!")
+		dialogue_file = "res://dialogues/json/" + npc_name + '2' + ".json"
+		print("NOW ITS TIME TO GIVE YOU YOUR REWARDS, LETS START ON (5/17)")
+	# Load the dialogue from the chosen file
 	dialogue = load_dialogue(dialogue_file)
 	current_dialogue_id = -1
 	
-	
 	next_script()
+
 
 # DO NOT PUT AN UNDERSCORE BEFORE DIALOGUE_FILE
 func load_dialogue(my_file):
@@ -84,7 +96,6 @@ func _input(event):
 func next_script():
 	if tutorial_started == true:
 		current_dialogue_id += 1
-		print(current_dialogue_id)
 	else:
 		return
 

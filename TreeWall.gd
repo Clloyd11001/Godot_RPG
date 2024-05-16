@@ -21,27 +21,20 @@ onready var questPointer = get_node("YSort/Player/QuestPointer")
 
 var file = File.new()
 
-
-
 var level1_scene_path = "res://Level1.tscn"  
 var json_string = JSON.print(dialogue_file)
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.COMBOS = false
 	Global.QUESTS = false
-	print("combos", Global.COMBOS)
-	print("quests", Global.QUESTS)
 	
 	playerExperience.visible = false
 	#questNotification.visible = false
 	elderDialogue.connect("dialogue_finished", self, "_on_dialogue_finished")
 
-
 	#tryinh to get specific line in json
 	var load_dialogue_instance = JsonParser.new()
-
 	
 	var loaded_dialogue = load_dialogue_instance.load_dialogue(dialogue_file)
 
@@ -52,11 +45,10 @@ func _ready():
 					pass
 					# Print the third line (index 2 since indexing starts from 0)
 					#print("Lines:", loaded_dialogue[currentLine])
-
 				else:
 					print("The dialogue file does not have at least 3 lines.")
 
-func _process(delta):
+func _process(_delta):
 	questPointer.lookTowardsObject(elder.global_position)
 
 	
@@ -71,34 +63,18 @@ func start_timer():
 	# do the popop, then dont move the camera and 
 	popUp.visible = true
 	popUp.popup()
-	print(popUp.is_visible())	
 	if popUp.visible == true:
 		player.visible = false
 		noInput = true
 		#wait for button press
 		if noInput:
 			popUpCamera.make_current()
-			print("popup camera:", popUpCamera.current)
-#			popUpCamera.current = true
 			set_process_input(false)
 		else:
 			popUpCamera.clear_current()
-			print("ohhhh no input is false?")
-
-func _on_Timer_timeout():
-
-	var _lvl1SceneChange = get_tree().change_scene(level1_scene_path)
-	loading.load_scene(self, level1_scene_path)
-	QuestSystem.addQuest("MQ001")
-	QuestSystem.advanceQuest("MQ001")
-	
-	var trigger = load("res://LocationTrigger.tscn")
-	var ti = trigger.instance()
-	ti.QuestID = "MQ001"
 
 # player accepts quest
 func _on_Accept_pressed():
-	popUp.visible == false
 	var _lvl1SceneChange = get_tree().change_scene(level1_scene_path)
 	Global.update_scene(level1_scene_path)
 	loading.load_scene(self, level1_scene_path)
@@ -111,7 +87,6 @@ func _on_Accept_pressed():
 
 # player doesnt want to accept quest
 func _on_Close_pressed():
-	print("we're pressing it right?")
 	noInput = false
 	popUpCamera.clear_current()
 	playerCamera.make_current()

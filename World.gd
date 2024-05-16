@@ -69,7 +69,7 @@ func set_camera_limits():
 		$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
 
 
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+func _on_HTTPRequest_request_completed(_result, response_code, _headers, body):
  if response_code == 200:
 		print("HTTP request successful!")
 		var parsedBody = (body.get_string_from_utf8())
@@ -89,7 +89,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 				for item in items:
 					var item_name = item["Name"]
 					var stack_size = item["StackSize"]
-					var description = item["Description"]
+					var _description = item["Description"]
 					PlayerInventory.add_item(item_name, stack_size)
 				print("Received inventory data:", parsedBody)
 			else:

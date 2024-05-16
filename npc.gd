@@ -21,10 +21,6 @@ func _ready():
 	# Set the initial rotation of the NPC
 	rotation = 0  # Assuming the NPC initially faces right
 
-	# Get reference to the player node
-	player = get_player_node()
-	if player == null:
-		print("Player node not found!")
 
 func _process(delta):
 	match current_state:
@@ -64,12 +60,12 @@ func get_player_node():
 	if ysort_node == null:
 		print("NPC is not a child of YSort!")
 		return null
+#	print("ysort tree", ysort_node.get_children())
+#	var player_node = ysort_node.get_node("Player")
+#	if player_node == null:
+#		return null
 	
-	var player_node = ysort_node.get_node("Player")
-	if player_node == null:
-		return null
-	
-	return player_node
+#	return player_node
 
 func set_rotation_based_on_direction(direction: Vector2):
 	if direction == Vector2.RIGHT:
@@ -83,7 +79,7 @@ func set_rotation_based_on_direction(direction: Vector2):
 
 
 
-func _on_Area2D_body_exited(body):
+func _on_Area2D_body_exited(_body):
 	player_in_range = false
 	$Timer.start(0.5)  # Start the timer to delay resetting the rotation
 

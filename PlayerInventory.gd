@@ -16,7 +16,8 @@ func _ready():
 
 func _connect_to_player():
 	if not player:
-		player = get_tree().root.get_node("Player")
+		print(get_tree().root)
+#		player = get_tree().root.get_node("Player")
 	if player:
 		player.connect("inventory_data_ready", self, "_on_inventory_data_ready")
 
@@ -69,5 +70,5 @@ func _on_inventory_data_ready(data):
 		}
 		itemInfoArray.append(item_info) # Append item info to the array
 	Inventory = itemInfoArray
-#	print(Inventory) # Print all item info after the loop
+
 

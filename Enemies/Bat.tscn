@@ -120,7 +120,7 @@ script = ExtResource( 3 )
 material = SubResource( 12 )
 frames = SubResource( 6 )
 animation = "fly"
-frame = 4
+frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -169,7 +169,6 @@ anims/Stop = SubResource( 15 )
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincibility_ended" from="HurtBox" to="." method="_on_HurtBox_invincibility_ended"]
 [connection signal="invincibility_started" from="HurtBox" to="." method="_on_HurtBox_invincibility_started"]
-[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 
 [editable path="HurtBox"]
 [editable path="PlayerDetectionZone"]

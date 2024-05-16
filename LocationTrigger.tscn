@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://LocationTrigger.gd" type="Script" id=1]
+[ext_resource path="res://QuestPopup.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.5, 29.5 )
@@ -12,3 +13,33 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 0 )
 shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PopUpCamera" type="Camera2D" parent="CanvasLayer"]
+
+[node name="QuestPopup" parent="CanvasLayer" instance=ExtResource( 2 )]
+margin_left = 126.0
+margin_right = -78.0
+
+[node name="Label" parent="CanvasLayer/QuestPopup" index="1"]
+margin_left = -49.1649
+margin_top = -28.0
+margin_right = 94.8571
+bbcode_text = "[center][PLayer has completed the quest
+
+[center]SHOW ME ZA WARUDO]"
+text = "[PLayer has completed the quest
+
+SHOW ME ZA WARUDO]"
+
+[node name="Accept" parent="CanvasLayer/QuestPopup/MarginContainer/HBoxContainer" index="0"]
+visible = false
+
+[node name="Close" parent="CanvasLayer/QuestPopup/MarginContainer/HBoxContainer" index="1"]
+visible = false
+margin_left = 0.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[editable path="CanvasLayer/QuestPopup"]

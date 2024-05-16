@@ -10,3 +10,14 @@ func use_dialogue():
 	
 	if dialogue:
 		dialogue.start()
+		dialogue.connect("dialogue_finished", self, "_on_dialogue_finished")
+
+func _on_dialogue_finished():
+	# This function is called when the dialogue ends
+	# Add your code here to handle what happens after the dialogue ends
+	print("wow this is amazing")
+	print(get_parent().name)
+	if get_parent().name == "npc":
+		Global.waitingForPlayerToCompleteQuest = true
+		if Global.item_names_inventory.has("Skull"):
+			Global.questFINISHED = true

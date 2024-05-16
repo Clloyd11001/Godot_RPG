@@ -1,6 +1,6 @@
 extends Panel
 
-var level1_scene_path = "res://Level1.tscn"  # Adjust the path accordingly
+var level1_scene_path = "res://Level1.tscn"  
 
 onready var questNotificationPanel = get_node(".")
 onready var questNotificationLabel = get_node("QuestNotification")
@@ -20,7 +20,6 @@ func showQuestNotification(questName: String):
 	
 	if activeQuests.size() > 0:
 		questNotificationLabel.text = "Quest Active: " + "" + questName
-		print('heres the quest', questName)
 		questNotificationPanel.show() 
 
 	elif completedQuests.size() > 0:

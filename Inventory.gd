@@ -5,7 +5,7 @@ onready var inventory_slots = $GridContainer
 var holding_item = null
 var inventory_data_array = []
 onready var Player = get_parent().get_parent()
-
+var item_names = []
 
 func _ready():
 #	print("parent?", Player)
@@ -24,6 +24,8 @@ func initialize_inventory():
 			var item_name = item_info["name"]
 			var item_quantity = item_info["quantity"]
 			slots[i].initialize_item(item_name, item_quantity)
+			item_names.append(item_name)
+			Global.item_names_inventory = item_names
 		else:
 			# If there are no more items in the inventory, initialize the slot with empty values
 #			slots[i].initialize_item("", 0)

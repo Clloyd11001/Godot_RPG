@@ -86,7 +86,6 @@ func _on_HurtBox_invincibility_ended():
 	animationPlayer.play("Stop")
 
 func _on_HurtBox_area_entered(area):
-	#print("you're hitting me")
 	stats.health -= 1
 	print("enemy health?", stats.health)
 	knockback = area.knockback_vector * 150

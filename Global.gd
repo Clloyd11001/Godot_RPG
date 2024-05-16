@@ -7,6 +7,11 @@ var QUESTS = true
 # Stack to keep track of scene history
 var scene_stack = []
 var currentScene
+var quest_completed
+var waitingForPlayerToCompleteQuest
+var questFINISHED
+var item_names_inventory = []
+
 
 const firstScene = "res://Level1.tscn"
 
@@ -28,13 +33,12 @@ func switch_to_scene(scene_path):
 	if scene:
 		scene_stack.append(scene)
 		#print(scene_stack)
-		get_tree().change_scene(scene_path)
+		var _sceneToSwitchTo = get_tree().change_scene(scene_path)
 
 # Switch to the previous scene
 func switch_to_previous_scene():
 	if scene_stack.size() > 1:
-		var previous_scene = firstScene # Get the previous scene
-	
-		get_tree().change_scene(previous_scene)
+		var previous_scene = firstScene # Get the previous scene	
+		previous_scene = get_tree().change_scene(previous_scene)
 	else:
 		print("No previous scene to switch to.")

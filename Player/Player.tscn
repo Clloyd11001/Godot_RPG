@@ -1049,13 +1049,28 @@ animation = "combo"
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Popup" parent="." instance=ExtResource( 16 )]
-margin_left = -47.0
-margin_top = -57.0
-margin_right = 198.0
-margin_bottom = 91.0
+[node name="QuestPointer" parent="." instance=ExtResource( 17 )]
+visible = false
+position = Vector2( 0, -1 )
 
-[node name="QuestNotificationPanel" parent="Popup" index="0"]
+[node name="Sprite" parent="QuestPointer" index="0"]
+position = Vector2( 28, 0 )
+scale = Vector2( 0.0235242, 0.0244566 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 57, 9 )
+current = true
+zoom = Vector2( 0.85, 0.85 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Popup" parent="CanvasLayer2" instance=ExtResource( 16 )]
+margin_left = 3.0
+margin_top = -1.0
+margin_right = 248.0
+margin_bottom = 147.0
+
+[node name="QuestNotificationPanel" parent="CanvasLayer2/Popup" index="0"]
 anchor_left = 0.114
 anchor_right = 1.0
 anchor_bottom = 0.796
@@ -1064,7 +1079,7 @@ margin_top = -115.6
 margin_right = 116.0
 margin_bottom = 53.192
 
-[node name="QuestNotification" parent="Popup/QuestNotificationPanel" index="0"]
+[node name="QuestNotification" parent="CanvasLayer2/Popup/QuestNotificationPanel" index="0"]
 anchor_left = 0.033
 anchor_top = 0.084
 anchor_right = 0.125
@@ -1074,24 +1089,11 @@ margin_top = -3.04255
 margin_right = 3.075
 margin_bottom = 3.02345
 
-[node name="Camera2D" type="Camera2D" parent="Popup"]
-position = Vector2( 129, 66 )
-current = true
-zoom = Vector2( 0.85, 0.85 )
-
-[node name="QuestPointer" parent="." instance=ExtResource( 17 )]
-visible = false
-position = Vector2( 0, -1 )
-
-[node name="Sprite" parent="QuestPointer" index="0"]
-position = Vector2( 28, 0 )
-scale = Vector2( 0.0235242, 0.0244566 )
-
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_entered"]
 [connection signal="body_exited" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_exited"]
 
 [editable path="HitBoxPivot/SwordHitBox"]
 [editable path="HurtBox"]
-[editable path="Popup"]
 [editable path="QuestPointer"]
+[editable path="CanvasLayer2/Popup"]

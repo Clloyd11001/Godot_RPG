@@ -3,7 +3,7 @@ extends Node
 
 var Quests: Dictionary = {
 	"MQ001":{
-		"QuestName": "My quest name",
+		"QuestName": "Show me Za Warudo",
 		"CurrentStage": 0,
 		"QuestDescription":{
 			"10": "Stage 10 description"
@@ -32,26 +32,31 @@ func addQuest(questID: String):
 		print("Error: Quest not found for questID", questID)
 
 func advanceQuest(questID: String):
-	if questID in ActiveQuests:
+	if questID:
 		if "CurrentStage" in ActiveQuests[questID]:
 			ActiveQuests[questID]["CurrentStage"] += 10
-			var currentStage: String = str(ActiveQuests[questID]["CurrentStage"])
-
-			if currentStage in ActiveQuests[questID]["QuestDescription"].keys():
-				print("Quest description:", ActiveQuests[questID]["QuestDescription"][currentStage])
-			else:
-				print("Warning: Attempted to advance non-existent questID", questID)
-		else:
-			print("Error: 'CurrentStage' not found for questID", questID)
+#			var currentStage: String = str(ActiveQuests[questID]["CurrentStage"])
+#			print(ActiveQuests)
+#			if currentStage in ActiveQuests[questID]["QuestDescription"].keys():
+#				print("Quest description:", ActiveQuests[questID]["QuestDescription"][currentStage])
+#			else:
+#				print("Warning: Attempted to advance non-existent questID", questID)
+#		else:
+#			print("Error: 'CurrentStage' not found for questID", questID)
 	else:
 		print("Error: questID not found in ActiveQuests")
-
 
 func completeQuest(questID: String):
+	# pop up to show completion
+	print("questID", questID)
+	print("active", ActiveQuests)
 	if questID in ActiveQuests:
-		#print("Attempting to complete questID:", questID)
 		CompletedQuests.append(ActiveQuests[questID]["QuestName"])
 		var _erasedQuest = ActiveQuests.erase(questID)
+		print("quest completed :)")
+		print("completed quests", CompletedQuests)
 	else:
 		print("Error: questID not found in ActiveQuests")
+		
+	return CompletedQuests
 

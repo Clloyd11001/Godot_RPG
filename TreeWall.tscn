@@ -42,11 +42,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Camera2D" parent="YSort/Player" index="15"]
+position = Vector2( 30, 0 )
+zoom = Vector2( 0.4, 0.4 )
+
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 position = Vector2( 52, -14 )
 scale = Vector2( 2, 2 )
 offset = Vector2( -15, 0 )
-current = true
 zoom = Vector2( 0.35, 0.35 )
 
 [node name="Grass" type="Sprite" parent="YSort"]
@@ -169,7 +172,7 @@ zoom = Vector2( 0.35, 0.35 )
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
-[editable path="YSort/Player/Popup"]
 [editable path="YSort/Player/QuestPointer"]
+[editable path="YSort/Player/CanvasLayer2/Popup"]
 [editable path="elder"]
 [editable path="QuestPopup"]

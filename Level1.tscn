@@ -929,9 +929,8 @@ cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
 centered_textures = true
 format = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 219, 403 )
-current = true
+[node name="YSort@Player@Popup@Camera2D" type="Camera2D" parent="."]
+position = Vector2( 798, 216 )
 limit_left = 0
 limit_top = 0
 limit_right = 1695
@@ -943,7 +942,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 219, 403 )
+position = Vector2( 254, 140 )
 MAX_SPEED = 60
 
 [node name="AnimationTree" parent="YSort/Player" index="5"]
@@ -954,12 +953,6 @@ position = Vector2( 0, 0 )
 
 [node name="PickupZone" parent="YSort/Player" index="10"]
 collision_mask = 128
-
-[node name="Popup" parent="YSort/Player" index="14"]
-visible = false
-
-[node name="Camera2D" parent="YSort/Player/Popup" index="1"]
-current = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -2049,7 +2042,7 @@ position = Vector2( 1140, 264 )
 [node name="Chests" type="Node2D" parent="YSort"]
 
 [node name="Chest" parent="YSort/Chests" instance=ExtResource( 11 )]
-position = Vector2( 208, 400 )
+position = Vector2( 297, 130 )
 
 [node name="ItemDrop" parent="YSort/Chests/Chest" instance=ExtResource( 56 )]
 visible = false
@@ -2093,6 +2086,9 @@ tile_data = PoolIntArray( 2359333, 0, 0, 2359334, 0, 0, 2359335, 0, 0, 2359336, 
 [node name="LocationTrigger" parent="." instance=ExtResource( 58 )]
 position = Vector2( 781, 273 )
 
+[node name="PopUpCamera" parent="LocationTrigger/CanvasLayer" index="0"]
+position = Vector2( 794, 275 )
+
 [connection signal="area_exited" from="YSort/Player/HurtBox" to="YSort/Player" method="_on_HurtBox_area_exited"]
 [connection signal="request_completed" from="YSort/Player/UserInterface/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
 [connection signal="body_entered" from="YSort/npc/Area2D" to="YSort/npc/Dialogue" method="_on_Area2D_body_entered"]
@@ -2104,8 +2100,8 @@ position = Vector2( 781, 273 )
 [editable path="YSort/Player"]
 [editable path="YSort/Player/HitBoxPivot/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
-[editable path="YSort/Player/Popup"]
 [editable path="YSort/Player/QuestPointer"]
+[editable path="YSort/Player/CanvasLayer2/Popup"]
 [editable path="YSort/npc"]
 [editable path="YSort/npc/Dialogue"]
 [editable path="YSort/Next_Level_Indicator"]
@@ -2113,3 +2109,5 @@ position = Vector2( 781, 273 )
 [editable path="YSort/Houses/House_Chimeny"]
 [editable path="YSort/Houses/CommonHouse"]
 [editable path="YSort/Chests/Chest/ItemDrop"]
+[editable path="LocationTrigger"]
+[editable path="LocationTrigger/CanvasLayer/QuestPopup"]

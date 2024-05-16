@@ -24,7 +24,7 @@ var max_actions_in_buffer = 5
 
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var dir_input = Vector2.ZERO
 	dir_input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	dir_input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")

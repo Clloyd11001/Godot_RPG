@@ -9,7 +9,7 @@ export var max_health = 4 setget set_max_health
 # Setget calls back every time health is set
 var health = max_health setget set_health
 
-signal no_health
+
 signal health_changed(value)
 signal max_health_changed(value)
 
