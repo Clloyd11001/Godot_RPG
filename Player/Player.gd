@@ -347,7 +347,7 @@ func _unhandled_input(event):
 			# Extract node data
 
 			var pickup_item_data = extract_node_data(pickup_item)
-			#print("extracted data", pickup_item_data)
+			print("extracted data", pickup_item_data)
 			# Convert node data to JSON format
 			
 			#print("JSON data:", json_data)

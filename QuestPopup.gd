@@ -18,7 +18,7 @@ func _ready():
 	else:
 		print("ready to try")
 		
-func _process(delta):
+func _process(_delta):
 	if Global.quest_completed:
 		playAnimation()
 

@@ -34,16 +34,23 @@ func start():
 	dialogue_file = "res://dialogues/json/" + npc_name + ".json"
 	
 	# Check if we need to load an alternate dialogue file
-	print(Global.waitingForPlayerToCompleteQuest)
-	print(talkedToNPCSecondTime)
+
 	if Global.waitingForPlayerToCompleteQuest and !talkedToNPCSecondTime:
 		dialogue_file = "res://dialogues/json/" + npc_name + '1' + ".json"
-		print("is this true", Global.questFINISHED)
 		talkedToNPCSecondTime = true
+	
 	elif talkedToNPCSecondTime:
-		print("SO WE ARE GETTING HERE!!!!!")
 		dialogue_file = "res://dialogues/json/" + npc_name + '2' + ".json"
-		print("NOW ITS TIME TO GIVE YOU YOUR REWARDS, LETS START ON (5/17)")
+		print(PlayerInventory.Inventory)
+		if Global.has_item("Brain"):
+			print("NOW ITS TIME TO GIVE YOU YOUR REWARDS, LETS START ")
+			var ribcage_json = {
+				"name": "Ribcage",
+				"description": "a broken rib",
+				"quantity": "1"
+			}
+			PlayerInventory.Inventory.append(ribcage_json)
+
 	# Load the dialogue from the chosen file
 	dialogue = load_dialogue(dialogue_file)
 	current_dialogue_id = -1

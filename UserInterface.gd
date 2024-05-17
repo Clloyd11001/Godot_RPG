@@ -6,7 +6,7 @@ var inventory_data_array = []
 onready var Player = get_parent()
 func _ready():
 	# Connect to the player's signal
-	Player.connect("inventory_data_ready", self, "_on_inventory_data_ready")
+	pass
 
 # Handle the inventory data ready signal
 # once we recieve that data, do exactly the same logic as we had before but change it from a button pressed into a signal

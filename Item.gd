@@ -20,7 +20,7 @@ func set_item(nm, qt):
 	item_name = nm
 	item_quantity = qt
 	$TextureRect.texture = load("res://item_icons/" + item_name + '.png')
-	
+
 	if item_name in JsonData.item_data:
 		var stack_size = int(JsonData.item_data[item_name]['StackSize'])
 		if stack_size == 1:

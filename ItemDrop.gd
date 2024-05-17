@@ -21,13 +21,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	#PlayerInventory.add_item(item_name, 1)
-	#print("test inventory:", testInventory)
-#	for item_name in PlayerInventory.Inventory:
-#		print(PlayerInventory.Inventory)
-#		PlayerInventory.add_item(item_name, 1)
-#
-		
 	if being_picked_up == true:
 		var direction = global_position.direction_to(player.global_position)
 		velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)

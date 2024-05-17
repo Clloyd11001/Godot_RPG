@@ -42,3 +42,11 @@ func switch_to_previous_scene():
 		previous_scene = get_tree().change_scene(previous_scene)
 	else:
 		print("No previous scene to switch to.")
+
+func has_item(itemName: String) -> bool:
+	# Iterate through each item in the inventory
+	for item in PlayerInventory.Inventory:
+		# Check if the name of the item matches the specified name (case insensitive)
+		if item["name"].to_lower() == itemName.to_lower():
+			return true # Item found
+	return false # Item not found

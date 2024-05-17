@@ -2040,9 +2040,10 @@ position = Vector2( 1140, 264 )
 position = Vector2( 1140, 264 )
 
 [node name="Chests" type="Node2D" parent="YSort"]
+position = Vector2( 582, 218 )
 
 [node name="Chest" parent="YSort/Chests" instance=ExtResource( 11 )]
-position = Vector2( 297, 130 )
+position = Vector2( -280, -91 )
 
 [node name="ItemDrop" parent="YSort/Chests/Chest" instance=ExtResource( 56 )]
 visible = false
@@ -2051,6 +2052,7 @@ collision_layer = 128
 
 [node name="Chest2" parent="YSort/Chests" instance=ExtResource( 11 )]
 position = Vector2( 1284, 281 )
+script = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -2108,6 +2110,5 @@ position = Vector2( 794, 275 )
 [editable path="YSort/Houses/First_House"]
 [editable path="YSort/Houses/House_Chimeny"]
 [editable path="YSort/Houses/CommonHouse"]
-[editable path="YSort/Chests/Chest/ItemDrop"]
 [editable path="LocationTrigger"]
 [editable path="LocationTrigger/CanvasLayer/QuestPopup"]

@@ -7,6 +7,7 @@ var is_opened: bool = false
 
 onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 onready var tween:Tween = get_node("Tween")
+onready var itemDrop = get_node("ItemDrop")
 
 func _ready() -> void:
 
@@ -16,8 +17,9 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and is_player_inside and is_opened == false:
 		animation_player.play("Open")
+		itemDrop.visible = true
 
-func _drop_object() -> void:
+func drop_object() -> void:
 	var object: Node2D = object_scene.instance()
 
 	owner.get_parent().add_child(object)
@@ -32,12 +34,13 @@ func _drop_object() -> void:
 							   Tween.EASE_IN)
 	__ = tween.start()
 	
-	
 
 
 func _on_Area2D_player_entered(_player):
+	print("can the player see me?")
 	is_player_inside = true
 
 
 func _on_Area2D_player_exited(_player):
 	is_player_inside = false
+
