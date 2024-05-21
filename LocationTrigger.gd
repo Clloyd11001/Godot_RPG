@@ -13,6 +13,7 @@ func _ready() -> void:
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
 func areaReached(body):
+	# need to add logic, it should only popup first time you completed the quest
 	if body.name == "Player":
 		var arrayOfCompletedQuests = QuestSystem.completeQuest("MQ001")
 		for i in arrayOfCompletedQuests.size():
@@ -24,7 +25,7 @@ func areaReached(body):
 			
 			timer.start(4)
 			set_process_input(false)
-		
+		QuestSystem.CompletedQuests = arrayOfCompletedQuests
 
 func _on_Timer_timeout():
 	# This method will be called when the timer emits the timeout signal

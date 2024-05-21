@@ -942,7 +942,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 254, 140 )
+position = Vector2( 246, 408 )
 MAX_SPEED = 60
 
 [node name="AnimationTree" parent="YSort/Player" index="5"]

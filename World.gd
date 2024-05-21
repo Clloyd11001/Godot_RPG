@@ -29,10 +29,10 @@ func _ready():
 	Global.COMBOS = true
 	Global.QUESTS = true
 	
-	_label.update_text( _character.experience, _character.experience_required)
+	_label.update_text( PlayerStats.level,_character.experience, _character.experience_required)
 	
 # Getting enemy death to trigger character exp gain
-	enemy.connect("enemy_defeated", self, "_on_EnemyDefeated")
+	enemy.connect("enemy_defeated", self, "_on_enemy_defeated")
 	# should initialize the experience bar
 	_bar.initialize(_character.experience, _character.experience_required)
 
@@ -40,10 +40,10 @@ func _ready():
 		hearts.visible = false
 
 # update_text used to have _character.level as a param
-func _on_EnemyDefeated():
+func _on_enemy_defeated():
 	print("killed enemy")
 	_character.gain_experience(50)
-	_label.update_text( _character.experience, _character.experience_required)
+	_label.update_text( PlayerStats.level,_character.experience, _character.experience_required)
 
 
 func _on_DoorWay_body_entered(_body):

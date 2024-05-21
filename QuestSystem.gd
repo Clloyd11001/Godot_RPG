@@ -48,13 +48,9 @@ func advanceQuest(questID: String):
 
 func completeQuest(questID: String):
 	# pop up to show completion
-	print("questID", questID)
-	print("active", ActiveQuests)
 	if questID in ActiveQuests:
 		CompletedQuests.append(ActiveQuests[questID]["QuestName"])
 		var _erasedQuest = ActiveQuests.erase(questID)
-		print("quest completed :)")
-		print("completed quests", CompletedQuests)
 	else:
 		print("Error: questID not found in ActiveQuests")
 		

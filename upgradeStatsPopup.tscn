@@ -1,0 +1,160 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/GUI/minus_icon.png" type="Texture" id=1]
+[ext_resource path="res://UI/QuestPopup.png" type="Texture" id=2]
+[ext_resource path="res://UI/GUI/GUI_2x_cropped.png" type="Texture" id=3]
+[ext_resource path="res://upgradeStatsPopup.gd" type="Script" id=4]
+[ext_resource path="res://DarkRPG.tres" type="DynamicFont" id=5]
+[ext_resource path="res://UI/GUI/plus_icon.png" type="Texture" id=6]
+
+[node name="upgradeStatsPopup" type="Popup"]
+anchor_right = 1.021
+anchor_bottom = 1.0
+margin_right = -255.25
+margin_bottom = -150.0
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3382.0
+margin_top = -45.0
+margin_right = -2800.0
+margin_bottom = 285.0
+rect_scale = Vector2( 6, 2.5 )
+texture = ExtResource( 2 )
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+margin_left = 6.0
+margin_top = 8.0
+margin_right = 70.0
+margin_bottom = 80.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_left = 0.6
+anchor_top = 0.053
+anchor_right = 0.792
+anchor_bottom = 0.887
+margin_top = 0.0499997
+margin_right = 1872.0
+margin_bottom = 4874.95
+rect_scale = Vector2( 0.025, 0.025 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+margin_right = 1920.0
+margin_bottom = 5000.0
+custom_constants/separation = 2000
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+margin_right = 1920.0
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TextureRect3"]
+anchor_right = 0.482
+margin_left = 40.0
+margin_top = 80.0
+margin_right = -0.440063
+margin_bottom = 960.0
+icon = ExtResource( 6 )
+flat = true
+
+[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TextureRect3"]
+anchor_left = 0.5
+anchor_top = 0.042
+anchor_right = 1.0
+anchor_bottom = 0.042
+margin_left = 120.0
+margin_top = 120.0
+margin_right = 120.0
+margin_bottom = 1000.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+margin_top = 2000.0
+margin_right = 1920.0
+margin_bottom = 2000.0
+
+[node name="AttackButtonPlus" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TextureRect4"]
+anchor_right = 0.461
+anchor_bottom = 0.917
+margin_right = -873.12
+margin_bottom = -860.32
+icon = ExtResource( 6 )
+flat = true
+
+[node name="AttackButtonMinus" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TextureRect4"]
+anchor_left = 0.542
+anchor_right = 1.0
+anchor_bottom = 0.917
+margin_left = -0.640137
+margin_right = 4.0
+margin_bottom = -0.320068
+icon = ExtResource( 1 )
+flat = true
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+margin_top = 4000.0
+margin_right = 1920.0
+margin_bottom = 4000.0
+
+[node name="ManaButtonPlus" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TextureRect5"]
+anchor_right = 0.461
+anchor_bottom = 0.917
+margin_right = -873.12
+margin_bottom = -860.32
+icon = ExtResource( 6 )
+flat = true
+
+[node name="ManaButtonMinus" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TextureRect5"]
+anchor_left = 0.542
+anchor_right = 1.0
+anchor_bottom = 0.917
+margin_left = -0.640137
+margin_right = 4.0
+margin_bottom = -0.320068
+icon = ExtResource( 1 )
+flat = true
+
+[node name="HealthStat" type="Label" parent="CanvasLayer"]
+margin_left = 49.0
+margin_top = 9.0
+margin_right = 151.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+
+[node name="AttackStat" type="Label" parent="CanvasLayer"]
+margin_left = 48.0
+margin_top = 51.0
+margin_right = 151.0
+margin_bottom = 79.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+
+[node name="ManaStat" type="Label" parent="CanvasLayer"]
+margin_left = 54.0
+margin_top = 101.0
+margin_right = 151.0
+margin_bottom = 127.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+
+[node name="Submit" type="Button" parent="CanvasLayer"]
+margin_left = 62.0
+margin_top = 127.0
+margin_right = 133.0
+margin_bottom = 147.0
+text = "Submit"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/TextureRect3/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/TextureRect3/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/TextureRect4/AttackButtonPlus" to="." method="_on_AttackButtonPlus_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/TextureRect4/AttackButtonMinus" to="." method="_on_AttackButtonMinus_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/TextureRect5/ManaButtonPlus" to="." method="_on_ManaButtonPlus_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/TextureRect5/ManaButtonMinus" to="." method="_on_ManaButtonMinus_pressed"]
+[connection signal="pressed" from="CanvasLayer/Submit" to="." method="_on_Submit_pressed"]

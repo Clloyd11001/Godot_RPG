@@ -16,12 +16,7 @@ export var FRICTION  = 350
 
 var quests_scene_path = "res://QuestNotification.tscn"  
 
-# CHARACTER STATS
-export (int) var MAX_HP = 12
-export (int) var STRENGTH = 8
-#export (int) var MAGIC = 8
-# LEVELING SYSTEM
-export (int) var level = 1
+
 
 export(PackedScene) var MAGIC: PackedScene = preload("res://Hitboxes and Hurtboxes/Fireball.tscn")
 
@@ -61,7 +56,7 @@ var experience = 0
 var experience_total = 0
 var noInput = false
 # experience to reach next level, does a lot of math.. basically exponential gain
-var experience_required = get_required_experience(level + 1)
+var experience_required = get_required_experience(stats.level + 1)
 var house = null setget set_house
 var playerObject = null
 
@@ -93,6 +88,13 @@ func _physics_process(delta):
 	
 #	showQuestNotification("MQ001")
 
+func disable_input():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  
+	Input.set_input_as_handled() 
+
+func enable_input():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  
+	Input.set_input_as_handled(false) 
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO
@@ -212,15 +214,20 @@ func gain_experience(amount):
 	emit_signal("experience_gained", growth_data)
 
 func level_up():
-	level += 1
-	experience_required = get_required_experience(level + 1)
+	PlayerStats.level += 1
+	experience_required = get_required_experience(PlayerStats.level + 1)
+	disable_input()
+	$upgradeStatsPopup.popup()
+	$upgradeStatsPopup/CanvasLayer.visible = true
+
+	PlayerStats.allotedUpgradePoints += 3
 	# Picks from random stat when player levels up
 
 	# Can tinker with this to give attributes
-#	var stats = ['MAX_HP', 'STRENGTH', 'MAGIC']
-	var random_stat = stats[randi() % stats.size()]
-	# Increased by 1,2 or 3
-	set(random_stat, get(random_stat) + randi() % 4)
+#	var upgradeableStats = ['MAX_HP', 'STRENGTH', 'MAGIC']
+#	var random_stat = upgradeableStats[randi() % upgradeableStats.size()]
+#	# Increased by 1,2 or 3
+#	set(random_stat, get(random_stat) + randi() % 4)
 
 func throw_magic(magic_direction: Vector2):
 	if MAGIC:
