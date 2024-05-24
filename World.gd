@@ -98,3 +98,7 @@ func _on_HTTPRequest_request_completed(_result, response_code, _headers, body):
 			print("Parsed JSON is null!")
 	else:
 		print("HTTP request failed:", response_code)
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		_character.gain_experience(5)

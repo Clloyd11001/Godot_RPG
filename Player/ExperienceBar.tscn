@@ -6,10 +6,12 @@
 [ext_resource path="res://Player/text_experience.png" type="Texture" id=4]
 
 [node name="ExperienceBar" type="TextureProgress"]
-anchor_right = 0.4
-anchor_bottom = 0.311
-margin_right = 733.0
-margin_bottom = 13.02
+anchor_right = 3.565
+anchor_bottom = 1.924
+margin_left = 5.0
+margin_top = 176.0
+margin_right = -25.25
+margin_bottom = -43.6
 max_value = 34.0
 value = 15.0
 texture_under = ExtResource( 1 )
@@ -18,9 +20,14 @@ script = ExtResource( 3 )
 
 [node name="Experience" type="TextureRect" parent="."]
 visible = false
-margin_top = -53.0
+margin_top = -108.0
 margin_right = 343.0
-margin_bottom = -15.0
+margin_bottom = -70.0
 texture = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 487, 51 )
+current = true
+zoom = Vector2( 4, 3 )

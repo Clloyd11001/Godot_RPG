@@ -90,7 +90,7 @@ func _physics_process(delta):
 
 func disable_input():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  
-	Input.set_input_as_handled() 
+#	Input.set_input_as_handled() 
 
 func enable_input():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  
@@ -216,7 +216,7 @@ func gain_experience(amount):
 func level_up():
 	PlayerStats.level += 1
 	experience_required = get_required_experience(PlayerStats.level + 1)
-	disable_input()
+	# need to disable background movement
 	$upgradeStatsPopup.popup()
 	$upgradeStatsPopup/CanvasLayer.visible = true
 
