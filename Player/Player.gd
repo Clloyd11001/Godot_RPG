@@ -314,6 +314,12 @@ func pick_up_item(body):
 	playerObject = body
 
 func _unhandled_input(event):
+	if event.is_action_pressed("heal"):
+		# this should be if player uses a potion
+		# which goes into making inventory selectable
+		# which goes into changing from cursor based to arrow/keyboard based
+		# fun times lol
+		PlayerStats.health += 1
 	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
 		Global.player_pos = global_position
 		house.enter()

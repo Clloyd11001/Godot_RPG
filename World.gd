@@ -68,35 +68,36 @@ func set_camera_limits():
 		$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 		$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
 
-
-func _on_HTTPRequest_request_completed(_result, response_code, _headers, body):
- if response_code == 200:
-		print("HTTP request successful!")
-		var parsedBody = (body.get_string_from_utf8())
-		print("Parsed JSON:", parsedBody)
-		
-		if parsedBody != null:
-			if parsedBody.has("item_data"):
-				var item_data = parsedBody["item_data"]
-				for item_name in item_data.keys():
-					var stack_size = 1  # Default stack size
-					if item_data[item_name].has("StackSize"):
-						stack_size = item_data[item_name]["StackSize"]
-					PlayerInventory.add_item(item_name, stack_size)
-				print("Received inventory data:", parsedBody)
-			elif parsedBody.has("items"):
-				var items = parsedBody["items"]
-				for item in items:
-					var item_name = item["Name"]
-					var stack_size = item["StackSize"]
-					var _description = item["Description"]
-					PlayerInventory.add_item(item_name, stack_size)
-				print("Received inventory data:", parsedBody)
-			else:
-				print("Parsed JSON does not contain item_data or items!")
-		else:
-			print("Parsed JSON is null!")
-	else:
-		print("HTTP request failed:", response_code)
-
-
+#
+#func _on_HTTPRequest_request_completed(_result, response_code, _headers, body):
+# if response_code == 200:
+#		print("HTTP request successful!")
+#		var parsedBody = (body.get_string_from_utf8())
+#		print("Parsed JSON:", parsedBody)
+#
+#		if parsedBody != null:
+#			if parsedBody.has("item_data"):
+#				var item_data = parsedBody["item_data"]
+#				for item_name in item_data.keys():
+#					var stack_size = 1  # Default stack size
+#					if item_data[item_name].has("StackSize"):
+#						stack_size = item_data[item_name]["StackSize"]
+#					PlayerInventory.add_item(item_name, stack_size)
+#				print("Received inventory data:", parsedBody)
+#			elif parsedBody.has("items"):
+#				var items = parsedBody["items"]
+#				for item in items:
+#					var item_name = item["Name"]
+#					var stack_size = item["StackSize"]
+#					var _description = item["Description"]
+#					PlayerInventory.add_item(item_name, stack_size)
+#				print("Received inventory data:", parsedBody)
+#			else:
+#				print("Parsed JSON does not contain item_data or items!")
+#		else:
+#			print("Parsed JSON is null!")
+#	else:
+#		print("HTTP request failed:", response_code)
+#
+#
+#

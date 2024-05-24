@@ -21,8 +21,8 @@ func _input(event):
 		$Inventory.visible = !$Inventory.visible
 		if $Inventory.visible:
 			$Inventory.initialize_inventory()
-	if event.is_action_pressed("http"):
-		print("Sending HTTP request...")
-		$HTTPRequest.request("http://localhost:3000/api/items")
+#	if event.is_action_pressed("http"):
+#		print("Sending HTTP request...")
+#		$HTTPRequest.request("http://localhost:3000/api/items")
 
 ## PROCESS IS CURRENTLY, PICK UP ITEM, PRESS H THEN PRESS MENU AND IT WORKS

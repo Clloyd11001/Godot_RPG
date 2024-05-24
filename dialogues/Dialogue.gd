@@ -122,3 +122,6 @@ func _on_Timer_timeout():
 	QuestSystem.addQuest("MQ001")
 	QuestSystem.advanceQuest("MQ001")
 	
+func _on_Area2D_body_entered(body):
+	print("ahhhh this should be the logic where the npc rotates toward player")
+	

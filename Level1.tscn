@@ -918,7 +918,7 @@ tile_set = SubResource( 59 )
 cell_size = Vector2( 8, 8 )
 centered_textures = true
 format = 1
-tile_data = PoolIntArray( 458783, 3, 0, 458923, 1, 0, 786581, 1, 0, 1179783, 3, 0, 1572905, 1, 0, 1572907, 1, 0, 1572908, 1, 0, 1638443, 1, 0, 1835053, 3, 0, 1900693, 1, 0, 2031751, 1, 0, 2883688, 0, 0, 2883689, 0, 0, 2883690, 0, 0, 2883691, 0, 0, 2949225, 0, 0, 2949226, 0, 0, 2949227, 0, 0, 2949292, 1, 0, 2949293, 1, 0, 3014757, 0, 0, 3014759, 0, 0, 3014761, 0, 0, 3014762, 0, 0, 3014763, 0, 0, 3014827, 1, 0, 3014828, 1, 0, 3080292, 0, 0, 3080293, 0, 0, 3080296, 0, 0, 3080299, 0, 0, 3080362, 1, 0, 3080363, 1, 0, 3145827, 0, 0, 3145828, 0, 0, 3145829, 0, 0, 3145830, 0, 0, 3145831, 0, 0, 3145898, 1, 0, 3211431, 1, 0, 3211432, 1, 0, 5177481, 3, 0, 5177495, 3, 0 )
+tile_data = PoolIntArray( 458923, 1, 0, 786581, 1, 0, 1179783, 3, 0, 1572905, 1, 0, 1572907, 1, 0, 1572908, 1, 0, 1638443, 1, 0, 1900693, 1, 0, 2031751, 1, 0, 2883688, 0, 0, 2883689, 0, 0, 2883690, 0, 0, 2883691, 0, 0, 2949225, 0, 0, 2949226, 0, 0, 2949227, 0, 0, 2949292, 1, 0, 2949293, 1, 0, 3014757, 0, 0, 3014759, 0, 0, 3014761, 0, 0, 3014762, 0, 0, 3014763, 0, 0, 3014827, 1, 0, 3014828, 1, 0, 3080292, 0, 0, 3080293, 0, 0, 3080296, 0, 0, 3080299, 0, 0, 3080362, 1, 0, 3080363, 1, 0, 3145827, 0, 0, 3145828, 0, 0, 3145829, 0, 0, 3145830, 0, 0, 3145831, 0, 0, 3145898, 1, 0, 3211431, 1, 0, 3211432, 1, 0, 5177481, 3, 0, 5177495, 3, 0 )
 
 [node name="TileMap4" type="TileMap" parent="."]
 tile_set = SubResource( 60 )
@@ -941,7 +941,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 254, 145 )
+position = Vector2( 212, 398 )
 MAX_SPEED = 60
 
 [node name="AnimationTree" parent="YSort/Player" index="5"]
@@ -952,6 +952,12 @@ position = Vector2( 0, 0 )
 
 [node name="PickupZone" parent="YSort/Player" index="10"]
 collision_mask = 128
+
+[node name="Camera2D" parent="YSort/Player" index="15"]
+limit_left = 0
+limit_top = 0
+limit_right = 1695
+limit_bottom = 1150
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -2042,7 +2048,7 @@ position = Vector2( 1140, 264 )
 position = Vector2( 582, 218 )
 
 [node name="Chest" parent="YSort/Chests" instance=ExtResource( 11 )]
-position = Vector2( -280, -91 )
+position = Vector2( 648, 58 )
 
 [node name="Chest2" parent="YSort/Chests" instance=ExtResource( 11 )]
 position = Vector2( 1284, 281 )
