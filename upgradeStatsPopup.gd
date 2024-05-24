@@ -73,7 +73,7 @@ func apply_changes():
 	# Update displayed stats
 	update_stats()
 
-func _process(delta):
+func _process(_delta):
 	healthStat.text = "Health: " + str(PlayerStats.MAX_HP)
 	attackStat.text = "Attack: " + str(PlayerStats.STRENGTH)
 	manaStat.text = "Mana: " + str(PlayerStats.MANA)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -55,7 +55,6 @@
 [ext_resource path="res://World/calm_grass.png" type="Texture" id=53]
 [ext_resource path="res://World/blades_of_grass.png" type="Texture" id=54]
 [ext_resource path="res://npc.tscn" type="PackedScene" id=55]
-[ext_resource path="res://Items/Transperent/Skull.tscn" type="PackedScene" id=56]
 [ext_resource path="res://UserInterface.gd" type="Script" id=57]
 [ext_resource path="res://LocationTrigger.tscn" type="PackedScene" id=58]
 
@@ -942,7 +941,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 246, 408 )
+position = Vector2( 254, 145 )
 MAX_SPEED = 60
 
 [node name="AnimationTree" parent="YSort/Player" index="5"]
@@ -2045,11 +2044,6 @@ position = Vector2( 582, 218 )
 [node name="Chest" parent="YSort/Chests" instance=ExtResource( 11 )]
 position = Vector2( -280, -91 )
 
-[node name="ItemDrop" parent="YSort/Chests/Chest" instance=ExtResource( 56 )]
-visible = false
-scale = Vector2( 0.5, 0.5 )
-collision_layer = 128
-
 [node name="Chest2" parent="YSort/Chests" instance=ExtResource( 11 )]
 position = Vector2( 1284, 281 )
 script = null
@@ -2110,5 +2104,6 @@ position = Vector2( 794, 275 )
 [editable path="YSort/Houses/First_House"]
 [editable path="YSort/Houses/House_Chimeny"]
 [editable path="YSort/Houses/CommonHouse"]
+[editable path="YSort/Chests/Chest"]
 [editable path="LocationTrigger"]
 [editable path="LocationTrigger/CanvasLayer/QuestPopup"]

@@ -10,11 +10,12 @@ var being_picked_up = false
 
 
 func _ready():
-	var rand_val = randi() % 2
-	if rand_val == 0:
-		item_name = "Ruby"
-	elif rand_val == 1:
-		item_name = "Skull"
+#	var rand_val = randi() % 2
+#	if rand_val == 0:
+#		item_name = "Ruby"
+#	elif rand_val == 1:
+#		item_name = "Skull"
+	pass
 
 
 func _physics_process(delta):

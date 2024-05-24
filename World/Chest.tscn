@@ -161,6 +161,7 @@ tracks/1/keys = {
 }
 
 [node name="Chest" type="AnimatedSprite"]
+position = Vector2( 115, 52 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 1 )
 animation = "Idle"
