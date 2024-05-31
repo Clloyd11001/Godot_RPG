@@ -33,4 +33,9 @@
     "StackSize": 99,
     "Description": "A shimmering beak, its razor-sharp edge capable of piercing even the toughest of defenses."
   },
+  "PotionCommon": {
+    "ItemCategory": "Resource",
+    "StackSize": 99,
+    "Description": "A red vial able to cure the blood of champions."
+  },
 }

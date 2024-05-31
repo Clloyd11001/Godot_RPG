@@ -8,6 +8,6 @@ func _ready():
 	# Animation doesn't exist,  but if u take out it breaks the hit effect
 	play("Animate")
 
-
+	
 func _on_animation_finished():
 	queue_free()

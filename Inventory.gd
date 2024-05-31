@@ -18,18 +18,19 @@ func _ready():
 func initialize_inventory():
 	var slots = inventory_slots.get_children()
 	var inventory = PlayerInventory.Inventory
+	print("inventory", inventory)
 	for i in range(slots.size()):
 		if i < inventory.size():
 			var item_info = inventory[i]
 			var item_name = item_info["name"]
 			var item_quantity = item_info["quantity"]
 			slots[i].initialize_item(item_name, item_quantity)
+			print("heres the quantity", inventory)
 			item_names.append(item_name)
 			Global.item_names_inventory = item_names
 		else:
-			# If there are no more items in the inventory, initialize the slot with empty values
-#			slots[i].initialize_item("", 0)
 			pass
+	print("heres the inventory", inventory)
 
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):
@@ -51,10 +52,15 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 			# Not holding an item				
 			elif slot.item:
 				left_click_not_holding(slot)
+				
 func _input(_event):
 	if holding_item:
 		holding_item.global_position = get_global_mouse_position()
-
+	if Input.is_action_pressed("ui_left"):
+		PlayerInventory.active_item_scroll_through_left()
+	elif Input.is_action_pressed("ui_right"):
+		PlayerInventory.active_item_scroll_through_right()
+		
 func left_click_empty_slot(slot: SlotClass):
 	PlayerInventory.add_item_to_empty_slot(holding_item, slot)
 	slot.putIntoSlot(holding_item)
@@ -91,5 +97,8 @@ func left_click_not_holding(slot: SlotClass):
 	
 
 func _on_inventory_data_ready(data):
+	print("test data", data)
+	if inventory_data_array.has(data):
+		print("already have it")
 	inventory_data_array.append(data)
 

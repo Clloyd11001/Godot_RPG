@@ -11,7 +11,7 @@ var quest_completed
 var waitingForPlayerToCompleteQuest
 var questFINISHED
 var item_names_inventory = []
-
+var inventoryOpen = false
 
 const firstScene = "res://Level1.tscn"
 

@@ -97,38 +97,39 @@ func enable_input():
 	Input.set_input_as_handled(false) 
 
 func move_state(delta):
-	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input_vector = input_vector.normalized()
-	
-	if input_vector != Vector2.ZERO:
-		roll_vector = input_vector
-		swordHitbox.knockback_vector = input_vector
-		animationTree.set("parameters/Idle/blend_position", input_vector)
-		animationTree.set("parameters/Run/blend_position", input_vector)
-		animationTree.set("parameters/Attack/blend_position", input_vector)
-		animationTree.set("parameters/Roll/blend_position", input_vector)
-		animationState.travel("Run")
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
-	else:
-		animationState.travel("Idle")
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	
-	move()
-	
-	if Input.is_action_just_pressed("roll"):
-		state = ROLL
-	
-	if Input.is_action_just_pressed("attack"):
-		state = ATTACK
-	
-	if Input.is_action_just_pressed("projectile"):
-		throw_magic(input_vector)
-
-
-	
+	if Global.inventoryOpen == false:
+		var input_vector = Vector2.ZERO
+		input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		input_vector = input_vector.normalized()
 		
+		if input_vector != Vector2.ZERO:
+			roll_vector = input_vector
+			swordHitbox.knockback_vector = input_vector
+			animationTree.set("parameters/Idle/blend_position", input_vector)
+			animationTree.set("parameters/Run/blend_position", input_vector)
+			animationTree.set("parameters/Attack/blend_position", input_vector)
+			animationTree.set("parameters/Roll/blend_position", input_vector)
+			animationState.travel("Run")
+			velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+		else:
+			animationState.travel("Idle")
+			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		
+		move()
+		
+		if Input.is_action_just_pressed("roll"):
+			state = ROLL
+		
+		if Input.is_action_just_pressed("attack"):
+			state = ATTACK
+		
+		if Input.is_action_just_pressed("projectile"):
+			throw_magic(input_vector)
+
+
+		
+			
 func roll_state():
 	velocity = roll_vector  * ROLL_SPEED
 	animationState.travel("Roll")
@@ -315,15 +316,15 @@ func pick_up_item(body):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("heal"):
-		# this should be if player uses a potion
-		# which goes into making inventory selectable
-		# which goes into changing from cursor based to arrow/keyboard based
-		# fun times lol
-		PlayerStats.health += 1
+		# potion logic, still need to make inventory keyboard selectable
+		for item_data in PlayerInventory.Inventory:
+			if item_data["name"] == "PotionCommon":
+				PlayerStats.health += 1
+			
 	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
 		Global.player_pos = global_position
 		house.enter()
-	# Used to be a comment block, the code for menu initialization went in UserInterface (makes sense lol)
+
 	if Global.QUESTS:
 		if event.is_action_pressed("Quests") and questJournal.visible == false:
 			# def need the popup to be in the middle of the viewport
@@ -368,8 +369,10 @@ func _unhandled_input(event):
 			#print("Nodes attached to pickup_item:")
 			#print_node_tree(pickup_item)
 			if pickup_item_data != null:
-				pickup_item.pick_up_item(self)
+#				print("this is the item to pickup", pickup_item)
+				pick_up_item(pickup_item)
 				$PickupZone.items_in_range.erase(pickup_item_data)
+				pickup_item.queue_free()
 			else:
 				print("Debug: Item cannot be picked up or doesn't have a sprite.")
 		else:

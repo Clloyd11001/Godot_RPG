@@ -19,8 +19,15 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("Menu"):
 		$Inventory.visible = !$Inventory.visible
+		Global.inventoryOpen = !Global.inventoryOpen
 		if $Inventory.visible:
+			# need to disable input, give it to inventory to make keyboard selectable
 			$Inventory.initialize_inventory()
+			if event.is_action_pressed("ui_left"):
+				PlayerInventory.active_item_scroll_through_left()
+			if event.is_action_pressed("ui_right"):
+				PlayerInventory.active_item_scroll_through_right()
+			
 #	if event.is_action_pressed("http"):
 #		print("Sending HTTP request...")
 #		$HTTPRequest.request("http://localhost:3000/api/items")

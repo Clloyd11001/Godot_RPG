@@ -3,6 +3,7 @@ extends Area2D
 var items_in_range = {}
 
 func _on_PickupZone_body_entered(body):
+	print("this is the item in the players pickupzone", body)
 	if body == get_parent():
 		#print("Detecting player body")
 		return

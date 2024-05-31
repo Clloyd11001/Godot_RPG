@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://World/Grass.png" type="Texture" id=1]
 [ext_resource path="res://World/Grass.gd" type="Script" id=2]
 [ext_resource path="res://Hitboxes and Hurtboxes/HurtBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://item_icons/PotionCommon.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 4.26667
 
 [node name="Grass" type="Node2D"]
 script = ExtResource( 2 )
@@ -22,6 +26,23 @@ collision_mask = 0
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
+
+[node name="Potion" type="KinematicBody2D" parent="."]
+visible = false
+position = Vector2( 8, 3 )
+scale = Vector2( 0.46875, 0.375 )
+z_index = 1
+
+[node name="PotionCommon" type="Sprite" parent="Potion"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Potion"]
+position = Vector2( 0, 2.66667 )
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 
