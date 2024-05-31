@@ -28,7 +28,8 @@ func _physics_process(delta):
 		var distance = global_position.distance_to(player.global_position)
 		if distance > 4:
 			for item_name in testInventory:
-				PlayerInventory.add_item(item_name, 1)
+#				PlayerInventory.add_item(item_name, 1)
+				print("genuinely have no idea what to do here")
 			queue_free()
 	velocity = move_and_slide(velocity, Vector2.UP)
 

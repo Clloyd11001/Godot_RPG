@@ -18,19 +18,19 @@ func _ready():
 func initialize_inventory():
 	var slots = inventory_slots.get_children()
 	var inventory = PlayerInventory.Inventory
-	print("inventory", inventory)
+
 	for i in range(slots.size()):
 		if i < inventory.size():
 			var item_info = inventory[i]
 			var item_name = item_info["name"]
 			var item_quantity = item_info["quantity"]
-			slots[i].initialize_item(item_name, item_quantity)
-			print("heres the quantity", inventory)
+			inventory_slots.initialize_item(item_name, item_quantity)
+
 			item_names.append(item_name)
 			Global.item_names_inventory = item_names
 		else:
 			pass
-	print("heres the inventory", inventory)
+
 
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):
@@ -97,7 +97,6 @@ func left_click_not_holding(slot: SlotClass):
 	
 
 func _on_inventory_data_ready(data):
-	print("test data", data)
 	if inventory_data_array.has(data):
 		print("already have it")
 	inventory_data_array.append(data)

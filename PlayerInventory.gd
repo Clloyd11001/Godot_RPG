@@ -29,8 +29,7 @@ var Inventory = []
 
 var active_item_slot = 0
 
-func add_item(item_name, item_quantity):
-	print("Adding item:", item_name, "with quantity:", item_quantity)
+func add_item(item_name, item_quantity,item_description ):
 	for item_data in Inventory:
 		print("Checking item:", item_data)
 		if item_data["name"] == item_name:
@@ -45,7 +44,8 @@ func add_item(item_name, item_quantity):
 			# If the array size is smaller than the slot index, extend it
 			Inventory.resize(i + 1)
 		if Inventory[i] == null:  
-			Inventory[i] = {"name": item_name, "quantity": item_quantity} 
+			Inventory[i] = {"name": item_name, "quantity": item_quantity, "description": item_description} 
+
 			print("Added", item_quantity, "of", item_name, "to an empty slot in inventory.")
 			print("Current inventory state:", Inventory)
 			return
@@ -66,12 +66,13 @@ func add_item_quantity(slot: SlotClass, quantity_to_add: int):
 
 func _on_inventory_data_ready(data):
 	var item_data = data["item_data"]
-
+	print("testing testing my gosh", item_data)
 	for item_name in item_data.keys():
 		var item_details = item_data[item_name]
 		var item_quantity = item_details["StackSize"]
-		
-		add_item(item_name, item_quantity)
+		var item_description = item_details["Description"]
+		add_item(item_name, item_quantity, item_description)
+
 
 	print("Inventory updated:", Inventory)
 

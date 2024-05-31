@@ -289,7 +289,9 @@ func extract_node_data(node):
 	if node is Sprite:  # Check if the node is of type Sprite
 		var item_name = node.name  # Get the name of the node
 		#print("item name of sprite", item_name)
-		var item_description = "test"  # Placeholder for description
+		var item_data = JsonData.LoadData("res://Data/ItemData.json")
+		var item_description = item_data[item_name]["Description"]
+
 		#print("item description", item_description)
 		# You can add more conditions or functions to extract more data
 

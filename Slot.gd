@@ -29,9 +29,11 @@ func refresh_style():
 	var slot_index = PlayerInventory.active_item_slot
 
 	# Reset all slots to default or empty style
-	for i in range(get_child_count()):
+	
+	for i in range(get_child_count() - 1):
 		var slot = get_node("Slot" + str(i + 1))
-		slot.set('custom_styles/panel', default_style)  # or empty_style
+		if slot:
+			slot.set('custom_styles/panel', default_style)  # or empty_style
 
 	# Apply selected style to the currently active slot
 	if selected:
@@ -69,5 +71,9 @@ func initialize_item(item_name, item_quantity):
 
 func _process(delta):
 	slot_index = PlayerInventory.active_item_slot
-	print("PLEASE THIS IS THE FINAL INDEX", slot_index)
 	refresh_style() 
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") and Global.inventoryOpen:
+#		PlayerInventory.Inventory[slot_index]["name"]
+		print("heres the selected item:", PlayerInventory.Inventory)
