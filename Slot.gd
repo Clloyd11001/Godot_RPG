@@ -1,5 +1,9 @@
 extends GridContainer
 
+onready var selectedImageRect = get_parent().get_node("Popup/TextureRect")
+onready var selectedImagePopUp = get_parent().get_node("Popup")
+onready var itemName = get_parent().get_node("Popup/Label")
+onready var itemDescription = get_parent().get_node("Popup/RichTextLabel")
 
 var default_tex = preload("res://item_slot_default_background.png")
 var empty_tex = preload("res://item_slot_empty_background.png")
@@ -13,6 +17,8 @@ var ItemClass = preload("res://Item.tscn")
 var item = null
 var selected = true  # Track whether this slot is selected
 var slot_index = get_index()
+var isPopupVisible = false
+
 
 func _ready():
 	default_style = StyleBoxTexture.new()
@@ -75,5 +81,25 @@ func _process(delta):
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") and Global.inventoryOpen:
-#		PlayerInventory.Inventory[slot_index]["name"]
-		print("heres the selected item:", PlayerInventory.Inventory)
+		if isPopupVisible:
+			isPopupVisible = false
+			selectedImagePopUp.hide()
+		else:
+			var selectedItemDictionary = PlayerInventory.Inventory[PlayerInventory.active_item_slot]
+			
+			var selectedItem = selectedItemDictionary["name"]
+			var selectedItemImage = selectedItem + '.png'
+			var selectedTexture = load("/item_icons/" + selectedItemImage)
+
+			var itemNameText = selectedItem
+			var itemDescriptionText = selectedItemDictionary["description"]
+			
+			var itemQuantity = selectedItemDictionary["quantity"]
+			var itemQuantityText = "x " + str(itemQuantity)
+			
+			itemName.text = itemNameText + " " + itemQuantityText
+			itemDescription.bbcode_text = itemDescriptionText
+			selectedImagePopUp.popup_centered()
+			isPopupVisible = true
+
+

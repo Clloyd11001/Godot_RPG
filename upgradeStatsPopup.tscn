@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/GUI/minus_icon.png" type="Texture" id=1]
 [ext_resource path="res://UI/QuestPopup.png" type="Texture" id=2]
@@ -6,6 +6,26 @@
 [ext_resource path="res://upgradeStatsPopup.gd" type="Script" id=4]
 [ext_resource path="res://DarkRPG.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UI/GUI/plus_icon.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fonts/Filgaia.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Fonts/Filgaia.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://Fonts/Filgaia.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+font_data = SubResource( 5 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
 
 [node name="upgradeStatsPopup" type="Popup"]
 anchor_right = 1.021
@@ -36,13 +56,13 @@ rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchor_left = 0.6
-anchor_top = 0.053
-anchor_right = 0.792
+anchor_left = 0.748
+anchor_top = 0.04
+anchor_right = 0.94
 anchor_bottom = 0.887
-margin_top = 0.0499997
+margin_left = 1.52588e-05
 margin_right = 1872.0
-margin_bottom = 4874.95
+margin_bottom = 4872.95
 rect_scale = Vector2( 0.025, 0.025 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
@@ -126,7 +146,7 @@ margin_top = 9.0
 margin_right = 151.0
 margin_bottom = 41.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 2 )
 
 [node name="AttackStat" type="Label" parent="CanvasLayer"]
 margin_left = 48.0
@@ -134,7 +154,7 @@ margin_top = 51.0
 margin_right = 151.0
 margin_bottom = 79.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 4 )
 
 [node name="ManaStat" type="Label" parent="CanvasLayer"]
 margin_left = 54.0
@@ -142,13 +162,15 @@ margin_top = 101.0
 margin_right = 151.0
 margin_bottom = 127.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 6 )
 
 [node name="Submit" type="Button" parent="CanvasLayer"]
 margin_left = 62.0
 margin_top = 127.0
 margin_right = 133.0
 margin_bottom = 147.0
+custom_fonts/font = ExtResource( 5 )
+custom_styles/normal = SubResource( 7 )
 text = "Submit"
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/TextureRect3/Button" to="." method="_on_Button_pressed"]

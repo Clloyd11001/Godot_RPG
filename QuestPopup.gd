@@ -7,16 +7,19 @@ var viewportWidth = get_viewport()
 onready var questBackground = $TextureRect
 onready var questLabel = $Label
 onready var questNotificationLabel = get_node("Label")
-onready var font = questNotificationLabel.get_font("font") as DynamicFont
+
 onready var animation = get_node("AnimationPlayer")
 
 
 func _ready():
-	print("am i missing something", Global.quest_completed)
+#	var fontSizeNumber = questNotificationLabel.get_font("font")
+#	fontSizeNumber.size = 12
+
+
 	if Global.quest_completed:
 		playAnimation()
 	else:
-		print("ready to try")
+		pass
 		
 func _process(_delta):
 	if Global.quest_completed:

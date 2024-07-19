@@ -10,7 +10,7 @@ onready var enemy = get_node("YSort/Bat")
 onready var textBox = get_node("Textbox")
 onready var hearts = get_node("CanvasLayer/HealthUI")
 onready var inventory_layer = get_node("YSort/Player/UserInterface/Inventory")
-
+onready var locationTrigger = get_node("LocationTrigger")
 const gameOverScene = preload("res://GameOver.tscn")
 #onready var questNotification = get_node("YSort/Player/QuestNotificationPanel")
 
@@ -28,6 +28,7 @@ var location = OUTSIDE
 func _ready():
 	Global.COMBOS = true
 	Global.QUESTS = true
+	Global.FIRSTQUEST = true
 	
 	_label.update_text( PlayerStats.level,_character.experience, _character.experience_required)
 	
@@ -38,7 +39,8 @@ func _ready():
 
 	if get_tree().current_scene == gameOverScene:
 		hearts.visible = false
-
+	
+	Global.firstQuestPosition = locationTrigger.global_position 
 # update_text used to have _character.level as a param
 func _on_enemy_defeated():
 	print("killed enemy")
@@ -68,36 +70,6 @@ func set_camera_limits():
 		$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 		$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
 
-#
-#func _on_HTTPRequest_request_completed(_result, response_code, _headers, body):
-# if response_code == 200:
-#		print("HTTP request successful!")
-#		var parsedBody = (body.get_string_from_utf8())
-#		print("Parsed JSON:", parsedBody)
-#
-#		if parsedBody != null:
-#			if parsedBody.has("item_data"):
-#				var item_data = parsedBody["item_data"]
-#				for item_name in item_data.keys():
-#					var stack_size = 1  # Default stack size
-#					if item_data[item_name].has("StackSize"):
-#						stack_size = item_data[item_name]["StackSize"]
-#					PlayerInventory.add_item(item_name, stack_size)
-#				print("Received inventory data:", parsedBody)
-#			elif parsedBody.has("items"):
-#				var items = parsedBody["items"]
-#				for item in items:
-#					var item_name = item["Name"]
-#					var stack_size = item["StackSize"]
-#					var _description = item["Description"]
-#					PlayerInventory.add_item(item_name, stack_size)
-#				print("Received inventory data:", parsedBody)
-#			else:
-#				print("Parsed JSON does not contain item_data or items!")
-#		else:
-#			print("Parsed JSON is null!")
-#	else:
-#		print("HTTP request failed:", response_code)
-#
-#
-#
+
+func _on_Area2D_body_entered(body):
+	print("entering into the portal")

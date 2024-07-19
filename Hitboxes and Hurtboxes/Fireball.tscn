@@ -48,6 +48,7 @@ SPEED = 100
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 position = Vector2( 3.8147e-06, 2.27374e-13 )
 scale = Vector2( 0.25, 0.111328 )
+z_index = 1
 frames = SubResource( 8 )
 frame = 4
 playing = true

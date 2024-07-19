@@ -18,6 +18,9 @@ position = Vector2( -496, -120 )
 position = Vector2( 496, 120 )
 polygon = PoolVector2Array( -120, -96, -80, -120, 88, -120, 136, -96, 136, 16, 120, 16, 120, 48, 24, 48, 24, -8, -16, -8, -16, 8, -120, 8 )
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 373, 189, 372, 150, 475, 150, 474, 194 )
+
 [node name="DoorWay" type="Area2D" parent="."]
 position = Vector2( -192, 72 )
 collision_layer = 0

@@ -94,7 +94,7 @@ func disable_input():
 
 func enable_input():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  
-	Input.set_input_as_handled(false) 
+	#Input.set_input_as_handled(false) 
 
 func move_state(delta):
 	if Global.inventoryOpen == false:
@@ -125,8 +125,9 @@ func move_state(delta):
 			state = ATTACK
 		
 		if Input.is_action_just_pressed("projectile"):
+			disable_input()
 			throw_magic(input_vector)
-
+			enable_input()
 
 		
 			
@@ -266,7 +267,6 @@ func set_house(new_house):
 	house = new_house
 
 func print_node_tree(node, indent=""):
-	print(indent + node.name)
 	for child in node.get_children():
 		print_node_tree(child, indent + "  ")
 
@@ -363,13 +363,8 @@ func _unhandled_input(event):
 			# Extract node data
 
 			var pickup_item_data = extract_node_data(pickup_item)
-			print("extracted data", pickup_item_data)
 			# Convert node data to JSON format
-			
-			#print("JSON data:", json_data)
 			emit_signal("inventory_data_ready", pickup_item_data)
-			#print("Nodes attached to pickup_item:")
-			#print_node_tree(pickup_item)
 			if pickup_item_data != null:
 #				print("this is the item to pickup", pickup_item)
 				pick_up_item(pickup_item)

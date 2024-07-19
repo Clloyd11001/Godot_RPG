@@ -12,9 +12,9 @@ func create_grass_effect():
 
 func drop_object_from_grass() -> void:
 	var potion =  get_node("Potion")
-	potion.visible = true
+	if potion:
+		potion.visible = true
 	if potion.visible == true:
-		print("ok can see it")
 		var tween:Tween = get_node("Tween")
 		if potion and tween:
 

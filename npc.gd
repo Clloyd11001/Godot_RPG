@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal dialogue_ended
+
 const speed = 30
 var current_state = IDLE
 var dir = Vector2.RIGHT
@@ -19,7 +21,7 @@ func _ready():
 	start_pos = position
 
 	# Set the initial rotation of the NPC
-	rotation = 0  # Assuming the NPC initially faces right
+	rotation = 0  
 
 
 func _process(delta):
@@ -54,6 +56,8 @@ func _on_Timer_timeout():
 	$Timer.wait_time = choose([0.5,1,1.5])
 	current_state = choose([IDLE])
 	global_rotation = 0
+#	emit_signal("dialogue_ended")
+
 
 func get_player_node():
 	var ysort_node = get_parent()

@@ -54,10 +54,11 @@ func update_stats():
 	manaStat.text = "Mana: " + str(PlayerStats.MANA + manaChanges)
 
 func _on_Submit_pressed():
-	playerNode.enable_input()
 	if PlayerStats.allotedUpgradePoints == 0:
 		print("Alloted Upgrade Points:", PlayerStats.allotedUpgradePoints)
 		apply_changes()
+		$".".visible = false
+		$CanvasLayer.visible = false
 	
 	
 func apply_changes():

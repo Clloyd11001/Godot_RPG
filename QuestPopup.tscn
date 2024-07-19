@@ -42,6 +42,7 @@ tracks/0/keys = {
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="QuestPopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 127.0
@@ -60,26 +61,20 @@ margin_left = -2867.24
 margin_top = -79.35
 margin_right = -1478.0
 margin_bottom = 478.0
+rect_rotation = 0.0213301
 rect_scale = Vector2( 5, 2.5 )
 texture = ExtResource( 2 )
 
-[node name="Label" type="RichTextLabel" parent="."]
-anchor_left = -1.043
-anchor_top = -0.32
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -56.022
-margin_top = -42.0
-margin_right = 94.0
-margin_bottom = 44.0
-custom_fonts/normal_font = ExtResource( 5 )
-bbcode_enabled = true
-bbcode_text = "[center][PLAYER HAS MET ALL OF THE REQUIREMENTS TO COMPLETE THE QUEST:
-
-[center]SHOW ME ZA WARUDO]"
-text = "[PLAYER HAS MET ALL OF THE REQUIREMENTS TO COMPLETE THE QUEST:
-
-SHOW ME ZA WARUDO]"
+[node name="Label" type="Label" parent="."]
+margin_left = -100.0
+margin_top = -50.0
+margin_right = 100.0
+margin_bottom = 100.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Player has met all of the requirements to complete the quest:
+Show me Za Warudo"
+autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/GrowQuestPopUp = SubResource( 1 )

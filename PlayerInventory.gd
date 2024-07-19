@@ -14,7 +14,7 @@ func set_player(player_ref):
 	player = player_ref
 
 func _ready():
-	print("item slot #", active_item_slot)
+
 	# Initialize Inventory as an empty dictionary
 	call_deferred("_connect_to_player")
 
@@ -31,7 +31,6 @@ var active_item_slot = 0
 
 func add_item(item_name, item_quantity,item_description ):
 	for item_data in Inventory:
-		print("Checking item:", item_data)
 		if item_data["name"] == item_name:
 			item_data["quantity"] += item_quantity
 			print("Added", item_quantity, "to", item_name, "in inventory.")
@@ -45,9 +44,6 @@ func add_item(item_name, item_quantity,item_description ):
 			Inventory.resize(i + 1)
 		if Inventory[i] == null:  
 			Inventory[i] = {"name": item_name, "quantity": item_quantity, "description": item_description} 
-
-			print("Added", item_quantity, "of", item_name, "to an empty slot in inventory.")
-			print("Current inventory state:", Inventory)
 			return
 
 
@@ -66,7 +62,6 @@ func add_item_quantity(slot: SlotClass, quantity_to_add: int):
 
 func _on_inventory_data_ready(data):
 	var item_data = data["item_data"]
-	print("testing testing my gosh", item_data)
 	for item_name in item_data.keys():
 		var item_details = item_data[item_name]
 		var item_quantity = item_details["StackSize"]
@@ -74,10 +69,7 @@ func _on_inventory_data_ready(data):
 		add_item(item_name, item_quantity, item_description)
 
 
-	print("Inventory updated:", Inventory)
-
 func active_item_scroll_through_right():
-	print("scrolling right")
 	active_item_slot = (active_item_slot + 1) % NUM_INVENTORY_SLOTS 
 
 

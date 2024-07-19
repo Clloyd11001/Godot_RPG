@@ -13,7 +13,6 @@ var outside = "res://Level1.tscn"
 
 func _on_Exit_body_entered(body):
 	if entered:
-		print("Body entered:", body)
 		if body:
 			print("Body name:", body.get_name())
 #			print("Body type:", body.get_type())
@@ -24,6 +23,7 @@ func _on_Exit_body_entered(body):
 		if body:
 			var buildingName = get_name()
 			var exitPos = LocationManager.getBuildingLocation(buildingName)
+			print("exit location", exitPos)
 			if exitPos:
 				body.position = exitPos
 			else:

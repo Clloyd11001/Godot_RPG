@@ -29,8 +29,13 @@ onready var softCollision = get_node("SoftCollision")
 onready var wanderController = get_node("WanderController")
 onready var animationPlayer = get_node("AnimationPlayer")
 
+var rng = RandomNumberGenerator.new()
+
+var allPossibleDrops = []  
+
 func _ready():
 	state = pick_random_state([IDLE, WANDER])
+	drop_object_from_enemy(rng.randi_range(0, 10))
 	
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -92,14 +97,58 @@ func _on_HurtBox_area_entered(area):
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.4)
 
+func drop_object_from_enemy(seedVariable) -> void:
+
+	var items_dir_path = "res://Items/"
+	var dir = Directory.new()
+	var error = dir.open(items_dir_path)
+	
+	if error == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				# Skip directories, process only files
+				file_name = dir.get_next()
+				continue
+			
+			var file_path = items_dir_path + file_name
+#			print("HERES THE FILE PATH", file_path)
+#			print("HERES THE FILE NAME", file_name)
+			
+			if file_name.get_extension().to_lower() == "png":
+				allPossibleDrops.append(items_dir_path + file_name)
+				print("SO HERES WHAT ITS LIKE AT THE END",allPossibleDrops[0])
+
+			
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	else:
+		print("Error opening directory:", items_dir_path)
+
+# TODO: NEED TO WORK ON THIS TO BE ABLE TO ADD ENEMY DROPS (7/18)
+#	var tween:Tween = get_node("Tween")
+#	if  tween:
+#
+#		var drop_distance = 2
+#
+#		var drop_tween = tween.interpolate_property(allPossibleDrops, "position", allPossibleDrops.position, allPossibleDrops.position + Vector2(0, drop_distance), 0.3, Tween.TRANS_QUAD,
+#								   Tween.EASE_OUT)
+#
+#		var rise_tween = tween.interpolate_property(allPossibleDrops, "position", allPossibleDrops.position + Vector2(0, drop_distance), allPossibleDrops.position, 0.3, Tween.TRANS_QUAD, Tween.EASE_IN, 0.5)
+#
+#		tween.start()
+#
+#		yield(tween, "tween_completed")
 
 func _process(_delta):
+
 	if stats.health == 0:
-		print("OK THE ENEMY IS DEAD??")
 		queue_free()
 		var enemyDeathEffect = EnemyDeathEffect.instance()
 		get_parent().add_child(enemyDeathEffect)
 		enemyDeathEffect.global_position = global_position
 		# testing to see if gaining experience should go here
 		emit_signal("enemy_defeated")
+		
 

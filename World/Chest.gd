@@ -11,7 +11,6 @@ onready var tween:Tween = get_node("Tween")
 func _ready() -> void:
 	animation_player.play("Idle")
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and is_player_inside and not is_opened:
 		is_opened = true

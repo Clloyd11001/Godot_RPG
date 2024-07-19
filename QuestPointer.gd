@@ -8,6 +8,7 @@ func _ready():
 func lookTowardsObject(target_position: Vector2):
 	var angle_to_player = (global_position - target_position).angle()
 	# Update the node's rotation to point towards the target position
+	#print(angle_to_player)
 	global_rotation = angle_to_player 
 	
 		# Flip the arrow sprite based on the angle

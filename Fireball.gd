@@ -1,6 +1,7 @@
 extends "res://Hitboxes and Hurtboxes/HitBox.gd"
 
 export(int) var SPEED: int = 100
+var knockback_vector = Vector2(1, 0).normalized() * 0.5
 
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)

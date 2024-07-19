@@ -11,10 +11,20 @@ signal dialogue_started
 signal dialogue_finished
 
 onready var tutorial_started = true
+onready var fontSize = get_node("NinePatchRect/Chat")
+onready var fontSizeName = get_node("NinePatchRect/Name")
+onready var npc = get_parent()
 var talkedToNPCSecondTime
 
 func _ready():
+	npc.connect("dialogue_ended", self, "_on_npc_dialogue_ended")
+
 	$NinePatchRect.visible = false
+	var fontSizeNumber = fontSize.get_font("font")
+	var fontSizeNameNumber = fontSizeName.get_font("font")
+	fontSizeNumber.size = 9
+	fontSizeNameNumber.size = 9
+
 
 func start():
 	if dialogue_active:

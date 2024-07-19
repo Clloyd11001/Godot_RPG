@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://DarkRPG.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Textbox.gd" type="Script" id=2]
@@ -10,6 +10,12 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Fonts/Filgaia.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+font_data = SubResource( 2 )
 
 [node name="Textbox" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -23,46 +29,46 @@ margin_right = -44.0
 margin_bottom = -12.0
 
 [node name="Panel" type="Panel" parent="TextboxContainer"]
-margin_right = 456.0
+margin_right = 206.0
 margin_bottom = 34.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="TextboxContainer"]
-margin_right = 456.0
+margin_right = 206.0
 margin_bottom = 34.0
 
 [node name="Panel" type="Panel" parent="TextboxContainer/MarginContainer"]
 visible = false
-margin_right = 456.0
+margin_right = 206.0
 margin_bottom = 34.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextboxContainer/MarginContainer"]
-margin_right = 456.0
+margin_right = 206.0
 margin_bottom = 34.0
 
 [node name="Start" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
-margin_right = 7.0
-margin_bottom = 13.0
+margin_right = 10.0
+margin_bottom = 19.0
 rect_min_size = Vector2( 7, 0 )
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 1 )
 text = "*"
 
 [node name="Label2" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
-margin_left = 11.0
-margin_right = 445.0
+margin_left = 14.0
+margin_right = 192.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Placeholder text! The quick brown mouse went over the haystack, yesterday"
 autowrap = true
 clip_text = true
 
 [node name="End" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
-margin_left = 449.0
-margin_top = 21.0
-margin_right = 456.0
+margin_left = 196.0
+margin_top = 15.0
+margin_right = 206.0
 margin_bottom = 34.0
 rect_min_size = Vector2( 7, 0 )
 size_flags_vertical = 8

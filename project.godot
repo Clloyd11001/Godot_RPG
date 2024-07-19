@@ -62,6 +62,7 @@ LocationManager="*res://LocationManager.gd"
 Loading="*res://addons/github-integration/scripts/loading.gd"
 PlayerInventory="*res://PlayerInventory.gd"
 Combos="*res://Combos.tscn"
+QuestPointer="*res://QuestPointer.tscn"
 
 [display]
 

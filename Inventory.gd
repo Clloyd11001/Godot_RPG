@@ -6,14 +6,15 @@ var holding_item = null
 var inventory_data_array = []
 onready var Player = get_parent().get_parent()
 var item_names = []
+onready var item_popup = get_node("Popup")
 
 func _ready():
-#	print("parent?", Player)
 	var slots = inventory_slots.get_children()
 	for i in range(slots.size()):
 		slots[i].connect("gui_input", self, "slot_gui_input", [slots[i]])
 	Player.connect("inventory_data_ready", self, "_on_inventory_data_ready")
 	initialize_inventory()
+
 
 func initialize_inventory():
 	var slots = inventory_slots.get_children()
