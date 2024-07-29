@@ -14,6 +14,9 @@ onready var tutorial_started = true
 onready var fontSize = get_node("NinePatchRect/Chat")
 onready var fontSizeName = get_node("NinePatchRect/Name")
 onready var npc = get_parent()
+
+signal npc_area
+
 var talkedToNPCSecondTime
 
 func _ready():
@@ -133,5 +136,6 @@ func _on_Timer_timeout():
 	QuestSystem.advanceQuest("MQ001")
 	
 func _on_Area2D_body_entered(body):
-	print("ahhhh this should be the logic where the npc rotates toward player")
-	
+	print("STOPPING WORK ON 7/25 BUT BY THE TIME YOU SEE THIS YOU SHOULD FIGURE OUT WHY NPC_AREA ISNT TRUE WHEN THIS SIGNAL IS FIRED")
+	Global.npc_area = true
+

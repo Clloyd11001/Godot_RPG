@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -60,7 +60,6 @@
 [ext_resource path="res://LocationTrigger.tscn" type="PackedScene" id=58]
 [ext_resource path="res://teleportCircle.png" type="Texture" id=59]
 [ext_resource path="res://introCharacter.tscn" type="PackedScene" id=60]
-[ext_resource path="res://Enemies/Goblin.tscn" type="PackedScene" id=61]
 
 [sub_resource type="TileSet" id=54]
 0/name = "GRASS+.png 0"
@@ -950,7 +949,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 307, 203 )
+position = Vector2( 71, 74 )
 z_index = 2
 MAX_SPEED = 60
 
@@ -2182,9 +2181,6 @@ shape = SubResource( 64 )
 
 [node name="npc" parent="." instance=ExtResource( 60 )]
 position = Vector2( 65, 54 )
-
-[node name="Goblin" parent="." instance=ExtResource( 61 )]
-position = Vector2( 375, 228 )
 
 [connection signal="area_exited" from="YSort/Player/HurtBox" to="YSort/Player" method="_on_HurtBox_area_exited"]
 [connection signal="request_completed" from="YSort/Player/UserInterface/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

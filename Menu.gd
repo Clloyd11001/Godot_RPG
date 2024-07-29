@@ -20,7 +20,6 @@ onready var animation = get_node("AnimationPlayer")
 #questLabel.set_size(get_viewport_rect().size, true) 
 func _ready():
 	animation.play("Idle_Screen")
-	
 
 func _on_Play_pressed():
 	#print("pressed play")

@@ -11,6 +11,7 @@ onready var tween:Tween = get_node("Tween")
 func _ready() -> void:
 	animation_player.play("Idle")
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and is_player_inside and not is_opened:
 		is_opened = true
@@ -36,9 +37,14 @@ func _drop_object() -> void:
 	
 	yield(tween, "tween_completed")
 
-func _on_Area2D_player_entered(_player):
-	is_player_inside = true
 
 
-func _on_Area2D_player_exited(_player):
+func _on_Area2D_body_entered(body):
+#	for some reason on init, the game things the body entered so for now I'm going to keep it as false 
+# this way the chest wont open anytime we press "I"
 	is_player_inside = false
+
+
+
+func _on_Area2D_area_exited(area):
+	print("ANTHING")

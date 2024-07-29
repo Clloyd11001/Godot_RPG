@@ -14,6 +14,7 @@ var questFINISHED
 var item_names_inventory = []
 var inventoryOpen = false
 var firstQuestPosition
+var npc_area = false
 
 const firstScene = "res://Level1.tscn"
 var firstQuestTimer = null 

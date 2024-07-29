@@ -5,7 +5,7 @@ const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
 signal enemy_defeated 
 
 export var ACCELERATION = 300
-export var MAX_SPEED = 50
+export var MAX_SPEED = 35
 export var FRICTION = 200
 export var WANDER_TARGET_RANGE = 4
 
@@ -55,11 +55,15 @@ func _physics_process(delta):
 			accelerate_towards_point(wanderController.target_position, delta)
 			if global_position.distance_to(wanderController.target_position) <= WANDER_TARGET_RANGE:
 				update_wander()
-			
+
 		CHASE:
 			var player = playerDetectionZone.player
 			if player != null:
-				accelerate_towards_point(player.global_position, delta)
+				var distance_to_player = (player.global_position - global_position).length()
+				if distance_to_player > 10:
+					accelerate_towards_point(player.global_position, delta)
+				else:
+					state = IDLE
 			else:
 				state = IDLE
 
@@ -113,13 +117,10 @@ func drop_object_from_enemy(seedVariable) -> void:
 				continue
 			
 			var file_path = items_dir_path + file_name
-#			print("HERES THE FILE PATH", file_path)
-#			print("HERES THE FILE NAME", file_name)
+
 			
 			if file_name.get_extension().to_lower() == "png":
 				allPossibleDrops.append(items_dir_path + file_name)
-				print("SO HERES WHAT ITS LIKE AT THE END",allPossibleDrops[0])
-
 			
 			file_name = dir.get_next()
 		dir.list_dir_end()

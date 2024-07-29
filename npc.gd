@@ -83,12 +83,22 @@ func set_rotation_based_on_direction(direction: Vector2):
 
 
 
-func _on_Area2D_body_exited(_body):
-	player_in_range = false
-	$Timer.start(0.5)  # Start the timer to delay resetting the rotation
 
 
 func _on_Area2D_body_entered(body):
+	print("YOOOO")
 	if body:
 		player_in_range = true
 
+
+
+func _on_Area2D_area_exited(area):
+	print("AYYYYY")
+
+
+func _on_Area2D_area_entered(area):
+	print("AHHHH I THINK IM GETTING THE HANG OF THIS")
+
+
+func _on_Area2D_body_exited(body):
+	print("UMMMMMM")
