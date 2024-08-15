@@ -15,6 +15,10 @@ var item_names_inventory = []
 var inventoryOpen = false
 var firstQuestPosition
 var npc_area = false
+var is_player_inside = false
+var inventoryItemInfo
+var inventoryItemName
+var menuIsOpen
 
 const firstScene = "res://Level1.tscn"
 var firstQuestTimer = null 

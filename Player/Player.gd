@@ -329,19 +329,12 @@ func _unhandled_input(event):
 
 	if Global.QUESTS:
 		if event.is_action_pressed("Quests") and questJournal.visible == false:
-			# def need the popup to be in the middle of the viewport
+			
 			questJournal.popup()
 			questMenu = true
 			player.visible = false
 			noInput = true
-			#wait for button press
-#			if noInput:
-#				#popUpCamera.make_current()
-#				set_process_input(false)
-#
-#			else:
-#				popUpCamera.clear_current()
-#
+			
 		elif event.is_action_pressed("Quests") and questJournal.visible == true:
 			questJournal.hide()
 			noInput = false
@@ -363,6 +356,7 @@ func _unhandled_input(event):
 			# Extract node data
 
 			var pickup_item_data = extract_node_data(pickup_item)
+			Global.inventoryItemInfo = pickup_item_data
 			# Convert node data to JSON format
 			emit_signal("inventory_data_ready", pickup_item_data)
 			if pickup_item_data != null:

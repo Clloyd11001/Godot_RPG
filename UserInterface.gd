@@ -23,13 +23,17 @@ func _input(event):
 		if $Inventory.visible:
 			# need to disable input, give it to inventory to make keyboard selectable
 			$Inventory.initialize_inventory()
+			Global.menuIsOpen = true
 			if event.is_action_pressed("ui_left"):
 				PlayerInventory.active_item_scroll_through_left()
 			if event.is_action_pressed("ui_right"):
 				PlayerInventory.active_item_scroll_through_right()
-			
-#	if event.is_action_pressed("http"):
-#		print("Sending HTTP request...")
-#		$HTTPRequest.request("http://localhost:3000/api/items")
-
+			if Global.inventoryItemInfo:
+				print("has something in it, now well see if we can get it")
+				var item_data = Global.inventoryItemInfo["item_data"]
+				for item_name in item_data.keys():
+					Global.inventoryItemName = item_name			
+					print("Name:",Global.inventoryItemName)
+		else:
+			Global.menuIsOpen = false
 ## PROCESS IS CURRENTLY, PICK UP ITEM, PRESS H THEN PRESS MENU AND IT WORKS

@@ -64,6 +64,10 @@ PlayerInventory="*res://PlayerInventory.gd"
 Combos="*res://Combos.tscn"
 QuestPointer="*res://QuestPointer.tscn"
 
+[debug]
+
+settings/physics_interpolation/enable_warnings=false
+
 [display]
 
 window/size/width=250
@@ -81,6 +85,7 @@ enabled=PoolStringArray(  )
 
 layer=false
 camera=false
+warning=false
 
 [gui]
 

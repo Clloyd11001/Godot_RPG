@@ -86,14 +86,14 @@ func set_rotation_based_on_direction(direction: Vector2):
 
 
 func _on_Area2D_body_entered(body):
-	print("YOOOO")
+	print("1st NPC's area 2D entered")
 	if body:
 		player_in_range = true
 
 
 
 func _on_Area2D_area_exited(area):
-	print("AYYYYY")
+	print("1st NPC's area 2D exited")
 
 
 func _on_Area2D_area_entered(area):
@@ -101,4 +101,4 @@ func _on_Area2D_area_entered(area):
 
 
 func _on_Area2D_body_exited(body):
-	print("UMMMMMM")
+	Global.npc_area = false

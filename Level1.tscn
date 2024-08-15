@@ -949,7 +949,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 71, 74 )
+position = Vector2( 239, 81 )
 z_index = 2
 MAX_SPEED = 60
 
@@ -2121,15 +2121,14 @@ position = Vector2( 1140, 264 )
 
 [node name="Chests" type="Node2D" parent="YSort"]
 position = Vector2( 582, 218 )
+z_index = 4096
 z_as_relative = false
 
 [node name="Chest" parent="YSort/Chests" instance=ExtResource( 11 )]
-position = Vector2( -292, -91 )
-z_index = 1
+position = Vector2( -289, -80 )
 
 [node name="Chest2" parent="YSort/Chests" instance=ExtResource( 11 )]
 position = Vector2( 1284, 281 )
-script = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

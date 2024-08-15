@@ -18,6 +18,7 @@ func _ready():
 	# Initialize Inventory as an empty dictionary
 	call_deferred("_connect_to_player")
 
+
 func _connect_to_player():
 	if not player:
 		print(get_tree().root)
@@ -53,6 +54,7 @@ func remove_item(slot: SlotClass):
 
 func add_item_to_empty_slot(Item: ItemClass, slot: SlotClass):
 	Inventory[slot.slot_index] = [Item.item_name, Item.item_quantity]
+	print("item is" + Item.item_name + "and index is" + slot.slot_index)
 
 func add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	for item_data in Inventory:
@@ -70,13 +72,15 @@ func _on_inventory_data_ready(data):
 
 
 func active_item_scroll_through_right():
-	active_item_slot = (active_item_slot + 1) % NUM_INVENTORY_SLOTS 
+	if Global.menuIsOpen:
+		active_item_slot = (active_item_slot + 1) % NUM_INVENTORY_SLOTS 
 
 
 func active_item_scroll_through_left():
-	if active_item_slot == 0:
-		active_item_slot = NUM_INVENTORY_SLOTS - 1
-	else:
-		active_item_slot -= 1
+	if Global.menuIsOpen:
+		if active_item_slot == 0:
+			active_item_slot = NUM_INVENTORY_SLOTS - 1
+		else:
+			active_item_slot -= 1
 
 

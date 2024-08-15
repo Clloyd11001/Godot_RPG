@@ -15,7 +15,7 @@ var selected_style: StyleBoxTexture = null
 
 var ItemClass = preload("res://Item.tscn")
 var item = null
-var selected = true  # Track whether this slot is selected
+var selected = true  
 var slot_index = get_index()
 var isPopupVisible = false
 
@@ -29,19 +29,16 @@ func _ready():
 	selected_style.texture = selected_text
 	
 	refresh_style()
-	
-		
-func refresh_style():
-	var slot_index = PlayerInventory.active_item_slot
 
-	# Reset all slots to default or empty style
-	
+
+func refresh_style():
+	var slot_index = clamp(PlayerInventory.active_item_slot, 0, get_child_count() - 1)
+#	print("index:", slot_index)
 	for i in range(get_child_count() - 1):
 		var slot = get_node("Slot" + str(i + 1))
 		if slot:
-			slot.set('custom_styles/panel', default_style)  # or empty_style
-
-	# Apply selected style to the currently active slot
+			slot.set('custom_styles/panel', default_style)  
+	# Apply selected style to the currently active slot (we can change this later on)
 	if selected:
 		var active_slot = get_node("Slot" + str(slot_index + 1))
 		active_slot.set('custom_styles/panel', selected_style)
@@ -85,21 +82,42 @@ func _input(event):
 			isPopupVisible = false
 			selectedImagePopUp.hide()
 		else:
-			var selectedItemDictionary = PlayerInventory.Inventory[PlayerInventory.active_item_slot]
-			
-			var selectedItem = selectedItemDictionary["name"]
-			var selectedItemImage = selectedItem + '.png'
-			var selectedTexture = load("/item_icons/" + selectedItemImage)
+	# Check if the Inventory array is not empty
+			if not PlayerInventory.Inventory.empty():
+				var index = PlayerInventory.active_item_slot
 
-			var itemNameText = selectedItem
-			var itemDescriptionText = selectedItemDictionary["description"]
-			
-			var itemQuantity = selectedItemDictionary["quantity"]
-			var itemQuantityText = "x " + str(itemQuantity)
-			
-			itemName.text = itemNameText + " " + itemQuantityText
-			itemDescription.bbcode_text = itemDescriptionText
-			selectedImagePopUp.popup_centered()
-			isPopupVisible = true
+				# Check if the index is within bounds
+				if index >= 0 and index < PlayerInventory.Inventory.size():
+					var value = PlayerInventory.Inventory[index]
 
+					# Check if the value at the index is a dictionary
+					if typeof(value) == TYPE_DICTIONARY:
+						var selectedItemDictionary = value
 
+						# Check if the dictionary is not empty
+						if not selectedItemDictionary.empty():
+							
+							# Retrieve item details
+							var selectedItem = selectedItemDictionary.get("name", "")
+							var selectedItemImage = selectedItem + '.png'
+							var selectedTexture = load("/item_icons/" + selectedItemImage)
+
+							var itemNameText = selectedItem
+							var itemDescriptionText = selectedItemDictionary.get("description", "")
+							var itemQuantity = selectedItemDictionary.get("quantity", 0)
+							var itemQuantityText = "x " + str(itemQuantity)
+
+							# Update the UI
+							itemName.text = itemNameText + " " + itemQuantityText
+							itemDescription.bbcode_text = itemDescriptionText
+							selectedImageRect.texture = selectedTexture
+							selectedImagePopUp.popup_centered()
+							isPopupVisible = true
+						else:
+							print("Selected item dictionary is empty.")
+					else:
+						print("The value at the index is not a dictionary.")
+				else:
+					print("Index is out of bounds.")
+			else:
+				print("Inventory is empty.")

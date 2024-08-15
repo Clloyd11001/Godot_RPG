@@ -186,7 +186,6 @@ rect_min_size = Vector2( 36, 36 )
 custom_styles/panel = SubResource( 1 )
 
 [node name="Popup" type="Popup" parent="."]
-visible = true
 margin_left = 36.0
 margin_top = 2.0
 margin_right = 209.0
