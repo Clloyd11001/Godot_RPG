@@ -1,6 +1,6 @@
 extends AnimatedSprite
 
-export(PackedScene) var object_scene: PackedScene = preload("res://Items/Transperent/AnimalSkullDrop.tscn")
+export(PackedScene) var object_scene: PackedScene = preload("res://Items/Transperent/RubyDrop.tscn")
 
 var is_player_inside: bool = false
 var is_opened: bool = false

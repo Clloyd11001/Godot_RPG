@@ -46,7 +46,7 @@ region = Rect2( 144, 102, 48, 34 )
 atlas = ExtResource( 3 )
 region = Rect2( 192, 102, 48, 34 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=65]
 animations = [ {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
@@ -164,7 +164,7 @@ tracks/1/keys = {
 [node name="Chest" type="AnimatedSprite"]
 position = Vector2( 115, 52 )
 scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 1 )
+frames = SubResource( 65 )
 animation = "Idle"
 script = ExtResource( 2 )
 
