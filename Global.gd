@@ -19,6 +19,13 @@ var is_player_inside = false
 var inventoryItemInfo
 var inventoryItemName
 var menuIsOpen
+var chestId: int = 0
+var chestName
+var chestIndex
+var chestLocalTestId
+var currentlyPointedToId
+var available_ids: Array = []
+
 
 const firstScene = "res://Level1.tscn"
 var firstQuestTimer = null 
@@ -78,3 +85,16 @@ func _process(delta):
 		# this needs work
 		#start_first_quest_timer()
 		QuestPointer.lookTowardsObject(firstQuestPosition)
+
+
+
+func get_unique_id() -> int:
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var new_id: int
+	while true:
+		new_id = rng.randf_range(0, 1e9) 
+		if not available_ids.has(new_id):
+			available_ids.append(new_id)
+			break
+	return new_id

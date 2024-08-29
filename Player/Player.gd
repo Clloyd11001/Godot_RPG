@@ -288,19 +288,18 @@ func extract_node_data(node):
 
 	if node is Sprite:  # Check if the node is of type Sprite
 		var item_name = node.name  # Get the name of the node
-		#print("item name of sprite", item_name)
+
 		var item_data = JsonData.LoadData("res://Data/ItemData.json")
-		var item_description = item_data[item_name]["Description"]
 
-		#print("item description", item_description)
-		# You can add more conditions or functions to extract more data
+		if item_data.has(item_name) == true:
+			var item_description = item_data[item_name]["Description"]
 
-		# Check if the item_name already exists in item_data
-		if not node_data["item_data"].has(item_name):
-			node_data["item_data"][item_name] = {
-				"StackSize": 1,
-				"Description": item_description
-			}
+			# Check if the item_name already exists in item_data
+			if not node_data["item_data"].has(item_name):
+				node_data["item_data"][item_name] = {
+					"StackSize": 1,
+					"Description": item_description
+				}
 
 	# Recursively extract data from child nodes
 	for child in node.get_children():
@@ -316,6 +315,10 @@ func convert_to_json(node_data):
 func pick_up_item(body):
 	playerObject = body
 
+func check_if_item_data_is_empty(item_data: Dictionary) -> bool:
+	return item_data["item_data"].empty() 
+
+	
 func _unhandled_input(event):
 	if event.is_action_pressed("heal"):
 		# potion logic, still need to make inventory keyboard selectable
@@ -347,23 +350,21 @@ func _unhandled_input(event):
 		pass
 
 	if event.is_action_pressed("pickup"):
-		# if player presses pickup, get things in range based on pickupzone object we create, put into array, call extract_node_data 
-		# once you have node data, put into JSON
-		# once its in json, print it out, then send a signal saying the inventory data is ready
-		# after sending the signal, check if json_data is null, then pick it up then erase it 
 		if $PickupZone.items_in_range.size() > 0:
 			var pickup_item = $PickupZone.items_in_range.values()[0]
 			# Extract node data
-
 			var pickup_item_data = extract_node_data(pickup_item)
-			Global.inventoryItemInfo = pickup_item_data
-			# Convert node data to JSON format
-			emit_signal("inventory_data_ready", pickup_item_data)
-			if pickup_item_data != null:
-#				print("this is the item to pickup", pickup_item)
-				pick_up_item(pickup_item)
-				$PickupZone.items_in_range.erase(pickup_item_data)
-				pickup_item.queue_free()
+			if check_if_item_data_is_empty(pickup_item_data) == false:	
+				Global.inventoryItemInfo = pickup_item_data
+				# Convert node data to JSON format
+				emit_signal("inventory_data_ready", pickup_item_data)
+				if pickup_item_data != null:
+	#				print("this is the item to pickup", pickup_item)
+					pick_up_item(pickup_item)
+					$PickupZone.items_in_range.erase(pickup_item_data)
+					pickup_item.queue_free()
+				else:
+					print("Debug: Item cannot be picked up or doesn't have a sprite.")
 			else:
 				print("Debug: Item cannot be picked up or doesn't have a sprite.")
 		else:

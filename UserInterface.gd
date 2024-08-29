@@ -8,14 +8,6 @@ func _ready():
 	# Connect to the player's signal
 	pass
 
-# Handle the inventory data ready signal
-# once we recieve that data, do exactly the same logic as we had before but change it from a button pressed into a signal
-# so after this everytime we pickup, this should fire then once it sends the data, we should automatically send the http PUT
-# i have a button for the GET right now, is_action_pressed("http") but that code should go into the inventory
-# so that when we open the inventory it does a GET
-
-
-
 func _input(event):
 	if event.is_action_pressed("Menu"):
 		$Inventory.visible = !$Inventory.visible
@@ -36,4 +28,4 @@ func _input(event):
 					print("Name:",Global.inventoryItemName)
 		else:
 			Global.menuIsOpen = false
-## PROCESS IS CURRENTLY, PICK UP ITEM, PRESS H THEN PRESS MENU AND IT WORKS
+
