@@ -66,25 +66,23 @@ func _input(event: InputEvent) -> void:
 			
 			# Update state
 			is_opened = true
-			print('1:::::::', $".")
-			print('2:::::::', Global.chestName[0])
-			
+
 			var node_name = Global.chestName[0]
 			var found_node = find_node_by_name(get_tree().root, node_name)
 			var chest = found_node
+			
 			if found_node:
 				print("Found node:", found_node.name)
 			else:
 				print("Node not found.")
 			print("this is chest", chest)
 
-			# Ensure the chest node is valid
 			if chest and chest.has_node(animation_player.to_string()):
 				var animation_player = chest.get_node("AnimationPlayer")
 				animation_player.play("Open")
 			else:
 				print("Chest or AnimationPlayer not found.")
-#			animation_player.play("Open")
+
 		else:
 			print("Item to remove not found")
 		

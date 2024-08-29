@@ -15,6 +15,7 @@ onready var fontSize = get_node("NinePatchRect/Chat")
 onready var fontSizeName = get_node("NinePatchRect/Name")
 onready var npc = get_parent()
 
+var player_in_range
 
 var talkedToNPCSecondTime
 
@@ -133,9 +134,47 @@ func _on_Timer_timeout():
 	
 	QuestSystem.addQuest("MQ001")
 	QuestSystem.advanceQuest("MQ001")
+
+func extract_node_names(message: String) -> Array:
+	var names: Array = []
 	
+	# Split the message into lines
+	var lines = message.split("\n")
+	
+	for line in lines:
+		# Find the index of the ':' character
+		var colon_index = line.find(":")
+		
+		if colon_index != -1:
+			# Extract the node name from the beginning to the ':' character
+			var node_name = line.substr(0, colon_index).strip_edges()
+			names.append(node_name)
+	
+	return names
+
+func find_node_by_name(root: Node, name: String) -> Node:
+	if root.name == name:
+		return root
+	for child in root.get_children():
+		var result = find_node_by_name(child, name)
+		if result:
+			return result
+	return null
+
 func _on_Area2D_body_entered(body):
-	print("STOPPING WORK ON 7/25 BUT BY THE TIME YOU SEE THIS YOU SHOULD FIGURE OUT WHY NPC_AREA ISNT TRUE WHEN THIS SIGNAL IS FIRED")
+
+	var npcName = $".".to_string()
+	print("entered", npc.name)
+	Global.npcName = npc.name
+	var extractedNPC = extract_node_names(npc.name)
+	print('extractedNPC', extractedNPC)
+	var found_node = find_node_by_name(get_tree().root, Global.npcName)
+	Global.npcNode = found_node
+	print('found_node',found_node)
+	print('extractedNPC',extractedNPC)
+	print('npcName',npcName)
+	if body:
+		player_in_range = true
 	Global.npc_area = true
 
 

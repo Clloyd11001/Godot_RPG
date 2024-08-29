@@ -2126,17 +2126,45 @@ z_index = 4096
 z_as_relative = false
 
 [node name="Chest1" parent="YSort/Chests" instance=ExtResource( 11 )]
-position = Vector2( -141, 10 )
+position = Vector2( 101, -40 )
 
 [node name="Chest2" parent="YSort/Chests" instance=ExtResource( 11 )]
-position = Vector2( -176, 11 )
+position = Vector2( -341, -4 )
 object_scene = ExtResource( 61 )
 
 [node name="Chest3" parent="YSort/Chests" instance=ExtResource( 11 )]
-position = Vector2( -222, 11 )
+position = Vector2( 783, 339 )
 
 [node name="Chest4" parent="YSort/Chests" instance=ExtResource( 11 )]
-position = Vector2( -260, -21 )
+position = Vector2( -9, 890 )
+object_scene = ExtResource( 61 )
+
+[node name="Chest5" parent="YSort/Chests" instance=ExtResource( 11 )]
+position = Vector2( 1071, 887 )
+
+[node name="Chest6" parent="YSort/Chests" instance=ExtResource( 11 )]
+position = Vector2( 1065, 154 )
+object_scene = ExtResource( 61 )
+
+[node name="Chest7" parent="YSort/Chests" instance=ExtResource( 11 )]
+position = Vector2( 390, 45 )
+
+[node name="Chest8" parent="YSort/Chests" instance=ExtResource( 11 )]
+position = Vector2( -373, 160 )
+object_scene = ExtResource( 61 )
+
+[node name="Chest9" parent="YSort/Chests" instance=ExtResource( 11 )]
+position = Vector2( -266, 520 )
+
+[node name="Chest10" parent="YSort/Chests" instance=ExtResource( 11 )]
+position = Vector2( -535, 651 )
+object_scene = ExtResource( 61 )
+
+[node name="Chest11" parent="YSort/Chests" instance=ExtResource( 11 )]
+position = Vector2( -368, 660 )
+
+[node name="Chest12" parent="YSort/Chests" instance=ExtResource( 11 )]
+position = Vector2( -528, 272 )
 object_scene = ExtResource( 61 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -2187,7 +2215,7 @@ texture = ExtResource( 59 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SecretDoor/Area2D"]
 shape = SubResource( 64 )
 
-[node name="npc" parent="." instance=ExtResource( 60 )]
+[node name="npc7" parent="." instance=ExtResource( 60 )]
 position = Vector2( 65, 54 )
 
 [connection signal="area_exited" from="YSort/Player/HurtBox" to="YSort/Player" method="_on_HurtBox_area_exited"]

@@ -31,13 +31,37 @@ func _process(delta):
 		NEW_DIR:
 			if player_in_range:
 				dir = choose([Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN])
-				# Instantly jump to the new direction
 		MOVE:
 			move(delta)
 			
 	if player_in_range and player != null:
 		var angle_to_player = (global_position - player.global_position ).angle()
 		global_rotation = angle_to_player + deg2rad(90)
+
+func find_node_by_name(root: Node, name: String) -> Node:
+	if root.name == name:
+		return root
+	for child in root.get_children():
+		var result = find_node_by_name(child, name)
+		if result:
+			return result
+	return null
+	
+
+func extract_number_from_string(text: String) -> int:
+	# Length of "Chest"
+	var prefix_length = 5  
+
+
+	if text.length() > prefix_length:
+
+		var number_part = text.substr(prefix_length, text.length() - prefix_length)
+
+		if number_part.is_valid_integer():
+			return int(number_part)
+	
+	return -1 
+
 
 
 func move(delta):
@@ -86,10 +110,17 @@ func set_rotation_based_on_direction(direction: Vector2):
 
 
 func _on_Area2D_body_entered(body):
-	print("1st NPC's area 2D entered")
+
+	var npcName = $".".to_string()
+	var extractedNPC = extract_node_names(npcName)
+	print('extractedNPC', extractedNPC[0])
+	Global.npcName = extractedNPC[0]
+	var found_node = find_node_by_name(get_tree().root, extractedNPC[0])
+	print('found_node',found_node)
+	print('extractedNPC',extractedNPC)
+	print('npcName',npcName)
 	if body:
 		player_in_range = true
-
 
 
 func _on_Area2D_area_exited(area):
@@ -102,3 +133,29 @@ func _on_Area2D_area_entered(area):
 
 func _on_Area2D_body_exited(body):
 	Global.npc_area = false
+
+func extract_node_names(message: String) -> Array:
+	var names: Array = []
+	
+	# Split the message into lines
+	var lines = message.split("\n")
+	
+	for line in lines:
+		# Find the index of the ':' character
+		var colon_index = line.find(":")
+		
+		if colon_index != -1:
+			# Extract the node name from the beginning to the ':' character
+			var node_name = line.substr(0, colon_index).strip_edges()
+			names.append(node_name)
+	
+	return names
+	
+#func _input(event: InputEvent) -> void:
+#	if event.is_action_pressed("interact") and player_in_range:
+#		var chestName = $".".to_string()
+#		var extractedNPC = extract_node_names(chestName)
+#		var found_node = find_node_by_name(get_tree().root, Global.npcName)
+#		print('found_node',found_node)
+#		print('extractedNPC',extractedNPC)
+#		print('chestName',chestName)

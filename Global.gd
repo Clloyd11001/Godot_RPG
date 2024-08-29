@@ -25,6 +25,8 @@ var chestIndex
 var chestLocalTestId
 var currentlyPointedToId
 var available_ids: Array = []
+var npcName
+var npcNode
 
 
 const firstScene = "res://Level1.tscn"
