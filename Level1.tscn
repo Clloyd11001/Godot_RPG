@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -61,6 +61,8 @@
 [ext_resource path="res://teleportCircle.png" type="Texture" id=59]
 [ext_resource path="res://introCharacter.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Items/Transperent/AnimalSkullDrop.tscn" type="PackedScene" id=61]
+[ext_resource path="res://World/Textures/npcs/lizard.png" type="Texture" id=62]
+[ext_resource path="res://World/Textures/npcs/dudeWutIsScratch.png" type="Texture" id=66]
 
 [sub_resource type="TileSet" id=54]
 0/name = "GRASS+.png 0"
@@ -649,6 +651,30 @@
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=48]
 
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 66 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=66]
+animations = [ {
+"frames": [ SubResource( 65 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 62 )
+region = Rect2( 108, 102, 36, 33 )
+
+[sub_resource type="SpriteFrames" id=68]
+animations = [ {
+"frames": [ SubResource( 67 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
 [sub_resource type="TileSet" id=61]
 0/name = "blades_of_grass.png 0"
 0/texture = ExtResource( 54 )
@@ -950,7 +976,7 @@ editor_draw_limits = true
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 239, 81 )
+position = Vector2( 628, 228 )
 z_index = 2
 MAX_SPEED = 60
 
@@ -983,8 +1009,32 @@ position = Vector2( 182, 8 )
 
 [node name="HTTPRequest" type="HTTPRequest" parent="YSort/Player/UserInterface"]
 
-[node name="npc" parent="YSort" instance=ExtResource( 55 )]
+[node name="firstQuestNPC" parent="YSort" instance=ExtResource( 55 )]
 position = Vector2( 293, 59 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionShape2D" parent="YSort/firstQuestNPC/Area2D" index="0"]
+position = Vector2( 1, 3 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="fairy" parent="YSort" instance=ExtResource( 60 )]
+position = Vector2( 415, 218 )
+
+[node name="AnimatedSprite" parent="YSort/fairy" index="0"]
+frame = 2
+
+[node name="CollisionShape2D" parent="YSort/fairy/Area2D" index="0"]
+position = Vector2( -3, 2 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="randomNPC" parent="YSort" instance=ExtResource( 60 )]
+position = Vector2( 560, 225 )
+
+[node name="AnimatedSprite" parent="YSort/randomNPC" index="0"]
+frames = SubResource( 66 )
+
+[node name="CollisionShape2D" parent="YSort/randomNPC/Area2D" index="0"]
+position = Vector2( -4, 1 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Welcome_Sign" parent="YSort" instance=ExtResource( 42 )]
@@ -2167,6 +2217,15 @@ position = Vector2( -368, 660 )
 position = Vector2( -528, 272 )
 object_scene = ExtResource( 61 )
 
+[node name="raymond" parent="YSort" instance=ExtResource( 60 )]
+position = Vector2( 692, 226 )
+
+[node name="AnimatedSprite" parent="YSort/raymond" index="0"]
+frames = SubResource( 68 )
+
+[node name="CollisionShape2D" parent="YSort/raymond/Area2D" index="0"]
+position = Vector2( -3, 2 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
@@ -2204,6 +2263,12 @@ position = Vector2( 1262, 283 )
 [node name="PopUpCamera" parent="LocationTrigger/CanvasLayer" index="0"]
 position = Vector2( 794, 275 )
 
+[node name="TextureRect" parent="LocationTrigger/CanvasLayer/QuestPopup" index="0"]
+margin_left = -3551.26
+margin_top = -513.554
+margin_right = -2162.02
+margin_bottom = 43.7963
+
 [node name="SecretDoor" type="Node2D" parent="."]
 position = Vector2( 813, 537 )
 
@@ -2215,12 +2280,9 @@ texture = ExtResource( 59 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SecretDoor/Area2D"]
 shape = SubResource( 64 )
 
-[node name="npc7" parent="." instance=ExtResource( 60 )]
-position = Vector2( 65, 54 )
-
 [connection signal="area_exited" from="YSort/Player/HurtBox" to="YSort/Player" method="_on_HurtBox_area_exited"]
 [connection signal="request_completed" from="YSort/Player/UserInterface/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
-[connection signal="body_entered" from="YSort/npc/Area2D" to="YSort/npc/Dialogue" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="YSort/firstQuestNPC/Area2D" to="YSort/firstQuestNPC/Dialogue" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="YSort/Houses/First_House/DoorWay" to="." method="_on_DoorWay_body_entered"]
 [connection signal="body_exited" from="YSort/Houses/First_House/DoorWay" to="." method="_on_DoorWay_body_exited"]
 [connection signal="body_entered" from="YSort/Houses/House_Chimeny/DoorWay" to="." method="_on_DoorWay_body_entered"]
@@ -2232,12 +2294,15 @@ position = Vector2( 65, 54 )
 [editable path="YSort/Player/HurtBox"]
 [editable path="YSort/Player/QuestPointer"]
 [editable path="YSort/Player/CanvasLayer2/Popup"]
-[editable path="YSort/npc"]
-[editable path="YSort/npc/Dialogue"]
+[editable path="YSort/firstQuestNPC"]
+[editable path="YSort/firstQuestNPC/Dialogue"]
+[editable path="YSort/fairy"]
+[editable path="YSort/randomNPC"]
 [editable path="YSort/Next_Level_Indicator"]
 [editable path="YSort/Houses/First_House"]
 [editable path="YSort/Houses/House_Chimeny"]
 [editable path="YSort/Houses/CommonHouse"]
+[editable path="YSort/raymond"]
 [editable path="Textbox"]
 [editable path="LocationTrigger"]
 [editable path="LocationTrigger/CanvasLayer/QuestPopup"]

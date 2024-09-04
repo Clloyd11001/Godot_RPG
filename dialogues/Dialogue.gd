@@ -44,8 +44,8 @@ func start():
 	var npc_name = npc_sprite.get_name()
 	
 	# Define the default dialogue file path
-	dialogue_file = "res://dialogues/json/" + npc_name + ".json"
-	
+	dialogue_file = "res://dialogues/json/" + Global.npcName + ".json"
+	print("dialogue_file", dialogue_file)
 	# Check if we need to load an alternate dialogue file
 
 	if Global.waitingForPlayerToCompleteQuest and !talkedToNPCSecondTime:
@@ -177,4 +177,7 @@ func _on_Area2D_body_entered(body):
 		player_in_range = true
 	Global.npc_area = true
 
+func _on_Area2D_body_exited(body):
+	print("we getting in here?!????????????????????????????????!?!?!!!!!!!!!!!!")
+	Global.npc_area = false
 

@@ -3,9 +3,9 @@ extends Area2D
 
 
 func _input(event):
-	if event.is_action_pressed("interact") and Global.npc_area and len(get_overlapping_bodies()) > 0:
+	if event.is_action_pressed("interact") and Global.npc_area == true and len(get_overlapping_bodies()) > 0:
 		use_dialogue()
-	elif event.is_action_pressed("interact") and Global.npcName:
+	elif event.is_action_pressed("interact") and Global.npc_area == true and Global.npcName:
 		use_specific_dialogue(Global.npcName)
 
 func use_dialogue():

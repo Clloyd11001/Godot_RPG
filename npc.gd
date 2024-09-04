@@ -107,20 +107,16 @@ func set_rotation_based_on_direction(direction: Vector2):
 
 
 
-
-
 func _on_Area2D_body_entered(body):
 
-	var npcName = $".".to_string()
-	var extractedNPC = extract_node_names(npcName)
-	print('extractedNPC', extractedNPC[0])
-	Global.npcName = extractedNPC[0]
-	var found_node = find_node_by_name(get_tree().root, extractedNPC[0])
-	print('found_node',found_node)
-	print('extractedNPC',extractedNPC)
-	print('npcName',npcName)
-	if body:
-		player_in_range = true
+	if body.name == 'Player':
+		Global.npc_area = true
+		var npcName = $".".to_string()
+		var extractedNPC = extract_node_names(npcName)
+		Global.npcName = extractedNPC[0]
+		var found_node = find_node_by_name(get_tree().root, extractedNPC[0])
+		if body:
+			player_in_range = true
 
 
 func _on_Area2D_area_exited(area):
@@ -133,6 +129,9 @@ func _on_Area2D_area_entered(area):
 
 func _on_Area2D_body_exited(body):
 	Global.npc_area = false
+	
+	if body:
+		player_in_range = false
 
 func extract_node_names(message: String) -> Array:
 	var names: Array = []
@@ -159,3 +158,5 @@ func extract_node_names(message: String) -> Array:
 #		print('found_node',found_node)
 #		print('extractedNPC',extractedNPC)
 #		print('chestName',chestName)
+
+
