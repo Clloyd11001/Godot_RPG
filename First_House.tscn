@@ -45,6 +45,9 @@ visible = false
 [node name="AnimationTree" parent="Player" index="5"]
 parameters/playback = SubResource( 2 )
 
+[node name="Camera2D" parent="Player" index="15"]
+current = false
+
 [node name="Inside_Camera" type="Camera2D" parent="Player"]
 current = true
 limit_left = -64
@@ -109,5 +112,6 @@ scale = Vector2( 0.5, 0.5 )
 [editable path="Player"]
 [editable path="Player/HitBoxPivot/SwordHitBox"]
 [editable path="Player/HurtBox"]
-[editable path="Player/Popup"]
+[editable path="Player/QuestPointer"]
+[editable path="Player/CanvasLayer2/Popup"]
 [editable path="George"]

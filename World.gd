@@ -49,7 +49,7 @@ func _on_enemy_defeated():
 
 
 func _on_DoorWay_body_entered(_body):
-		
+	print("are we near the doorway")
 	#Only shows once, should happen every time
 	textBox.queue_text("Press I to enter the house")
 	if Input.is_action_just_pressed("interact"):

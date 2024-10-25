@@ -53,7 +53,7 @@ func _on_first_quest_timer_timeout():
 	print("Timer ended")
 
 	# Stop the timer when it times out
-	firstQuestTimer.stop()  # Stop the timer
+	firstQuestTimer.stop() 
 	
 func update_scene(scene_to_be_changed_to):
 	currentScene = scene_to_be_changed_to

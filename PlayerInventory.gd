@@ -31,6 +31,7 @@ var Inventory = []
 var active_item_slot = 0
 
 func add_item(item_name, item_quantity,item_description ):
+	print("item_quantity", item_quantity)
 	for item_data in Inventory:
 		if item_data["name"] == item_name:
 			item_data["quantity"] += item_quantity

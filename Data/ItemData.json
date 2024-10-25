@@ -38,4 +38,9 @@
     "StackSize": 99,
     "Description": "A red vial able to cure the blood of champions."
   },
+  "PixieDust": {
+    "ItemCategory": "Resource",
+    "StackSize": 99,
+    "Description": "Green dust from a fairy"
+  },
 }

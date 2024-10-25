@@ -6,7 +6,7 @@ var inventory_data_array = []
 onready var Player = get_parent()
 func _ready():
 	# Connect to the player's signal
-	pass
+	print("PlayerInventory PlayerInventory PlayerInventory", PlayerInventory)
 
 func _input(event):
 	if event.is_action_pressed("Menu"):

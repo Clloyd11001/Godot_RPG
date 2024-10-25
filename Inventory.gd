@@ -13,6 +13,7 @@ onready var item_popup_icon = get_node("Popup/TextureRect")
 func _ready():
 	
 	var slots = inventory_slots.get_children()
+
 	for i in range(slots.size()):
 		slots[i].connect("gui_input", self, "slot_gui_input", [slots[i]])
 	Player.connect("inventory_data_ready", self, "_on_inventory_data_ready")
@@ -29,6 +30,7 @@ func _process(delta):
 			item_popup_icon.texture = texture  # Set the texture of the TextureRect node
 		else:
 			print("Failed to load texture at path: ", texture_path)
+
 func initialize_inventory():
 	var slots = inventory_slots.get_children()
 	var inventory = PlayerInventory.Inventory
@@ -38,13 +40,14 @@ func initialize_inventory():
 			var item_info = inventory[i]
 			var item_name = item_info["name"]
 			var item_quantity = item_info["quantity"]
+			print('Initializing Slot:', i, 'Item Name:', item_name, 'Item Quantity:', item_quantity)
+			
+			# Initialize the slot with item name and quantity
 			inventory_slots.initialize_item(item_name, item_quantity)
-
 			item_names.append(item_name)
 			Global.item_names_inventory = item_names
 		else:
-			pass
-
+			print('Initializing Slot:', i, 'No Item')
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):
 	if event is InputEventMouseButton:

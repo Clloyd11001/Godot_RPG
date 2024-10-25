@@ -348,7 +348,7 @@ func _unhandled_input(event):
 		#Global.firstScene = (get_tree().current_scene.filename)
 	else:
 		pass
-
+	# TODO when picking up some items even when changing their sprites its using the previous object?
 	if event.is_action_pressed("pickup"):
 		if $PickupZone.items_in_range.size() > 0:
 			var pickup_item = $PickupZone.items_in_range.values()[0]

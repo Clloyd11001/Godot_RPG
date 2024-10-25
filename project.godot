@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/github-integration/scripts/InvitationItem.gd"
 }, {
-"base": "Resource",
-"class": "Item",
-"language": "GDScript",
-"path": "res://Items/Item.gd"
-}, {
 "base": "PanelContainer",
 "class": "RepositoryItem",
 "language": "GDScript",
@@ -38,7 +33,6 @@ _global_script_class_icons={
 "ContributorClass": "",
 "GistItem": "",
 "InvitationItem": "",
-"Item": "",
 "RepositoryItem": ""
 }
 

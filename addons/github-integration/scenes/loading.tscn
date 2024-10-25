@@ -37,10 +37,13 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="loading_icon" type="TextureRect" parent="."]
 material = SubResource( 2 )
-margin_left = 78.0
-margin_top = 5.0
-margin_right = 168.0
-margin_bottom = 95.0
+anchor_left = 0.312
+anchor_top = 0.033
+anchor_right = 0.672
+anchor_bottom = 0.633
+margin_top = 0.0500002
+margin_right = -1.52588e-05
+margin_bottom = 0.0499954
 rect_min_size = Vector2( 90, 90 )
 size_flags_horizontal = 4
 size_flags_vertical = 0

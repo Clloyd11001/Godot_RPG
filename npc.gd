@@ -160,3 +160,15 @@ func extract_node_names(message: String) -> Array:
 #		print('chestName',chestName)
 
 
+
+func _on_Dialogue_dialogue_finished():
+	print("NAME OF PARENT", $".".name)
+	if $".".name == "fairy":
+		print("PlayerInventory")
+		# EVERY TIME YOU ADD TO PLAYER INVENTOYR HAVE TO CHANGE ITEMDATA.JSON TO CONTAIN APPROPRIATE ITEM
+		PlayerInventory.add_item('PixieDust', 1, 'Green dust released by a mysterious fairy')
+		print("Global.inventoryItemInfo", Global.inventoryItemInfo)
+		print("PlayerInventory", PlayerInventory)
+		if Global.item_names_inventory.has("PixieDust"):
+			print("IM ACTUALLY A MONKEYS UNCLE, IM ACTUALLY A MONKEYS UNCLE, IM ACTUALLY A MONKEYS UNCLE")
+
