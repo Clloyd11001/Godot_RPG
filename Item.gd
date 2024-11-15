@@ -30,13 +30,7 @@ func set_item(nm, qt):
 			$Label.text = str(item_quantity)
 	else:
 		print("Item", item_name, "not found in item_data")
-#
-#	var stack_size = int(JsonData.item_data[item_name]['StackSize'])
-#	if stack_size == 1:
-#		$Label.visible = false
-#	else:
-#		$Label.visible = true
-#		$Label.text = String(item_quantity)
+
 
 func add_item_quantity(amount_to_add):
 	item_quantity += amount_to_add

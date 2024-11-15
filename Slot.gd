@@ -30,20 +30,23 @@ func _ready():
 	
 	refresh_style()
 
-
 func refresh_style():
+	# Ensure active slot index is calculated correctly
 	var slot_index = clamp(PlayerInventory.active_item_slot, 0, get_child_count() - 1)
-#	print("index:", slot_index)
-	for i in range(get_child_count() - 1):
-		var slot = get_node("Slot" + str(i + 1))
+	
+	# Loop through all the slots and apply default style
+	for i in range(get_child_count()):  # Do not subtract 1 here if slots are 0-indexed
+		var slot = get_node("Slot" + str(i + 1))  
 		if slot:
-			slot.set('custom_styles/panel', default_style)  
-	# Apply selected style to the currently active slot (we can change this later on)
-	if selected:
-		var active_slot = get_node("Slot" + str(slot_index + 1))
+			slot.set('custom_styles/panel', default_style)
+	
+	# Apply selected style to the active slot
+	var active_slot = get_node("Slot" + str(slot_index + 1))  
+	
+	if active_slot:
 		active_slot.set('custom_styles/panel', selected_style)
 
-	
+
 func set_selected(selected_state: bool):
 	selected = selected_state
 	refresh_style()
@@ -56,13 +59,23 @@ func pickFromSlot():
 	refresh_style()
 	
 func putIntoSlot(new_item):
+	if new_item == null:
+		return
+
 	item = new_item
-	item.position = Vector2(0, 0)
+	item.position = Vector2(0, 0)  # Set position for the item inside the slot
+
 	var inventoryNode = find_parent("Inventory")
-	inventoryNode.remove_child(item)
-	add_child(item)
-	refresh_style()
-	
+	var slot = inventoryNode.get_node("Slot" + str(slot_index))  # Ensure you're referencing the correct slot index
+	print("Slot" + str(slot_index))
+	if slot:
+		print("slotslotslot", slot)
+		if item.get_parent():
+			item.get_parent().remove_child(item)
+
+		slot.add_child(item)
+		refresh_style()  # Reapply the style after adding the item to the slot
+
 func initialize_item(item_name, item_quantity):
 	if item == null:
 		item = ItemClass.instance()

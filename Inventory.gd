@@ -18,6 +18,7 @@ func _ready():
 		slots[i].connect("gui_input", self, "slot_gui_input", [slots[i]])
 	Player.connect("inventory_data_ready", self, "_on_inventory_data_ready")
 	initialize_inventory()
+	
 func _process(delta):
 	if Global.inventoryItemInfo and Global.inventoryItemName != null:
 		var texture_path = "res://item_icons/" + Global.inventoryItemName + '.png'
@@ -40,7 +41,7 @@ func initialize_inventory():
 			var item_info = inventory[i]
 			var item_name = item_info["name"]
 			var item_quantity = item_info["quantity"]
-			print('Initializing Slot:', i, 'Item Name:', item_name, 'Item Quantity:', item_quantity)
+#			print('Initializing Slot:', i + 1, 'Item Name:', item_name, 'Item Quantity:', item_quantity)
 			
 			# Initialize the slot with item name and quantity
 			inventory_slots.initialize_item(item_name, item_quantity)

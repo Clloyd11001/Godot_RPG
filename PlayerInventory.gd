@@ -49,6 +49,14 @@ func add_item(item_name, item_quantity,item_description ):
 			return
 
 
+	# If the item doesn't exist in the inventory yet, find an empty slot and add it
+	for i in range(NUM_INVENTORY_SLOTS):
+		if i >= Inventory.size():
+			# If the array size is smaller than the slot index, extend it
+			Inventory.resize(i + 1)
+		if Inventory[i] == null:  
+			Inventory[i] = {"name": item_name, "quantity": item_quantity, "description": item_description} 
+			return
 
 func remove_item(slot: SlotClass):
 	Inventory.erase(slot.slot_index)

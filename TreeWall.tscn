@@ -49,11 +49,9 @@ zoom = Vector2( 0.4, 0.4 )
 visible = false
 
 [node name="QuestNotification" parent="YSort/Player/CanvasLayer2/Popup/QuestNotificationPanel/HBoxContainer" index="0"]
-margin_top = 0.0
 margin_bottom = 10.0
 
 [node name="QuestNotification2" parent="YSort/Player/CanvasLayer2/Popup/QuestNotificationPanel/HBoxContainer" index="1"]
-margin_top = 0.0
 margin_bottom = 10.0
 
 [node name="ActiveQuestText" parent="YSort/Player/CanvasLayer2/Popup/QuestNotificationPanel/HBoxContainer2" index="0"]
@@ -142,10 +140,10 @@ margin_right = -1173.73
 margin_bottom = 580.394
 
 [node name="Label" parent="QuestPopup" index="1"]
-margin_left = 248.724
-margin_top = 60.618
-margin_right = 109.391
-margin_bottom = -6.05598
+margin_left = 0.0
+margin_top = 20.0
+margin_right = 243.0
+margin_bottom = 176.0
 text = "[PLAYER HAS MET ALL OF THE REQUIREMENTS TO COMPLETE THE QUEST:
 
 SHOW ME ZA WARUDO"

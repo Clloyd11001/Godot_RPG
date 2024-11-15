@@ -105,7 +105,15 @@ func set_rotation_based_on_direction(direction: Vector2):
 	elif direction == Vector2.DOWN:
 		rotation = deg2rad(90)
 
-
+func _on_Area2D_body_shape_entered(body):
+	if body.name == 'Player':
+		Global.npc_area = true
+		var npcName = $".".to_string()
+		var extractedNPC = extract_node_names(npcName)
+		Global.npcName = extractedNPC[0]
+		var found_node = find_node_by_name(get_tree().root, extractedNPC[0])
+		if body:
+			player_in_range = true
 
 func _on_Area2D_body_entered(body):
 

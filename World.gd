@@ -72,4 +72,4 @@ func set_camera_limits():
 
 
 func _on_Area2D_body_entered(body):
-	print("entering into the portal")
+	pass
