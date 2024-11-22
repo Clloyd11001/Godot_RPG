@@ -5,7 +5,11 @@ signal active_item_updated
 const SlotClass = preload("res://Slot.gd")
 const ItemClass = preload("res://Item.gd")
 const NUM_INVENTORY_SLOTS = 20
+onready var inventory_scene = preload("res://Inventory.tscn")
 
+
+
+var inventory_instance = null
 
 var player = null
 onready var itemInforArray
@@ -35,8 +39,6 @@ func add_item(item_name, item_quantity,item_description ):
 	for item_data in Inventory:
 		if item_data["name"] == item_name:
 			item_data["quantity"] += item_quantity
-			print("Added", item_quantity, "to", item_name, "in inventory.")
-			print("Current inventory state:", Inventory)
 			return
 
 	# If the item doesn't exist in the inventory yet, find an empty slot and add it
@@ -47,16 +49,18 @@ func add_item(item_name, item_quantity,item_description ):
 		if Inventory[i] == null:  
 			Inventory[i] = {"name": item_name, "quantity": item_quantity, "description": item_description} 
 			return
+			
+#
+#			# If item doesn't exist in any of the slots, add it to the next available slot
+#	# This checks if the current slot is empty
+#	for i in range(NUM_INVENTORY_SLOTS):
+#		# Check if the i-th child slot exists and is empty (e.g., it has no item yet)
+#		var slot = inventory_instance.get_child(i)  # Get the child at index i
+#		if slot == null:  # If the slot doesn't exist yet, it means it's empty
+#			# Create a new item in the slot
+#			print("Adding item to new slot at index:", i)
+#			break
 
-
-	# If the item doesn't exist in the inventory yet, find an empty slot and add it
-	for i in range(NUM_INVENTORY_SLOTS):
-		if i >= Inventory.size():
-			# If the array size is smaller than the slot index, extend it
-			Inventory.resize(i + 1)
-		if Inventory[i] == null:  
-			Inventory[i] = {"name": item_name, "quantity": item_quantity, "description": item_description} 
-			return
 
 func remove_item(slot: SlotClass):
 	Inventory.erase(slot.slot_index)
