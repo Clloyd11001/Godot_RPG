@@ -5,7 +5,7 @@ onready var player = get_parent().get_parent().get_parent().get_parent()
 
 func _ready():
 	player.connect("experience_gained", self, "_on_Player_experience_gained")
-	
+	print("experiencebarexperiencebarexperiencebarexperiencebarexperiencebar", rect_global_position)
 func initialize(current, maximum):
 	max_value = maximum
 	value = current

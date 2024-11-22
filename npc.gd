@@ -1,6 +1,11 @@
 extends KinematicBody2D
 
 signal dialogue_ended
+signal popup_shown
+
+var playerScene = preload("res://Player/Player.tscn")
+
+var player_instance = playerScene.instance()
 
 const speed = 30
 var current_state = IDLE
@@ -17,6 +22,8 @@ enum {
 }
 
 func _ready():
+	var player_instance = playerScene.instance()
+	get_parent().add_child(player_instance)
 	randomize()
 	start_pos = position
 
@@ -174,7 +181,17 @@ func _on_Dialogue_dialogue_finished():
 	if $".".name == "fairy":
 		print("PlayerInventory")
 		# EVERY TIME YOU ADD TO PLAYER INVENTOYR HAVE TO CHANGE ITEMDATA.JSON TO CONTAIN APPROPRIATE ITEM
+		# need a popup right here
+		
+		var panel = player_instance.get_node("Panel")
+		var label = panel.get_node("Label")
+
+		# Set label text
+		label.text = "PixieDust has been added to the inventory"
+		emit_signal("popup_shown")
+		
 		PlayerInventory.add_item('PixieDust', 1, 'Green dust released by a mysterious fairy')
+		
 		print("Global.inventoryItemInfo", Global.inventoryItemInfo)
 		print("PlayerInventory", PlayerInventory)
 		if Global.item_names_inventory.has("PixieDust"):

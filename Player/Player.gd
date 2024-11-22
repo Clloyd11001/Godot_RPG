@@ -51,6 +51,8 @@ onready var comboSprite = get_node("AnimatedSprite")
 onready var questJournal = get_node("CanvasLayer2/Popup")
 onready var player = get_node(".")
 onready var PlayerInventory = $"/root/PlayerInventory"
+onready var npc = preload("res://introCharacter.tscn")
+var npc_instance = npc.instance()
 
 var experience = 0
 var experience_total = 0
@@ -66,6 +68,8 @@ var playerObject = null
 
 
 func _ready():
+	var panel = get_node("Panel")
+	panel.visible = false
 	PlayerInventory.set_player(self)
 	#questNotificationPanel.visible = false
 	set_house(null)
@@ -73,7 +77,15 @@ func _ready():
 
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
+	npc_instance.connect("popup_shown", self, "_on_popup_shown")
 
+# This function is called when the signal is emitted
+func _on_popup_shown():
+	# Show the panel when the signal is emitted
+	var panel = get_node("Panel")
+	var label = panel.get_node("Label")
+	label.text = "PixieDust has been added to the inventory"  # Set text again in case needed
+	panel.visible = true  # Make the panel visible
 
 func _physics_process(delta):
 	match state:
