@@ -45,7 +45,8 @@ func start():
 	
 	# Define the default dialogue file path
 	dialogue_file = "res://dialogues/json/" + Global.npcName + ".json"
-	print("dialogue_file", dialogue_file)
+	var nameOfNPCfromFile = dialogue_file.get_file().get_basename()
+	Global.npcNameFromFile = nameOfNPCfromFile
 	# Check if we need to load an alternate dialogue file
 
 	if Global.waitingForPlayerToCompleteQuest and !talkedToNPCSecondTime:
@@ -132,8 +133,15 @@ func _on_Timer_timeout():
 	dialogue_active = false
 	emit_signal("dialogue_finished")
 	
-	QuestSystem.addQuest("MQ001")
-	QuestSystem.advanceQuest("MQ001")
+	print("before going into quest completion")
+
+	QuestSystem.completeQuest("MQ001")
+
+
+
+	
+#	QuestSystem.addQuest("MQ001")
+#	QuestSystem.advanceQuest("MQ001")
 
 func extract_node_names(message: String) -> Array:
 	var names: Array = []

@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal dialogue_ended
 signal popup_shown
 
-var playerScene = preload("res://Player/Player.tscn")
+var playerScene = load("res://Player/Player.tscn")
 
 var player_instance = playerScene.instance()
 
@@ -194,6 +194,12 @@ func _on_Dialogue_dialogue_finished():
 		
 		print("Global.inventoryItemInfo", Global.inventoryItemInfo)
 		print("PlayerInventory", PlayerInventory)
+		
 		if Global.item_names_inventory.has("PixieDust"):
 			print("IM ACTUALLY A MONKEYS UNCLE, IM ACTUALLY A MONKEYS UNCLE, IM ACTUALLY A MONKEYS UNCLE")
-
+#	shouldn't be else, but just testing to see if I can add in the voodoo doll
+	else:
+		print("HERES THE COMPLETED QUESTS", QuestSystem.CompletedQuests)
+		if QuestSystem.CompletedQuests.size() < 0:
+			PlayerInventory.add_item('VooDoo Doll', 1, 'A nasty doll with a little bit of blood')
+		

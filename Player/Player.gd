@@ -52,7 +52,7 @@ onready var questJournal = get_node("CanvasLayer2/Popup")
 onready var player = get_node(".")
 onready var PlayerInventory = $"/root/PlayerInventory"
 onready var npc = preload("res://introCharacter.tscn")
-var npc_instance = npc.instance()
+#var npc_instance = npc.instance()
 
 var experience = 0
 var experience_total = 0
@@ -77,7 +77,7 @@ func _ready():
 
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
-	npc_instance.connect("popup_shown", self, "_on_popup_shown")
+#	npc_instance.connect("popup_shown", self, "_on_popup_shown")
 
 # This function is called when the signal is emitted
 func _on_popup_shown():

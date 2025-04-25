@@ -27,6 +27,7 @@ var currentlyPointedToId
 var available_ids: Array = []
 var npcName
 var npcNode
+var npcNameFromFile
 
 
 const firstScene = "res://Level1.tscn"

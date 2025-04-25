@@ -46,13 +46,21 @@ func advanceQuest(questID: String):
 	else:
 		print("Error: questID not found in ActiveQuests")
 
+#	I JUST HAD A RANDOM THOUGHT, WHAT IF I MADE THE PARAM ABLE TO BE CHECKED SO FOR EXAMPLE IF YOU COMPLETE QUEST 5 YOU GET EXP OR SUM
 func completeQuest(questID: String):
+	print("we trying to complete")
 	# pop up to show completion
 	if questID in ActiveQuests:
 		CompletedQuests.append(ActiveQuests[questID]["QuestName"])
 		var _erasedQuest = ActiveQuests.erase(questID)
+		print("WE FINISHED THE QUEST?!?!?!")
 	else:
 		print("Error: questID not found in ActiveQuests")
+	
+	print("QUEST ID LOWERCASE!!!!", questID.to_lower())
+	if questID.to_lower() == 'mq001':
+		if Global.npcNameFromFile.to_lower() == "firstquestnpc":
+			PlayerInventory.add_item('VoodooDoll', 1, 'A terrifying doll of unknown origins')
 		
 	return CompletedQuests
 

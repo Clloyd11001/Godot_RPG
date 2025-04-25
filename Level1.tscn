@@ -1021,7 +1021,7 @@ scale = Vector2( 0.5, 0.5 )
 position = Vector2( 58, 63 )
 
 [node name="AnimatedSprite" parent="YSort/fairy" index="0"]
-frame = 1
+frame = 3
 
 [node name="CollisionShape2D" parent="YSort/fairy/Area2D" index="0"]
 position = Vector2( -3, 2 )
